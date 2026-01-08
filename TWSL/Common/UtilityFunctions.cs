@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Text.Json;
+using System.IO;
+
 
 namespace TWSL.Common
 {
@@ -145,6 +148,17 @@ namespace TWSL.Common
                     new SqlParameter("@note", note)
             };
             DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
+        }
+
+        public static void loadjson()
+        {
+            string json = File.ReadAllText("config.json");
+
+            Config config = JsonSerializer.Deserialize<Config>(json);
+
+            Console.WriteLine(config.Version);
+
+            AppData.Instance.AppVersion = config.Version;
         }
 
     }

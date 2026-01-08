@@ -20,12 +20,12 @@ namespace TWSL
         string id_user;
         string username_user;
         private bool clicktable = true;
-        public user_ma(string id, string username)
+        public user_ma()
         {
-            Logger.Log("INFO", $"{id} Vào chức năng quản lý người dùng {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
-            id_user = id; // Lưu ID người dùng
-            username_user = username; // Lưu tên người dùng
-
+            //Logger.Log("INFO", $"{id} Vào chức năng quản lý người dùng {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+            id_user = AppData.Instance.CurrentUserId; // Lưu ID người dùng
+            username_user = AppData.Instance.CurrentUserName; // Lưu tên người dùng
+            Logger.Log("INFO", $"{id_user} Vào chức năng quản lý người dùng {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
             InitializeComponent();
             User_ma_Load();
         }

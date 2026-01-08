@@ -20,14 +20,17 @@ namespace TWSL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new login());
-            // Khai báo thông tin người dùng hiện tại
+
+            //Application.Run(new login());
+
+            //Khai báo thông tin người dùng hiện tại
             //AppData.Instance.CurrentProdLine = "SL";
-            //AppData.Instance.CurrentUserId = "admin";
-            //AppData.Instance.CurrentUserName = "Administrator";
-            //AppData.Instance.CurrentProdLine = "IT";
-            //AppData.Instance.CurrentRole = "admin";
-            //Application.Run(new HOME());
+            AppData.Instance.CurrentUserId = "admin";
+            AppData.Instance.CurrentUserName = "Administrator";
+            AppData.Instance.CurrentProdLine = "IT";
+            AppData.Instance.CurrentRole = "admin";
+            AppData.Instance.CurrentPassw = "admin";
+            Application.Run(new HOME());
 
 
 

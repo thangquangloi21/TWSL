@@ -30,6 +30,9 @@ namespace TWSL.Common
         //kết nối db
         public string ConnectionString { get; set; }
 
+        // version app
+        public string AppVersion { get; set; }
+
 
 
 

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using TWSL.Common;
+using TWSL.test;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TWSL.Forms.main
 {
@@ -19,6 +21,10 @@ namespace TWSL.Forms.main
             
             InitializeComponent();
         }
+
+
+      
+
         private Form curFromChild;
         private void OpenchildFrom(Form childFrom)
         {
@@ -72,22 +78,77 @@ namespace TWSL.Forms.main
 
         private void HOME_Load(object sender, EventArgs e)
         {
+            UtilityFunctions.loadjson();
             UserID.Text = AppData.Instance.CurrentUserId;
             Fname.Text = AppData.Instance.CurrentUserName;
             Role_wh.Text = AppData.Instance.CurrentRole;
-            ProdLine.Text = AppData.Instance.CurrentRole;
-
-
-
-            if (AppData.Instance.CurrentProdLine == "SL")
-            {
-                OpenchildFrom(new Fsl());
-
-            }
-            else
+            ProdLine.Text = AppData.Instance. CurrentProdLine;
+            Version.Text = "Version: " + AppData.Instance.AppVersion;
+            
+            if (AppData.Instance.CurrentProdLine == "WH")
             {
                 OpenchildFrom(new Fwh());
             }
+            else
+            {
+                OpenchildFrom(new Fsl());
+            }
+        }
+
+        private void ChangePw(object sender, EventArgs e)
+        {
+            Console.WriteLine("Change Password clicked");
+            chage_pasword chage_PaswordForm = new chage_pasword(AppData.Instance.CurrentUserId, AppData.Instance.CurrentPassw);
+            chage_PaswordForm.ShowDialog();
+        }
+
+
+        private void Info_click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Info clicked");
+        }
+        public void histrory_user()
+        {
+            OpenchildFrom(new HistoryFrame());
+        }
+
+        //// hiển thị Usercontrol
+        //private void Info_click(object sender, EventArgs e)
+        //{
+        //    Console.WriteLine("Info clicked");
+
+        //    // ChagePW is a UserControl (not a Form). Add it to the main panel instead
+        //    // of calling OpenchildFrom which expects a Form.
+        //    if (curFromChild != null)
+        //    {
+        //        curFromChild.Close();
+        //        curFromChild = null;
+        //    }
+
+        //    mainview_wh.Controls.Clear();
+        //    var changePwControl = new ChagePW();
+        //    changePwControl.Dock = DockStyle.Fill;
+        //    mainview_wh.Controls.Add(changePwControl);
+        //    mainview_wh.Tag = changePwControl;
+        //    changePwControl.BringToFront();
+        //}
+
+
+        private void pictureBox3_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point p = pictureBox1.PointToClient(Cursor.Position);
+            toolTip1.Show(
+           "Đổi Mật khẩu",
+           pictureBox1,
+           p.X + 15,
+           p.Y + 15,
+           1000
+            );
+        }
+
+        private void pictureBox3_MouseLeave(object sender, EventArgs e)
+        {
+            toolTip1.Hide(pictureBox1);
         }
     }
 }

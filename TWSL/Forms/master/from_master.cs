@@ -30,11 +30,11 @@ namespace TWSL
         private readonly string User_id = "";
         private readonly string user_name = "";
         private readonly string user_role = "";
-        public from_master(string userid, string username, string _role)
+        public from_master()
         {
-            User_id = userid; // Lưu ID người dùng
-            user_name = username; // Lưu tên người dùng
-            user_role = _role; // Lưu vai trò người dùng
+            User_id = AppData.Instance.CurrentUserId; // Lưu ID người dùng
+            user_name = AppData.Instance.CurrentUserName; ; // Lưu tên người dùng
+            user_role = AppData.Instance.CurrentRole; ; // Lưu vai trò người dùng
             ExcelPackage.License.SetNonCommercialPersonal("Your Name");
             InitializeComponent();
             Update_data();

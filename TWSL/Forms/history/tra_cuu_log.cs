@@ -9,17 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TWSL.Common;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TWSL
 {
     public partial class tra_cuu_log : Form
     {
-        public tra_cuu_log(string username)
+        public tra_cuu_log()
         {
             InitializeComponent();
             //this.username = username;
-            Logger.Log("INFO", $"{username} tra cứu log vào lúc {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+            Logger.Log("INFO", $"{AppData.Instance.CurrentUserId} tra cứu log vào lúc {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
         }
 
         private void button1_Click(object sender, EventArgs e)

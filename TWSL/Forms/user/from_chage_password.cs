@@ -79,9 +79,43 @@ namespace TWSL
                 IsPasswordChanged = true; // Đánh dấu đã đổi mật khẩu
                 this.Close(); // Đóng form sau khi đổi mật khẩu thành công
                 
-
-
             }
+        }
+
+        private void chage_pasword_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            passwordold_tbx.UseSystemPasswordChar = false;
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            passwordold_tbx.UseSystemPasswordChar = true;
+        }
+
+
+        private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
+        {
+            passwordnew_tbx.UseSystemPasswordChar = false;
+        }
+
+        private void pictureBox3_MouseUp(object sender, MouseEventArgs e)
+        {
+            passwordnew_tbx.UseSystemPasswordChar = true;
+        }
+
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            passwordnew2_tbx.UseSystemPasswordChar = false;
+        }
+
+        private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
+        {
+            passwordnew2_tbx.UseSystemPasswordChar = true;
         }
     }
 }

@@ -8,16 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TWSL.Common;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TWSL.Forms.history
 {
     public partial class his_info_users : Form
     {
-        public his_info_users(string username)
+        public his_info_users()
         {
             InitializeComponent();
-            Logger.Log("INFO", $"{username} tra cứu history master vào lúc {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+            Logger.Log("INFO", $"{AppData.Instance.CurrentUserId} tra cứu history master vào lúc {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
         }
         private void updatedata()
         {

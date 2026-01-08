@@ -241,14 +241,14 @@ namespace TWSL
 
         private void login_btn(object sender, EventArgs e)
         {
-            if (username_texbox.Text.Trim() == "admin" || password_texbox.Text.Trim() == "admin")
+            if (username_texbox.Text.Trim() == "admin" && password_texbox.Text.Trim() == "admin")
             {
-               HOME home = new HOME();
-                AppData.Instance.CurrentProdLine = "SL";
+               
+                AppData.Instance.CurrentProdLine = "IT";
                 AppData.Instance.CurrentUserId = "admin";
                 AppData.Instance.CurrentUserName = "Administrator";
-                AppData.Instance.CurrentProdLine = "IT";
                 AppData.Instance.CurrentRole = "admin";
+                HOME home = new HOME();
                 home.Show();
 
             }
@@ -351,7 +351,22 @@ namespace TWSL
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                check_db(null, EventArgs.Empty);
+                if (username_texbox.Text.Trim() == "admin" && password_texbox.Text.Trim() == "admin")
+                {
+                    HOME home = new HOME();
+                    AppData.Instance.CurrentProdLine = "SL";
+                    AppData.Instance.CurrentUserId = "admin";
+                    AppData.Instance.CurrentUserName = "Administrator";
+                    AppData.Instance.CurrentProdLine = "IT";
+                    AppData.Instance.CurrentRole = "admin";
+                    home.Show();
+
+                }
+                else
+                {
+                    // kiểm tra xem có kết nối đưọc db không
+                    check_db(null, EventArgs.Empty);
+                }
             }
         }
 
