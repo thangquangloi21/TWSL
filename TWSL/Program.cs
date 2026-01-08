@@ -1,10 +1,11 @@
-﻿using TWSL.Forms.history;
-using TWSL.Forms.main;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TWSL.Common;
+using TWSL.Forms.history;
+using TWSL.Forms.main;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TWSL
@@ -19,8 +20,14 @@ namespace TWSL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new login());
-            Application.Run(new HOME());
+            Application.Run(new login());
+            // Khai báo thông tin người dùng hiện tại
+            //AppData.Instance.CurrentProdLine = "SL";
+            //AppData.Instance.CurrentUserId = "admin";
+            //AppData.Instance.CurrentUserName = "Administrator";
+            //AppData.Instance.CurrentProdLine = "IT";
+            //AppData.Instance.CurrentRole = "admin";
+            //Application.Run(new HOME());
 
 
 

@@ -165,6 +165,18 @@
     <Compile Include="Forms\main\export_data.Designer.cs">
       <DependentUpon>export_data.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\main\Fsl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\Fsl.Designer.cs">
+      <DependentUpon>Fsl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\main\Fwh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\Fwh.Designer.cs">
+      <DependentUpon>Fwh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\main\HOME.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +283,12 @@
     <EmbeddedResource Include="Forms\main\export_data.resx">
       <DependentUpon>export_data.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\Fsl.resx">
+      <DependentUpon>Fsl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\Fwh.resx">
+      <DependentUpon>Fwh.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\HOME.resx">
       <DependentUpon>HOME.cs</DependentUpon>
     </EmbeddedResource>
@@ -370,6 +388,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medical-protection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warehouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medical-protection1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Terumo_Timeline-2006-1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />

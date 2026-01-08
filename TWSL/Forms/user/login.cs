@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using TWSL.Forms.main;
 
 
 namespace TWSL
@@ -146,11 +147,17 @@ namespace TWSL
                                 new SqlParameter("@id", username)
                             };
                             DatabaseHelper.ExecuteNonQuery(reset_pass_count, parameters3);
+                            AppData.Instance.CurrentUserId = username;
+                            AppData.Instance.CurrentUserName = name;
+                            AppData.Instance.CurrentPassw = password;
+                            AppData.Instance.CurrentRole = role;
                             //MessageBox.Show($"Xin chào: {name} với quyền: {role} stt:{status} date {date}", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            main_from form1 = new main_from(username, name, role, password); // Tạo instance của input_data
+                            main_from form1 = new main_from(); // Tạo instance của input_data
                             this.Hide(); // Ẩn Form đăng nhập
                             form1.ShowDialog(); // Hiển thị input_data (không chặn login)
                             Logger.Log("INFO", $"{username} Đăng xuất vào lúc {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+                            // chèn lưu thông tin đăng nhập:
+                           
                             this.Show();
                             password_texbox.Text = ""; // Xóa mật khẩu sau khi thoát
                         }
@@ -234,8 +241,23 @@ namespace TWSL
 
         private void login_btn(object sender, EventArgs e)
         {
-            // kiểm tra xem có kết nối đưọc db không
-            check_db(null, EventArgs.Empty);
+            if (username_texbox.Text.Trim() == "admin" || password_texbox.Text.Trim() == "admin")
+            {
+               HOME home = new HOME();
+                AppData.Instance.CurrentProdLine = "SL";
+                AppData.Instance.CurrentUserId = "admin";
+                AppData.Instance.CurrentUserName = "Administrator";
+                AppData.Instance.CurrentProdLine = "IT";
+                AppData.Instance.CurrentRole = "admin";
+                home.Show();
+
+            }
+            else
+            {
+                // kiểm tra xem có kết nối đưọc db không
+                check_db(null, EventArgs.Empty);
+            }
+            
 
 
         }

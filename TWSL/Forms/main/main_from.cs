@@ -49,7 +49,7 @@ namespace TWSL
         //private readonly string connectionString = "Server=pc-tql;Database=DB_GS1_GenIII;User Id=sa;Password=P@ssw0rd2025!;";
         //private readonly string connectionString = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
         private static readonly HttpClient _httpClient = new HttpClient();
-        public main_from(string id,string name, string role, string password)
+        public main_from()
         {
             InitializeComponent();
 
@@ -61,13 +61,13 @@ namespace TWSL
             string year = DateTime.Now.Year.ToString();
             getyear = year.Substring(year.Length - 2);
             lbl_eog.Text = getyear + "EO";
-            user_lbl.Text = $"Hi: {name}";
-            info_user.Text = name;
-            user_id = id;
-            name_user = name;
-            user_role = role;
+            user_lbl.Text = $"Hi: {AppData.Instance.CurrentUserName}";
+            info_user.Text = AppData.Instance.CurrentUserName;
+            user_id = AppData.Instance.CurrentUserId;
+            name_user = AppData.Instance.CurrentUserName;
+            user_role = AppData.Instance.CurrentRole;
             master_data.Visible = false;
-            user_password = password;
+            user_password = AppData.Instance.CurrentPassw;
             if (user_role == "admin")
             {
                 master_data.Visible = true;
