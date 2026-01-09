@@ -141,6 +141,7 @@
   <ItemGroup>
     <Compile Include="Common\Config.cs" />
     <Compile Include="Common\GlobalState.cs" />
+    <Compile Include="Common\SLFunc.cs" />
     <Compile Include="Common\UtilityFunctions.cs" />
     <Compile Include="Forms\history\his_data_tgtk.cs">
       <SubType>Form</SubType>

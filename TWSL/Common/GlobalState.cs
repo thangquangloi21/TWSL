@@ -18,6 +18,19 @@ namespace TWSL.Common
                 return _instance;
             }
         }
+        // prod
+        //public string DBSL = "Server=10.239.1.162;Database=DB_SL;User Id=loi_tq;Password=249533;";
+        //public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
+
+        //test 
+        public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
+        public string DBSL = "Server=10.239.1.54;Database=TWSL;User Id=sa;Password=123456;";
+
+
+        //HOME
+        //public string DBGS1 connectionString = "Server=pc-tql;Database=DB_GS1_GenlIl;User Id=sa;Password=P@ssw0rd2025!;";
+        //public string DBSL connectionString = "Server=pc-tql;Database=DB_SL;User Id=sa;Password=P@ssw0rd2025!;";
+
         //user info
         public string CurrentUserId { get; set; }
         public string CurrentUserName { get; set; }
@@ -32,8 +45,10 @@ namespace TWSL.Common
 
         // version app
         public string AppVersion { get; set; }
-
-
+        
+       
+        //SL
+        public string GenYearBatch { get; set; }
 
 
         private AppData() { } // Ngăn tạo đối tượng bên ngoài

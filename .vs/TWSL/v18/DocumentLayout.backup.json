@@ -3,40 +3,40 @@
   "WorkspaceRootPath": "D:\\4.DEV\\TWSL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|d:\\4.dev\\twsl\\twsl\\forms\\user\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\user\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|D:\\4.DEV\\TWSL\\twsl\\forms\\main\\sl\\sl12\\inputsl12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\main\\sl\\sl12\\inputsl12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|d:\\4.dev\\twsl\\twsl\\forms\\user\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\user\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|D:\\4.DEV\\TWSL\\twsl\\forms\\main\\sl\\sl3\\main_from.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\main\\sl\\sl3\\main_from.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|d:\\4.dev\\twsl\\twsl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|D:\\4.DEV\\TWSL\\twsl\\forms\\main\\sl\\sl3\\main_from.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\main\\sl\\sl3\\main_from.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|d:\\4.dev\\twsl\\twsl\\forms\\main\\sl\\sl12\\inputsl12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\main\\sl\\sl12\\inputsl12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|D:\\4.DEV\\TWSL\\twsl\\common\\utilityfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\common\\utilityfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|D:\\4.DEV\\TWSL\\twsl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|d:\\4.dev\\twsl\\twsl\\forms\\main\\main_from.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\main\\main_from.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|D:\\4.DEV\\TWSL\\twsl\\common\\slfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\common\\slfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|d:\\4.dev\\twsl\\twsl\\common\\globalstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\common\\globalstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|D:\\4.DEV\\TWSL\\twsl\\services\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\services\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|d:\\4.dev\\twsl\\twsl\\forms\\main\\fwh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\main\\fwh.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|d:\\4.dev\\twsl\\twsl\\forms\\main\\fsl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\main\\fsl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|d:\\4.dev\\twsl\\twsl\\forms\\main\\main_from.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\main\\main_from.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|d:\\4.dev\\twsl\\twsl\\forms\\main\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\forms\\main\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|D:\\4.DEV\\TWSL\\twsl\\services\\conn_db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A6017CF7-A5B0-4052-9339-C678187737B7}|TWSL\\TWSL.csproj|solutionrelative:twsl\\services\\conn_db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -59,136 +59,113 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Fwh.cs [Design]",
-              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\Fwh.cs",
-              "RelativeDocumentMoniker": "TWSL\\Forms\\main\\Fwh.cs",
-              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\Fwh.cs [Design]",
-              "RelativeToolTip": "TWSL\\Forms\\main\\Fwh.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T06:21:53.037Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Fsl.cs [Design]",
-              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\Fsl.cs",
-              "RelativeDocumentMoniker": "TWSL\\Forms\\main\\Fsl.cs",
-              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\Fsl.cs [Design]",
-              "RelativeToolTip": "TWSL\\Forms\\main\\Fsl.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T06:25:08.115Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GlobalState.cs",
-              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Common\\GlobalState.cs",
-              "RelativeDocumentMoniker": "TWSL\\Common\\GlobalState.cs",
-              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Common\\GlobalState.cs",
-              "RelativeToolTip": "TWSL\\Common\\GlobalState.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAA4wBsAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T08:08:21.521Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Program.cs",
               "RelativeDocumentMoniker": "TWSL\\Program.cs",
               "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Program.cs",
               "RelativeToolTip": "TWSL\\Program.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwBYAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T08:30:47.781Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-09T02:25:27.49Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "main_from.cs",
-              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\main_from.cs",
-              "RelativeDocumentMoniker": "TWSL\\Forms\\main\\main_from.cs",
-              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\main_from.cs",
-              "RelativeToolTip": "TWSL\\Forms\\main\\main_from.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAADoAAAAsAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "SLFunc.cs",
+              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Common\\SLFunc.cs",
+              "RelativeDocumentMoniker": "TWSL\\Common\\SLFunc.cs",
+              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Common\\SLFunc.cs",
+              "RelativeToolTip": "TWSL\\Common\\SLFunc.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T08:26:30.604Z",
+              "WhenOpened": "2026-01-09T02:20:07.194Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UtilityFunctions.cs",
+              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Common\\UtilityFunctions.cs",
+              "RelativeDocumentMoniker": "TWSL\\Common\\UtilityFunctions.cs",
+              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Common\\UtilityFunctions.cs",
+              "RelativeToolTip": "TWSL\\Common\\UtilityFunctions.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T02:19:18.546Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "login.cs",
-              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\user\\login.cs",
-              "RelativeDocumentMoniker": "TWSL\\Forms\\user\\login.cs",
-              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\user\\login.cs",
-              "RelativeToolTip": "TWSL\\Forms\\user\\login.cs",
-              "ViewState": "AgIAAOcAAAAAAAAAAADwv/MAAABfAAAAAAAAAA==",
+              "Title": "InputSL12.cs",
+              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\SL\\SL12\\InputSL12.cs",
+              "RelativeDocumentMoniker": "TWSL\\Forms\\main\\SL\\SL12\\InputSL12.cs",
+              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\SL\\SL12\\InputSL12.cs",
+              "RelativeToolTip": "TWSL\\Forms\\main\\SL\\SL12\\InputSL12.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAgwFgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T09:20:09.314Z",
+              "WhenOpened": "2026-01-09T02:02:55.158Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "login.cs [Design]",
-              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\user\\login.cs",
-              "RelativeDocumentMoniker": "TWSL\\Forms\\user\\login.cs",
-              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\user\\login.cs [Design]",
-              "RelativeToolTip": "TWSL\\Forms\\user\\login.cs [Design]",
+              "Title": "main_from.cs",
+              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\SL\\SL3\\main_from.cs",
+              "RelativeDocumentMoniker": "TWSL\\Forms\\main\\SL\\SL3\\main_from.cs",
+              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\SL\\SL3\\main_from.cs",
+              "RelativeToolTip": "TWSL\\Forms\\main\\SL\\SL3\\main_from.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAMwCsAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T09:18:12.633Z",
+              "WhenOpened": "2026-01-09T03:31:19.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InputSL12.cs [Design]",
+              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\SL\\SL12\\InputSL12.cs",
+              "RelativeDocumentMoniker": "TWSL\\Forms\\main\\SL\\SL12\\InputSL12.cs",
+              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\SL\\SL12\\InputSL12.cs [Design]",
+              "RelativeToolTip": "TWSL\\Forms\\main\\SL\\SL12\\InputSL12.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T02:01:56.574Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main_from.cs [Design]",
+              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\SL\\SL3\\main_from.cs",
+              "RelativeDocumentMoniker": "TWSL\\Forms\\main\\SL\\SL3\\main_from.cs",
+              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\SL\\SL3\\main_from.cs [Design]",
+              "RelativeToolTip": "TWSL\\Forms\\main\\SL\\SL3\\main_from.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T03:31:13.414Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "main_from.cs [Design]",
-              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\main_from.cs",
-              "RelativeDocumentMoniker": "TWSL\\Forms\\main\\main_from.cs",
-              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\main_from.cs [Design]",
-              "RelativeToolTip": "TWSL\\Forms\\main\\main_from.cs [Design]",
+              "Title": "Logger.cs",
+              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Services\\Logger.cs",
+              "RelativeDocumentMoniker": "TWSL\\Services\\Logger.cs",
+              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Services\\Logger.cs",
+              "RelativeToolTip": "TWSL\\Services\\Logger.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T08:26:28.798Z",
-              "EditorCaption": " [Design]"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "a61a877b-0a88-48c5-ba34-b6ddbe61659e",
-        "Display": 0,
-        "X": 47,
-        "Y": 224,
-        "Width": 1238,
-        "Height": 679,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
+              "WhenOpened": "2026-01-09T01:35:03.438Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "HOME.cs",
-              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\HOME.cs",
-              "RelativeDocumentMoniker": "TWSL\\Forms\\main\\HOME.cs",
-              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Forms\\main\\HOME.cs",
-              "RelativeToolTip": "TWSL\\Forms\\main\\HOME.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAqwBAAAAAPAAAAAAAAAA==",
+              "Title": "conn_db.cs",
+              "DocumentMoniker": "D:\\4.DEV\\TWSL\\TWSL\\Services\\conn_db.cs",
+              "RelativeDocumentMoniker": "TWSL\\Services\\conn_db.cs",
+              "ToolTip": "D:\\4.DEV\\TWSL\\TWSL\\Services\\conn_db.cs",
+              "RelativeToolTip": "TWSL\\Services\\conn_db.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAmwBgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T04:29:17.149Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-09T01:34:55.87Z"
             }
           ]
         }

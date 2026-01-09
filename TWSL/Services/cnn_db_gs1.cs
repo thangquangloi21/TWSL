@@ -5,15 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using TWSL.Common;
 namespace TWSL
 {
 
 
     public class conn_db_gs1
     {
-        private static string connectionString = "Server=pc-tql;Database=DB_GS1_GenlIl;User Id=sa;Password=P@ssw0rd2025!;";
+        //private static string connectionString = "Server=pc-tql;Database=DB_GS1_GenlIl;User Id=sa;Password=P@ssw0rd2025!;";
         //private static string connectionString = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
-
+        private static string connectionString = AppData.Instance.DBGS1;
         // Hàm mở kết nối
         public static SqlConnection GetConnection()
         {

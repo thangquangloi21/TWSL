@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using TWSL.Common;
 namespace TWSL
 {
     
@@ -12,9 +13,9 @@ namespace TWSL
     public class DatabaseHelper
     {
 
-        private static string connectionString = "Server=pc-tql;Database=DB_SL;User Id=sa;Password=P@ssw0rd2025!;";
+        //private static string connectionString = "Server=pc-tql;Database=DB_SL;User Id=sa;Password=P@ssw0rd2025!;";
         //private static string connectionString = "Server=10.239.1.162;Database=DB_SL;User Id=loi_tq;Password=249533;";
-
+        private static string connectionString = AppData.Instance.DBSL;
         //private static string connectionString = "Server=10.239.1.54;Database=DB_SL;User Id=sa;Password=123456;";
 
         //private static string connectionString = "Data Source=SERVER_NAME;Initial Catalog=DATABASE_NAME;Integrated Security=True";
