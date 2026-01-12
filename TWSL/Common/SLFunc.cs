@@ -18,5 +18,11 @@ namespace TWSL.Common
             string year = DateTime.Now.ToString("yy");
             return year+="EO -";
         }
+
+        public static string getyearsave()
+        {
+            string year = DateTime.Now.ToString("yy");
+            return year += "EO-";
+        }
     }
 }

@@ -49,6 +49,7 @@ namespace TWSL.Common
        
         //SL
         public string GenYearBatch { get; set; }
+        public string Batch { get; set; }
 
 
         private AppData() { } // Ngăn tạo đối tượng bên ngoài

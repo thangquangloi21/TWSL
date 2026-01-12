@@ -161,5 +161,10 @@ namespace TWSL.Common
             AppData.Instance.AppVersion = config.Version;
         }
 
+        public static void GetNameitem(string barcode)
+        {
+            
+        }
+
     }
 }

@@ -40,7 +40,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.StatusBtn = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Barcode = new System.Windows.Forms.TextBox();
             this.BatchYear = new System.Windows.Forms.Label();
             this.BatchNoTbx = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -187,7 +187,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.StatusBtn);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.Barcode);
             this.groupBox1.Controls.Add(this.BatchYear);
             this.groupBox1.Controls.Add(this.BatchNoTbx);
             this.groupBox1.Controls.Add(this.label2);
@@ -204,7 +204,7 @@
             // StatusBtn
             // 
             this.StatusBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.StatusBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.StatusBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.StatusBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.StatusBtn.Location = new System.Drawing.Point(469, 25);
             this.StatusBtn.Name = "StatusBtn";
@@ -214,12 +214,13 @@
             this.StatusBtn.UseVisualStyleBackColor = false;
             this.StatusBtn.Click += new System.EventHandler(this.StatusBtn_Click);
             // 
-            // textBox2
+            // Barcode
             // 
-            this.textBox2.Location = new System.Drawing.Point(130, 81);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(314, 31);
-            this.textBox2.TabIndex = 4;
+            this.Barcode.Location = new System.Drawing.Point(130, 81);
+            this.Barcode.Name = "Barcode";
+            this.Barcode.Size = new System.Drawing.Size(314, 31);
+            this.Barcode.TabIndex = 4;
+            this.Barcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Barcode_KeyPress);
             // 
             // BatchYear
             // 
@@ -356,7 +357,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button StatusBtn;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Barcode;
         private System.Windows.Forms.Label BatchYear;
         private System.Windows.Forms.TextBox BatchNoTbx;
         private System.Windows.Forms.Button button2;
