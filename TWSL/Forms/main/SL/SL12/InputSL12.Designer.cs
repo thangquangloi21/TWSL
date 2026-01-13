@@ -35,8 +35,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.save_data = new System.Windows.Forms.Button();
+            this.AddBatch = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.StatusBtn = new System.Windows.Forms.Button();
@@ -139,8 +139,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.save_data);
+            this.groupBox2.Controls.Add(this.AddBatch);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -151,27 +151,29 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chức năng";
             // 
-            // button5
+            // save_data
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button5.Location = new System.Drawing.Point(149, 31);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(144, 81);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Lưu dữ liệu";
-            this.button5.UseVisualStyleBackColor = true;
+            this.save_data.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.save_data.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.save_data.Location = new System.Drawing.Point(149, 31);
+            this.save_data.Name = "save_data";
+            this.save_data.Size = new System.Drawing.Size(144, 81);
+            this.save_data.TabIndex = 9;
+            this.save_data.Text = "Lưu dữ liệu";
+            this.save_data.UseVisualStyleBackColor = true;
+            this.save_data.Click += new System.EventHandler(this.save_data_Click);
             // 
-            // button3
+            // AddBatch
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Location = new System.Drawing.Point(26, 78);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 36);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Reset";
-            this.button3.UseVisualStyleBackColor = true;
+            this.AddBatch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.AddBatch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.AddBatch.Location = new System.Drawing.Point(26, 78);
+            this.AddBatch.Name = "AddBatch";
+            this.AddBatch.Size = new System.Drawing.Size(108, 36);
+            this.AddBatch.TabIndex = 7;
+            this.AddBatch.Text = "Reset";
+            this.AddBatch.UseVisualStyleBackColor = true;
+            this.AddBatch.Click += new System.EventHandler(this.Reset);
             // 
             // button2
             // 
@@ -183,6 +185,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Xóa";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Dellete);
             // 
             // groupBox1
             // 
@@ -220,6 +223,7 @@
             this.Barcode.Name = "Barcode";
             this.Barcode.Size = new System.Drawing.Size(314, 31);
             this.Barcode.TabIndex = 4;
+            this.Barcode.TextChanged += new System.EventHandler(this.Barcode_TextChanged);
             this.Barcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Barcode_KeyPress);
             // 
             // BatchYear
@@ -361,7 +365,7 @@
         private System.Windows.Forms.Label BatchYear;
         private System.Windows.Forms.TextBox BatchNoTbx;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button AddBatch;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Batch_No;
         private System.Windows.Forms.DataGridViewTextBoxColumn Item;
@@ -369,7 +373,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Lot;
         private System.Windows.Forms.DataGridViewTextBoxColumn sl;
         private System.Windows.Forms.DataGridViewTextBoxColumn machine;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button save_data;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label Username;

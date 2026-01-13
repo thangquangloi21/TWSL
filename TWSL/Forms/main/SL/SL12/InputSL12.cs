@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TWSL.Common;
 
+
 namespace TWSL.Forms.main.SL.SL1
 {
     public partial class InputSL12 : Form
@@ -73,6 +74,7 @@ namespace TWSL.Forms.main.SL.SL1
             Iduser.Text = TWSL.Common.AppData.Instance.CurrentUserId;
             Username.Text = TWSL.Common.AppData.Instance.CurrentUserName;
             BatchYear.Text = TWSL.Common.AppData.Instance.GenYearBatch;
+            save_data.Enabled = false;
         }
 
 
@@ -86,23 +88,22 @@ namespace TWSL.Forms.main.SL.SL1
             {
                 MessageBox.Show($"Số mẻ tiệt trùng phải là số có dịnh dạng XXXXX ", "Lưu ý!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 BatchNoTbx.Text = "";
+                BatchNoTbx.Focus();
                 return;
             }
 
             StatusBtn.Enabled = false;
             StatusBtn.BackColor = Color.LightGreen;
             Barcode.Focus();
-            BatchNoTbx.ReadOnly = false;
+            BatchNoTbx.ReadOnly = true;
             batno_enter = false;
             StatusBtn.Text = "Đang nhập mã vạch...";
             Barcode.ReadOnly = false;
 
             // Lưu số mẻ vào biến toàn cục
             AppData.Instance.Batch = SLFunc.getyearsave() + get_bacthno;
-            MessageBox.Show($"Số mẻ tiệt trùng đã được lưu: {AppData.Instance.Batch}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-
+            AppData.Instance.MachineNo = SLFunc.getmachine_no(get_bacthno);
+            //MessageBox.Show($"Số mẻ tiệt trùng đã được lưu: {AppData.Instance.Batch}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void StatusBtn_Click(object sender, EventArgs e)
@@ -128,6 +129,8 @@ namespace TWSL.Forms.main.SL.SL1
         private void Barcode_KeyPress(object sender, KeyPressEventArgs e)
         {
             string Get_text_barcode = Barcode.Text.Trim();
+            string sum_item = "";
+            if (e.KeyChar != (char)Keys.Enter) return;
 
             if (Get_text_barcode.Length > 26 && Get_text_barcode.Length < 35)
             {
@@ -139,9 +142,14 @@ namespace TWSL.Forms.main.SL.SL1
                 string get_itemandlot = "SELECT [category] ,[itemCode] FROM [ItemMaster] where cartonBox = @cartonBox";
                 SqlParameter[] codegs1 = {
                                 new SqlParameter("@cartonBox", get_gs1_code)
-                            };
-
+                };
                 DataTable gs1data = conn_db_gs1.ExecuteQuery(get_itemandlot, codegs1);
+                if (gs1data.Rows.Count == 0)
+                {
+                    MessageBox.Show("Mã GS1 không tồn tại trong hệ thống, Vui lòng kiểm tra lại.", "Thông Báo");
+                    Barcode.Text = "";
+                    return;
+                }
                 string prod_line = gs1data.Rows[0]["category"].ToString();
                 string itemcode = gs1data.Rows[0]["itemCode"].ToString();
 
@@ -151,9 +159,150 @@ namespace TWSL.Forms.main.SL.SL1
                     Barcode.Text = "";
                     return;
                 }
+
+                using (var inputForm = new input_from(itemcode, get_lot))
+                {
+                    sum_item = inputForm.SumItem;
+                    //MessageBox.Show($"The sum_item value is: {sum_item}", "Result");
+                    // Show input_from as a dialog (modal)
+                    DialogResult result = inputForm.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        // Retrieve sum_item after the form is closed
+                        sum_item = inputForm.SumItem;
+                        MessageBox.Show($"The sum_item value is: {sum_item}", "Result");
+                    }
+                    else
+                    {
+
+                        sum_item = inputForm.SumItem;
+                        //MessageBox.Show($"The sum_item value is: {sum_item}", "Result");
+                        if (!int.TryParse(sum_item, out int number) || number <= 0)
+                        {
+
+                            //inputForm.ShowDialog();
+                            MessageBox.Show($"Số Lượng không hợp lệ vui lòng nhập lại. ", "Lỗi");
+                            Barcode.Text = "";
+                            Barcode.Focus();
+                            return;
+                        }
+                        else
+                        {
+                            //MessageBox.Show($"The sum_item value is: {sum_item}", "Result");
+                            sum_item = inputForm.SumItem;
+                            save_data.Enabled = true;
+                        }
+
+                        //MessageBox.Show($"The sum_item value is: {sum_item}", "Result");
+                    }
+                }
+                DataBatchNo.Rows.Add(AppData.Instance.Batch, itemcode, prod_line, get_lot, sum_item, AppData.Instance.MachineNo);
+                Barcode.Text = "";
+
+            }
+            else {
+                MessageBox.Show("Chuỗi không đúng định dạng.", "Thông Báo");
+                Barcode.Focus();
             }
 
+        }
 
+        private void Barcode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Reset(object sender, EventArgs e)
+        {
+            // Xác nhận trước khi xóa
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa tất cả dữ liệu không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult != DialogResult.Yes)
+            {
+                return; // Nếu người dùng chọn No, thoát khỏi hàm
+            }
+            Logger.Log("INFO", $"{AppData.Instance.CurrentUserId} reset mẻ {AppData.Instance.Batch} lúc: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+            // Xóa tất cả dữ liệu trong DataGridView
+            clear_data();
+
+        }
+
+        private void clear_data() {
+            // Xóa tất cả dữ liệu trong DataGridView
+            DataBatchNo.Rows.Clear();
+            BatchNoTbx.ReadOnly = false;
+            BatchNoTbx.Text = "";
+            Barcode.ReadOnly = true;
+            Barcode.Text = "";
+            StatusBtn.Enabled = true;
+
+            BatchNoTbx.Focus();
+
+            batno_enter = true;
+
+            StatusBtn.Text = "Bắt đầu";
+        }
+
+        private void Dellete(object sender, EventArgs e)
+        {
+            // xóa 1 hàng trong datagridview
+            if (DataBatchNo.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in DataBatchNo.SelectedRows)
+                {
+                    if (!row.IsNewRow) // Đảm bảo không xóa hàng mới
+                    {
+                        DataBatchNo.Rows.Remove(row);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hàng để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void save_data_Click(object sender, EventArgs e)
+        {
+
+            //kiểm tra xem có dữ liệu hay không?
+            DataGridViewRow firstRow = DataBatchNo.Rows[0];
+            if (firstRow.IsNewRow && DataBatchNo.AllowUserToAddRows)
+            {
+                MessageBox.Show("Không có dữ liệu thực sự để lưu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            // hiện thông báo xác nhận
+            if (MessageBox.Show("Bạn có chắc chắn muốn lưu dữ liệu không? \n Sau khi lưu dữ liệu hiện hành sẽ bị xóa hết", "Xác nhận lưu dữ liệu", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            {
+                return; // Nếu người dùng chọn No, thoát khỏi hàm
+            }
+            //lưu số mẻ vào bảng master_batchno
+            //UtilityFunctions.insert_batch_no(batch_no, name_user, "Mới đăng kí", "0");
+            insert_data_desg_time();
+            clear_data();
+            // lấy tất cả dữ liệu trong datagrid view đẩy vào sql
+        }
+
+        // đẩy dữ liệu vào db
+        private void insert_data_desg_time()
+        {
+            string time = UtilityFunctions.getdate_time1();
+            foreach (DataGridViewRow row in DataBatchNo.Rows)
+            {
+                if (row.IsNewRow) continue; // Bỏ qua hàng mới
+                string batchNo = row.Cells[0].Value?.ToString() ?? "";
+                string productCode = row.Cells[1].Value?.ToString() ?? "";
+                string line = row.Cells[2].Value?.ToString() ?? "";
+                string lot = row.Cells[3].Value?.ToString() ?? "";
+                string quantity = row.Cells[4].Value?.ToString() ?? "";
+                string machine = row.Cells[5].Value?.ToString() ?? "";
+                string id_user = TWSL.Common.AppData.Instance.CurrentUserId;
+                string name = TWSL.Common.AppData.Instance.CurrentUserName;
+                SLFunc.InsertDataBatchNo(batchNo, productCode, line, lot, quantity, machine, id_user, name, "add", time);
+                Console.WriteLine("batchNo, productCode, line, lot, quantity, machine, id_user, name");
+            }
+            Logger.Log("INFO", $"{AppData.Instance.CurrentUserId} lưu mẻ {AppData.Instance.Batch} lúc: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+            MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
