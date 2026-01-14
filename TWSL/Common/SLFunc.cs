@@ -49,15 +49,30 @@ namespace TWSL.Common
                     new SqlParameter("@lot", lot),
                     new SqlParameter("@quantity", quantity),
                     new SqlParameter("@machine_no", machine),
+                    new SqlParameter("@inp_time", time)
+  
+   
+            };
+            SqlParameter[] parameters1 = new SqlParameter[]
+            {
+                    new SqlParameter("@batch_no", batchNo),
+                    new SqlParameter("@item_code", productCode),
+                    new SqlParameter("@product_line", line),
+                    new SqlParameter("@lot", lot),
+                    new SqlParameter("@quantity", quantity),
+                    new SqlParameter("@machine_no", machine),
                     new SqlParameter("@inp_time", time),
                     new SqlParameter("@id_user", id_user),
                     new SqlParameter("@name", name),
                     new SqlParameter("@note", note)
-   
+
             };
+
             DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
-            DatabaseHelper.ExecuteNonQuery(insertQuery2, parameters);
+            DatabaseHelper.ExecuteNonQuery(insertQuery2, parameters1);
         }
+
+
 
     }
 }

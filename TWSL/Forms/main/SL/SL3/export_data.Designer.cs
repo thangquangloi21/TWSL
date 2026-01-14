@@ -30,7 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@
             this.batchno_texbox = new System.Windows.Forms.TextBox();
             this.data_view = new System.Windows.Forms.DataGridView();
             this.search = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_view)).BeginInit();
             this.search.SuspendLayout();
@@ -87,16 +87,6 @@
             this.button4.Text = "Xóa mẻ";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.xoa_me);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(193, 98);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 30);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Xem chi tiết";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.showinffo);
             // 
             // button2
             // 
@@ -310,6 +300,16 @@
             this.search.TabStop = false;
             this.search.Text = "Tìm Kiếm";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(193, 98);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(90, 30);
+            this.button3.TabIndex = 20;
+            this.button3.Text = "Xem chi tiết";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.showinffo);
+            // 
             // export_data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -354,7 +354,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox search;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
     }
 }

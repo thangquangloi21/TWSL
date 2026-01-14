@@ -53,6 +53,7 @@
             this.Lot = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.machine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -139,6 +140,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.save_data);
             this.groupBox2.Controls.Add(this.AddBatch);
             this.groupBox2.Controls.Add(this.button2);
@@ -154,10 +156,11 @@
             // save_data
             // 
             this.save_data.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.save_data.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.save_data.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.save_data.Location = new System.Drawing.Point(149, 31);
+            this.save_data.Location = new System.Drawing.Point(155, 33);
             this.save_data.Name = "save_data";
-            this.save_data.Size = new System.Drawing.Size(144, 81);
+            this.save_data.Size = new System.Drawing.Size(150, 36);
             this.save_data.TabIndex = 9;
             this.save_data.Text = "Lưu dữ liệu";
             this.save_data.UseVisualStyleBackColor = true;
@@ -166,10 +169,11 @@
             // AddBatch
             // 
             this.AddBatch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.AddBatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddBatch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.AddBatch.Location = new System.Drawing.Point(26, 78);
+            this.AddBatch.Location = new System.Drawing.Point(10, 78);
             this.AddBatch.Name = "AddBatch";
-            this.AddBatch.Size = new System.Drawing.Size(108, 36);
+            this.AddBatch.Size = new System.Drawing.Size(124, 36);
             this.AddBatch.TabIndex = 7;
             this.AddBatch.Text = "Reset";
             this.AddBatch.UseVisualStyleBackColor = true;
@@ -178,10 +182,11 @@
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(26, 33);
+            this.button2.Location = new System.Drawing.Point(10, 33);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 36);
+            this.button2.Size = new System.Drawing.Size(124, 36);
             this.button2.TabIndex = 6;
             this.button2.Text = "Xóa";
             this.button2.UseVisualStyleBackColor = true;
@@ -329,6 +334,19 @@
             this.machine.Name = "machine";
             this.machine.ReadOnly = true;
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(155, 76);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 36);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Thông tin nhập";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.InfoInp);
+            // 
             // InputSL12
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,5 +396,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label Username;
         private System.Windows.Forms.Label Iduser;
+        private System.Windows.Forms.Button button1;
     }
 }

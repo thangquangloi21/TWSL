@@ -20,8 +20,13 @@ namespace TWSL.Forms.main
 
         private void button1_Click(object sender, EventArgs e)
         {
-           InputSL12 fsl1 = new InputSL12();
+
+            InputSL12 fsl1 = new InputSL12();
+            // ẩn home
+            var openHome = Application.OpenForms.OfType<HOME>().FirstOrDefault();
+            openHome?.Hide();
             fsl1.ShowDialog();
+            openHome?.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -57,6 +62,7 @@ namespace TWSL.Forms.main
             if (openHome != null)
             {
                 openHome.histrory_user();
+                
                 return;
             }
 

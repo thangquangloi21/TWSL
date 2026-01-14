@@ -167,6 +167,12 @@
     <Compile Include="Forms\main\HistorySL.Designer.cs">
       <DependentUpon>HistorySL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\main\SL\SL12\InfoBathWh12.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\SL\SL12\InfoBathWh12.Designer.cs">
+      <DependentUpon>InfoBathWh12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\main\SL\SL12\InputSL12.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\HistorySL.resx">
       <DependentUpon>HistorySL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\SL\SL12\InfoBathWh12.resx">
+      <DependentUpon>InfoBathWh12.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\SL\SL12\InputSL12.resx">
       <DependentUpon>InputSL12.cs</DependentUpon>

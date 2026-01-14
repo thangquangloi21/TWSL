@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TWSL.Common;
+using TWSL.Forms.main.SL.SL12;
 
 
 namespace TWSL.Forms.main.SL.SL1
@@ -303,6 +304,14 @@ namespace TWSL.Forms.main.SL.SL1
             }
             Logger.Log("INFO", $"{AppData.Instance.CurrentUserId} lưu mẻ {AppData.Instance.Batch} lúc: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
             MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void InfoInp(object sender, EventArgs e)
+        {
+            var InfoForm = new InfoBathWh12();
+            this.Hide();
+            InfoForm.ShowDialog();
+            this.Show();
         }
     }
 }
