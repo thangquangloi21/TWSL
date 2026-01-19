@@ -35,8 +35,8 @@ namespace TWSL.Common
 
         public static void InsertDataBatchNo(string batchNo, string productCode, string line, string lot, string quantity, string machine, string id_user, string name, string note, string time)
         {
-            string insertQuery = "insert [InfoBatchNoF12] ([BatchNo] ,[ItemCode] ,[ProdLine] ,[ProdLot] ,[Quantity] ,[Machine] ,[DateTime]) " +
-                "values (@batch_no, @item_code, @product_line, @lot, @quantity, @machine_no, @inp_time)";
+            string insertQuery = "insert [InfoBatchNoF12] ([BatchNo] ,[ItemCode] ,[ProdLine] ,[ProdLot] ,[Quantity] ,[Machine] ,[DateTime], [NameUser], [Status]) " +
+                "values (@batch_no, @item_code, @product_line, @lot, @quantity, @machine_no, @inp_time, @name, @status)";
             
             string insertQuery2 = "insert [TrInfoBatchNoF12] ([BatchNo] ,[ItemCode] ,[ProdLine] ,[ProdLot] ,[Quantity] ,[Machine],[DateTime], [IdUser], [NameUser]  ,[note]) " +
                 "values (@batch_no, @item_code, @product_line, @lot, @quantity, @machine_no, @inp_time, @id_user, @name, @note)";
@@ -49,9 +49,12 @@ namespace TWSL.Common
                     new SqlParameter("@lot", lot),
                     new SqlParameter("@quantity", quantity),
                     new SqlParameter("@machine_no", machine),
-                    new SqlParameter("@inp_time", time)
-  
-   
+                    new SqlParameter("@inp_time", time),
+                    new SqlParameter("@name", name),
+                    new SqlParameter("@status", "Tạo thành công"),
+
+
+
             };
             SqlParameter[] parameters1 = new SqlParameter[]
             {

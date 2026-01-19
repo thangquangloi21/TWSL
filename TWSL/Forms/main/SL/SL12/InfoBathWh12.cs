@@ -19,9 +19,12 @@ namespace TWSL.Forms.main.SL.SL12
             InitializeComponent();
         }
 
+
+
         private void InfoBathWh12_Load(object sender, EventArgs e)
         {
-
+            start_date.Value = DateTime.Now.AddDays(-1);
+            updatedata();
         }
         private void updatedata()
         {
@@ -34,15 +37,15 @@ namespace TWSL.Forms.main.SL.SL12
 
 
             //MessageBox.Show($"Start: {start}, End: {end}");
-            string sql_his_master = "SELECT [batch_no] ,[user_register] ,[time_register]  ,[status] ,[number_export] FROM [DB_SL].[dbo].[master_batchno] WHERE [time_register] >= @start AND [time_register] < @end ";
+            string sql_his_master = "SELECT DISTINCT BatchNo AS 'Số Mẻ', NameUser as 'Người tạo', CONVERT(DATE,DateTime) as 'Ngày tạo', FORMAT(DateTime,'HH:mm:ss') as 'Giờ tạo' , Status as 'Trạng Thái'  from InfoBatchNoF12 WHERE [DateTime] >= @start AND [DateTime] < @end ";
             if (!string.IsNullOrEmpty(batch_no))
             {
-                sql_his_master += " AND batch_no = @batch_no";
+                sql_his_master += " AND BatchNo = @batch_no";
             }
 
             if (!string.IsNullOrEmpty(userame))
             {
-                sql_his_master += " AND [user_register] = @user_register";
+                sql_his_master += " AND IdUser = @user_register";
             }
 
             SqlParameter[] data = new SqlParameter[]
@@ -55,12 +58,14 @@ namespace TWSL.Forms.main.SL.SL12
         };
             DataTable result = DatabaseHelper.ExecuteQuery(sql_his_master, data);
             Displaybatch.DataSource = result;
-            // Gán tên hiển thị cho các cột
-            Displaybatch.Columns["batch_no"].HeaderText = "Số mẻ";
-            Displaybatch.Columns["user_register"].HeaderText = "Người tạo";
-            Displaybatch.Columns["time_register"].HeaderText = "Thời gian tạo";
-            Displaybatch.Columns["status"].HeaderText = "Trạng Thái";
-            Displaybatch.Columns["number_export"].HeaderText = "Số lần đã xuất dữ liệu";
+        }
+
+        private void donexoa()
+        {
+            batchno_dp.Text = "...";
+            Userdp.Text = "...";
+            Datedp.Text = "...";
+            Statusdp.Text = "...";
         }
 
         private void Delbatch(object sender, EventArgs e)
@@ -76,8 +81,7 @@ namespace TWSL.Forms.main.SL.SL12
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 // xóa mẻ
-                string update_query = "delete from master_batchno where batch_no = @batch_no " +
-                    "delete from [data_degassing_time] where batch_no =  @batch_no";
+                string update_query = "delete from InfoBatchNoF12 where BatchNo = @batch_no ";
                 //MessageBox.Show($"Cập nhật thông tin người dùng với ID: {id_update}, Tên: {save_username_update}, Quyền: {role_update}, Trạng thái: {status_update}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 SqlParameter[] updateParameters = new SqlParameter[]
                 {
@@ -89,8 +93,48 @@ namespace TWSL.Forms.main.SL.SL12
                 Logger.Log("INFO", $"{AppData.Instance.CurrentUserId} Xóa mẻ {somett}");
 
                 updatedata();
-                //donexoa();
+                donexoa();
             }
+        }
+
+        private void viewData(object sender, EventArgs e)
+        {
+            string somett = batchno_dp.Text.Trim();
+            if (somett == "...")
+            {
+                MessageBox.Show("Vui lòng chọn 1 mẻ để xem", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            var info_batchno_f12 = new DpBatch12(somett);
+            info_batchno_f12.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            updatedata();
+        }
+
+        private void Displaybatch_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = Displaybatch.Rows[e.RowIndex];
+                
+                //string bat = row.Cells["time_register"].Value.ToString();
+                // Gán dữ liệu từ các cột vào label
+                DateTime ngayTao = Convert.ToDateTime(row.Cells["Ngày Tạo"].Value);
+                batchno_dp.Text = row.Cells["Số Mẻ"].Value.ToString();
+                Userdp.Text = row.Cells["Người Tạo"].Value.ToString();
+                Datedp.Text = ngayTao.ToString("dd/MM/yyyy");
+                Statusdp.Text = row.Cells["Trạng Thái"].Value.ToString();
+                //Console.WriteLine($"{bat}");
+
+            }
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

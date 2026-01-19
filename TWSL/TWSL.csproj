@@ -161,11 +161,17 @@
     <Compile Include="Forms\history\his_master.Designer.cs">
       <DependentUpon>his_master.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\main\HistorySL.cs">
+    <Compile Include="Forms\main\SL\HistorySL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\main\HistorySL.Designer.cs">
+    <Compile Include="Forms\main\SL\HistorySL.Designer.cs">
       <DependentUpon>HistorySL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\main\SL\SL12\DpBatch12.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\SL\SL12\DpBatch12.Designer.cs">
+      <DependentUpon>DpBatch12.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\main\SL\SL12\InfoBathWh12.cs">
       <SubType>Form</SubType>
@@ -185,16 +191,28 @@
     <Compile Include="Forms\main\SL\SL3\export_data.Designer.cs">
       <DependentUpon>export_data.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\main\Fsl.cs">
+    <Compile Include="Forms\main\SL\Fsl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\main\Fsl.Designer.cs">
+    <Compile Include="Forms\main\SL\Fsl.Designer.cs">
       <DependentUpon>Fsl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\main\Fwh.cs">
+    <Compile Include="Forms\main\WH\Create.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\main\Fwh.Designer.cs">
+    <Compile Include="Forms\main\WH\Create.Designer.cs">
+      <DependentUpon>Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\main\WH\CreateFromAWH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\WH\CreateFromAWH.Designer.cs">
+      <DependentUpon>CreateFromAWH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\main\WH\Fwh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\WH\Fwh.Designer.cs">
       <DependentUpon>Fwh.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\main\HOME.cs">
@@ -306,8 +324,11 @@
     <EmbeddedResource Include="Forms\history\his_master.resx">
       <DependentUpon>his_master.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\HistorySL.resx">
+    <EmbeddedResource Include="Forms\main\SL\HistorySL.resx">
       <DependentUpon>HistorySL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\SL\SL12\DpBatch12.resx">
+      <DependentUpon>DpBatch12.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\SL\SL12\InfoBathWh12.resx">
       <DependentUpon>InfoBathWh12.cs</DependentUpon>
@@ -318,10 +339,16 @@
     <EmbeddedResource Include="Forms\main\SL\SL3\export_data.resx">
       <DependentUpon>export_data.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\Fsl.resx">
+    <EmbeddedResource Include="Forms\main\SL\Fsl.resx">
       <DependentUpon>Fsl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\Fwh.resx">
+    <EmbeddedResource Include="Forms\main\WH\Create.resx">
+      <DependentUpon>Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\WH\CreateFromAWH.resx">
+      <DependentUpon>CreateFromAWH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\WH\Fwh.resx">
       <DependentUpon>Fwh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\HOME.resx">
@@ -448,9 +475,7 @@
   <ItemGroup>
     <None Include="Resources\eye.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\main\WH\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\history.png" />
   </ItemGroup>

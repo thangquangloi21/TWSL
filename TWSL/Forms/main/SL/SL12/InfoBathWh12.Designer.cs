@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.Statusdp = new System.Windows.Forms.Label();
+            this.Userdp = new System.Windows.Forms.Label();
+            this.Datedp = new System.Windows.Forms.Label();
             this.batchno_dp = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -66,9 +66,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.Statusdp);
+            this.groupBox1.Controls.Add(this.Userdp);
+            this.groupBox1.Controls.Add(this.Datedp);
             this.groupBox1.Controls.Add(this.batchno_dp);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button3);
@@ -85,37 +85,38 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             // 
-            // label12
+            // Statusdp
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(233, 72);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(16, 16);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "...";
+            this.Statusdp.AutoSize = true;
+            this.Statusdp.Location = new System.Drawing.Point(238, 72);
+            this.Statusdp.Name = "Statusdp";
+            this.Statusdp.Size = new System.Drawing.Size(16, 16);
+            this.Statusdp.TabIndex = 26;
+            this.Statusdp.Text = "...";
+            this.Statusdp.Click += new System.EventHandler(this.label12_Click);
             // 
-            // label11
+            // Userdp
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(74, 69);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(16, 16);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "...";
+            this.Userdp.AutoSize = true;
+            this.Userdp.Location = new System.Drawing.Point(70, 72);
+            this.Userdp.Name = "Userdp";
+            this.Userdp.Size = new System.Drawing.Size(16, 16);
+            this.Userdp.TabIndex = 25;
+            this.Userdp.Text = "...";
             // 
-            // label10
+            // Datedp
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(223, 26);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(16, 16);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "...";
+            this.Datedp.AutoSize = true;
+            this.Datedp.Location = new System.Drawing.Point(238, 28);
+            this.Datedp.Name = "Datedp";
+            this.Datedp.Size = new System.Drawing.Size(16, 16);
+            this.Datedp.TabIndex = 24;
+            this.Datedp.Text = "...";
             // 
             // batchno_dp
             // 
             this.batchno_dp.AutoSize = true;
-            this.batchno_dp.Location = new System.Drawing.Point(74, 26);
+            this.batchno_dp.Location = new System.Drawing.Point(60, 25);
             this.batchno_dp.Name = "batchno_dp";
             this.batchno_dp.Size = new System.Drawing.Size(16, 16);
             this.batchno_dp.TabIndex = 23;
@@ -123,9 +124,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(350, 21);
+            this.button4.Location = new System.Drawing.Point(365, 22);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(120, 35);
+            this.button4.Size = new System.Drawing.Size(105, 35);
             this.button4.TabIndex = 22;
             this.button4.Text = "Xóa mẻ";
             this.button4.UseVisualStyleBackColor = true;
@@ -133,17 +134,18 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(350, 68);
+            this.button3.Location = new System.Drawing.Point(365, 72);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 35);
+            this.button3.Size = new System.Drawing.Size(105, 35);
             this.button3.TabIndex = 21;
             this.button3.Text = "Xem chi tiết";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.viewData);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(164, 72);
+            this.label3.Location = new System.Drawing.Point(170, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 16);
             this.label3.TabIndex = 15;
@@ -152,7 +154,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(164, 26);
+            this.label2.Location = new System.Drawing.Point(173, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 16);
             this.label2.TabIndex = 14;
@@ -161,7 +163,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 69);
+            this.label1.Location = new System.Drawing.Point(3, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 16);
             this.label1.TabIndex = 13;
@@ -264,13 +266,14 @@
             // button1
             // 
             this.button1.Image = global::TWSL.Properties.Resources.search;
-            this.button1.Location = new System.Drawing.Point(489, 26);
+            this.button1.Location = new System.Drawing.Point(489, 31);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 70);
             this.button1.TabIndex = 17;
             this.button1.Text = "Tìm Kiếm";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -320,12 +323,19 @@
             // 
             // Displaybatch
             // 
+            this.Displaybatch.AllowDrop = true;
+            this.Displaybatch.AllowUserToAddRows = false;
+            this.Displaybatch.AllowUserToDeleteRows = false;
+            this.Displaybatch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Displaybatch.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.Displaybatch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Displaybatch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Displaybatch.Location = new System.Drawing.Point(0, 0);
             this.Displaybatch.Name = "Displaybatch";
+            this.Displaybatch.ReadOnly = true;
             this.Displaybatch.Size = new System.Drawing.Size(1077, 360);
             this.Displaybatch.TabIndex = 0;
+            this.Displaybatch.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Displaybatch_CellClick);
             // 
             // InfoBathWh12
             // 
@@ -374,9 +384,9 @@
         private System.Windows.Forms.DataGridView Displaybatch;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label Statusdp;
+        private System.Windows.Forms.Label Userdp;
+        private System.Windows.Forms.Label Datedp;
         private System.Windows.Forms.Label batchno_dp;
     }
 }

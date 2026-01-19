@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TWSL.Forms.main
+namespace TWSL.Forms.main.WH
 {
-    public partial class Fwh : Form
+    public partial class Create : Form
     {
-        public Fwh()
+        public Create()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
