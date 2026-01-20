@@ -16,5 +16,11 @@ namespace TWSL.Forms.main.WH
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var create_from_awm = new Create();
+            create_from_awm.ShowDialog();
+        }
     }
 }

@@ -19,7 +19,8 @@ namespace TWSL.Forms.main
 
         private void CreateAWH(object sender, EventArgs e)
         {
-
+            var create_from_awh = new WH.CreateFromAWH();
+            create_from_awh.ShowDialog();
         }
     }
 }
