@@ -209,6 +209,12 @@
     <Compile Include="Forms\main\WH\CreateFromAWH.Designer.cs">
       <DependentUpon>CreateFromAWH.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\main\WH\CreatTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\WH\CreatTime.Designer.cs">
+      <DependentUpon>CreatTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\main\WH\Fwh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\CreateFromAWH.resx">
       <DependentUpon>CreateFromAWH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\WH\CreatTime.resx">
+      <DependentUpon>CreatTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\Fwh.resx">
       <DependentUpon>Fwh.cs</DependentUpon>
