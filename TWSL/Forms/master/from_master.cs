@@ -206,9 +206,6 @@ namespace TWSL
             {
                 MessageBox.Show("Lỗi khi tải file: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-          
-
-
         }
 
         //private void up_data_master(object sender, EventArgs e)

@@ -251,6 +251,12 @@
     <Compile Include="Forms\loading\loading_wait.Designer.cs">
       <DependentUpon>loading_wait.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\master\FromMasterWH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\master\FromMasterWH.Designer.cs">
+      <DependentUpon>FromMasterWH.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -378,6 +384,9 @@
     <EmbeddedResource Include="Forms\main\SL\SL3\dp_batchno.resx">
       <DependentUpon>dp_batchno.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\master\FromMasterWH.resx">
+      <DependentUpon>FromMasterWH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\user\edit_inf.resx">
       <DependentUpon>edit_inf.cs</DependentUpon>
     </EmbeddedResource>
@@ -493,9 +502,14 @@
   <ItemGroup>
     <None Include="Resources\eye.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\server.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\history.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />

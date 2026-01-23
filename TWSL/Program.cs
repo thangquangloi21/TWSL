@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using TWSL.Common;
 using TWSL.Forms.history;
 using TWSL.Forms.main;
+using TWSL.Forms.master;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TWSL
@@ -31,7 +32,10 @@ namespace TWSL
             AppData.Instance.CurrentProdLine = "IT";
             AppData.Instance.CurrentRole = "admin";
             AppData.Instance.CurrentPassw = "admin";
+
+
             Application.Run(new HOME());
+            //Application.Run(new FromMasterWH());
 
 
 
