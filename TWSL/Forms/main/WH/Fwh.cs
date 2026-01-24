@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TWSL.Forms.master;
 
 namespace TWSL.Forms.main
 {
@@ -21,6 +22,12 @@ namespace TWSL.Forms.main
         {
             var create_from_awh = new WH.CreateFromAWH();
             create_from_awh.ShowDialog();
+        }
+
+        private void Master_btn(object sender, EventArgs e)
+        {
+            var From_master_wh = new FromMasterWH();
+            From_master_wh.ShowDialog();
         }
     }
 }

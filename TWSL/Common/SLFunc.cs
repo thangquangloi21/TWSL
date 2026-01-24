@@ -1,6 +1,7 @@
 ﻿using Org.BouncyCastle.Crypto.IO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -73,6 +74,47 @@ namespace TWSL.Common
 
             DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
             DatabaseHelper.ExecuteNonQuery(insertQuery2, parameters1);
+        }
+
+
+        public static int GetTgtk(string item , string lot , string machine)
+        {
+            int kq = 0;
+
+            // Kiểm tra độ dài lot để tránh lỗi IndexOutOfRangeException
+            if (string.IsNullOrEmpty(lot) || lot.Length <= 6) return 0;
+
+            string typelot = lot[6].ToString(); // Ép kiểu string ở đây luôn cho gọn
+
+            // Query nên filter thêm machine để giảm tải dữ liệu lấy về RAM
+            var gettime = "SELECT * FROM MASTERF12 WHERE status_item = '1' AND itemcode = @item";
+            SqlParameter[] para1 = { new SqlParameter("@item", item) };
+
+            DataTable data1 = DatabaseHelper.ExecuteQuery(gettime, para1);
+
+            foreach (DataRow row1 in data1.Rows)
+            {
+                string dbMachine = row1["machine"].ToString();
+                string dbLot = row1["lot"].ToString();
+
+                // Kiểm tra khớp cả Machine và Loại Lot
+                if (dbMachine == machine && dbLot == typelot)
+                {
+                    kq = Convert.ToInt32(row1["Degassing_time"]); // Giả sử tên cột là tg_dang_ky
+                    return kq; // Tìm thấy đúng máy này thì thoát luôn
+                }
+
+                // Nếu không khớp machine nhưng khớp Lot (Trường hợp dùng chung cho các máy)
+                if (dbMachine == "" && dbLot == typelot)
+                {
+                    kq = Convert.ToInt32(row1["Degassing_time"]);
+                }
+                if (dbMachine == machine && dbLot == "")
+                {
+                    kq = Convert.ToInt32(row1["Degassing_time"]);
+                }
+            }
+            return kq;
         }
 
 

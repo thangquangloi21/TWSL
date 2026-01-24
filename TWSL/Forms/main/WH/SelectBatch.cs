@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using TWSL.Common;
 
 namespace TWSL.Forms.main.WH
 {
@@ -26,7 +28,9 @@ namespace TWSL.Forms.main.WH
 
         private void SelectBatch_Load(object sender, EventArgs e)
         {
-            string sql_his_master = "  Select DISTINCT [BatchNo] as 'Số Mẻ',[ItemCode] as 'Tên sản phẩm', [ProdLot] as 'Lot',[ProdLine] as 'Bộ Phận',[Quantity] as 'Số Lượng', [Machine] as 'Máy', [DateTime] as 'Thời gian'  from [InfoBatchNoF12] where ItemCode = @ItemCode and ProdLot = @ProdLot";
+            string sql_his_master = "Select DISTINCT [BatchNo] as 'Số Mẻ',inf.[ItemCode] as 'Tên sản phẩm', [ProdLot] as 'Lot',[ProdLine] as 'Bộ Phận',[Quantity] as 'Số Lượng', [Machine] as 'Máy', pl.Qty as 'Max/Pallet', [DateTime] as 'Thời gian'  " +
+                "from [InfoBatchNoF12] as inf left join QtyStandPalet as pl on inf.ItemCode = pl.ItemCode " +
+                "where inf.ItemCode = @ItemCode and inf.ProdLot = @ProdLot";
 
             SqlParameter[] data = new SqlParameter[]
         {
@@ -35,6 +39,19 @@ namespace TWSL.Forms.main.WH
 
         };
             DataTable result = DatabaseHelper.ExecuteQuery(sql_his_master, data);
+
+            // 1) Thêm cột mới (ví dụ cột "Ghi chú") kiểu string, đặt vị trí cuối bảng
+            if (!result.Columns.Contains("Thời gian Thoát khí"))
+                result.Columns.Add(new DataColumn("Thời gian Thoát khí", typeof(string)));
+
+            // 2) Gán giá trị mặc định cho tất cả dòng (tuỳ bạn thay logic)
+            foreach (DataRow row in result.Rows)
+            {
+
+                row["Thời gian Thoát khí"] = SLFunc.GetTgtk(row["Tên sản phẩm"].ToString(), row["Lot"].ToString(), row["Máy"].ToString()); // hoặc tính toán theo từng dòng
+                                             // Ví dụ tính toán: row["Ghi chú"] = (row["Số Lượng"] == DBNull.Value) ? "" : "OK";
+            }
+
             dataview.DataSource = result;
         }
 
@@ -54,6 +71,7 @@ namespace TWSL.Forms.main.WH
                 Machine_dp.Text = row.Cells["Máy"].Value.ToString();
                 Date_Create.Text = ngayTao.ToString("HH:mm dd/MM/yyyy");
 
+
             }
         }
 
@@ -61,6 +79,11 @@ namespace TWSL.Forms.main.WH
         {
             // lấy mẻ đó ra để xem thời gian thoát khí
             MessageBox.Show($"Bạn đã chọn mẻ {bathno_dp.Text.Trim()}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void Machine_dp_Click(object sender, EventArgs e)
+        {
 
         }
     }

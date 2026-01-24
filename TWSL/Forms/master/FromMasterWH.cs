@@ -1,4 +1,5 @@
 ﻿using OfficeOpenXml;
+using Org.BouncyCastle.Crypto.IO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TWSL.Common;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
@@ -27,6 +29,7 @@ namespace TWSL.Forms.master
             ExcelPackage.License.SetNonCommercialPersonal("Your Name");
             loading = new loading_wait();
             this.Controls.Add(loading);
+
 
         }
 
@@ -71,7 +74,70 @@ namespace TWSL.Forms.master
 
         private void Loaddatapallet(string Item, String Id)
         {
-            MessageBox.Show("Load Pallet");
+            //MessageBox.Show("Load Pallet");
+            try
+            {
+
+                // 1) Câu lệnh nền
+                var baseSql = @"
+SELECT 
+    [ItemCode] AS [Item Code],
+    [Qty]      AS [Số Lượng],
+    [IdUser]   AS [Người Đăng Kí]
+FROM [QtyStandPalet]";
+
+                // 2) Gom điều kiện & tham số
+                var conditions = new List<string>();
+                var parameters = new List<SqlParameter>();
+
+                if (!string.IsNullOrWhiteSpace(Item))
+                {
+                    conditions.Add("ItemCode = @ItemCode");
+                    parameters.Add(new SqlParameter("@ItemCode", Item));
+                }
+
+                if (!string.IsNullOrWhiteSpace(Id))
+                {
+                    conditions.Add("IdUser = @IdUser");
+                    parameters.Add(new SqlParameter("@IdUser", Id));
+                }
+
+                // 3) Lắp WHERE nếu có
+                string sql = baseSql;
+                if (conditions.Count > 0)
+                {
+                    sql += " WHERE " + string.Join(" AND ", conditions);
+                }
+                else
+                {
+                    // TÙY CHỌN: Chặn không cho trả toàn bộ dữ liệu (nếu muốn)
+                    // MessageBox.Show("Vui lòng nhập ít nhất một điều kiện tìm kiếm.");
+                    // return;
+                }
+
+                // 4) Thực thi query: DÙNG parameters.ToArray() thay vì 'checkuser'
+                DataTable result = DatabaseHelper.ExecuteQuery(sql, parameters.ToArray());
+
+                // 5) (Tuỳ chọn) Map trạng thái hiển thị nếu có cột status_item
+                // foreach (DataRow row in result.Rows)
+                // {
+                //     switch (row["status_item"]?.ToString())
+                //     {
+                //         case "1": row["status_item"] = "Đã phê duyệt"; break;
+                //         case "0": row["status_item"] = "Chưa phê duyệt"; break;
+                //         case "2": row["status_item"] = "Vô Hiệu hóa"; break;
+                //     }
+                // }
+
+                // 6) Gán vào DataGridView (đảm bảo đúng tên control)
+                DataView.DataSource = result; // VD: dataGridView1.DataSource = result;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Loaddatatk(String Item, String Id, String Machine, int Status)
@@ -82,7 +148,7 @@ namespace TWSL.Forms.master
                 string check_user = "  SELECT [itemcode],[generic], [machine], [lot] ,[Degassing_time] ,[registrant] ,[time_of_registration] ,[approver] ,[time_of_approval] ," +
                     "CASE WHEN [status_item] = 0 THEN N'Chưa phê duyệt' WHEN [status_item] = 1 THEN N'Đã phê duyệt' WHEN [status_item] = 2 THEN N'Vô hiệu hóa'   END AS [status_item1] " +
                     "FROM [MASTERF12] where status_item in ('0','1','2')";
-                                                          //string name_search_ = id_reg.Text.Trim(); // Loại bỏ khoảng trắng đầu và cuối
+                //string name_search_ = id_reg.Text.Trim(); // Loại bỏ khoảng trắng đầu và cuối
                 //string status_ = statuscbb.Text.Trim();
                 //if (status_ == "Chưa phê duyệt")
                 //{
@@ -122,7 +188,6 @@ namespace TWSL.Forms.master
 
                 }
 
-                Console.WriteLine(Status);
                 SqlParameter[] checkuser = new SqlParameter[]
                {
                     new SqlParameter("@itemcode", Item),
@@ -181,13 +246,18 @@ namespace TWSL.Forms.master
 
             if (StatusFunc == "TK")
             {
-                Console.WriteLine(Status);
+                if (Status == -1)
+                {
+                    Status += 1;
+                }
+                //Console.WriteLine(Status);
                 //String Item, String Id, String Machine, int Status
                 Loaddatatk(Item, Id, Machine, Status);
             }
             else if (StatusFunc == "Pallet")
             {
                 Loaddatapallet(Item, Id);
+
             }
         }
 
@@ -482,7 +552,7 @@ namespace TWSL.Forms.master
            
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void SearchBtn(object sender, EventArgs e)
         {
             Loaddata();
         }
@@ -490,6 +560,11 @@ namespace TWSL.Forms.master
         private void statuscbb_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void FromMasterWH_Load(object sender, EventArgs e)
+        {
+            Stttk();
         }
     }
 }

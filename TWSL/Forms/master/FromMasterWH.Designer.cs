@@ -40,6 +40,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.statuscbb = new System.Windows.Forms.ComboBox();
             this.button5 = new System.Windows.Forms.Button();
             this.Sttlb = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.IdTbx = new System.Windows.Forms.TextBox();
             this.MachineTbx = new System.Windows.Forms.TextBox();
             this.ItemTbx = new System.Windows.Forms.TextBox();
-            this.statuscbb = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -195,6 +195,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm Kiếm";
             // 
+            // statuscbb
+            // 
+            this.statuscbb.AllowDrop = true;
+            this.statuscbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.statuscbb.FormattingEnabled = true;
+            this.statuscbb.Items.AddRange(new object[] {
+            "",
+            "Chưa phê duyệt",
+            "Đã phê duyệt",
+            "Vô Hiệu hóa"});
+            this.statuscbb.Location = new System.Drawing.Point(313, 54);
+            this.statuscbb.Name = "statuscbb";
+            this.statuscbb.Size = new System.Drawing.Size(174, 28);
+            this.statuscbb.TabIndex = 21;
+            this.statuscbb.SelectedIndexChanged += new System.EventHandler(this.statuscbb_SelectedIndexChanged);
+            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(503, 21);
@@ -203,7 +219,7 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "Tìm Kiếm";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.SearchBtn);
             // 
             // Sttlb
             // 
@@ -262,22 +278,6 @@
             this.ItemTbx.Size = new System.Drawing.Size(133, 26);
             this.ItemTbx.TabIndex = 0;
             // 
-            // statuscbb
-            // 
-            this.statuscbb.AllowDrop = true;
-            this.statuscbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.statuscbb.FormattingEnabled = true;
-            this.statuscbb.Items.AddRange(new object[] {
-            "",
-            "Chưa phê duyệt",
-            "Đã phê duyệt",
-            "Vô Hiệu hóa"});
-            this.statuscbb.Location = new System.Drawing.Point(313, 54);
-            this.statuscbb.Name = "statuscbb";
-            this.statuscbb.Size = new System.Drawing.Size(174, 28);
-            this.statuscbb.TabIndex = 21;
-            this.statuscbb.SelectedIndexChanged += new System.EventHandler(this.statuscbb_SelectedIndexChanged);
-            // 
             // FromMasterWH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,6 +288,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FromMasterWH";
             this.Text = "FromMasterWH";
+            this.Load += new System.EventHandler(this.FromMasterWH_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
