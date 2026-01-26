@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using TWSL.Common;
+using System.Runtime.Serialization.Formatters;
 
 namespace TWSL.Forms.main.WH
 {
@@ -79,12 +80,28 @@ namespace TWSL.Forms.main.WH
         {
             // lấy mẻ đó ra để xem thời gian thoát khí
             MessageBox.Show($"Bạn đã chọn mẻ {bathno_dp.Text.Trim()}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Console.WriteLine(SLFunc.TaoSoPhieu());
 
         }
 
         private void Machine_dp_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void XemThongTin(object sender, EventArgs e)
+        {
+            var some = bathno_dp.Text.Trim();
+
+            if (some == "...")
+            {
+                MessageBox.Show("Vui lòng chọn mẻ trước !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // lấy dữ liệu của mẻ
+            var dp = new DP("DP",SLFunc.GetDataTT(some));
+            dp.ShowDialog();
         }
     }
 }

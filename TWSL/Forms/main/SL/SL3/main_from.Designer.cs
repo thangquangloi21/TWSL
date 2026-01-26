@@ -220,26 +220,26 @@ namespace TWSL
             this.chagepassword,
             this.logout});
             this.menuuser.Name = "contextMenuStrip1";
-            this.menuuser.Size = new System.Drawing.Size(179, 70);
+            this.menuuser.Size = new System.Drawing.Size(178, 70);
             // 
             // Infouser
             // 
             this.Infouser.Name = "Infouser";
-            this.Infouser.Size = new System.Drawing.Size(178, 22);
+            this.Infouser.Size = new System.Drawing.Size(177, 22);
             this.Infouser.Text = "Thông tin tài khoản";
             this.Infouser.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // chagepassword
             // 
             this.chagepassword.Name = "chagepassword";
-            this.chagepassword.Size = new System.Drawing.Size(178, 22);
+            this.chagepassword.Size = new System.Drawing.Size(177, 22);
             this.chagepassword.Text = "Đổi mật khẩu";
             this.chagepassword.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
             // 
             // logout
             // 
             this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(178, 22);
+            this.logout.Size = new System.Drawing.Size(177, 22);
             this.logout.Text = "Đăng Xuất";
             this.logout.Click += new System.EventHandler(this.ĐăngXuấtToolStripMenuItem_Click);
             // 
@@ -347,7 +347,7 @@ namespace TWSL
             // start_input
             // 
             this.start_input.BackColor = System.Drawing.Color.PaleGreen;
-            this.start_input.Location = new System.Drawing.Point(491, 15);
+            this.start_input.Location = new System.Drawing.Point(490, 23);
             this.start_input.Name = "start_input";
             this.start_input.Size = new System.Drawing.Size(90, 60);
             this.start_input.TabIndex = 27;

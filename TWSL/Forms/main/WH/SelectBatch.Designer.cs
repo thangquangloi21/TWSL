@@ -28,31 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Machine_dp = new System.Windows.Forms.Label();
-            this.Prod_dp = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.Lot_dp = new System.Windows.Forms.Label();
-            this.Date_Create = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.Item_dp = new System.Windows.Forms.Label();
             this.bathno_dp = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.NoBatch = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.Machine_dp = new System.Windows.Forms.Label();
+            this.Prod_dp = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Lot_dp = new System.Windows.Forms.Label();
+            this.Date_Create = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataview = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataview)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,76 +71,28 @@
             this.panel1.Size = new System.Drawing.Size(1118, 116);
             this.panel1.TabIndex = 0;
             // 
-            // Machine_dp
+            // groupBox2
             // 
-            this.Machine_dp.AutoSize = true;
-            this.Machine_dp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Machine_dp.Location = new System.Drawing.Point(486, 28);
-            this.Machine_dp.Name = "Machine_dp";
-            this.Machine_dp.Size = new System.Drawing.Size(21, 20);
-            this.Machine_dp.TabIndex = 12;
-            this.Machine_dp.Text = "...";
-            this.Machine_dp.Click += new System.EventHandler(this.Machine_dp_Click);
-            // 
-            // Prod_dp
-            // 
-            this.Prod_dp.AutoSize = true;
-            this.Prod_dp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Prod_dp.Location = new System.Drawing.Point(292, 28);
-            this.Prod_dp.Name = "Prod_dp";
-            this.Prod_dp.Size = new System.Drawing.Size(21, 20);
-            this.Prod_dp.TabIndex = 11;
-            this.Prod_dp.Text = "...";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(214, 28);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 20);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "Bộ phận:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(388, 28);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 20);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Máy:";
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(709, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(409, 116);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Chức năng";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(253, 25);
+            this.button1.Location = new System.Drawing.Point(236, 28);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 75);
+            this.button1.Size = new System.Drawing.Size(152, 76);
             this.button1.TabIndex = 8;
             this.button1.Text = "Tạo Phiếu";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.select_ok);
-            // 
-            // Lot_dp
-            // 
-            this.Lot_dp.AutoSize = true;
-            this.Lot_dp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lot_dp.Location = new System.Drawing.Point(293, 74);
-            this.Lot_dp.Name = "Lot_dp";
-            this.Lot_dp.Size = new System.Drawing.Size(21, 20);
-            this.Lot_dp.TabIndex = 7;
-            this.Lot_dp.Text = "...";
-            // 
-            // Date_Create
-            // 
-            this.Date_Create.AutoSize = true;
-            this.Date_Create.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Date_Create.Location = new System.Drawing.Point(486, 74);
-            this.Date_Create.Name = "Date_Create";
-            this.Date_Create.Size = new System.Drawing.Size(21, 20);
-            this.Date_Create.TabIndex = 6;
-            this.Date_Create.Text = "...";
             // 
             // label5
             // 
@@ -150,16 +103,6 @@
             this.label5.Size = new System.Drawing.Size(36, 20);
             this.label5.TabIndex = 5;
             this.label5.Text = "Lot:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(376, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Thời gian tạo:";
             // 
             // Item_dp
             // 
@@ -201,48 +144,6 @@
             this.NoBatch.TabIndex = 0;
             this.NoBatch.Text = "Số mẻ:";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dataview);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 116);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1118, 404);
-            this.panel2.TabIndex = 1;
-            // 
-            // dataview
-            // 
-            this.dataview.AllowDrop = true;
-            this.dataview.AllowUserToAddRows = false;
-            this.dataview.AllowUserToDeleteRows = false;
-            this.dataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataview.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataview.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataview.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataview.Location = new System.Drawing.Point(0, 0);
-            this.dataview.Name = "dataview";
-            this.dataview.ReadOnly = true;
-            this.dataview.Size = new System.Drawing.Size(1118, 404);
-            this.dataview.TabIndex = 0;
-            this.dataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label9);
@@ -261,17 +162,128 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin";
             // 
-            // groupBox2
+            // label9
             // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(709, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(409, 116);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Chức năng";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(214, 28);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 20);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Bộ phận:";
+            // 
+            // Machine_dp
+            // 
+            this.Machine_dp.AutoSize = true;
+            this.Machine_dp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Machine_dp.Location = new System.Drawing.Point(486, 28);
+            this.Machine_dp.Name = "Machine_dp";
+            this.Machine_dp.Size = new System.Drawing.Size(21, 20);
+            this.Machine_dp.TabIndex = 12;
+            this.Machine_dp.Text = "...";
+            this.Machine_dp.Click += new System.EventHandler(this.Machine_dp_Click);
+            // 
+            // Prod_dp
+            // 
+            this.Prod_dp.AutoSize = true;
+            this.Prod_dp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Prod_dp.Location = new System.Drawing.Point(292, 28);
+            this.Prod_dp.Name = "Prod_dp";
+            this.Prod_dp.Size = new System.Drawing.Size(21, 20);
+            this.Prod_dp.TabIndex = 11;
+            this.Prod_dp.Text = "...";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(388, 28);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 20);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Máy:";
+            // 
+            // Lot_dp
+            // 
+            this.Lot_dp.AutoSize = true;
+            this.Lot_dp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lot_dp.Location = new System.Drawing.Point(293, 74);
+            this.Lot_dp.Name = "Lot_dp";
+            this.Lot_dp.Size = new System.Drawing.Size(21, 20);
+            this.Lot_dp.TabIndex = 7;
+            this.Lot_dp.Text = "...";
+            // 
+            // Date_Create
+            // 
+            this.Date_Create.AutoSize = true;
+            this.Date_Create.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Date_Create.Location = new System.Drawing.Point(486, 74);
+            this.Date_Create.Name = "Date_Create";
+            this.Date_Create.Size = new System.Drawing.Size(21, 20);
+            this.Date_Create.TabIndex = 6;
+            this.Date_Create.Text = "...";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(376, 74);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 20);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Thời gian tạo:";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dataview);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 116);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1118, 404);
+            this.panel2.TabIndex = 1;
+            // 
+            // dataview
+            // 
+            this.dataview.AllowDrop = true;
+            this.dataview.AllowUserToAddRows = false;
+            this.dataview.AllowUserToDeleteRows = false;
+            this.dataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataview.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataview.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataview.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataview.Location = new System.Drawing.Point(0, 0);
+            this.dataview.Name = "dataview";
+            this.dataview.ReadOnly = true;
+            this.dataview.Size = new System.Drawing.Size(1118, 404);
+            this.dataview.TabIndex = 0;
+            this.dataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(43, 28);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(150, 76);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Xem chi tiết";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.XemThongTin);
             // 
             // SelectBatch
             // 
@@ -285,11 +297,11 @@
             this.Load += new System.EventHandler(this.SelectBatch_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataview)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataview)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -314,5 +326,6 @@
         private System.Windows.Forms.Label Machine_dp;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button2;
     }
 }

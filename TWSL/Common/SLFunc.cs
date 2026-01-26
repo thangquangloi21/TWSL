@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -77,7 +78,7 @@ namespace TWSL.Common
         }
 
 
-        public static int GetTgtk(string item , string lot , string machine)
+        public static int GetTgtk(string item, string lot, string machine)
         {
             int kq = 0;
 
@@ -117,7 +118,44 @@ namespace TWSL.Common
             return kq;
         }
 
+        // lấy dữ liệu mẻ tt 
+        public static DataTable GetDataTT(string batchNo)
+        {
+            string sql = "SELECT * FROM InfoBatchNoF12 WHERE BatchNo = @batchNo ORDER BY DateTime DESC";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@batchNo", batchNo)
+            };
+            DataTable result = DatabaseHelper.ExecuteQuery(sql, parameters);
+            return result;
+        }
 
+        public static string TaoSoPhieu()
+        {
+            string year = DateTime.Now.ToString("yy");
+            string month = DateTime.Now.ToString("MM");
+            var sql = @"
+            ;WITH NextNo AS (
+            SELECT RIGHT('000' + CAST(COALESCE(MAX(CAST(SoPhieu AS int)), 0) + 1 AS varchar(3)), 3) AS SoPhieuMoi
+            FROM BangSophieu WITH (UPDLOCK, HOLDLOCK)
+            WHERE Nam = @Nam AND Thang = @Thang
+            )
+            INSERT INTO BangSophieu (SoPhieu, Nam, Thang)
+            OUTPUT inserted.SoPhieu
+            SELECT SoPhieuMoi, @Nam, @Thang
+            FROM NextNo;";
+            var p = new SqlParameter[]
+            {
+            new SqlParameter("@Nam",   year),
+            new SqlParameter("@Thang", month)
+            };
+
+            // Dùng ExecuteQuery để lấy DataTable chứa kết quả từ OUTPUT
+            DataTable dt = DatabaseHelper.ExecuteQuery(sql, p);
+            string soPhieuMoi = dt.Rows[0][0].ToString();
+
+            return $"NKTD-TIS-{year}{month}-{soPhieuMoi}";
+        }
 
     }
 }
