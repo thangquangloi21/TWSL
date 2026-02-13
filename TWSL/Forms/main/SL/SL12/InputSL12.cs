@@ -1,10 +1,13 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,272 +19,25 @@ namespace TWSL.Forms.main.SL.SL1
 {
     public partial class InputSL12 : Form
     {
-        private bool batno_enter = true;
+        private loading_wait loading;
         //private bool pallet_enter = false;
         public InputSL12()
         {
 
             InitializeComponent();
-            Barcode.ReadOnly = true;
+            ExcelPackage.License.SetNonCommercialPersonal("Your Name");
+            loading = new loading_wait();
+            //Logger.Log("INFO", $"{User_id} Vào chức năng quản lý Master {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+            this.Controls.Add(loading);
+            TgKetThuc.Value = DateTime.Now.AddDays(1);
+            //Barcode.ReadOnly = true;
         }
 
-        private void thôngTinToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void updateData()
         {
-
-        }
-
-        private void ĐổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ĐăngXuấtToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void quảnLíTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void quảnLýDữLiệuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void trans_login(object sender, EventArgs e)
-        {
-
-        }
-
-        private void info_history(object sender, EventArgs e)
-        {
-
-        }
-
-        private void master_history(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dltk_history(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Inputsl1_Load(object sender, EventArgs e)
-        {
-            Iduser.Text = TWSL.Common.AppData.Instance.CurrentUserId;
-            Username.Text = TWSL.Common.AppData.Instance.CurrentUserName;
-            BatchYear.Text = TWSL.Common.AppData.Instance.GenYearBatch;
-            save_data.Enabled = false;
-        }
-
-
-
-        private void MoveBarrcode()
-        {
-            string get_bacthno = BatchNoTbx.Text;
-
-            //Kiểm tra định dạng xem đúng chưa
-            if (!int.TryParse(get_bacthno, out int number) || number <= 0 || number >= 99999 || get_bacthno.Length <= 4)
-            {
-                MessageBox.Show($"Số mẻ tiệt trùng phải là số có dịnh dạng XXXXX ", "Lưu ý!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                BatchNoTbx.Text = "";
-                BatchNoTbx.Focus();
-                return;
-            }
-
-            StatusBtn.Enabled = false;
-            StatusBtn.BackColor = Color.LightGreen;
-            Barcode.Focus();
-            BatchNoTbx.ReadOnly = true;
-            batno_enter = false;
-            StatusBtn.Text = "Đang nhập mã vạch...";
-            Barcode.ReadOnly = false;
-
-            // Lưu số mẻ vào biến toàn cục
-            AppData.Instance.Batch = SLFunc.getyearsave() + get_bacthno;
-            AppData.Instance.MachineNo = SLFunc.getmachine_no(get_bacthno);
-            //MessageBox.Show($"Số mẻ tiệt trùng đã được lưu: {AppData.Instance.Batch}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void StatusBtn_Click(object sender, EventArgs e)
-        {
-            MoveBarrcode();
-        }
-
-        private void BatchNoTbx_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!batno_enter) return;
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                MoveBarrcode();
-                //MessageBox.Show($"{BatchNoTbx.Text.Trim()}");
-            }
-            if (BatchNoTbx.Text.Length >= 5 && e.KeyChar != (char)Keys.Back)
-            {
-                // Chặn ký tự đó lại
-                e.Handled = true;
-            }
-        }
-
-        private void Barcode_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            string Get_text_barcode = Barcode.Text.Trim();
-            string sum_item = "";
-            if (e.KeyChar != (char)Keys.Enter) return;
-
-            if (Get_text_barcode.Length > 26 && Get_text_barcode.Length < 35)
-            {
-                // Tách chuỗi theo các đoạn chỉ số
-                string get_gs1_code = Get_text_barcode.Substring(2, 15 - 2 + 1); // Từ index 3 đến 16 code gs1
-                string expiration_date = Get_text_barcode.Substring(17, 23 - 17 + 1); // Từ index 16 đến 24 ngày hết hạn
-                string get_lot = Get_text_barcode.Substring(26); // Từ index 26 đến hết só lot
-
-                string get_itemandlot = "SELECT [category] ,[itemCode] FROM [ItemMaster] where cartonBox = @cartonBox";
-                SqlParameter[] codegs1 = {
-                                new SqlParameter("@cartonBox", get_gs1_code)
-                };
-                DataTable gs1data = conn_db_gs1.ExecuteQuery(get_itemandlot, codegs1);
-                if (gs1data.Rows.Count == 0)
-                {
-                    MessageBox.Show("Mã GS1 không tồn tại trong hệ thống, Vui lòng kiểm tra lại.", "Thông Báo");
-                    Barcode.Text = "";
-                    return;
-                }
-                string prod_line = gs1data.Rows[0]["category"].ToString();
-                string itemcode = gs1data.Rows[0]["itemCode"].ToString();
-
-                if (get_lot.Length < 7)
-                {
-                    MessageBox.Show("Lot không hợp lệ, Vui lòng kiểm tra lại.", "Thông Báo");
-                    Barcode.Text = "";
-                    return;
-                }
-
-                using (var inputForm = new input_from(itemcode, get_lot))
-                {
-                    sum_item = inputForm.SumItem;
-                    //MessageBox.Show($"The sum_item value is: {sum_item}", "Result");
-                    // Show input_from as a dialog (modal)
-                    DialogResult result = inputForm.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
-                        // Retrieve sum_item after the form is closed
-                        sum_item = inputForm.SumItem;
-                        MessageBox.Show($"The sum_item value is: {sum_item}", "Result");
-                    }
-                    else
-                    {
-
-                        sum_item = inputForm.SumItem;
-                        //MessageBox.Show($"The sum_item value is: {sum_item}", "Result");
-                        if (!int.TryParse(sum_item, out int number) || number <= 0)
-                        {
-
-                            //inputForm.ShowDialog();
-                            MessageBox.Show($"Số Lượng không hợp lệ vui lòng nhập lại. ", "Lỗi");
-                            Barcode.Text = "";
-                            Barcode.Focus();
-                            return;
-                        }
-                        else
-                        {
-                            //MessageBox.Show($"The sum_item value is: {sum_item}", "Result");
-                            sum_item = inputForm.SumItem;
-                            save_data.Enabled = true;
-                        }
-
-                        //MessageBox.Show($"The sum_item value is: {sum_item}", "Result");
-                    }
-                }
-                DataBatchNo.Rows.Add(AppData.Instance.Batch, itemcode, prod_line, get_lot, sum_item, AppData.Instance.MachineNo);
-                Barcode.Text = "";
-
-            }
-            else {
-                MessageBox.Show("Chuỗi không đúng định dạng.", "Thông Báo");
-                Barcode.Focus();
-            }
-
-        }
-
-        private void Barcode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Reset(object sender, EventArgs e)
-        {
-            // Xác nhận trước khi xóa
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa tất cả dữ liệu không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult != DialogResult.Yes)
-            {
-                return; // Nếu người dùng chọn No, thoát khỏi hàm
-            }
-            Logger.Log("INFO", $"{AppData.Instance.CurrentUserId} reset mẻ {AppData.Instance.Batch} lúc: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
-            // Xóa tất cả dữ liệu trong DataGridView
-            clear_data();
-
-        }
-
-        private void clear_data() {
-            // Xóa tất cả dữ liệu trong DataGridView
-            DataBatchNo.Rows.Clear();
-            BatchNoTbx.ReadOnly = false;
-            BatchNoTbx.Text = "";
-            Barcode.ReadOnly = true;
-            Barcode.Text = "";
-            StatusBtn.Enabled = true;
-
-            BatchNoTbx.Focus();
-
-            batno_enter = true;
-
-            StatusBtn.Text = "Bắt đầu";
-        }
-
-        private void Dellete(object sender, EventArgs e)
-        {
-            // xóa 1 hàng trong datagridview
-            if (DataBatchNo.SelectedRows.Count > 0)
-            {
-                foreach (DataGridViewRow row in DataBatchNo.SelectedRows)
-                {
-                    if (!row.IsNewRow) // Đảm bảo không xóa hàng mới
-                    {
-                        DataBatchNo.Rows.Remove(row);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn hàng để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void save_data_Click(object sender, EventArgs e)
-        {
-
-            //kiểm tra xem có dữ liệu hay không?
-            DataGridViewRow firstRow = DataBatchNo.Rows[0];
-            if (firstRow.IsNewRow && DataBatchNo.AllowUserToAddRows)
-            {
-                MessageBox.Show("Không có dữ liệu thực sự để lưu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            // hiện thông báo xác nhận
-            if (MessageBox.Show("Bạn có chắc chắn muốn lưu dữ liệu không? \n Sau khi lưu dữ liệu hiện hành sẽ bị xóa hết", "Xác nhận lưu dữ liệu", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-            {
-                return; // Nếu người dùng chọn No, thoát khỏi hàm
-            }
-            //lưu số mẻ vào bảng master_batchno
-            //UtilityFunctions.insert_batch_no(batch_no, name_user, "Mới đăng kí", "0");
-            insert_data_desg_time();
-            clear_data();
-            // lấy tất cả dữ liệu trong datagrid view đẩy vào sql
+            DataTable dt = SLFunc.GetData();
+            DataBatchNo.DataSource = dt;
         }
 
         // đẩy dữ liệu vào db
@@ -312,6 +68,150 @@ namespace TWSL.Forms.main.SL.SL1
             this.Hide();
             InfoForm.ShowDialog();
             this.Show();
+        }
+
+        private void ChonFile(object sender, EventArgs e)
+        {
+            try
+            {
+                string filePath = "";
+                // Mở hộp thoại chọn file Excel
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                   filePath = openFileDialog.FileName;
+                   LinkFile.Text = filePath;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải file: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void UpLoadFileSL12(string filePath)
+        {
+            // Bạn cần cài đặt thư viện EPPlus để làm việc với file Excel
+            using (var package = new OfficeOpenXml.ExcelPackage(new FileInfo(filePath)))
+            {
+                // Lấy worksheet đầu tiên
+                var worksheet = package.Workbook.Worksheets[0];
+                int rowCount = worksheet.Dimension.Rows;
+                string stt = worksheet.Cells[8, 2].Value?.ToString().Trim(); ;
+                string ITEMCODE = worksheet.Cells[8, 4].Value?.ToString().Trim();
+                string SOLO = worksheet.Cells[8, 3].Value?.ToString().Trim();
+                string SOLUONG = worksheet.Cells[8, 5].Value?.ToString().Trim();
+                string TGBATDAUTT = worksheet.Cells[8, 16].Value?.ToString().Trim();
+                string TGKETTHUCTT = worksheet.Cells[8, 17].Value?.ToString().Trim();
+                string NGAYKETTHUCTT = worksheet.Cells[8, 18].Value?.ToString().Trim();
+                string MAYTT = worksheet.Cells[8, 19].Value?.ToString().Trim();
+                string METT = worksheet.Cells[8, 20].Value?.ToString().Trim();
+                //int colCount = worksheet.Dimension.Columns;
+                // kiểm tra xem đúng định dạng file chưa
+                //MessageBox.Show($"{ITEMCODE}");
+                //Console.WriteLine($"STT: {stt}, ITEMCODE: {ITEMCODE}, SOLO: {SOLO}, SOLUONG: {SOLUONG}, TGBATDAUTT: {TGBATDAUTT}, TGKETTHUCTT: {TGKETTHUCTT}");
+                if (stt != "No." || ITEMCODE != "Mã sản phẩm/製品コード"
+                    || SOLO != "Số lô/ロット番号" || SOLUONG != "Số lượng xuất hàng/出荷数量" ||
+                    TGBATDAUTT != "Bắt đầu tiệt trùng/滅菌開始" || TGKETTHUCTT != "Kết thúc tiệt trùng/滅菌終了" ||
+                    NGAYKETTHUCTT != "Ngày kết thúc tiệt trùng/ 滅菌終了日" || MAYTT != "Máy tiệt trùng/ 滅菌機"  ||
+                    METT !=  "Mẻ tiệt trùng/ 滅菌バッチ" ) 
+                {
+                    MessageBox.Show("File chưa đúng định dạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+
+                // Duyệt qua từng hàng và cột để lấy dữ liệu
+                //lấy thời gian ngày tháng hiện tại
+                DateTime time = DateTime.Now;
+                for (int row = 9; row <= rowCount; row++) // Bỏ qua hàng tiêu đề
+                {
+                    string MeTT = worksheet.Cells[row, 20].Text.Trim(); // Cột B
+                                                                           // *** KIỂM TRA HÀNG CÓ DỮ LIỆU ***
+                    if (string.IsNullOrEmpty(MeTT))
+                    {
+                        // Bỏ qua hàng nếu cột MeTT rỗng
+                        continue;
+                    }
+                    string SoMETT = worksheet.Cells[row, 20].Text.Trim(); // Cột C
+                    string MaSanPham = worksheet.Cells[row, 4].Text.Trim(); // Cột D
+                    string LotSanPham = worksheet.Cells[row, 3].Text.Trim(); // Cột E
+                    string SoLuong = worksheet.Cells[row, 5].Text.Trim(); // Cột F int
+                    string TgBatDauTT = worksheet.Cells[row, 16].Text.Trim(); // Cột G time(7)
+                    string TgKetThucTT = worksheet.Cells[row, 17].Text.Trim(); // Cột H time(7)
+                    string NgayKetThucTT = worksheet.Cells[row, 18].Text.Trim(); // Cột I date
+                    string MayTT = worksheet.Cells[row, 19].Text.Trim(); // Cột J
+
+
+                    if (SLFunc.CheckMeTT(SoMETT, MaSanPham, LotSanPham) == 1)
+                    {
+                        continue;
+                    }
+                    
+                    //kiểm tra dữ liệu đã tồn tại trong database chưa
+                    // lấy dữ liệu trong db ra
+
+                    // Đẩy dữ liệu vào DB
+                    SLFunc.InsertSL(MeTT, MaSanPham, LotSanPham, SoLuong, MayTT, TgBatDauTT, TgKetThucTT, NgayKetThucTT, "Đã nhập");
+
+
+                    //MessageBox.Show($"Mẻ tiệt trùng: {MeTT}\n Mã sản phẩm: {MaSanPham}\n Lot sản phẩm: {LotSanPham}\n Số lượng: {SoLuong}\n Thời gian bắt đầu tiệt trùng: {TgBatDauTT}\n Thời gian kết thúc tiệt trùng: {TgKetThucTT}\n Ngày kết thúc tiệt trùng: {NgayKetThucTT}\n Máy tiệt trùng: {MayTT}", "Dữ liệu đọc từ file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+        private void StatusBtn_Click(object sender, EventArgs e)
+        {
+            string filePath = LinkFile.Text;
+
+            if (filePath == "")
+            {
+                MessageBox.Show("Vui lòng chọn file trước khi tải lên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }    
+
+            loading.ShowLoading();
+            Task.Run(() =>
+            {
+                UpLoadFileSL12(filePath);
+                //upload_master(filePath);
+                //MessageBox.Show("đang hoàn thành!");
+
+                this.Invoke(new Action(() =>
+                {
+                    loading.HideLoading();
+                    //MessageBox.Show("Hoàn thành!");
+
+                    //Update_data();
+                }));
+            });
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //SLFunc.CheckMeTT(LinkFile.Text);
+        }
+
+        private void InputSL12_Load(object sender, EventArgs e)
+        {
+            loading.ShowLoading();
+            Task.Run(() =>
+            {
+                //updateData();
+                //upload_master(filePath);
+                //MessageBox.Show("đang hoàn thành!");
+
+                this.Invoke(new Action(() =>
+                {
+                    updateData();
+                    loading.HideLoading();
+                    //MessageBox.Show("Hoàn thành!");
+
+                    //Update_data();
+                }));
+            });
+          
         }
     }
 }

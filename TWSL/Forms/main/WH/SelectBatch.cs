@@ -78,6 +78,12 @@ namespace TWSL.Forms.main.WH
 
         private void select_ok(object sender, EventArgs e)
         {
+            if (bathno_dp.Text.Trim() == "...")
+            {
+                MessageBox.Show("Vui lòng chọn mẻ trước !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // lấy mẻ đó ra để xem thời gian thoát khí
             MessageBox.Show($"Bạn đã chọn mẻ {bathno_dp.Text.Trim()}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Console.WriteLine(SLFunc.TaoSoPhieu());

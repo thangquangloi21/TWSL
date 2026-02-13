@@ -7,8 +7,11 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
+using TWSL.Forms.main;
 using static System.Windows.Forms.LinkLabel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TWSL.Common
 {
@@ -157,5 +160,141 @@ namespace TWSL.Common
             return $"NKTD-TIS-{year}{month}-{soPhieuMoi}";
         }
 
+
+        public static void InsertSL(
+    string soMe,
+    string maSP,
+    string lotSP,
+    string soLuong,
+    string may,
+    string gioBatDau,
+    string gioKetThuc,
+    string ngayKetThuc,
+    string status)
+        {
+            // 1. Validate các trường bắt buộc (tùy theo logic nghiệp vụ của bạn)
+            if (string.IsNullOrWhiteSpace(soMe))
+                throw new ArgumentException("Số ME không được để trống.");
+            if (string.IsNullOrWhiteSpace(maSP))
+                throw new ArgumentException("Mã sản phẩm không được để trống.");
+            if (string.IsNullOrWhiteSpace(soLuong))
+                throw new ArgumentException("Số lượng không được để trống.");
+
+            // 2. Chuyển đổi và kiểm tra kiểu dữ liệu
+            if (!int.TryParse(soLuong, out int quantity) || quantity <= 0)
+            {
+                throw new ArgumentException("Số lượng phải là số nguyên dương.");
+            }
+
+            // Chuẩn bị giá trị ngày giờ
+            DateTime? gioBatDauTT = null;
+            DateTime? gioKetThucTT = null;
+            DateTime? ngayKetThucTT = null;
+
+            // Time(7) → chỉ lấy phần giờ:phút:giây
+            if (!string.IsNullOrWhiteSpace(gioBatDau) && DateTime.TryParse(gioBatDau, out DateTime tempGioBD))
+            {
+                gioBatDauTT = tempGioBD;
+            }
+
+            if (!string.IsNullOrWhiteSpace(gioKetThuc) && DateTime.TryParse(gioKetThuc, out DateTime tempGioKT))
+            {
+                gioKetThucTT = tempGioKT;
+            }
+
+            // Ngày kết thúc (thường là DATE)
+            if (!string.IsNullOrWhiteSpace(ngayKetThuc) && DateTime.TryParse(ngayKetThuc, out DateTime tempNgayKT))
+            {
+                ngayKetThucTT = tempNgayKT.Date; // chỉ lấy ngày, bỏ giờ
+            }
+
+            string insertQuery = @"
+        INSERT INTO [InfoBatchNoF12] 
+        (
+            [BatchNo], [ItemCode], [ProdLot], [Quantity], [MayTT],
+            [GioBatDauTT], [GioKetThucTT], [NgayKetthucTT],
+            [GioUpload], [IdUser], [NameUser], [Status]
+        )
+        VALUES 
+        (
+            @BatchNo, @ItemCode, @ProdLot, @Quantity, @MayTT,
+            @GioBatDauTT, @GioKetThucTT, @NgayKetthucTT,
+            @GioUpload, @IdUser, @NameUser, @Status
+        )";
+
+            var parameters = new List<SqlParameter>
+    {
+        new SqlParameter("@BatchNo", (object)soMe ?? DBNull.Value),
+        new SqlParameter("@ItemCode", (object)maSP ?? DBNull.Value),
+        new SqlParameter("@ProdLot", (object)lotSP ?? DBNull.Value),
+        new SqlParameter("@Quantity", quantity),
+        new SqlParameter("@MayTT", (object)may ?? DBNull.Value),
+
+        // Time(7) - cho phép NULL
+        new SqlParameter("@GioBatDauTT", gioBatDauTT.HasValue ? gioBatDauTT.Value.TimeOfDay : (object)DBNull.Value)
+        {
+            SqlDbType = SqlDbType.Time,
+            Precision = 7
+        },
+
+        new SqlParameter("@GioKetThucTT", gioKetThucTT.HasValue ? gioKetThucTT.Value.TimeOfDay : (object)DBNull.Value)
+        {
+            SqlDbType = SqlDbType.Time,
+            Precision = 7
+        },
+
+        // DATE - cho phép NULL
+        new SqlParameter("@NgayKetthucTT", ngayKetThucTT.HasValue ? ngayKetThucTT.Value.Date : (object)DBNull.Value)
+        {
+            SqlDbType = SqlDbType.Date
+        },
+
+        new SqlParameter("@GioUpload", DateTime.Now),
+        new SqlParameter("@IdUser", AppData.Instance.CurrentUserId ?? (object)DBNull.Value),
+        new SqlParameter("@NameUser", AppData.Instance.CurrentUserName ?? (object)DBNull.Value),
+        new SqlParameter("@Status", (object)status ?? DBNull.Value)
+    };
+
+            try
+            {
+                DatabaseHelper.ExecuteNonQuery(insertQuery, parameters.ToArray());
+            }
+            catch (SqlException ex)
+            {
+                // Ghi log chi tiết lỗi (nên có logging thật)
+                throw new Exception($"Lỗi khi insert dữ liệu vào InfoBatchNoF12: {ex.Message}\n" +
+                                    $"Số ME: {soMe} | Mã SP: {maSP} | Số lượng: {soLuong}", ex);
+            }
+        }
+
+
+
+    public static int CheckMeTT(string MeTT, string ItemCode , string Lot)
+        {
+            string insertQuery = @"select BatchNo from [InfoBatchNoF12] where BatchNo = @BatchNo and  ItemCode = @ItemCode and ProdLot = @ProdLot";
+            var parameters = new List<SqlParameter>
+        {
+        new SqlParameter("@BatchNo", MeTT),
+        new SqlParameter("@ItemCode", ItemCode),
+        new SqlParameter("@ProdLot", Lot)
+        };
+            DataTable dt = DatabaseHelper.ExecuteQuery(insertQuery, parameters.ToArray());
+            //MessageBox.Show($"{dt}");
+            if (dt.Rows.Count != 0)
+            {
+                //Console.WriteLine("OK");
+                return 1;
+            }
+            //Console.WriteLine("NG");
+            return 0;
+            
+        }
+
+    public static DataTable GetData()
+        {
+            string sql = "SELECT * FROM [InfoBatchNoF12]";
+            DataTable result = DatabaseHelper.ExecuteQuery(sql);
+            return result;
+        }
     }
 }

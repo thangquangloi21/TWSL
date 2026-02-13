@@ -19,12 +19,12 @@ namespace TWSL.Common
             }
         }
         // prod
-        //public string DBSL = "Server=10.239.1.162;Database=DB_SL;User Id=loi_tq;Password=249533;";
-        //public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
+        public string DBSL = "Server=10.239.1.162;Database=TWSL;User Id=loi_tq;Password=249533;";
+        public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
 
         //test 
-        public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
-        public string DBSL = "Server=10.239.1.54;Database=TWSL;User Id=sa;Password=123456;";
+        //public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
+        //public string DBSL = "Server=10.239.1.54;Database=TWSL;User Id=sa;Password=123456;";
 
 
         //HOME
