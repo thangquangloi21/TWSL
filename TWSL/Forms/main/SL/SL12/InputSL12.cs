@@ -204,7 +204,7 @@ namespace TWSL.Forms.main.SL.SL1
 
                 this.Invoke(new Action(() =>
                 {
-                    //updateData();
+                    updateData();
                     loading.HideLoading();
                     //MessageBox.Show("Hoàn thành!");
 
