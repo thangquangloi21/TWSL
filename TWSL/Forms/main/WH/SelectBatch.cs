@@ -29,7 +29,7 @@ namespace TWSL.Forms.main.WH
 
         private void SelectBatch_Load(object sender, EventArgs e)
         {
-            string sql_his_master = "Select DISTINCT [BatchNo] as 'Số Mẻ',inf.[ItemCode] as 'Tên sản phẩm', [ProdLot] as 'Lot',[ProdLine] as 'Bộ Phận',[Quantity] as 'Số Lượng', [Machine] as 'Máy', pl.Qty as 'Max/Pallet', [DateTime] as 'Thời gian'  " +
+            string sql_his_master = "Select DISTINCT [BatchNo] as 'Số Mẻ',inf.[ItemCode] as 'Tên sản phẩm', [ProdLot] as 'Lot',[Quantity] as 'Số Lượng', [MayTT] as 'Máy', pl.Qty as 'Max/Pallet', [GioUpload] as 'Thời gian'   " +
                 "from [InfoBatchNoF12] as inf left join QtyStandPalet as pl on inf.ItemCode = pl.ItemCode " +
                 "where inf.ItemCode = @ItemCode and inf.ProdLot = @ProdLot";
 
@@ -67,7 +67,7 @@ namespace TWSL.Forms.main.WH
                 DateTime ngayTao = Convert.ToDateTime(row.Cells["Thời gian"].Value);
                 bathno_dp.Text = row.Cells["Số Mẻ"].Value.ToString();
                 Item_dp.Text = row.Cells["Tên sản phẩm"].Value.ToString();
-                Prod_dp.Text = row.Cells["Bộ Phận"].Value.ToString();
+                //Prod_dp.Text = row.Cells["Bộ Phận"].Value.ToString();
                 Lot_dp.Text = row.Cells["Lot"].Value.ToString();
                 Machine_dp.Text = row.Cells["Máy"].Value.ToString();
                 Date_Create.Text = ngayTao.ToString("HH:mm dd/MM/yyyy");

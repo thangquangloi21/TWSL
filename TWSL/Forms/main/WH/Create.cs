@@ -42,6 +42,13 @@ namespace TWSL.Forms.main.WH
                     itemcode = gs1data.Rows[0]["itemCode"].ToString();
                     //MessageBox.Show($"PROD Line: {prod_line} and itemcode = {itemcode}");
 
+                    if (gs1data.Rows.Count < 0) {
+                        MessageBox.Show("Mã này chưa được tạo.", "Thông Báo");
+                        return;
+                    }
+
+
+
                     if (get_lot.Length < 7)
                     {
                         MessageBox.Show("Lot không hợp lệ, Vui lòng kiểm tra lại.", "Thông Báo");
