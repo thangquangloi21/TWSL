@@ -31,6 +31,8 @@ namespace TWSL.Common
         //public string DBGS1 connectionString = "Server=pc-tql;Database=DB_GS1_GenlIl;User Id=sa;Password=P@ssw0rd2025!;";
         //public string DBSL connectionString = "Server=pc-tql;Database=DB_SL;User Id=sa;Password=P@ssw0rd2025!;";
 
+
+
         //user info
         public string CurrentUserId { get; set; }
         public string CurrentUserName { get; set; }

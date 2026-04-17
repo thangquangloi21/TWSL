@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using TWSL.Common;
+using TWSL.Forms.main.SL.SL1;
+using TWSL.Forms.main.WH;
 using TWSL.test;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -149,6 +151,52 @@ namespace TWSL.Forms.main
         private void pictureBox3_MouseLeave(object sender, EventArgs e)
         {
             toolTip1.Hide(pictureBox1);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "admin")
+            {
+
+                OpenchildFrom(new Fsl());
+            }
+
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập", "Thông báo !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
+
+        private void AddData(object sender, EventArgs e)
+        {
+            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "admin")
+            {
+
+                OpenchildFrom(new InputSL12());
+            }
+
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập", "Thông báo !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "admin")
+            {
+
+                OpenchildFrom(new CreateFromAWH());
+            }
+
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập", "Thông báo !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
         }
     }
 }
