@@ -45,7 +45,7 @@ namespace TWSL.Forms.main
         }
 
       
-        private void Wh_btn(object sender, EventArgs e)
+        private void DataManagementBtn(object sender, EventArgs e)
         {
             if (AppData.Instance.CurrentProdLine == "WH" || AppData.Instance.CurrentUserId == "admin")
             {

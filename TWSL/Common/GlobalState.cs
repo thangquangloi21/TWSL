@@ -19,8 +19,8 @@ namespace TWSL.Common
             }
         }
         // prod
-        public string DBSL = "Server=10.239.1.162;Database=TWSL;User Id=loi_tq;Password=249533;";
-        public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
+        //public string DBSL = "Server=10.239.1.162;Database=TWSL;User Id=loi_tq;Password=249533;";
+        //public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
 
         //test 
         //public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
@@ -28,8 +28,8 @@ namespace TWSL.Common
 
 
         //HOME
-        //public string DBGS1 connectionString = "Server=pc-tql;Database=DB_GS1_GenlIl;User Id=sa;Password=P@ssw0rd2025!;";
-        //public string DBSL connectionString = "Server=pc-tql;Database=DB_SL;User Id=sa;Password=P@ssw0rd2025!;";
+        public string DBGS1  = "Server=localhost;Database=DB_GS1_GenIII;User Id=loitq;Password=249533;";
+        public string DBSL  = "Server=localhost;Database=TWSL;User Id=loitq;Password=249533;";
 
 
 

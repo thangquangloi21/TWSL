@@ -29,7 +29,7 @@ namespace TWSL
             //AppData.Instance.CurrentProdLine = "SL";
             AppData.Instance.CurrentUserId = "admin";
             AppData.Instance.CurrentUserName = "Administrator";
-            AppData.Instance.CurrentProdLine = "IT";
+            AppData.Instance.CurrentProdLine = "WH";
             AppData.Instance.CurrentRole = "admin";
             AppData.Instance.CurrentPassw = "admin";
 
