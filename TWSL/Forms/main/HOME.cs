@@ -86,15 +86,17 @@ namespace TWSL.Forms.main
             Role_wh.Text = AppData.Instance.CurrentRole;
             ProdLine.Text = AppData.Instance. CurrentProdLine;
             Version.Text = "Version: " + AppData.Instance.AppVersion;
-            
-            if (AppData.Instance.CurrentProdLine == "WH")
-            {
-                OpenchildFrom(new Fwh());
-            }
-            else
-            {
-                OpenchildFrom(new Fsl());
-            }
+
+            OpenchildFrom(new InputSL12());
+
+            //if (AppData.Instance.CurrentProdLine == "WH")
+            //{
+            //    OpenchildFrom(new Fwh());
+            //}
+            //else
+            //{
+            //    OpenchildFrom(new Fsl());
+            //}
         }
 
         private void ChangePw(object sender, EventArgs e)

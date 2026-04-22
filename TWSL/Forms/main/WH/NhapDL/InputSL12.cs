@@ -36,8 +36,8 @@ namespace TWSL.Forms.main.SL.SL1
 
         private void updateData()
         {
-            //DataTable dt = SLFunc.GetData();
-            //DataBatchNo.DataSource = dt;
+            DataTable dt = SLFunc.GetData();
+            DataBatchNo.DataSource = dt;
         }
 
         // đẩy dữ liệu vào db
