@@ -165,11 +165,8 @@ namespace TWSL.Common
     string soMe,
     string maSP,
     string lotSP,
+    string NgayPost,
     string soLuong,
-    string may,
-    string gioBatDau,
-    string gioKetThuc,
-    string ngayKetThuc,
     string status)
         {
             // 1. Validate các trường bắt buộc (tùy theo logic nghiệp vụ của bạn)
@@ -191,22 +188,22 @@ namespace TWSL.Common
             DateTime? gioKetThucTT = null;
             DateTime? ngayKetThucTT = null;
 
-            // Time(7) → chỉ lấy phần giờ:phút:giây
-            if (!string.IsNullOrWhiteSpace(gioBatDau) && DateTime.TryParse(gioBatDau, out DateTime tempGioBD))
-            {
-                gioBatDauTT = tempGioBD;
-            }
+            //// Time(7) → chỉ lấy phần giờ:phút:giây
+            //if (!string.IsNullOrWhiteSpace(gioBatDau) && DateTime.TryParse(gioBatDau, out DateTime tempGioBD))
+            //{
+            //    gioBatDauTT = tempGioBD;
+            //}
 
-            if (!string.IsNullOrWhiteSpace(gioKetThuc) && DateTime.TryParse(gioKetThuc, out DateTime tempGioKT))
-            {
-                gioKetThucTT = tempGioKT;
-            }
+            //if (!string.IsNullOrWhiteSpace(gioKetThuc) && DateTime.TryParse(gioKetThuc, out DateTime tempGioKT))
+            //{
+            //    gioKetThucTT = tempGioKT;
+            //}
 
-            // Ngày kết thúc (thường là DATE)
-            if (!string.IsNullOrWhiteSpace(ngayKetThuc) && DateTime.TryParse(ngayKetThuc, out DateTime tempNgayKT))
-            {
-                ngayKetThucTT = tempNgayKT.Date; // chỉ lấy ngày, bỏ giờ
-            }
+            //// Ngày kết thúc (thường là DATE)
+            //if (!string.IsNullOrWhiteSpace(ngayKetThuc) && DateTime.TryParse(ngayKetThuc, out DateTime tempNgayKT))
+            //{
+            //    ngayKetThucTT = tempNgayKT.Date; // chỉ lấy ngày, bỏ giờ
+            //}
 
             string insertQuery = @"
         INSERT INTO [InfoBatchNoF12] 
@@ -228,7 +225,7 @@ namespace TWSL.Common
         new SqlParameter("@ItemCode", (object)maSP ?? DBNull.Value),
         new SqlParameter("@ProdLot", (object)lotSP ?? DBNull.Value),
         new SqlParameter("@Quantity", quantity),
-        new SqlParameter("@MayTT", (object)may ?? DBNull.Value),
+        //new SqlParameter("@MayTT", (object)may ?? DBNull.Value),
 
         // Time(7) - cho phép NULL
         new SqlParameter("@GioBatDauTT", gioBatDauTT.HasValue ? gioBatDauTT.Value.TimeOfDay : (object)DBNull.Value)
@@ -253,7 +250,7 @@ namespace TWSL.Common
         new SqlParameter("@IdUser", AppData.Instance.CurrentUserId ?? (object)DBNull.Value),
         new SqlParameter("@NameUser", AppData.Instance.CurrentUserName ?? (object)DBNull.Value),
         new SqlParameter("@Status", (object)status ?? DBNull.Value)
-    };
+        };
 
             try
             {

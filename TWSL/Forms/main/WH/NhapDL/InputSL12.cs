@@ -99,24 +99,15 @@ namespace TWSL.Forms.main.SL.SL1
                 // Lấy worksheet đầu tiên
                 var worksheet = package.Workbook.Worksheets[0];
                 int rowCount = worksheet.Dimension.Rows;
-                string stt = worksheet.Cells[8, 2].Value?.ToString().Trim(); ;
-                string ITEMCODE = worksheet.Cells[8, 4].Value?.ToString().Trim();
-                string SOLO = worksheet.Cells[8, 3].Value?.ToString().Trim();
-                string SOLUONG = worksheet.Cells[8, 5].Value?.ToString().Trim();
-                string TGBATDAUTT = worksheet.Cells[8, 16].Value?.ToString().Trim();
-                string TGKETTHUCTT = worksheet.Cells[8, 17].Value?.ToString().Trim();
-                string NGAYKETTHUCTT = worksheet.Cells[8, 18].Value?.ToString().Trim();
-                string MAYTT = worksheet.Cells[8, 19].Value?.ToString().Trim();
-                string METT = worksheet.Cells[8, 20].Value?.ToString().Trim();
+                string MASAP = worksheet.Cells[1, 1].Value?.ToString().Trim(); ;
+                string SOLO = worksheet.Cells[1, 2].Value?.ToString().Trim();
+                string SOME = worksheet.Cells[1, 3].Value?.ToString().Trim();
+                string NGAYPOST = worksheet.Cells[1, 4].Value?.ToString().Trim();
+                string SOLUONG = worksheet.Cells[1, 5].Value?.ToString().Trim();
+               
                 //int colCount = worksheet.Dimension.Columns;
                 // kiểm tra xem đúng định dạng file chưa
-                //MessageBox.Show($"{ITEMCODE}");
-                //Console.WriteLine($"STT: {stt}, ITEMCODE: {ITEMCODE}, SOLO: {SOLO}, SOLUONG: {SOLUONG}, TGBATDAUTT: {TGBATDAUTT}, TGKETTHUCTT: {TGKETTHUCTT}");
-                if (stt != "No." || ITEMCODE != "Mã sản phẩm/製品コード"
-                    || SOLO != "Số lô/ロット番号" || SOLUONG != "Số lượng xuất hàng/出荷数量" ||
-                    TGBATDAUTT != "Bắt đầu tiệt trùng/滅菌開始" || TGKETTHUCTT != "Kết thúc tiệt trùng/滅菌終了" ||
-                    NGAYKETTHUCTT != "Ngày kết thúc tiệt trùng/ 滅菌終了日" || MAYTT != "Máy tiệt trùng/ 滅菌機"  ||
-                    METT !=  "Mẻ tiệt trùng/ 滅菌バッチ" ) 
+                if (MASAP != "Material" || SOLO != "Batch" || SOME != "Document Header Text" || NGAYPOST != "Posting Date" || SOLUONG != "Quantity")
                 {
                     MessageBox.Show("File chưa đúng định dạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -126,41 +117,110 @@ namespace TWSL.Forms.main.SL.SL1
                 // Duyệt qua từng hàng và cột để lấy dữ liệu
                 //lấy thời gian ngày tháng hiện tại
                 DateTime time = DateTime.Now;
-                for (int row = 9; row <= rowCount; row++) // Bỏ qua hàng tiêu đề
+                for (int row = 1; row <= rowCount; row++) // Bỏ qua hàng tiêu đề
                 {
-                    string MeTT = worksheet.Cells[row, 20].Text.Trim(); // Cột B
-                                                                           // *** KIỂM TRA HÀNG CÓ DỮ LIỆU ***
+                    string MeTT = worksheet.Cells[row, 3].Text.Trim(); // Cột C
+                                                                        // *** KIỂM TRA HÀNG CÓ DỮ LIỆU ***
                     if (string.IsNullOrEmpty(MeTT))
                     {
                         // Bỏ qua hàng nếu cột MeTT rỗng
                         continue;
                     }
-                    string SoMETT = worksheet.Cells[row, 20].Text.Trim(); // Cột C
-                    string MaSanPham = worksheet.Cells[row, 4].Text.Trim(); // Cột D
-                    string LotSanPham = worksheet.Cells[row, 3].Text.Trim(); // Cột E
-                    string SoLuong = worksheet.Cells[row, 5].Text.Trim(); // Cột F int
-                    string TgBatDauTT = worksheet.Cells[row, 16].Text.Trim(); // Cột G time(7)
-                    string TgKetThucTT = worksheet.Cells[row, 17].Text.Trim(); // Cột H time(7)
-                    string NgayKetThucTT = worksheet.Cells[row, 18].Text.Trim(); // Cột I date
-                    string MayTT = worksheet.Cells[row, 19].Text.Trim(); // Cột J
+                    string MaSap = worksheet.Cells[1, 1].Value?.ToString().Trim(); ;
+                    string SoLo = worksheet.Cells[1, 2].Value?.ToString().Trim();
+                    string SoMe = worksheet.Cells[1, 3].Value?.ToString().Trim();
+                    string NgayPost = worksheet.Cells[1, 4].Value?.ToString().Trim();
+                    string SoLuong = worksheet.Cells[1, 5].Value?.ToString().Trim();
 
 
-                    if (SLFunc.CheckMeTT(SoMETT, MaSanPham, LotSanPham) == 1)
+                    if (SLFunc.CheckMeTT(SoMe, MaSap, SoLo) == 1)
                     {
                         continue;
                     }
-                    
+
                     //kiểm tra dữ liệu đã tồn tại trong database chưa
                     // lấy dữ liệu trong db ra
 
                     // Đẩy dữ liệu vào DB
-                    SLFunc.InsertSL(MeTT, MaSanPham, LotSanPham, SoLuong, MayTT, TgBatDauTT, TgKetThucTT, NgayKetThucTT, "Đã nhập");
+                    //SLFunc.InsertSL(SoMe, MaSap, SoLo,NgayPost, "Đã nhập");
 
 
                     //MessageBox.Show($"Mẻ tiệt trùng: {MeTT}\n Mã sản phẩm: {MaSanPham}\n Lot sản phẩm: {LotSanPham}\n Số lượng: {SoLuong}\n Thời gian bắt đầu tiệt trùng: {TgBatDauTT}\n Thời gian kết thúc tiệt trùng: {TgKetThucTT}\n Ngày kết thúc tiệt trùng: {NgayKetThucTT}\n Máy tiệt trùng: {MayTT}", "Dữ liệu đọc từ file", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
+
+
+        //private void UpLoadFileSL12(string filePath)
+        //{
+        //    // Bạn cần cài đặt thư viện EPPlus để làm việc với file Excel
+        //    using (var package = new OfficeOpenXml.ExcelPackage(new FileInfo(filePath)))
+        //    {
+        //        // Lấy worksheet đầu tiên
+        //        var worksheet = package.Workbook.Worksheets[0];
+        //        int rowCount = worksheet.Dimension.Rows;
+        //        string stt = worksheet.Cells[2, 1].Value?.ToString().Trim(); ;
+        //        string ITEMCODE = worksheet.Cells[2, 2].Value?.ToString().Trim();
+        //        string SOLO = worksheet.Cells[2, 3].Value?.ToString().Trim();
+        //        string SOLUONG = worksheet.Cells[2, 5].Value?.ToString().Trim();
+        //        string TGBATDAUTT = worksheet.Cells[2, 16].Value?.ToString().Trim();
+        //        string TGKETTHUCTT = worksheet.Cells[2, 17].Value?.ToString().Trim();
+        //        string NGAYKETTHUCTT = worksheet.Cells[2, 12].Value?.ToString().Trim();
+        //        string MAYTT = worksheet.Cells[2, 19].Value?.ToString().Trim();
+        //        string METT = worksheet.Cells[2, 20].Value?.ToString().Trim();
+        //        //int colCount = worksheet.Dimension.Columns;
+        //        // kiểm tra xem đúng định dạng file chưa
+        //        //MessageBox.Show($"{ITEMCODE}");
+        //        //Console.WriteLine($"STT: {stt}, ITEMCODE: {ITEMCODE}, SOLO: {SOLO}, SOLUONG: {SOLUONG}, TGBATDAUTT: {TGBATDAUTT}, TGKETTHUCTT: {TGKETTHUCTT}");
+        //        if (stt != "No." || ITEMCODE != "Mã sản phẩm/製品コード"
+        //            || SOLO != "Số lô/ロット番号" || SOLUONG != "Số lượng xuất hàng/出荷数量" ||
+        //            TGBATDAUTT != "Bắt đầu tiệt trùng/滅菌開始" || TGKETTHUCTT != "Kết thúc tiệt trùng/滅菌終了" ||
+        //            NGAYKETTHUCTT != "Ngày kết thúc tiệt trùng/ 滅菌終了日" || MAYTT != "Máy tiệt trùng/ 滅菌機"  ||
+        //            METT !=  "Mẻ tiệt trùng/ 滅菌バッチ" ) 
+        //        {
+        //            MessageBox.Show("File chưa đúng định dạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            return;
+        //        }
+
+
+        //        // Duyệt qua từng hàng và cột để lấy dữ liệu
+        //        //lấy thời gian ngày tháng hiện tại
+        //        DateTime time = DateTime.Now;
+        //        for (int row = 9; row <= rowCount; row++) // Bỏ qua hàng tiêu đề
+        //        {
+        //            string MeTT = worksheet.Cells[row, 20].Text.Trim(); // Cột B
+        //                                                                   // *** KIỂM TRA HÀNG CÓ DỮ LIỆU ***
+        //            if (string.IsNullOrEmpty(MeTT))
+        //            {
+        //                // Bỏ qua hàng nếu cột MeTT rỗng
+        //                continue;
+        //            }
+        //            string SoMETT = worksheet.Cells[row, 20].Text.Trim(); // Cột C
+        //            string MaSanPham = worksheet.Cells[row, 4].Text.Trim(); // Cột D
+        //            string LotSanPham = worksheet.Cells[row, 3].Text.Trim(); // Cột E
+        //            string SoLuong = worksheet.Cells[row, 5].Text.Trim(); // Cột F int
+        //            string TgBatDauTT = worksheet.Cells[row, 16].Text.Trim(); // Cột G time(7)
+        //            string TgKetThucTT = worksheet.Cells[row, 17].Text.Trim(); // Cột H time(7)
+        //            string NgayKetThucTT = worksheet.Cells[row, 18].Text.Trim(); // Cột I date
+        //            string MayTT = worksheet.Cells[row, 19].Text.Trim(); // Cột J
+
+
+        //            if (SLFunc.CheckMeTT(SoMETT, MaSanPham, LotSanPham) == 1)
+        //            {
+        //                continue;
+        //            }
+
+        //            //kiểm tra dữ liệu đã tồn tại trong database chưa
+        //            // lấy dữ liệu trong db ra
+
+        //            // Đẩy dữ liệu vào DB
+        //            SLFunc.InsertSL(MeTT, MaSanPham, LotSanPham, SoLuong, MayTT, TgBatDauTT, TgKetThucTT, NgayKetThucTT, "Đã nhập");
+
+
+        //            //MessageBox.Show($"Mẻ tiệt trùng: {MeTT}\n Mã sản phẩm: {MaSanPham}\n Lot sản phẩm: {LotSanPham}\n Số lượng: {SoLuong}\n Thời gian bắt đầu tiệt trùng: {TgBatDauTT}\n Thời gian kết thúc tiệt trùng: {TgKetThucTT}\n Ngày kết thúc tiệt trùng: {NgayKetThucTT}\n Máy tiệt trùng: {MayTT}", "Dữ liệu đọc từ file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //    }
+        //}
         private void StatusBtn_Click(object sender, EventArgs e)
         {
             string filePath = LinkFile.Text;
