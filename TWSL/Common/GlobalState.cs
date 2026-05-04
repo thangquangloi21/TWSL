@@ -31,6 +31,8 @@ namespace TWSL.Common
         public string DBGS1  = "Server=localhost;Database=DB_GS1_GenIII;User Id=loitq;Password=249533;";
         public string DBSL  = "Server=localhost;Database=TWSL;User Id=loitq;Password=249533;";
 
+        public string SAPDWH = "Server=localhost;Database=DB_SAP_DWH;User Id=loitq;Password=249533;";
+
 
 
         //user info

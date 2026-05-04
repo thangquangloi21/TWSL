@@ -21,7 +21,7 @@ namespace TWSL.Forms.main
         private void button1_Click(object sender, EventArgs e)
         {
 
-            InputSL12 fsl1 = new InputSL12();
+            NhapDuLieu fsl1 = new NhapDuLieu();
             // ẩn home
             var openHome = Application.OpenForms.OfType<HOME>().FirstOrDefault();
             openHome?.Hide();

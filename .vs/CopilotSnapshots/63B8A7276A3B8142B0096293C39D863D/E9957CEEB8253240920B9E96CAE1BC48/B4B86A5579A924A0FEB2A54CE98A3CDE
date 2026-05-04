@@ -10,12 +10,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using TWSL.Forms.main;
+using TWSL.Services;
 using static System.Windows.Forms.LinkLabel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TWSL.Common
 {
-    internal class SLFunc
+    internal class ImportData
     {
 
         public static void InitSL()
@@ -35,7 +36,36 @@ namespace TWSL.Common
         }
 
         public static string getmachine_no(string bathNo) {
-            return bathNo.Substring(0, bathNo.Length - 3); 
+            // lấy 1 đến 2 số từ dấu - và 3 số cuối ví dụ  26EO-12123 thì lấy 12
+            int dashIndex = bathNo.IndexOf('-');
+            if (dashIndex < 0 || dashIndex >= bathNo.Length - 1) return "";
+            string afterDash = bathNo.Substring(dashIndex + 1);
+            if (afterDash.Length <= 3) return "";
+            return afterDash.Substring(0, afterDash.Length - 3);
+        }
+
+        public static string getproductcode(string sapcode)
+        {
+            try
+            {
+                string Query = "SELECT [MANUFACTURER_PART_NUMBER] FROM [DB_SAP_DWH].[dbo].[V_MATERIAL_MASTER_DATA] WHERE MATERIAL_CODE = @sapcode";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                new SqlParameter("@sapcode", sapcode)
+                };
+                DataTable dt = cnn_dwhsap.ExecuteQuery(Query, parameters);
+                string MESCODE = dt.Rows[0][0].ToString();
+                if (dt is null || dt.Rows.Count == 0)
+                {
+                    return "Null";
+                }
+                    return MESCODE;
+            }
+            catch { 
+            return "Null";
+            }
+            
+            
         }
 
         public static void InsertDataBatchNo(string batchNo, string productCode, string line, string lot, string quantity, string machine, string id_user, string name, string note, string time)
@@ -133,6 +163,9 @@ namespace TWSL.Common
             return result;
         }
 
+
+
+
         public static string TaoSoPhieu()
         {
             string year = DateTime.Now.ToString("yy");
@@ -188,22 +221,6 @@ namespace TWSL.Common
             DateTime? gioKetThucTT = null;
             DateTime? ngayKetThucTT = null;
 
-            //// Time(7) → chỉ lấy phần giờ:phút:giây
-            //if (!string.IsNullOrWhiteSpace(gioBatDau) && DateTime.TryParse(gioBatDau, out DateTime tempGioBD))
-            //{
-            //    gioBatDauTT = tempGioBD;
-            //}
-
-            //if (!string.IsNullOrWhiteSpace(gioKetThuc) && DateTime.TryParse(gioKetThuc, out DateTime tempGioKT))
-            //{
-            //    gioKetThucTT = tempGioKT;
-            //}
-
-            //// Ngày kết thúc (thường là DATE)
-            //if (!string.IsNullOrWhiteSpace(ngayKetThuc) && DateTime.TryParse(ngayKetThuc, out DateTime tempNgayKT))
-            //{
-            //    ngayKetThucTT = tempNgayKT.Date; // chỉ lấy ngày, bỏ giờ
-            //}
 
             string insertQuery = @"
         INSERT INTO [InfoBatchNoF12] 

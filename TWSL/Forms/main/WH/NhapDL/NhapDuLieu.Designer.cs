@@ -1,6 +1,6 @@
 ﻿namespace TWSL.Forms.main.SL.SL1
 {
-    partial class InputSL12
+    partial class NhapDuLieu
     {
         /// <summary>
         /// Required designer variable.

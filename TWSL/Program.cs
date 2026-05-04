@@ -22,7 +22,7 @@ namespace TWSL
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // init SL
-            SLFunc.InitSL();
+            ImportData.InitSL();
             //Application.Run(new login());
 
             //Khai báo thông tin người dùng hiện tại

@@ -87,7 +87,7 @@ namespace TWSL.Forms.main
             ProdLine.Text = AppData.Instance. CurrentProdLine;
             Version.Text = "Version: " + AppData.Instance.AppVersion;
 
-            OpenchildFrom(new InputSL12());
+            OpenchildFrom(new NhapDuLieu());
 
             //if (AppData.Instance.CurrentProdLine == "WH")
             //{
@@ -176,7 +176,7 @@ namespace TWSL.Forms.main
             if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "admin")
             {
 
-                OpenchildFrom(new InputSL12());
+                OpenchildFrom(new NhapDuLieu());
             }
 
             else

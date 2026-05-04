@@ -17,11 +17,11 @@ using TWSL.Forms.main.SL.SL12;
 
 namespace TWSL.Forms.main.SL.SL1
 {
-    public partial class InputSL12 : Form
+    public partial class NhapDuLieu : Form
     {
         private loading_wait loading;
         //private bool pallet_enter = false;
-        public InputSL12()
+        public NhapDuLieu()
         {
 
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace TWSL.Forms.main.SL.SL1
 
         private void updateData()
         {
-            DataTable dt = SLFunc.GetData();
+            DataTable dt = ImportData.GetData();
             DataBatchNo.DataSource = dt;
         }
 
@@ -55,7 +55,7 @@ namespace TWSL.Forms.main.SL.SL1
                 string machine = row.Cells[5].Value?.ToString() ?? "";
                 string id_user = TWSL.Common.AppData.Instance.CurrentUserId;
                 string name = TWSL.Common.AppData.Instance.CurrentUserName;
-                SLFunc.InsertDataBatchNo(batchNo, productCode, line, lot, quantity, machine, id_user, name, "add", time);
+                ImportData.InsertDataBatchNo(batchNo, productCode, line, lot, quantity, machine, id_user, name, "add", time);
                 Console.WriteLine("batchNo, productCode, line, lot, quantity, machine, id_user, name");
             }
             Logger.Log("INFO", $"{AppData.Instance.CurrentUserId} lưu mẻ {AppData.Instance.Batch} lúc: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
@@ -91,7 +91,7 @@ namespace TWSL.Forms.main.SL.SL1
         }
 
 
-        private void UpLoadFileSL12(string filePath)
+        private void UpLoadFile(string filePath)
         {
             // Bạn cần cài đặt thư viện EPPlus để làm việc với file Excel
             using (var package = new OfficeOpenXml.ExcelPackage(new FileInfo(filePath)))
@@ -117,7 +117,7 @@ namespace TWSL.Forms.main.SL.SL1
                 // Duyệt qua từng hàng và cột để lấy dữ liệu
                 //lấy thời gian ngày tháng hiện tại
                 DateTime time = DateTime.Now;
-                for (int row = 1; row <= rowCount; row++) // Bỏ qua hàng tiêu đề
+                for (int row = 2; row <= rowCount; row++) // Bỏ qua hàng tiêu đề
                 {
                     string MeTT = worksheet.Cells[row, 3].Text.Trim(); // Cột C
                                                                         // *** KIỂM TRA HÀNG CÓ DỮ LIỆU ***
@@ -126,21 +126,39 @@ namespace TWSL.Forms.main.SL.SL1
                         // Bỏ qua hàng nếu cột MeTT rỗng
                         continue;
                     }
-                    string MaSap = worksheet.Cells[1, 1].Value?.ToString().Trim(); ;
-                    string SoLo = worksheet.Cells[1, 2].Value?.ToString().Trim();
-                    string SoMe = worksheet.Cells[1, 3].Value?.ToString().Trim();
-                    string NgayPost = worksheet.Cells[1, 4].Value?.ToString().Trim();
-                    string SoLuong = worksheet.Cells[1, 5].Value?.ToString().Trim();
+                    string MaSap = worksheet.Cells[row, 1].Value?.ToString().Trim(); ;
+                    string SoLo = worksheet.Cells[row, 2].Value?.ToString().Trim();
+                    string SoMe = worksheet.Cells[row, 3].Value?.ToString().Trim();
+                    string NgayPost = worksheet.Cells[row, 4].Value?.ToString().Trim();
+                    string SoLuong = worksheet.Cells[row, 5].Value?.ToString().Trim();
+                    string MaSanPham = ImportData.getproductcode(MaSap);
+
+                    if (SoMe.Length > 10)   
+                    {
+                        continue;
+                    }
+                    string SoMay = ImportData.getmachine_no(SoMe);
 
 
-                    if (SLFunc.CheckMeTT(SoMe, MaSap, SoLo) == 1)
+                    //kiểm tra dữ liệu đã tồn tại trong database chưa
+                    if (ImportData.CheckMeTT(SoMe, MaSap, SoLo) == 1)
                     {
                         continue;
                     }
 
-                    //kiểm tra dữ liệu đã tồn tại trong database chưa
-                    // lấy dữ liệu trong db ra
+                    if (MaSanPham == "Null") {
+                        continue;
+                    }
 
+
+
+                    Console.WriteLine(MaSanPham);
+                    Console.WriteLine(SoMay);
+                    // chuyển đổi mã sap thành mã sản phẩm
+
+
+
+                    // so me / ma mes / ma sap / lot / qty / may tt / postdate / tg upload / id nguoi upload / status
                     // Đẩy dữ liệu vào DB
                     //SLFunc.InsertSL(SoMe, MaSap, SoLo,NgayPost, "Đã nhập");
 
@@ -234,7 +252,7 @@ namespace TWSL.Forms.main.SL.SL1
             loading.ShowLoading();
             Task.Run(() =>
             {
-                UpLoadFileSL12(filePath);
+                UpLoadFile(filePath);
                 //upload_master(filePath);
                 //MessageBox.Show("đang hoàn thành!");
 

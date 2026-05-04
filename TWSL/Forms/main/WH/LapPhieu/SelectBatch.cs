@@ -49,7 +49,7 @@ namespace TWSL.Forms.main.WH
             foreach (DataRow row in result.Rows)
             {
 
-                row["Thời gian Thoát khí"] = SLFunc.GetTgtk(row["Tên sản phẩm"].ToString(), row["Lot"].ToString(), row["Máy"].ToString()); // hoặc tính toán theo từng dòng
+                row["Thời gian Thoát khí"] = ImportData.GetTgtk(row["Tên sản phẩm"].ToString(), row["Lot"].ToString(), row["Máy"].ToString()); // hoặc tính toán theo từng dòng
                                              // Ví dụ tính toán: row["Ghi chú"] = (row["Số Lượng"] == DBNull.Value) ? "" : "OK";
             }
 
@@ -86,7 +86,7 @@ namespace TWSL.Forms.main.WH
 
             // lấy mẻ đó ra để xem thời gian thoát khí
             MessageBox.Show($"Bạn đã chọn mẻ {bathno_dp.Text.Trim()}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Console.WriteLine(SLFunc.TaoSoPhieu());
+            Console.WriteLine(ImportData.TaoSoPhieu());
 
         }
 
@@ -106,7 +106,7 @@ namespace TWSL.Forms.main.WH
             }
 
             // lấy dữ liệu của mẻ
-            var dp = new DP("DP",SLFunc.GetDataTT(some));
+            var dp = new DP("DP",ImportData.GetDataTT(some));
             dp.ShowDialog();
         }
     }

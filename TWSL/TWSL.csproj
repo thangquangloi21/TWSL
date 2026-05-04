@@ -140,7 +140,7 @@
   <ItemGroup>
     <Compile Include="Common\Config.cs" />
     <Compile Include="Common\GlobalState.cs" />
-    <Compile Include="Common\SLFunc.cs" />
+    <Compile Include="Common\ImportData.cs" />
     <Compile Include="Common\UtilityFunctions.cs" />
     <Compile Include="Forms\history\his_data_tgtk.cs">
       <SubType>Form</SubType>
@@ -178,11 +178,11 @@
     <Compile Include="Forms\main\WH\NhapDL\InfoBathWh12.Designer.cs">
       <DependentUpon>InfoBathWh12.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\main\WH\NhapDL\InputSL12.cs">
+    <Compile Include="Forms\main\WH\NhapDL\NhapDuLieu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\main\WH\NhapDL\InputSL12.Designer.cs">
-      <DependentUpon>InputSL12.cs</DependentUpon>
+    <Compile Include="Forms\main\WH\NhapDL\NhapDuLieu.Designer.cs">
+      <DependentUpon>NhapDuLieu.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\main\SL\SL3\export_data.cs">
       <SubType>Form</SubType>
@@ -286,6 +286,7 @@
     <Compile Include="Forms\loading\LoadingControl.Designer.cs">
       <DependentUpon>LoadingControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\cnn_dwhsap.cs" />
     <Compile Include="Services\Logger.cs" />
     <Compile Include="Services\conn_db.cs" />
     <Compile Include="Forms\main\SL\SL3\main_from.cs">
@@ -356,8 +357,8 @@
     <EmbeddedResource Include="Forms\main\WH\NhapDL\InfoBathWh12.resx">
       <DependentUpon>InfoBathWh12.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\WH\NhapDL\InputSL12.resx">
-      <DependentUpon>InputSL12.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\main\WH\NhapDL\NhapDuLieu.resx">
+      <DependentUpon>NhapDuLieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\SL\SL3\export_data.resx">
       <DependentUpon>export_data.cs</DependentUpon>
