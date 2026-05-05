@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace TWSL.Forms.main.WH
 {
-    public partial class DP : Form
+    public partial class XemChiTiet : Form
     {
         DataTable DataTable;
         string TypeView = "";
-        public DP(string view,DataTable data)
+        public XemChiTiet(string view,DataTable data)
         {
             InitializeComponent();
             DataTable = data;
@@ -22,6 +22,10 @@ namespace TWSL.Forms.main.WH
             if (view == "DP")
             {
                 panel2.Visible = false;
+            }
+            else
+            {
+                panel2.Visible = true;
             }
            
 

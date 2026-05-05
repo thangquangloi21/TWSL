@@ -27,7 +27,7 @@ namespace TWSL
 
             //Khai báo thông tin người dùng hiện tại
             //AppData.Instance.CurrentProdLine = "SL";
-            AppData.Instance.CurrentUserId = "admin";
+            AppData.Instance.CurrentUserId = "1";
             AppData.Instance.CurrentUserName = "Administrator";
             AppData.Instance.CurrentProdLine = "WH";
             AppData.Instance.CurrentRole = "admin";

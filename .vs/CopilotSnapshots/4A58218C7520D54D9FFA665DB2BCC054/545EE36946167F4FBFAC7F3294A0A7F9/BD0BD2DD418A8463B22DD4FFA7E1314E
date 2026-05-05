@@ -154,46 +154,12 @@ namespace TWSL.Common
         // lấy dữ liệu mẻ tt 
         public static DataTable GetDataTT(string batchNo)
         {
-            string sql = "SELECT DISTINCT [SoMeTT] as 'Số Mẻ' ,[MaSP] as 'Tên Sản Phẩm' ,[LotSP] as 'Lot' ,[SoLuongSP] as 'Số Lượng' ,[MayTT] as 'Máy' , pl.Qty as 'Max/Pallet'  ,[TrangThai] 'Trạng thái' , [NgayGioUpload] as 'Thời gian' " +
-                 "FROM [TWSL].[dbo].[ImportData] dt  " +
-                 "Left join [TWSL].[dbo].[users] u on dt.IdUser = u.id " +
-                 "left join QtyStandPalet as pl on dt.MaSP = pl.ItemCode " +
-                 "where SoMeTT = @batchNo ";
+            string sql = "SELECT * FROM InfoBatchNoF12 WHERE BatchNo = @batchNo ORDER BY DateTime DESC";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@batchNo", batchNo)
             };
             DataTable result = DatabaseHelper.ExecuteQuery(sql, parameters);
-            // 1) Thêm cột mới (ví dụ cột "Ghi chú") kiểu string, đặt vị trí cuối bảng
-            if (!result.Columns.Contains("Thời gian thoát khí"))
-                result.Columns.Add(new DataColumn("Thời gian thoát khí", typeof(string)));
-
-            // 2) Gán giá trị mặc định cho tất cả dòng (tuỳ bạn thay logic)
-            foreach (DataRow row in result.Rows)
-            {
-                // nếu đã tồn tại rồi thì tgtk = 0 , nếu chưa thì gán giá trị mặc định
-                row["Thời gian thoát khí"] = ImportData.GetTgtk(row["Tên sản phẩm"].ToString(), row["Lot"].ToString(), row["Máy"].ToString()); // hoặc tính toán theo từng dòng
-                // Ví dụ tính toán: row["Ghi chú"] = (row["Số Lượng"] == DBNull.Value) ? "" : "OK";
-            }
-
-            // Sắp xếp thứ tự cột hiển thị
-            var columnOrder = new[]
-            {
-                "Số Mẻ",
-                "Tên Sản Phẩm",
-                "Lot",
-                "Số Lượng",
-                "Máy",
-                "Thời gian thoát khí",
-                "Max/Pallet",
-                "Trạng thái",
-                "Thời gian"
-            };
-            for (int i = 0; i < columnOrder.Length; i++)
-            {
-                if (result.Columns.Contains(columnOrder[i]))
-                    result.Columns[columnOrder[i]].SetOrdinal(i);
-            }
             return result;
         }
 
@@ -228,17 +194,6 @@ namespace TWSL.Common
         }
 
 
-        private static DateTime ParseDateTimeFlexible(string input)
-        {
-            if (DateTime.TryParse(input, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime result))
-                return result;
-            if (DateTime.TryParse(input, new System.Globalization.CultureInfo("vi-VN"), System.Globalization.DateTimeStyles.None, out result))
-                return result;
-            if (DateTime.TryParse(input, System.Globalization.CultureInfo.CurrentCulture, System.Globalization.DateTimeStyles.None, out result))
-                return result;
-            throw new FormatException($"Không thể parse ngày giờ: '{input}'");
-        }
-
         public static void InsertSL(string soMe, string maSP, string MaSAP, string LotSP, string SoLuong,string MayTT, string NgayPost,string NgayGioUpLoad, string IdUser, string Status)
         {
             //data: soMe, maSP, MaSAP, LotSP, SoLuong, MayTT, NgayPost, NgayGioUpLoad, IdUser, Status
@@ -257,8 +212,8 @@ namespace TWSL.Common
                     new SqlParameter("@LotSP", LotSP),
                     new SqlParameter("@SoLuong", SoLuong),
                     new SqlParameter("@MayTT", MayTT),
-                    new SqlParameter("@NgayPost", SqlDbType.Date) { Value = ParseDateTimeFlexible(NgayPost).Date },
-                    new SqlParameter("@NgayGioUpLoad", SqlDbType.DateTime) { Value = ParseDateTimeFlexible(NgayGioUpLoad) },
+                    new SqlParameter("@NgayPost", NgayPost),
+                    new SqlParameter("@NgayGioUpLoad", NgayGioUpLoad),
                     new SqlParameter("@IdUser", IdUser),
                     new SqlParameter("@Status", Status),
 
@@ -310,7 +265,7 @@ namespace TWSL.Common
 
     public static DataTable GetData()
         {
-            string sql = "SELECT TOP (1000) [SoMeTT] ,[MaSP] ,[LotSP] ,[SoLuongSP] ,[MayTT] ,[ThoiGianPost] ,[NgayGioUpload] ,u.username  ,[TrangThai] FROM [TWSL].[dbo].[ImportData] dt  Left join [TWSL].[dbo].[users] u on dt.IdUser = u.id";
+            string sql = "SELECT * FROM [ImportData]";
             DataTable result = DatabaseHelper.ExecuteQuery(sql);
             return result;
         }

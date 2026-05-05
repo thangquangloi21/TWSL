@@ -26,6 +26,7 @@ namespace TWSL.Forms.main
 
 
       
+        //01589352212125671728013110260411T
 
         private Form curFromChild;
         private void OpenchildFrom(Form childFrom)
@@ -158,7 +159,7 @@ namespace TWSL.Forms.main
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "admin")
+            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "1")
             {
 
                 OpenchildFrom(new Fsl());
@@ -173,7 +174,7 @@ namespace TWSL.Forms.main
 
         private void AddData(object sender, EventArgs e)
         {
-            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "admin")
+            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "1")
             {
 
                 OpenchildFrom(new NhapDuLieu());
@@ -188,10 +189,10 @@ namespace TWSL.Forms.main
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "admin")
+            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "1")
             {
 
-                OpenchildFrom(new CreateFromAWH());
+                OpenchildFrom(new TaoPhieuNhapKho());
             }
 
             else

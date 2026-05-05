@@ -1,6 +1,6 @@
 ﻿namespace TWSL.Forms.main.WH
 {
-    partial class CreateFromAWH
+    partial class TaoPhieuNhapKho
     {
         /// <summary>
         /// Required designer variable.

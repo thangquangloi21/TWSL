@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace TWSL.Forms.main.WH
 {
-    public partial class Create : Form
+    public partial class DocMaVach : Form
     {
-        public Create()
+        public DocMaVach()
         {
             InitializeComponent();
         }
-
+        //01589352212000521728013110250827TC
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -57,7 +57,7 @@ namespace TWSL.Forms.main.WH
                     }
                     //Console.WriteLine
                     this.Close();
-                    var selectbath = new SelectBatch(itemcode, get_lot);
+                    var selectbath = new ChonMe(itemcode, get_lot);
                   
                     selectbath.ShowDialog();
                    

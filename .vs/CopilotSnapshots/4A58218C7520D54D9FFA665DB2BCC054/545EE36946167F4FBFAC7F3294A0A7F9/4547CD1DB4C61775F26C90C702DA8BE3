@@ -37,35 +37,7 @@ namespace TWSL.Forms.main.SL.SL1
         private void updateData()
         {
             DataTable dt = ImportData.GetData();
-
-            DataBatchNo.AutoGenerateColumns = false;
-            DataBatchNo.Columns.Clear();
-
-            var columns = new (string dataField, string header, string format)[]
-            {
-                ("SoMeTT",        "Số mẻ Tiệt Trùng",   null),
-                ("MaSP",          "Mã sản phẩm",         null),
-                ("LotSP",         "Lô sản phẩm",         null),
-                ("SoLuongSP",     "Số lượng",             null),
-                ("MayTT",         "Máy Tiệt Trùng",      null),
-                ("ThoiGianPost",  "Ngày post",            "dd/MM/yyyy"),
-                ("NgayGioUpload", "Ngày giờ upload",      "dd/MM/yyyy HH:mm:ss"),
-                ("username",      "Người upload",         null),
-                ("TrangThai",     "Trạng thái",           null),
-            };
-
-            foreach (var (dataField, header, format) in columns)
-            {
-                var col = new DataGridViewTextBoxColumn
-                {
-                    DataPropertyName = dataField,
-                    HeaderText       = header,
-                    ReadOnly         = true
-                };
-                if (format != null)
-                    col.DefaultCellStyle.Format = format;
-                DataBatchNo.Columns.Add(col);
-            }
+            //maping dt để hiển thị các cột ví dụ SoMeTT thì là Số mẻ...
 
             DataBatchNo.DataSource = dt;
         }

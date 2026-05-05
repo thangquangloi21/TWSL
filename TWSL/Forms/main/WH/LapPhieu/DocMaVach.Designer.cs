@@ -1,6 +1,6 @@
 ﻿namespace TWSL.Forms.main.WH
 {
-    partial class Create
+    partial class DocMaVach
     {
         /// <summary>
         /// Required designer variable.

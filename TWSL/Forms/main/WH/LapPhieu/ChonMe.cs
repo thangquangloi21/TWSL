@@ -16,11 +16,12 @@ using System.Runtime.Serialization.Formatters;
 
 namespace TWSL.Forms.main.WH
 {
-    public partial class SelectBatch : Form
+    public partial class ChonMe : Form
     {
         string ItemCode = "";
         string ProdLot = "";
-        public SelectBatch(string item, string lot)
+
+        public ChonMe(string item, string lot)
         {
             InitializeComponent();
             ItemCode = item;
@@ -29,9 +30,13 @@ namespace TWSL.Forms.main.WH
 
         private void SelectBatch_Load(object sender, EventArgs e)
         {
-            string sql_his_master = "Select DISTINCT [BatchNo] as 'Số Mẻ',inf.[ItemCode] as 'Tên sản phẩm', [ProdLot] as 'Lot',[Quantity] as 'Số Lượng', [MayTT] as 'Máy', pl.Qty as 'Max/Pallet', [GioUpload] as 'Thời gian'   " +
-                "from [InfoBatchNoF12] as inf left join QtyStandPalet as pl on inf.ItemCode = pl.ItemCode " +
-                "where inf.ItemCode = @ItemCode and inf.ProdLot = @ProdLot";
+            //string sql_his_master = "Select DISTINCT [BatchNo] as 'Số Mẻ',inf.[ItemCode] as 'Tên sản phẩm', [ProdLot] as 'Lot',[Quantity] as 'Số Lượng', [MayTT] as 'Máy', pl.Qty as 'Max/Pallet', [GioUpload] as 'Thời gian'   " +
+            //    "from [InfoBatchNoF12] as inf left join QtyStandPalet as pl on inf.ItemCode = pl.ItemCode " +
+            //    "where inf.ItemCode = @ItemCode and inf.ProdLot = @ProdLot";
+
+            string sql_his_master = "SELECT DISTINCT [SoMeTT] as 'Số Mẻ' ,[MaSP] as 'Tên Sản Phẩm' ,[LotSP] as 'Lot' ,[SoLuongSP] as 'Số Lượng' ,[MayTT] as 'Máy' ,[TrangThai] 'Trạng thái' , [NgayGioUpload] as 'Thời gian' " +
+                 "FROM [TWSL].[dbo].[ImportData] dt  " +
+                 "where MaSP = @ItemCode and LotSP = @ProdLot ";
 
             SqlParameter[] data = new SqlParameter[]
         {
@@ -41,17 +46,36 @@ namespace TWSL.Forms.main.WH
         };
             DataTable result = DatabaseHelper.ExecuteQuery(sql_his_master, data);
 
-            // 1) Thêm cột mới (ví dụ cột "Ghi chú") kiểu string, đặt vị trí cuối bảng
-            if (!result.Columns.Contains("Thời gian Thoát khí"))
-                result.Columns.Add(new DataColumn("Thời gian Thoát khí", typeof(string)));
+            //// 1) Thêm cột mới (ví dụ cột "Ghi chú") kiểu string, đặt vị trí cuối bảng
+            //if (!result.Columns.Contains("Thời gian thoát khí"))
+            //    result.Columns.Add(new DataColumn("Thời gian thoát khí", typeof(string)));
 
-            // 2) Gán giá trị mặc định cho tất cả dòng (tuỳ bạn thay logic)
-            foreach (DataRow row in result.Rows)
-            {
+            //// 2) Gán giá trị mặc định cho tất cả dòng (tuỳ bạn thay logic)
+            //foreach (DataRow row in result.Rows)
+            //{
+            //    // nếu đã tồn tại rồi thì tgtk = 0 , nếu chưa thì gán giá trị mặc định
+            //    row["Thời gian thoát khí"] = ImportData.GetTgtk(row["Tên sản phẩm"].ToString(), row["Lot"].ToString(), row["Máy"].ToString()); // hoặc tính toán theo từng dòng
+            //    // Ví dụ tính toán: row["Ghi chú"] = (row["Số Lượng"] == DBNull.Value) ? "" : "OK";
+            //}
 
-                row["Thời gian Thoát khí"] = ImportData.GetTgtk(row["Tên sản phẩm"].ToString(), row["Lot"].ToString(), row["Máy"].ToString()); // hoặc tính toán theo từng dòng
-                                             // Ví dụ tính toán: row["Ghi chú"] = (row["Số Lượng"] == DBNull.Value) ? "" : "OK";
-            }
+            //// Sắp xếp thứ tự cột hiển thị
+            //var columnOrder = new[]
+            //{
+            //    "Số Mẻ",
+            //    "Tên Sản Phẩm",
+            //    "Lot",
+            //    "Số Lượng",
+            //    "Máy",
+            //    "Thời gian thoát khí",
+            //    "Max/Pallet",
+            //    "Trạng thái",
+            //    "Thời gian"
+            //};
+            //for (int i = 0; i < columnOrder.Length; i++)
+            //{
+            //    if (result.Columns.Contains(columnOrder[i]))
+            //        result.Columns[columnOrder[i]].SetOrdinal(i);
+            //}
 
             dataview.DataSource = result;
         }
@@ -83,9 +107,13 @@ namespace TWSL.Forms.main.WH
                 MessageBox.Show("Vui lòng chọn mẻ trước !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            var some = bathno_dp.Text.Trim();
             // lấy mẻ đó ra để xem thời gian thoát khí
             MessageBox.Show($"Bạn đã chọn mẻ {bathno_dp.Text.Trim()}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            var dp = new XemChiTiet("TAOPHIEU", ImportData.GetDataTT(some));
+            dp.ShowDialog();
             Console.WriteLine(ImportData.TaoSoPhieu());
 
         }
@@ -106,7 +134,7 @@ namespace TWSL.Forms.main.WH
             }
 
             // lấy dữ liệu của mẻ
-            var dp = new DP("DP",ImportData.GetDataTT(some));
+            var dp = new XemChiTiet("DP",ImportData.GetDataTT(some));
             dp.ShowDialog();
         }
     }

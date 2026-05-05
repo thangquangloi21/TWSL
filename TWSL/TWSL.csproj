@@ -196,17 +196,17 @@
     <Compile Include="Forms\main\SL\Fsl.Designer.cs">
       <DependentUpon>Fsl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\main\WH\LapPhieu\Create.cs">
+    <Compile Include="Forms\main\WH\LapPhieu\DocMaVach.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\main\WH\LapPhieu\Create.Designer.cs">
-      <DependentUpon>Create.cs</DependentUpon>
+    <Compile Include="Forms\main\WH\LapPhieu\DocMaVach.Designer.cs">
+      <DependentUpon>DocMaVach.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\main\WH\LapPhieu\CreateFromAWH.cs">
+    <Compile Include="Forms\main\WH\LapPhieu\TaoPhieuNhapKho.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\main\WH\LapPhieu\CreateFromAWH.Designer.cs">
-      <DependentUpon>CreateFromAWH.cs</DependentUpon>
+    <Compile Include="Forms\main\WH\LapPhieu\TaoPhieuNhapKho.Designer.cs">
+      <DependentUpon>TaoPhieuNhapKho.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\main\WH\CreatTime.cs">
       <SubType>Form</SubType>
@@ -214,11 +214,11 @@
     <Compile Include="Forms\main\WH\CreatTime.Designer.cs">
       <DependentUpon>CreatTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\main\WH\LapPhieu\DP.cs">
+    <Compile Include="Forms\main\WH\LapPhieu\XemChiTiet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\main\WH\LapPhieu\DP.Designer.cs">
-      <DependentUpon>DP.cs</DependentUpon>
+    <Compile Include="Forms\main\WH\LapPhieu\XemChiTiet.Designer.cs">
+      <DependentUpon>XemChiTiet.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\main\WH\Fwh.cs">
       <SubType>Form</SubType>
@@ -232,11 +232,11 @@
     <Compile Include="Forms\main\HOME.Designer.cs">
       <DependentUpon>HOME.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\main\WH\LapPhieu\SelectBatch.cs">
+    <Compile Include="Forms\main\WH\LapPhieu\ChonMe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\main\WH\LapPhieu\SelectBatch.Designer.cs">
-      <DependentUpon>SelectBatch.cs</DependentUpon>
+    <Compile Include="Forms\main\WH\LapPhieu\ChonMe.Designer.cs">
+      <DependentUpon>ChonMe.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\master\authentication_from.cs">
       <SubType>Form</SubType>
@@ -366,17 +366,17 @@
     <EmbeddedResource Include="Forms\main\SL\Fsl.resx">
       <DependentUpon>Fsl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\WH\LapPhieu\Create.resx">
-      <DependentUpon>Create.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\main\WH\LapPhieu\DocMaVach.resx">
+      <DependentUpon>DocMaVach.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\WH\LapPhieu\CreateFromAWH.resx">
-      <DependentUpon>CreateFromAWH.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\main\WH\LapPhieu\TaoPhieuNhapKho.resx">
+      <DependentUpon>TaoPhieuNhapKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\CreatTime.resx">
       <DependentUpon>CreatTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\WH\LapPhieu\DP.resx">
-      <DependentUpon>DP.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\main\WH\LapPhieu\XemChiTiet.resx">
+      <DependentUpon>XemChiTiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\Fwh.resx">
       <DependentUpon>Fwh.cs</DependentUpon>
@@ -384,8 +384,8 @@
     <EmbeddedResource Include="Forms\main\HOME.resx">
       <DependentUpon>HOME.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\WH\LapPhieu\SelectBatch.resx">
-      <DependentUpon>SelectBatch.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\main\WH\LapPhieu\ChonMe.resx">
+      <DependentUpon>ChonMe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\master\authentication_from.resx">
       <DependentUpon>authentication_from.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace TWSL.Forms.main.WH
 {
-    partial class DP
+    partial class XemChiTiet
     {
         /// <summary>
         /// Required designer variable.

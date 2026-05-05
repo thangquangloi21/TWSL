@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace TWSL.Forms.main.WH
 {
-    public partial class CreateFromAWH : Form
+    public partial class TaoPhieuNhapKho : Form
     {
-        public CreateFromAWH()
+        public TaoPhieuNhapKho()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var create_from_awm = new Create();
+            var create_from_awm = new DocMaVach();
             create_from_awm.ShowDialog();
         }
     }
