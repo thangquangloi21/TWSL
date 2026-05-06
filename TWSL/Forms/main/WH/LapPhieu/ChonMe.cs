@@ -109,12 +109,12 @@ namespace TWSL.Forms.main.WH
             }
             var some = bathno_dp.Text.Trim();
             // lấy mẻ đó ra để xem thời gian thoát khí
-            MessageBox.Show($"Bạn đã chọn mẻ {bathno_dp.Text.Trim()}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show($"Bạn đã chọn mẻ {bathno_dp.Text.Trim()}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-            var dp = new XemChiTiet("TAOPHIEU", ImportData.GetDataTT(some));
-            dp.ShowDialog();
-            Console.WriteLine(ImportData.TaoSoPhieu());
+            //var dp = new XemChiTiet("TAOPHIEU", ImportData.GetDataTT(some));
+            //dp.ShowDialog();
+            //Console.WriteLine(ImportData.TaoSoPhieu());
 
         }
 
@@ -134,8 +134,8 @@ namespace TWSL.Forms.main.WH
             }
 
             // lấy dữ liệu của mẻ
-            var dp = new XemChiTiet("DP",ImportData.GetDataTT(some));
-            dp.ShowDialog();
+            //var dp = new XemChiTiet("DP",ImportData.GetDataTT(some));
+            //dp.ShowDialog();
         }
     }
 }

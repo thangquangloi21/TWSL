@@ -49,7 +49,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(191, 87);
+            this.button1.Location = new System.Drawing.Point(200, 87);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 40);
             this.button1.TabIndex = 7;
@@ -76,13 +76,13 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Mã Vạch:";
             // 
-            // Create
+            // DocMaVach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 139);
             this.Controls.Add(this.panel1);
-            this.Name = "Create";
+            this.Name = "DocMaVach";
             this.Text = "Đọc mã vạch";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

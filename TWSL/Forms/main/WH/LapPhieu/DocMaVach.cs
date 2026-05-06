@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TWSL.Common;
 
 namespace TWSL.Forms.main.WH
 {
@@ -19,6 +20,12 @@ namespace TWSL.Forms.main.WH
         }
         //01589352212000521728013110250827TC
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            docmavach(sender, e);
+
+        }
+
+        private void docmavach(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -42,7 +49,8 @@ namespace TWSL.Forms.main.WH
                     itemcode = gs1data.Rows[0]["itemCode"].ToString();
                     //MessageBox.Show($"PROD Line: {prod_line} and itemcode = {itemcode}");
 
-                    if (gs1data.Rows.Count < 0) {
+                    if (gs1data.Rows.Count < 0)
+                    {
                         MessageBox.Show("Mã này chưa được tạo.", "Thông Báo");
                         return;
                     }
@@ -57,19 +65,20 @@ namespace TWSL.Forms.main.WH
                     }
                     //Console.WriteLine
                     this.Close();
-                    var selectbath = new ChonMe(itemcode, get_lot);
-                  
-                    selectbath.ShowDialog();
-                   
+                    //var selectbath = new ChonMe(itemcode, get_lot);
+                    //selectbath.ShowDialog();
+                    //tao phieu 
+                    var dp = new XemChiTiet("TAOPHIEU", ImportData.GetDataTT(itemcode, get_lot));
+                    dp.ShowDialog();
+
 
                 }
             }
-           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+           docmavach(sender, new KeyPressEventArgs((char)Keys.Enter));
         }
     }
 }

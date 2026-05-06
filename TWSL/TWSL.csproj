@@ -141,6 +141,7 @@
     <Compile Include="Common\Config.cs" />
     <Compile Include="Common\GlobalState.cs" />
     <Compile Include="Common\ImportData.cs" />
+    <Compile Include="Common\TaoPhieu.cs" />
     <Compile Include="Common\UtilityFunctions.cs" />
     <Compile Include="Forms\history\his_data_tgtk.cs">
       <SubType>Form</SubType>
@@ -165,6 +166,12 @@
     </Compile>
     <Compile Include="Forms\main\SL\HistorySL.Designer.cs">
       <DependentUpon>HistorySL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\main\WH\LapPhieu\SuaThongTin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\WH\LapPhieu\SuaThongTin.Designer.cs">
+      <DependentUpon>SuaThongTin.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\main\WH\NhapDL\DpBatch12.cs">
       <SubType>Form</SubType>
@@ -350,6 +357,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\SL\HistorySL.resx">
       <DependentUpon>HistorySL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\WH\LapPhieu\SuaThongTin.resx">
+      <DependentUpon>SuaThongTin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\NhapDL\DpBatch12.resx">
       <DependentUpon>DpBatch12.cs</DependentUpon>

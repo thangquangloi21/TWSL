@@ -151,28 +151,37 @@ namespace TWSL.Common
             return kq;
         }
 
+
         // lấy dữ liệu mẻ tt 
-        public static DataTable GetDataTT(string batchNo)
+        public static DataTable GetDataTT(string MaSp , string LotSp)
         {
-            string sql = "SELECT DISTINCT [SoMeTT] as 'Số Mẻ' ,[MaSP] as 'Tên Sản Phẩm' ,[LotSP] as 'Lot' ,[SoLuongSP] as 'Số Lượng' ,[MayTT] as 'Máy' , pl.Qty as 'Max/Pallet'  ,[TrangThai] 'Trạng thái' , [NgayGioUpload] as 'Thời gian' " +
+            string sql = "SELECT [SoMeTT] as 'Số Mẻ' ,[MaSP] as 'Tên Sản Phẩm' ,[LotSP] as 'Lot' ,[SoLuongSP] as 'Số Lượng' ,[MayTT] as 'Máy' , pl.Qty as 'Max/Pallet'  ,[TrangThai] 'Trạng thái' , [NgayGioUpload] as 'Thời gian' " +
                  "FROM [TWSL].[dbo].[ImportData] dt  " +
                  "Left join [TWSL].[dbo].[users] u on dt.IdUser = u.id " +
                  "left join QtyStandPalet as pl on dt.MaSP = pl.ItemCode " +
-                 "where SoMeTT = @batchNo ";
+                 "where MaSP = @masp and LotSP =  @Lotsp ";
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@batchNo", batchNo)
+                new SqlParameter("@masp", MaSp),
+                new SqlParameter("@Lotsp", LotSp)
             };
             DataTable result = DatabaseHelper.ExecuteQuery(sql, parameters);
             // 1) Thêm cột mới (ví dụ cột "Ghi chú") kiểu string, đặt vị trí cuối bảng
             if (!result.Columns.Contains("Thời gian thoát khí"))
                 result.Columns.Add(new DataColumn("Thời gian thoát khí", typeof(string)));
-
+            if (!result.Columns.Contains("Nội Dung"))
+                result.Columns.Add(new DataColumn("Nội Dung", typeof(string)));
             // 2) Gán giá trị mặc định cho tất cả dòng (tuỳ bạn thay logic)
             foreach (DataRow row in result.Rows)
             {
-                // nếu đã tồn tại rồi thì tgtk = 0 , nếu chưa thì gán giá trị mặc định
-                row["Thời gian thoát khí"] = ImportData.GetTgtk(row["Tên sản phẩm"].ToString(), row["Lot"].ToString(), row["Máy"].ToString()); // hoặc tính toán theo từng dòng
+                //kiểm tra xem code lot này đã tạo phiếu chưa
+                if (TaoPhieu.CheckPhieuDaTao(row["Tên Sản Phẩm"].ToString(), row["Lot"].ToString())) {
+                    row["Thời gian thoát khí"] = "0";
+                }
+                else
+                {
+                    row["Thời gian thoát khí"] = ImportData.GetTgtk(row["Tên Sản Phẩm"].ToString(), row["Lot"].ToString(), row["Máy"].ToString()); // hoặc tính toán theo từng dòng
+                }
                 // Ví dụ tính toán: row["Ghi chú"] = (row["Số Lượng"] == DBNull.Value) ? "" : "OK";
             }
 
@@ -187,7 +196,8 @@ namespace TWSL.Common
                 "Thời gian thoát khí",
                 "Max/Pallet",
                 "Trạng thái",
-                "Thời gian"
+                "Thời gian",
+                "Nội Dung"
             };
             for (int i = 0; i < columnOrder.Length; i++)
             {
