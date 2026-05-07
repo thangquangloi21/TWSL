@@ -94,11 +94,6 @@ namespace TWSL.Forms.main.WH
         private void InphieuBtn(object sender, EventArgs e)
         {
             // in phiếu đã chọn
-            if (SoPhieuDP.Text == "...")
-            {
-                MessageBox.Show("Vui lòng chọn một phiếu để in!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
         }
 
@@ -107,15 +102,17 @@ namespace TWSL.Forms.main.WH
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = DataTaoPhieu.Rows[e.RowIndex];
+                Console.WriteLine($"Row index: {e.RowIndex}");
                 //string bat = row.Cells["time_register"].Value.ToString();
                 // Gán dữ liệu từ các cột vào label
 
-                SoPhieuDP.Text    = row.Cells["SoPhieu"].Value?.ToString();
-                SoMeTTDP.Text     = row.Cells["SoMeTT"].Value?.ToString();
-                MaSPDP.Text       = row.Cells["MaSP"].Value?.ToString();
-                LotSPDP.Text      = row.Cells["LotSP"].Value?.ToString();
-                SoLuongDP.Text    = row.Cells["SoLuong"].Value?.ToString();
-                ThoiGianTKDP.Text = row.Cells["ThoiGianThoatKhi"].Value?.ToString();
+                Console.WriteLine(row.Cells["Số phiếu"].Value.ToString());
+                //SoPhieuDP.Text = row.Cells["Số phiếu"].Value.ToString();
+                //SoMeTTDP.Text = row.Cells["Số Mẻ Tiệt Trùng"].Value.ToString();
+                //MaSPDP.Text = row.Cells["Mã Sản Phẩm"].Value.ToString();
+                //LotSPDP.Text = row.Cells["Lot"].Value.ToString();
+                //SoLuongDP.Text = row.Cells["Số Lượng"].Value.ToString();
+                //ThoiGianTKDP.Text = row.Cells["Thời gian thoát khí"].Value.ToString();
                 //Console.WriteLine($"{bat}");
 
             }

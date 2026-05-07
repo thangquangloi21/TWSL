@@ -122,8 +122,9 @@ namespace TWSL.Common
                     //MessageBox.Show($"Phiếu cho sản phẩm {MaSP} và lot {LotSP} đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
-                else { 
-                return false;
+                else
+                {
+                    return false;
                 }
             }
             catch (Exception ex)
@@ -131,6 +132,25 @@ namespace TWSL.Common
                 Console.WriteLine($"Lỗi khi kiểm tra phiếu đã tạo: {ex.Message}");
             }
             return false;
+        }
+
+        public static DataTable LoadPhieu()
+        {
+            try
+            {
+                var sql = "SELECT TOP (1000) [SoPhieu] ,[SoMeTT] ,[MaSP] ,[LotSP] ,[SoLuong] ,[MayTT] ,[ThoiGianThoatKhi] ,[MaxPallet] ,u.username ,[ThoiGianLap] ,[Note] FROM [TWSL].[dbo].[TaoPhieu] left join users u on IdNguoiLap = u.id ";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@soPhieu", "")
+                };
+                var dt = DatabaseHelper.ExecuteQuery(sql, parameters);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi load phiếu: {ex.Message}");
+            }
+            return null;
         }
     }
 }

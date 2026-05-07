@@ -63,12 +63,19 @@ namespace TWSL.Forms.main.WH
                         //textBox1.Text = "";
                         return;
                     }
+
                     //Console.WriteLine
                     this.Close();
                     //var selectbath = new ChonMe(itemcode, get_lot);
                     //selectbath.ShowDialog();
                     //tao phieu 
-                    var dp = new XemChiTiet("TAOPHIEU", ImportData.GetDataTT(itemcode, get_lot));
+                    var datalot = ImportData.GetDataTT(itemcode, get_lot);
+                    if (datalot.Rows.Count == 0) { 
+                        MessageBox.Show("Dữ liệu lô không tồn tại.", "Thông Báo");
+                        return;
+                    }
+
+                    var dp = new XemChiTiet("TAOPHIEU", datalot);
                     dp.ShowDialog();
 
 
