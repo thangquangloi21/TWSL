@@ -30,6 +30,12 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.SoLuongDP = new System.Windows.Forms.Label();
+            this.LotSPDP = new System.Windows.Forms.Label();
+            this.MaSPDP = new System.Windows.Forms.Label();
+            this.ThoiGianTKDP = new System.Windows.Forms.Label();
+            this.SoMeTTDP = new System.Windows.Forms.Label();
+            this.SoPhieuDP = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,12 +48,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DataTaoPhieu = new System.Windows.Forms.DataGridView();
-            this.SoPhieuDP = new System.Windows.Forms.Label();
-            this.SoMeTTDP = new System.Windows.Forms.Label();
-            this.ThoiGianTKDP = new System.Windows.Forms.Label();
-            this.MaSPDP = new System.Windows.Forms.Label();
-            this.LotSPDP = new System.Windows.Forms.Label();
-            this.SoLuongDP = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -86,6 +86,60 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin";
+            // 
+            // SoLuongDP
+            // 
+            this.SoLuongDP.AutoSize = true;
+            this.SoLuongDP.Location = new System.Drawing.Point(350, 124);
+            this.SoLuongDP.Name = "SoLuongDP";
+            this.SoLuongDP.Size = new System.Drawing.Size(16, 13);
+            this.SoLuongDP.TabIndex = 11;
+            this.SoLuongDP.Text = "...";
+            // 
+            // LotSPDP
+            // 
+            this.LotSPDP.AutoSize = true;
+            this.LotSPDP.Location = new System.Drawing.Point(350, 75);
+            this.LotSPDP.Name = "LotSPDP";
+            this.LotSPDP.Size = new System.Drawing.Size(16, 13);
+            this.LotSPDP.TabIndex = 10;
+            this.LotSPDP.Text = "...";
+            // 
+            // MaSPDP
+            // 
+            this.MaSPDP.AutoSize = true;
+            this.MaSPDP.Location = new System.Drawing.Point(350, 32);
+            this.MaSPDP.Name = "MaSPDP";
+            this.MaSPDP.Size = new System.Drawing.Size(16, 13);
+            this.MaSPDP.TabIndex = 9;
+            this.MaSPDP.Text = "...";
+            // 
+            // ThoiGianTKDP
+            // 
+            this.ThoiGianTKDP.AutoSize = true;
+            this.ThoiGianTKDP.Location = new System.Drawing.Point(131, 124);
+            this.ThoiGianTKDP.Name = "ThoiGianTKDP";
+            this.ThoiGianTKDP.Size = new System.Drawing.Size(16, 13);
+            this.ThoiGianTKDP.TabIndex = 8;
+            this.ThoiGianTKDP.Text = "...";
+            // 
+            // SoMeTTDP
+            // 
+            this.SoMeTTDP.AutoSize = true;
+            this.SoMeTTDP.Location = new System.Drawing.Point(115, 75);
+            this.SoMeTTDP.Name = "SoMeTTDP";
+            this.SoMeTTDP.Size = new System.Drawing.Size(16, 13);
+            this.SoMeTTDP.TabIndex = 7;
+            this.SoMeTTDP.Text = "...";
+            // 
+            // SoPhieuDP
+            // 
+            this.SoPhieuDP.AutoSize = true;
+            this.SoPhieuDP.Location = new System.Drawing.Point(109, 32);
+            this.SoPhieuDP.Name = "SoPhieuDP";
+            this.SoPhieuDP.Size = new System.Drawing.Size(16, 13);
+            this.SoPhieuDP.TabIndex = 6;
+            this.SoPhieuDP.Text = "...";
             // 
             // label4
             // 
@@ -194,6 +248,9 @@
             // 
             // DataTaoPhieu
             // 
+            this.DataTaoPhieu.AllowDrop = true;
+            this.DataTaoPhieu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataTaoPhieu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.DataTaoPhieu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataTaoPhieu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataTaoPhieu.Location = new System.Drawing.Point(0, 0);
@@ -201,60 +258,6 @@
             this.DataTaoPhieu.Size = new System.Drawing.Size(1010, 345);
             this.DataTaoPhieu.TabIndex = 0;
             this.DataTaoPhieu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataTaoPhieu_CellClick);
-            // 
-            // SoPhieuDP
-            // 
-            this.SoPhieuDP.AutoSize = true;
-            this.SoPhieuDP.Location = new System.Drawing.Point(109, 32);
-            this.SoPhieuDP.Name = "SoPhieuDP";
-            this.SoPhieuDP.Size = new System.Drawing.Size(16, 13);
-            this.SoPhieuDP.TabIndex = 6;
-            this.SoPhieuDP.Text = "...";
-            // 
-            // SoMeTTDP
-            // 
-            this.SoMeTTDP.AutoSize = true;
-            this.SoMeTTDP.Location = new System.Drawing.Point(115, 75);
-            this.SoMeTTDP.Name = "SoMeTTDP";
-            this.SoMeTTDP.Size = new System.Drawing.Size(16, 13);
-            this.SoMeTTDP.TabIndex = 7;
-            this.SoMeTTDP.Text = "...";
-            // 
-            // ThoiGianTKDP
-            // 
-            this.ThoiGianTKDP.AutoSize = true;
-            this.ThoiGianTKDP.Location = new System.Drawing.Point(131, 124);
-            this.ThoiGianTKDP.Name = "ThoiGianTKDP";
-            this.ThoiGianTKDP.Size = new System.Drawing.Size(16, 13);
-            this.ThoiGianTKDP.TabIndex = 8;
-            this.ThoiGianTKDP.Text = "...";
-            // 
-            // MaSPDP
-            // 
-            this.MaSPDP.AutoSize = true;
-            this.MaSPDP.Location = new System.Drawing.Point(350, 32);
-            this.MaSPDP.Name = "MaSPDP";
-            this.MaSPDP.Size = new System.Drawing.Size(16, 13);
-            this.MaSPDP.TabIndex = 9;
-            this.MaSPDP.Text = "...";
-            // 
-            // LotSPDP
-            // 
-            this.LotSPDP.AutoSize = true;
-            this.LotSPDP.Location = new System.Drawing.Point(350, 75);
-            this.LotSPDP.Name = "LotSPDP";
-            this.LotSPDP.Size = new System.Drawing.Size(16, 13);
-            this.LotSPDP.TabIndex = 10;
-            this.LotSPDP.Text = "...";
-            // 
-            // SoLuongDP
-            // 
-            this.SoLuongDP.AutoSize = true;
-            this.SoLuongDP.Location = new System.Drawing.Point(350, 124);
-            this.SoLuongDP.Name = "SoLuongDP";
-            this.SoLuongDP.Size = new System.Drawing.Size(16, 13);
-            this.SoLuongDP.TabIndex = 11;
-            this.SoLuongDP.Text = "...";
             // 
             // TaoPhieuNhapKho
             // 

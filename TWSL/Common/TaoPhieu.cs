@@ -1,17 +1,23 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TWSL.Forms.main;
+using ZXing;
+using ZXing.Common;
 
 namespace TWSL.Common
 {
     internal class TaoPhieu
     {
+
         public static string TaoSoPhieu()
         {
             string year = DateTime.Now.ToString("yy");
@@ -34,6 +40,7 @@ namespace TWSL.Common
 
             DataTable dt = DatabaseHelper.ExecuteQuery(sql, p);
             string soPhieuMoi = dt.Rows[0][0].ToString();
+
 
             return $"NKTD-TIS-{year}{month}-{soPhieuMoi}";
         }
@@ -151,6 +158,100 @@ namespace TWSL.Common
                 Console.WriteLine($"Lỗi khi load phiếu: {ex.Message}");
             }
             return null;
+        }
+
+
+        public static DataTable TaoDataPhieu(string SoPhieu)
+        {
+            try
+            {
+                var sql = "WITH Numbers AS ( SELECT 1 AS n UNION ALL SELECT n + 1 FROM Numbers WHERE n < 10000 ), Split AS ( SELECT t.SoPhieu, t.SoMeTT, t.LotSp, t.MaSP, t.ThoiGianThoatKhi, CAST(t.MaxPallet AS INT) AS MaxPallet, CAST(t.SoLuong AS INT) AS SoLuong, n.n AS PalletNo, CASE WHEN n.n < CEILING(CAST(t.SoLuong AS FLOAT) / CAST(t.MaxPallet AS FLOAT)) THEN CAST(t.MaxPallet AS INT) ELSE CAST(t.SoLuong AS INT) - (CEILING(CAST(t.SoLuong AS FLOAT) / CAST(t.MaxPallet AS FLOAT)) - 1) * CAST(t.MaxPallet AS INT) END AS SoLuongTach FROM dbo.TaoPhieu t INNER JOIN Numbers n ON n.n <= CEILING(CAST(t.SoLuong AS FLOAT) / CAST(t.MaxPallet AS FLOAT))) SELECT PalletNo AS STT_Pallet, MaSP, LotSp, SoMeTT, ThoiGianThoatKhi, SoLuongTach AS SoLuong, SoPhieu FROM Split WHERE SoPhieu = @soPhieu ORDER BY SoPhieu, PalletNo OPTION (MAXRECURSION 10000);";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@soPhieu", SoPhieu)
+                };
+                var dt = DatabaseHelper.ExecuteQuery(sql, parameters);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi load phiếu: {ex.Message}");
+            }
+            return null;
+        }
+
+
+        //in ma vach
+        public static Bitmap GenerateBarcode(string data)
+        {
+            var writer = new BarcodeWriter
+            {
+                Format = BarcodeFormat.CODE_128,
+                Options = new EncodingOptions
+                {
+                    Width = 300,
+                    Height = 50,
+                    Margin = 2,
+                    //battatcode
+                    //PureBarcode = true
+                }
+            };
+
+            return writer.Write(data);
+        }
+
+
+        public static void InsertBarcodeToExcel(string excelPath, string sheetName, int row, int col, string value)
+        {
+            var package = new ExcelPackage(new FileInfo(excelPath));
+            var ws = package.Workbook.Worksheets[sheetName];
+
+            // Remove existing barcode drawing if it already exists
+            string pictureName = $"Barcode_{row}_{col}";
+            var existing = ws.Drawings[pictureName];
+            if (existing != null)
+            {
+                ws.Drawings.Remove(existing);
+            }
+
+            var barcodeImage = GenerateBarcode(value);
+            var stream = new MemoryStream();
+            barcodeImage.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+            stream.Position = 0;
+
+            var picture = ws.Drawings.AddPicture(pictureName, stream);
+            picture.SetPosition(row - 1, 5, col - 1, 5);
+            picture.SetSize(100); // 150% so với kích thước gốc của ảnh
+            ws.Row(row).Height = 35;
+
+            package.Save();
+        }
+
+        public static void WriteDataToExcel(string excelPath, string sheetName, DataTable data)
+        {
+            var package = new ExcelPackage(new FileInfo(excelPath));
+            var ws = package.Workbook.Worksheets[sheetName];
+
+            if (ws == null)
+                ws = package.Workbook.Worksheets.Add(sheetName);
+
+            // Xóa dữ liệu cũ từ A2 trở xuống
+            if (ws.Dimension != null)
+            {
+                var clearRange = ws.Cells[2, 1, ws.Dimension.End.Row, ws.Dimension.End.Column];
+                clearRange.Clear();
+            }
+
+            // Ghi dữ liệu bắt đầu từ A2 (row=2, col=1)
+            for (int r = 0; r < data.Rows.Count; r++)
+            {
+                for (int c = 0; c < data.Columns.Count; c++)
+                {
+                    ws.Cells[r + 2, c + 1].Value = data.Rows[r][c];
+                }
+            }
+
+            package.Save();
         }
     }
 }

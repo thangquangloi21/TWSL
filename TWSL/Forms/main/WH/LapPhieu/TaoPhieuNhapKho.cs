@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Org.BouncyCastle.Crypto.Tls;
+using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +18,7 @@ namespace TWSL.Forms.main.WH
     public partial class TaoPhieuNhapKho : Form
     {
         private loading_wait loading;
+        private string Maxpalet { get; set;}
         public TaoPhieuNhapKho()
         {
             InitializeComponent();
@@ -93,11 +96,47 @@ namespace TWSL.Forms.main.WH
 
         private void InphieuBtn(object sender, EventArgs e)
         {
+
             // in phiếu đã chọn
             if (SoPhieuDP.Text == "...")
             {
                 MessageBox.Show("Vui lòng chọn một phiếu để in!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            string templatePath = @"TEMP\JCQ50-ADM022-1-Rev6.xlsx";    
+            string outputDir = @"TEMP\Output";      
+            Directory.CreateDirectory(outputDir);
+            string outputPath = System.IO.Path.Combine(outputDir, $"{SoPhieuDP.Text}.xlsx");
+
+            // Copy từ template ra file mới, không chỉnh sửa file gốc
+            File.Copy(templatePath, outputPath, overwrite: true);
+
+            //taomavach
+            string barcodeData = $"{SoPhieuDP.Text}%{MaSPDP.Text}%{LotSPDP.Text}"; // Dữ liệu mã vạch là số phiếu
+
+            // Insert mã vạch vào file mới
+            TaoPhieu.InsertBarcodeToExcel(outputPath, "JCQ50-ADM022", 2, 1, barcodeData);
+
+            // Đẩy dữ liệu vào sheet "data" bắt đầu từ A2
+            var dulieu = TaoPhieu.TaoDataPhieu(SoPhieuDP.Text);
+            TaoPhieu.WriteDataToExcel(outputPath, "data", dulieu);
+
+            // Hiện hộp thoại chọn máy in và in
+            using (var printDialog = new PrintDialog())
+            {   
+                printDialog.UseEXDialog = true;
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = outputPath,
+                        Verb = "printto",
+                        Arguments = $"\"{printDialog.PrinterSettings.PrinterName}\"",
+                        UseShellExecute = true,
+                        WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
+                    });
+                }
             }
 
         }
@@ -116,6 +155,8 @@ namespace TWSL.Forms.main.WH
                 LotSPDP.Text      = row.Cells["LotSP"].Value?.ToString();
                 SoLuongDP.Text    = row.Cells["SoLuong"].Value?.ToString();
                 ThoiGianTKDP.Text = row.Cells["ThoiGianThoatKhi"].Value?.ToString();
+                Maxpalet = row.Cells["MaxPallet"].Value?.ToString();
+
                 //Console.WriteLine($"{bat}");
 
             }
