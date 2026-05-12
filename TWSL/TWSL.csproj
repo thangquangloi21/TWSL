@@ -251,6 +251,12 @@
     <Compile Include="Forms\main\WH\LapPhieu\ChonMe.Designer.cs">
       <DependentUpon>ChonMe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\main\WH\TaoFileR200\DuaHangVaoKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\WH\TaoFileR200\DuaHangVaoKho.Designer.cs">
+      <DependentUpon>DuaHangVaoKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\master\authentication_from.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -403,6 +409,9 @@
     <EmbeddedResource Include="Forms\main\WH\LapPhieu\ChonMe.resx">
       <DependentUpon>ChonMe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\WH\TaoFileR200\DuaHangVaoKho.resx">
+      <DependentUpon>DuaHangVaoKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\master\authentication_from.resx">
       <DependentUpon>authentication_from.cs</DependentUpon>
     </EmbeddedResource>
@@ -537,7 +546,7 @@
     <None Include="Resources\computer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\main\WH\DuaHangVaoKho\" />
+    <Folder Include="Agent\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" />

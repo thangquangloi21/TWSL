@@ -96,48 +96,56 @@ namespace TWSL.Forms.main.WH
 
         private void InphieuBtn(object sender, EventArgs e)
         {
-
-            // in phiếu đã chọn
-            if (SoPhieuDP.Text == "...")
+            try
             {
-                MessageBox.Show("Vui lòng chọn một phiếu để in!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string templatePath = @"TEMP\JCQ50-ADM022-1-Rev6.xlsx";    
-            string outputDir = @"TEMP\Output";      
-            Directory.CreateDirectory(outputDir);
-            string outputPath = System.IO.Path.Combine(outputDir, $"{SoPhieuDP.Text}.xlsx");
-
-            // Copy từ template ra file mới, không chỉnh sửa file gốc
-            File.Copy(templatePath, outputPath, overwrite: true);
-
-            //taomavach
-            string barcodeData = $"{SoPhieuDP.Text}%{MaSPDP.Text}%{LotSPDP.Text}"; // Dữ liệu mã vạch là số phiếu
-
-            // Insert mã vạch vào file mới
-            TaoPhieu.InsertBarcodeToExcel(outputPath, "JCQ50-ADM022", 2, 1, barcodeData);
-
-            // Đẩy dữ liệu vào sheet "data" bắt đầu từ A2
-            var dulieu = TaoPhieu.TaoDataPhieu(SoPhieuDP.Text);
-            TaoPhieu.WriteDataToExcel(outputPath, "data", dulieu);
-
-            // Hiện hộp thoại chọn máy in và in
-            using (var printDialog = new PrintDialog())
-            {   
-                printDialog.UseEXDialog = true;
-                if (printDialog.ShowDialog() == DialogResult.OK)
+                // in phiếu đã chọn
+                if (SoPhieuDP.Text == "...")
                 {
-                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                    MessageBox.Show("Vui lòng chọn một phiếu để in!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string templatePath = @"TEMP\JCQ50-ADM022-1-Rev6.xlsx";
+                string outputDir = @"TEMP\Output";
+                Directory.CreateDirectory(outputDir);
+                string outputPath = System.IO.Path.Combine(outputDir, $"{SoPhieuDP.Text}.xlsx");
+
+                // Copy từ template ra file mới, không chỉnh sửa file gốc
+                File.Copy(templatePath, outputPath, overwrite: true);
+
+                //taomavach
+                string barcodeData = $"{SoPhieuDP.Text}%{MaSPDP.Text}%{LotSPDP.Text}"; // Dữ liệu mã vạch là số phiếu
+
+                // Insert mã vạch vào file mới
+                TaoPhieu.InsertBarcodeToExcel(outputPath, "JCQ50-ADM022", 2, 1, SoPhieuDP.Text);
+
+                // Đẩy dữ liệu vào sheet "data" bắt đầu từ A2
+                var dulieu = TaoPhieu.TaoDataPhieu(SoPhieuDP.Text);
+                TaoPhieu.WriteDataToExcel(outputPath, "data", dulieu);
+
+                // Hiện hộp thoại chọn máy in và in
+                using (var printDialog = new PrintDialog())
+                {
+                    printDialog.UseEXDialog = true;
+                    if (printDialog.ShowDialog() == DialogResult.OK)
                     {
-                        FileName = outputPath,
-                        Verb = "printto",
-                        Arguments = $"\"{printDialog.PrinterSettings.PrinterName}\"",
-                        UseShellExecute = true,
-                        WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
-                    });
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = outputPath,
+                            Verb = "printto",
+                            Arguments = $"\"{printDialog.PrinterSettings.PrinterName}\"",
+                            UseShellExecute = true,
+                            WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
+                        });
+                    }
                 }
             }
+            catch
+            {
+                Console.WriteLine("in loi roi ");
+            }
+
+          
 
         }
 
