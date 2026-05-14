@@ -201,5 +201,20 @@ namespace TWSL.Forms.main
 
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "1")
+            {
+
+                OpenchildFrom(new ());
+            }
+
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập", "Thông báo !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }   
+        }
     }
 }
