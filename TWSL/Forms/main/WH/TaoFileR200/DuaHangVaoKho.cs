@@ -19,7 +19,8 @@ namespace TWSL.Forms.main.WH.TaoFileR200
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            var DocSoPhieuDP = new DocSoPhieu();
+            DocSoPhieuDP.ShowDialog();
         }
     }
 }

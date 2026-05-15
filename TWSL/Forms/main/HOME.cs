@@ -11,6 +11,7 @@ using System.Xml.Linq;
 using TWSL.Common;
 using TWSL.Forms.main.SL.SL1;
 using TWSL.Forms.main.WH;
+using TWSL.Forms.main.WH.TaoFileR200;
 using TWSL.test;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -207,7 +208,7 @@ namespace TWSL.Forms.main
             if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "1")
             {
 
-                OpenchildFrom(new ());
+                OpenchildFrom(new DuaHangVaoKho());
             }
 
             else

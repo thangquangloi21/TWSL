@@ -257,6 +257,12 @@
     <Compile Include="Forms\main\WH\TaoFileR200\DuaHangVaoKho.Designer.cs">
       <DependentUpon>DuaHangVaoKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\main\WH\TaoFileR200\DocSoPhieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\WH\TaoFileR200\DocSoPhieu.Designer.cs">
+      <DependentUpon>DocSoPhieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\master\authentication_from.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -411,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\TaoFileR200\DuaHangVaoKho.resx">
       <DependentUpon>DuaHangVaoKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\WH\TaoFileR200\DocSoPhieu.resx">
+      <DependentUpon>DocSoPhieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\master\authentication_from.resx">
       <DependentUpon>authentication_from.cs</DependentUpon>

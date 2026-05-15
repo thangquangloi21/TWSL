@@ -15,7 +15,7 @@ namespace TWSL.Forms.main.WH
     public partial class XemChiTiet : Form
     {
         DataTable DataTable;
-        string TypeView = "";
+        //string TypeView = "";
         public XemChiTiet(string view,DataTable data)
         {
             InitializeComponent();
