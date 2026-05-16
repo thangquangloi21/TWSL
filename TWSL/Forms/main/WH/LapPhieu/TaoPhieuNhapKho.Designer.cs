@@ -36,23 +36,33 @@
             this.ThoiGianTKDP = new System.Windows.Forms.Label();
             this.SoMeTTDP = new System.Windows.Forms.Label();
             this.SoPhieuDP = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.InPhieuBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DataTaoPhieu = new System.Windows.Forms.DataGridView();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataTaoPhieu)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -67,19 +77,14 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.SoLuongDP);
-            this.groupBox2.Controls.Add(this.LotSPDP);
-            this.groupBox2.Controls.Add(this.MaSPDP);
-            this.groupBox2.Controls.Add(this.ThoiGianTKDP);
-            this.groupBox2.Controls.Add(this.SoMeTTDP);
-            this.groupBox2.Controls.Add(this.SoPhieuDP);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.groupBox7);
+            this.groupBox2.Controls.Add(this.groupBox8);
+            this.groupBox2.Controls.Add(this.groupBox6);
+            this.groupBox2.Controls.Add(this.groupBox5);
+            this.groupBox2.Controls.Add(this.groupBox4);
+            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(215, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(795, 162);
@@ -90,7 +95,8 @@
             // SoLuongDP
             // 
             this.SoLuongDP.AutoSize = true;
-            this.SoLuongDP.Location = new System.Drawing.Point(350, 124);
+            this.SoLuongDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SoLuongDP.Location = new System.Drawing.Point(40, 19);
             this.SoLuongDP.Name = "SoLuongDP";
             this.SoLuongDP.Size = new System.Drawing.Size(16, 13);
             this.SoLuongDP.TabIndex = 11;
@@ -99,7 +105,8 @@
             // LotSPDP
             // 
             this.LotSPDP.AutoSize = true;
-            this.LotSPDP.Location = new System.Drawing.Point(350, 75);
+            this.LotSPDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LotSPDP.Location = new System.Drawing.Point(43, 20);
             this.LotSPDP.Name = "LotSPDP";
             this.LotSPDP.Size = new System.Drawing.Size(16, 13);
             this.LotSPDP.TabIndex = 10;
@@ -108,7 +115,8 @@
             // MaSPDP
             // 
             this.MaSPDP.AutoSize = true;
-            this.MaSPDP.Location = new System.Drawing.Point(350, 32);
+            this.MaSPDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaSPDP.Location = new System.Drawing.Point(43, 19);
             this.MaSPDP.Name = "MaSPDP";
             this.MaSPDP.Size = new System.Drawing.Size(16, 13);
             this.MaSPDP.TabIndex = 9;
@@ -117,7 +125,8 @@
             // ThoiGianTKDP
             // 
             this.ThoiGianTKDP.AutoSize = true;
-            this.ThoiGianTKDP.Location = new System.Drawing.Point(131, 124);
+            this.ThoiGianTKDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ThoiGianTKDP.Location = new System.Drawing.Point(40, 20);
             this.ThoiGianTKDP.Name = "ThoiGianTKDP";
             this.ThoiGianTKDP.Size = new System.Drawing.Size(16, 13);
             this.ThoiGianTKDP.TabIndex = 8;
@@ -126,7 +135,8 @@
             // SoMeTTDP
             // 
             this.SoMeTTDP.AutoSize = true;
-            this.SoMeTTDP.Location = new System.Drawing.Point(115, 75);
+            this.SoMeTTDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SoMeTTDP.Location = new System.Drawing.Point(40, 20);
             this.SoMeTTDP.Name = "SoMeTTDP";
             this.SoMeTTDP.Size = new System.Drawing.Size(16, 13);
             this.SoMeTTDP.TabIndex = 7;
@@ -135,65 +145,12 @@
             // SoPhieuDP
             // 
             this.SoPhieuDP.AutoSize = true;
-            this.SoPhieuDP.Location = new System.Drawing.Point(109, 32);
+            this.SoPhieuDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SoPhieuDP.Location = new System.Drawing.Point(40, 19);
             this.SoPhieuDP.Name = "SoPhieuDP";
             this.SoPhieuDP.Size = new System.Drawing.Size(16, 13);
             this.SoPhieuDP.TabIndex = 6;
             this.SoPhieuDP.Text = "...";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 124);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Thời gian thoát khí:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(256, 124);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Số Lượng:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(256, 75);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Lot:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(256, 32);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Mã sản phẩm:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Số Phiếu:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 75);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Số mẻ tiệt trùng:";
             // 
             // groupBox1
             // 
@@ -201,6 +158,7 @@
             this.groupBox1.Controls.Add(this.InPhieuBtn);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(215, 162);
@@ -239,6 +197,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.DataTaoPhieu);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 162);
@@ -259,6 +218,85 @@
             this.DataTaoPhieu.TabIndex = 0;
             this.DataTaoPhieu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataTaoPhieu_CellClick);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.SoPhieuDP);
+            this.groupBox3.Location = new System.Drawing.Point(26, 27);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 40);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Số Phiếu:";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.SoMeTTDP);
+            this.groupBox4.Location = new System.Drawing.Point(26, 93);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(200, 40);
+            this.groupBox4.TabIndex = 13;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Số Mẻ Tiệt Trùng";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.ThoiGianTKDP);
+            this.groupBox5.Location = new System.Drawing.Point(572, 93);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(200, 40);
+            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Thời gian thoát khí";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.MaSPDP);
+            this.groupBox6.Location = new System.Drawing.Point(306, 27);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(200, 40);
+            this.groupBox6.TabIndex = 15;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Mã Sản Phẩm";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.SoLuongDP);
+            this.groupBox7.Location = new System.Drawing.Point(572, 27);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(200, 40);
+            this.groupBox7.TabIndex = 16;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Số Lượng";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.LotSPDP);
+            this.groupBox8.Location = new System.Drawing.Point(306, 93);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(200, 40);
+            this.groupBox8.TabIndex = 16;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Lot";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1010, 29);
+            this.panel3.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(48, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "DANH SÁCH DỮ LIỆU";
+            // 
             // TaoPhieuNhapKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,10 +309,23 @@
             this.Load += new System.EventHandler(this.TaoPhieuNhapKho_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataTaoPhieu)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -289,17 +340,20 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button InPhieuBtn;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label SoLuongDP;
         private System.Windows.Forms.Label LotSPDP;
         private System.Windows.Forms.Label MaSPDP;
         private System.Windows.Forms.Label ThoiGianTKDP;
         private System.Windows.Forms.Label SoMeTTDP;
         private System.Windows.Forms.Label SoPhieuDP;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label1;
     }
 }

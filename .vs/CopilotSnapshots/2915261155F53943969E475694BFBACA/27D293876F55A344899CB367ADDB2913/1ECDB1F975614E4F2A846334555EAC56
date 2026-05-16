@@ -1,0 +1,907 @@
+﻿namespace TWSL.Forms.main.WH.TaoFileR200
+{
+    partial class DuaHangVaoKho
+    {
+        private System.ComponentModel.IContainer components = null;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        private void InitializeComponent()
+        {
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.picIcon = new System.Windows.Forms.PictureBox();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblSubtitle = new System.Windows.Forms.Label();
+            this.pnlContent = new System.Windows.Forms.Panel();
+            this.tableContent = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlFeature = new System.Windows.Forms.Panel();
+            this.lblFeatureTitle = new System.Windows.Forms.Label();
+            this.btnCreateVoucher = new System.Windows.Forms.Button();
+            this.btnExportData = new System.Windows.Forms.Button();
+            this.pnlInfo = new System.Windows.Forms.Panel();
+            this.lblInfoTitle = new System.Windows.Forms.Label();
+            this.tableInfo = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlInfo1 = new System.Windows.Forms.Panel();
+            this.lblInfo1 = new System.Windows.Forms.Label();
+            this.lblInfo1Value = new System.Windows.Forms.Label();
+            this.pnlInfo4 = new System.Windows.Forms.Panel();
+            this.lblInfo4 = new System.Windows.Forms.Label();
+            this.lblInfo4Value = new System.Windows.Forms.Label();
+            this.pnlInfo2 = new System.Windows.Forms.Panel();
+            this.lblInfo2 = new System.Windows.Forms.Label();
+            this.lblInfo2Value = new System.Windows.Forms.Label();
+            this.pnlInfo5 = new System.Windows.Forms.Panel();
+            this.lblInfo5 = new System.Windows.Forms.Label();
+            this.lblInfo5Value = new System.Windows.Forms.Label();
+            this.pnlInfo3 = new System.Windows.Forms.Panel();
+            this.lblInfo3 = new System.Windows.Forms.Label();
+            this.lblInfo3Value = new System.Windows.Forms.Label();
+            this.pnlInfo6 = new System.Windows.Forms.Panel();
+            this.lblInfo6 = new System.Windows.Forms.Label();
+            this.lblInfo6Value = new System.Windows.Forms.Label();
+            this.pnlSearch = new System.Windows.Forms.Panel();
+            this.lblSearchTitle = new System.Windows.Forms.Label();
+            this.tableSearch = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlSearch1 = new System.Windows.Forms.Panel();
+            this.lblSearch1 = new System.Windows.Forms.Label();
+            this.txtSearch1 = new System.Windows.Forms.TextBox();
+            this.pnlSearch2 = new System.Windows.Forms.Panel();
+            this.lblSearch2 = new System.Windows.Forms.Label();
+            this.txtSearch2 = new System.Windows.Forms.TextBox();
+            this.pnlSearch3 = new System.Windows.Forms.Panel();
+            this.lblSearch3 = new System.Windows.Forms.Label();
+            this.txtSearch3 = new System.Windows.Forms.TextBox();
+            this.pnlDataSection = new System.Windows.Forms.Panel();
+            this.lblDataTitle = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVoucherCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCreateDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colWarehouse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlFooter = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.flowStats = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblSuccess = new System.Windows.Forms.Label();
+            this.lblError = new System.Windows.Forms.Label();
+            this.lblPending = new System.Windows.Forms.Label();
+            this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
+            this.pnlContent.SuspendLayout();
+            this.tableContent.SuspendLayout();
+            this.pnlFeature.SuspendLayout();
+            this.pnlInfo.SuspendLayout();
+            this.tableInfo.SuspendLayout();
+            this.pnlInfo1.SuspendLayout();
+            this.pnlInfo4.SuspendLayout();
+            this.pnlInfo2.SuspendLayout();
+            this.pnlInfo5.SuspendLayout();
+            this.pnlInfo3.SuspendLayout();
+            this.pnlInfo6.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
+            this.tableSearch.SuspendLayout();
+            this.pnlSearch1.SuspendLayout();
+            this.pnlSearch2.SuspendLayout();
+            this.pnlSearch3.SuspendLayout();
+            this.pnlDataSection.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.pnlFooter.SuspendLayout();
+            this.flowStats.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.White;
+            this.pnlHeader.Controls.Add(this.picIcon);
+            this.pnlHeader.Controls.Add(this.lblTitle);
+            this.pnlHeader.Controls.Add(this.lblSubtitle);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Padding = new System.Windows.Forms.Padding(12);
+            this.pnlHeader.Size = new System.Drawing.Size(1200, 80);
+            this.pnlHeader.TabIndex = 3;
+            // 
+            // picIcon
+            // 
+            this.picIcon.Location = new System.Drawing.Point(12, 12);
+            this.picIcon.Name = "picIcon";
+            this.picIcon.Size = new System.Drawing.Size(48, 48);
+            this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picIcon.TabIndex = 0;
+            this.picIcon.TabStop = false;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.lblTitle.Location = new System.Drawing.Point(70, 16);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(238, 30);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "NHẬP KHO TỰ ĐỘNG";
+            // 
+            // lblSubtitle
+            // 
+            this.lblSubtitle.AutoSize = true;
+            this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblSubtitle.ForeColor = System.Drawing.Color.Gray;
+            this.lblSubtitle.Location = new System.Drawing.Point(70, 44);
+            this.lblSubtitle.Name = "lblSubtitle";
+            this.lblSubtitle.Size = new System.Drawing.Size(237, 15);
+            this.lblSubtitle.TabIndex = 2;
+            this.lblSubtitle.Text = "Tự động tạo phiếu nhập kho và xuất dữ liệu";
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.Controls.Add(this.tableContent);
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlContent.Location = new System.Drawing.Point(0, 80);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Padding = new System.Windows.Forms.Padding(12);
+            this.pnlContent.Size = new System.Drawing.Size(1200, 220);
+            this.pnlContent.TabIndex = 2;
+            // 
+            // tableContent
+            // 
+            this.tableContent.ColumnCount = 3;
+            this.tableContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableContent.Controls.Add(this.pnlFeature, 0, 0);
+            this.tableContent.Controls.Add(this.pnlInfo, 1, 0);
+            this.tableContent.Controls.Add(this.pnlSearch, 2, 0);
+            this.tableContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableContent.Location = new System.Drawing.Point(12, 12);
+            this.tableContent.Name = "tableContent";
+            this.tableContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableContent.Size = new System.Drawing.Size(1176, 196);
+            this.tableContent.TabIndex = 0;
+            // 
+            // pnlFeature
+            // 
+            this.pnlFeature.BackColor = System.Drawing.Color.White;
+            this.pnlFeature.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFeature.Controls.Add(this.lblFeatureTitle);
+            this.pnlFeature.Controls.Add(this.btnCreateVoucher);
+            this.pnlFeature.Controls.Add(this.btnExportData);
+            this.pnlFeature.Location = new System.Drawing.Point(3, 3);
+            this.pnlFeature.Name = "pnlFeature";
+            this.pnlFeature.Padding = new System.Windows.Forms.Padding(12);
+            this.pnlFeature.Size = new System.Drawing.Size(288, 190);
+            this.pnlFeature.TabIndex = 0;
+            // 
+            // lblFeatureTitle
+            // 
+            this.lblFeatureTitle.AutoSize = true;
+            this.lblFeatureTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblFeatureTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
+            this.lblFeatureTitle.Location = new System.Drawing.Point(12, 12);
+            this.lblFeatureTitle.Name = "lblFeatureTitle";
+            this.lblFeatureTitle.Size = new System.Drawing.Size(123, 19);
+            this.lblFeatureTitle.TabIndex = 0;
+            this.lblFeatureTitle.Text = "⚙️  CHỨC NĂNG";
+            // 
+            // btnCreateVoucher
+            // 
+            this.btnCreateVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
+            this.btnCreateVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateVoucher.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCreateVoucher.ForeColor = System.Drawing.Color.White;
+            this.btnCreateVoucher.Location = new System.Drawing.Point(12, 36);
+            this.btnCreateVoucher.Name = "btnCreateVoucher";
+            this.btnCreateVoucher.Size = new System.Drawing.Size(160, 60);
+            this.btnCreateVoucher.TabIndex = 1;
+            this.btnCreateVoucher.Text = "📝 Tạo phiếu\r\nTạo phiếu nhập kho mới";
+            this.btnCreateVoucher.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreateVoucher.UseVisualStyleBackColor = false;
+            // 
+            // btnExportData
+            // 
+            this.btnExportData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.btnExportData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportData.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnExportData.ForeColor = System.Drawing.Color.White;
+            this.btnExportData.Location = new System.Drawing.Point(12, 104);
+            this.btnExportData.Name = "btnExportData";
+            this.btnExportData.Size = new System.Drawing.Size(160, 60);
+            this.btnExportData.TabIndex = 2;
+            this.btnExportData.Text = "📊 Xuất dữ liệu\r\nXuất dữ liệu ra file Excel";
+            this.btnExportData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportData.UseVisualStyleBackColor = false;
+            // 
+            // pnlInfo
+            // 
+            this.pnlInfo.BackColor = System.Drawing.Color.White;
+            this.pnlInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlInfo.Controls.Add(this.lblInfoTitle);
+            this.pnlInfo.Controls.Add(this.tableInfo);
+            this.pnlInfo.Location = new System.Drawing.Point(306, 0);
+            this.pnlInfo.Margin = new System.Windows.Forms.Padding(12, 0, 6, 0);
+            this.pnlInfo.Name = "pnlInfo";
+            this.pnlInfo.Padding = new System.Windows.Forms.Padding(12);
+            this.pnlInfo.Size = new System.Drawing.Size(511, 196);
+            this.pnlInfo.TabIndex = 1;
+            // 
+            // lblInfoTitle
+            // 
+            this.lblInfoTitle.AutoSize = true;
+            this.lblInfoTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblInfoTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
+            this.lblInfoTitle.Location = new System.Drawing.Point(12, 12);
+            this.lblInfoTitle.Name = "lblInfoTitle";
+            this.lblInfoTitle.Size = new System.Drawing.Size(115, 19);
+            this.lblInfoTitle.TabIndex = 0;
+            this.lblInfoTitle.Text = "ℹ️  THÔNG TIN";
+            // 
+            // tableInfo
+            // 
+            this.tableInfo.ColumnCount = 2;
+            this.tableInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableInfo.Controls.Add(this.pnlInfo1, 0, 0);
+            this.tableInfo.Controls.Add(this.pnlInfo4, 1, 0);
+            this.tableInfo.Controls.Add(this.pnlInfo2, 0, 1);
+            this.tableInfo.Controls.Add(this.pnlInfo5, 1, 1);
+            this.tableInfo.Controls.Add(this.pnlInfo3, 0, 2);
+            this.tableInfo.Controls.Add(this.pnlInfo6, 1, 2);
+            this.tableInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableInfo.Location = new System.Drawing.Point(12, 12);
+            this.tableInfo.Name = "tableInfo";
+            this.tableInfo.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.tableInfo.RowCount = 3;
+            this.tableInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableInfo.Size = new System.Drawing.Size(485, 170);
+            this.tableInfo.TabIndex = 1;
+            // 
+            // pnlInfo1
+            // 
+            this.pnlInfo1.Controls.Add(this.lblInfo1);
+            this.pnlInfo1.Controls.Add(this.lblInfo1Value);
+            this.pnlInfo1.Location = new System.Drawing.Point(0, 12);
+            this.pnlInfo1.Margin = new System.Windows.Forms.Padding(0, 0, 6, 8);
+            this.pnlInfo1.Name = "pnlInfo1";
+            this.pnlInfo1.Size = new System.Drawing.Size(14, 12);
+            this.pnlInfo1.TabIndex = 0;
+            // 
+            // lblInfo1
+            // 
+            this.lblInfo1.AutoSize = true;
+            this.lblInfo1.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblInfo1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
+            this.lblInfo1.Location = new System.Drawing.Point(0, 0);
+            this.lblInfo1.Name = "lblInfo1";
+            this.lblInfo1.Size = new System.Drawing.Size(53, 13);
+            this.lblInfo1.TabIndex = 0;
+            this.lblInfo1.Text = "📋 label1";
+            // 
+            // lblInfo1Value
+            // 
+            this.lblInfo1Value.AutoSize = true;
+            this.lblInfo1Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblInfo1Value.Location = new System.Drawing.Point(0, 18);
+            this.lblInfo1Value.Name = "lblInfo1Value";
+            this.lblInfo1Value.Size = new System.Drawing.Size(70, 15);
+            this.lblInfo1Value.TabIndex = 1;
+            this.lblInfo1Value.Text = "Thông tin 1";
+            // 
+            // pnlInfo4
+            // 
+            this.pnlInfo4.Controls.Add(this.lblInfo4);
+            this.pnlInfo4.Controls.Add(this.lblInfo4Value);
+            this.pnlInfo4.Location = new System.Drawing.Point(26, 12);
+            this.pnlInfo4.Margin = new System.Windows.Forms.Padding(6, 0, 0, 8);
+            this.pnlInfo4.Name = "pnlInfo4";
+            this.pnlInfo4.Size = new System.Drawing.Size(200, 12);
+            this.pnlInfo4.TabIndex = 1;
+            // 
+            // lblInfo4
+            // 
+            this.lblInfo4.AutoSize = true;
+            this.lblInfo4.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblInfo4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.lblInfo4.Location = new System.Drawing.Point(0, 0);
+            this.lblInfo4.Name = "lblInfo4";
+            this.lblInfo4.Size = new System.Drawing.Size(59, 13);
+            this.lblInfo4.TabIndex = 0;
+            this.lblInfo4.Text = "📋 label10";
+            // 
+            // lblInfo4Value
+            // 
+            this.lblInfo4Value.AutoSize = true;
+            this.lblInfo4Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblInfo4Value.Location = new System.Drawing.Point(0, 18);
+            this.lblInfo4Value.Name = "lblInfo4Value";
+            this.lblInfo4Value.Size = new System.Drawing.Size(77, 15);
+            this.lblInfo4Value.TabIndex = 1;
+            this.lblInfo4Value.Text = "Thông tin 10";
+            // 
+            // pnlInfo2
+            // 
+            this.pnlInfo2.Controls.Add(this.lblInfo2);
+            this.pnlInfo2.Controls.Add(this.lblInfo2Value);
+            this.pnlInfo2.Location = new System.Drawing.Point(0, 32);
+            this.pnlInfo2.Margin = new System.Windows.Forms.Padding(0, 0, 6, 8);
+            this.pnlInfo2.Name = "pnlInfo2";
+            this.pnlInfo2.Size = new System.Drawing.Size(14, 12);
+            this.pnlInfo2.TabIndex = 2;
+            // 
+            // lblInfo2
+            // 
+            this.lblInfo2.AutoSize = true;
+            this.lblInfo2.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblInfo2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
+            this.lblInfo2.Location = new System.Drawing.Point(0, 0);
+            this.lblInfo2.Name = "lblInfo2";
+            this.lblInfo2.Size = new System.Drawing.Size(53, 13);
+            this.lblInfo2.TabIndex = 0;
+            this.lblInfo2.Text = "📋 label2";
+            // 
+            // lblInfo2Value
+            // 
+            this.lblInfo2Value.AutoSize = true;
+            this.lblInfo2Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblInfo2Value.Location = new System.Drawing.Point(0, 18);
+            this.lblInfo2Value.Name = "lblInfo2Value";
+            this.lblInfo2Value.Size = new System.Drawing.Size(70, 15);
+            this.lblInfo2Value.TabIndex = 1;
+            this.lblInfo2Value.Text = "Thông tin 2";
+            // 
+            // pnlInfo5
+            // 
+            this.pnlInfo5.Controls.Add(this.lblInfo5);
+            this.pnlInfo5.Controls.Add(this.lblInfo5Value);
+            this.pnlInfo5.Location = new System.Drawing.Point(26, 32);
+            this.pnlInfo5.Margin = new System.Windows.Forms.Padding(6, 0, 0, 8);
+            this.pnlInfo5.Name = "pnlInfo5";
+            this.pnlInfo5.Size = new System.Drawing.Size(200, 12);
+            this.pnlInfo5.TabIndex = 3;
+            // 
+            // lblInfo5
+            // 
+            this.lblInfo5.AutoSize = true;
+            this.lblInfo5.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblInfo5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.lblInfo5.Location = new System.Drawing.Point(0, 0);
+            this.lblInfo5.Name = "lblInfo5";
+            this.lblInfo5.Size = new System.Drawing.Size(59, 13);
+            this.lblInfo5.TabIndex = 0;
+            this.lblInfo5.Text = "📋 label11";
+            // 
+            // lblInfo5Value
+            // 
+            this.lblInfo5Value.AutoSize = true;
+            this.lblInfo5Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblInfo5Value.Location = new System.Drawing.Point(0, 18);
+            this.lblInfo5Value.Name = "lblInfo5Value";
+            this.lblInfo5Value.Size = new System.Drawing.Size(77, 15);
+            this.lblInfo5Value.TabIndex = 1;
+            this.lblInfo5Value.Text = "Thông tin 11";
+            // 
+            // pnlInfo3
+            // 
+            this.pnlInfo3.Controls.Add(this.lblInfo3);
+            this.pnlInfo3.Controls.Add(this.lblInfo3Value);
+            this.pnlInfo3.Location = new System.Drawing.Point(0, 52);
+            this.pnlInfo3.Margin = new System.Windows.Forms.Padding(0, 0, 6, 0);
+            this.pnlInfo3.Name = "pnlInfo3";
+            this.pnlInfo3.Size = new System.Drawing.Size(14, 100);
+            this.pnlInfo3.TabIndex = 4;
+            // 
+            // lblInfo3
+            // 
+            this.lblInfo3.AutoSize = true;
+            this.lblInfo3.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblInfo3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
+            this.lblInfo3.Location = new System.Drawing.Point(0, 0);
+            this.lblInfo3.Name = "lblInfo3";
+            this.lblInfo3.Size = new System.Drawing.Size(53, 13);
+            this.lblInfo3.TabIndex = 0;
+            this.lblInfo3.Text = "📋 label3";
+            // 
+            // lblInfo3Value
+            // 
+            this.lblInfo3Value.AutoSize = true;
+            this.lblInfo3Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblInfo3Value.Location = new System.Drawing.Point(0, 18);
+            this.lblInfo3Value.Name = "lblInfo3Value";
+            this.lblInfo3Value.Size = new System.Drawing.Size(70, 15);
+            this.lblInfo3Value.TabIndex = 1;
+            this.lblInfo3Value.Text = "Thông tin 3";
+            // 
+            // pnlInfo6
+            // 
+            this.pnlInfo6.Controls.Add(this.lblInfo6);
+            this.pnlInfo6.Controls.Add(this.lblInfo6Value);
+            this.pnlInfo6.Location = new System.Drawing.Point(26, 52);
+            this.pnlInfo6.Margin = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.pnlInfo6.Name = "pnlInfo6";
+            this.pnlInfo6.Size = new System.Drawing.Size(336, 103);
+            this.pnlInfo6.TabIndex = 5;
+            // 
+            // lblInfo6
+            // 
+            this.lblInfo6.AutoSize = true;
+            this.lblInfo6.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblInfo6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.lblInfo6.Location = new System.Drawing.Point(0, 0);
+            this.lblInfo6.Name = "lblInfo6";
+            this.lblInfo6.Size = new System.Drawing.Size(53, 13);
+            this.lblInfo6.TabIndex = 0;
+            this.lblInfo6.Text = "📋 label6";
+            // 
+            // lblInfo6Value
+            // 
+            this.lblInfo6Value.AutoSize = true;
+            this.lblInfo6Value.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblInfo6Value.Location = new System.Drawing.Point(0, 18);
+            this.lblInfo6Value.Name = "lblInfo6Value";
+            this.lblInfo6Value.Size = new System.Drawing.Size(70, 15);
+            this.lblInfo6Value.TabIndex = 1;
+            this.lblInfo6Value.Text = "Thông tin 6";
+            // 
+            // pnlSearch
+            // 
+            this.pnlSearch.BackColor = System.Drawing.Color.White;
+            this.pnlSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSearch.Controls.Add(this.lblSearchTitle);
+            this.pnlSearch.Controls.Add(this.tableSearch);
+            this.pnlSearch.Location = new System.Drawing.Point(829, 0);
+            this.pnlSearch.Margin = new System.Windows.Forms.Padding(6, 0, 0, 0);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Padding = new System.Windows.Forms.Padding(12);
+            this.pnlSearch.Size = new System.Drawing.Size(200, 100);
+            this.pnlSearch.TabIndex = 2;
+            // 
+            // lblSearchTitle
+            // 
+            this.lblSearchTitle.AutoSize = true;
+            this.lblSearchTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblSearchTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
+            this.lblSearchTitle.Location = new System.Drawing.Point(12, 12);
+            this.lblSearchTitle.Name = "lblSearchTitle";
+            this.lblSearchTitle.Size = new System.Drawing.Size(99, 19);
+            this.lblSearchTitle.TabIndex = 0;
+            this.lblSearchTitle.Text = "🔍  TÌM KIẾM";
+            // 
+            // tableSearch
+            // 
+            this.tableSearch.ColumnCount = 1;
+            this.tableSearch.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableSearch.Controls.Add(this.pnlSearch1, 0, 0);
+            this.tableSearch.Controls.Add(this.pnlSearch2, 0, 1);
+            this.tableSearch.Controls.Add(this.pnlSearch3, 0, 2);
+            this.tableSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableSearch.Location = new System.Drawing.Point(12, 12);
+            this.tableSearch.Name = "tableSearch";
+            this.tableSearch.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.tableSearch.RowCount = 3;
+            this.tableSearch.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableSearch.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableSearch.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableSearch.Size = new System.Drawing.Size(174, 74);
+            this.tableSearch.TabIndex = 1;
+            // 
+            // pnlSearch1
+            // 
+            this.pnlSearch1.Controls.Add(this.lblSearch1);
+            this.pnlSearch1.Controls.Add(this.txtSearch1);
+            this.pnlSearch1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSearch1.Location = new System.Drawing.Point(0, 12);
+            this.pnlSearch1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.pnlSearch1.Name = "pnlSearch1";
+            this.pnlSearch1.Size = new System.Drawing.Size(174, 12);
+            this.pnlSearch1.TabIndex = 0;
+            // 
+            // lblSearch1
+            // 
+            this.lblSearch1.AutoSize = true;
+            this.lblSearch1.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblSearch1.Location = new System.Drawing.Point(0, 0);
+            this.lblSearch1.Name = "lblSearch1";
+            this.lblSearch1.Size = new System.Drawing.Size(38, 13);
+            this.lblSearch1.TabIndex = 0;
+            this.lblSearch1.Text = "label8";
+            // 
+            // txtSearch1
+            // 
+            this.txtSearch1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearch1.Location = new System.Drawing.Point(0, 18);
+            this.txtSearch1.Name = "txtSearch1";
+            this.txtSearch1.Size = new System.Drawing.Size(180, 23);
+            this.txtSearch1.TabIndex = 1;
+            // 
+            // pnlSearch2
+            // 
+            this.pnlSearch2.Controls.Add(this.lblSearch2);
+            this.pnlSearch2.Controls.Add(this.txtSearch2);
+            this.pnlSearch2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSearch2.Location = new System.Drawing.Point(0, 32);
+            this.pnlSearch2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.pnlSearch2.Name = "pnlSearch2";
+            this.pnlSearch2.Size = new System.Drawing.Size(174, 12);
+            this.pnlSearch2.TabIndex = 1;
+            // 
+            // lblSearch2
+            // 
+            this.lblSearch2.AutoSize = true;
+            this.lblSearch2.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblSearch2.Location = new System.Drawing.Point(0, 0);
+            this.lblSearch2.Name = "lblSearch2";
+            this.lblSearch2.Size = new System.Drawing.Size(38, 13);
+            this.lblSearch2.TabIndex = 0;
+            this.lblSearch2.Text = "label9";
+            // 
+            // txtSearch2
+            // 
+            this.txtSearch2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearch2.Location = new System.Drawing.Point(0, 18);
+            this.txtSearch2.Name = "txtSearch2";
+            this.txtSearch2.Size = new System.Drawing.Size(180, 23);
+            this.txtSearch2.TabIndex = 1;
+            // 
+            // pnlSearch3
+            // 
+            this.pnlSearch3.Controls.Add(this.lblSearch3);
+            this.pnlSearch3.Controls.Add(this.txtSearch3);
+            this.pnlSearch3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSearch3.Location = new System.Drawing.Point(3, 55);
+            this.pnlSearch3.Name = "pnlSearch3";
+            this.pnlSearch3.Size = new System.Drawing.Size(168, 16);
+            this.pnlSearch3.TabIndex = 2;
+            // 
+            // lblSearch3
+            // 
+            this.lblSearch3.AutoSize = true;
+            this.lblSearch3.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblSearch3.Location = new System.Drawing.Point(0, 0);
+            this.lblSearch3.Name = "lblSearch3";
+            this.lblSearch3.Size = new System.Drawing.Size(38, 13);
+            this.lblSearch3.TabIndex = 0;
+            this.lblSearch3.Text = "label7";
+            // 
+            // txtSearch3
+            // 
+            this.txtSearch3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearch3.Location = new System.Drawing.Point(0, 18);
+            this.txtSearch3.Name = "txtSearch3";
+            this.txtSearch3.Size = new System.Drawing.Size(180, 23);
+            this.txtSearch3.TabIndex = 1;
+            // 
+            // pnlDataSection
+            // 
+            this.pnlDataSection.Controls.Add(this.lblDataTitle);
+            this.pnlDataSection.Controls.Add(this.dataGridView1);
+            this.pnlDataSection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDataSection.Location = new System.Drawing.Point(0, 300);
+            this.pnlDataSection.Name = "pnlDataSection";
+            this.pnlDataSection.Padding = new System.Windows.Forms.Padding(12);
+            this.pnlDataSection.Size = new System.Drawing.Size(1200, 418);
+            this.pnlDataSection.TabIndex = 0;
+            // 
+            // lblDataTitle
+            // 
+            this.lblDataTitle.AutoSize = true;
+            this.lblDataTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblDataTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(110)))), ((int)(((byte)(253)))));
+            this.lblDataTitle.Location = new System.Drawing.Point(12, 12);
+            this.lblDataTitle.Name = "lblDataTitle";
+            this.lblDataTitle.Size = new System.Drawing.Size(174, 19);
+            this.lblDataTitle.TabIndex = 0;
+            this.lblDataTitle.Text = "📊 DANH SÁCH DỮ LIỆU";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colSTT,
+            this.colVoucherCode,
+            this.colCreateDate,
+            this.colSupplier,
+            this.colProductName,
+            this.colQuantity,
+            this.colUnit,
+            this.colWarehouse,
+            this.colStatus,
+            this.colNote});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1176, 394);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // colSTT
+            // 
+            this.colSTT.FillWeight = 40F;
+            this.colSTT.HeaderText = "STT";
+            this.colSTT.Name = "colSTT";
+            this.colSTT.ReadOnly = true;
+            // 
+            // colVoucherCode
+            // 
+            this.colVoucherCode.HeaderText = "Mã phiếu";
+            this.colVoucherCode.Name = "colVoucherCode";
+            this.colVoucherCode.ReadOnly = true;
+            // 
+            // colCreateDate
+            // 
+            this.colCreateDate.HeaderText = "Ngày tạo";
+            this.colCreateDate.Name = "colCreateDate";
+            this.colCreateDate.ReadOnly = true;
+            // 
+            // colSupplier
+            // 
+            this.colSupplier.HeaderText = "Mã hàng";
+            this.colSupplier.Name = "colSupplier";
+            this.colSupplier.ReadOnly = true;
+            // 
+            // colProductName
+            // 
+            this.colProductName.HeaderText = "Tên hàng";
+            this.colProductName.Name = "colProductName";
+            this.colProductName.ReadOnly = true;
+            // 
+            // colQuantity
+            // 
+            this.colQuantity.HeaderText = "Số lượng";
+            this.colQuantity.Name = "colQuantity";
+            this.colQuantity.ReadOnly = true;
+            // 
+            // colUnit
+            // 
+            this.colUnit.FillWeight = 60F;
+            this.colUnit.HeaderText = "Đơn vị";
+            this.colUnit.Name = "colUnit";
+            this.colUnit.ReadOnly = true;
+            // 
+            // colWarehouse
+            // 
+            this.colWarehouse.FillWeight = 60F;
+            this.colWarehouse.HeaderText = "Kho";
+            this.colWarehouse.Name = "colWarehouse";
+            this.colWarehouse.ReadOnly = true;
+            // 
+            // colStatus
+            // 
+            this.colStatus.HeaderText = "Trạng thái";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
+            // 
+            // colNote
+            // 
+            this.colNote.FillWeight = 120F;
+            this.colNote.HeaderText = "Ghi chú";
+            this.colNote.Name = "colNote";
+            this.colNote.ReadOnly = true;
+            // 
+            // pnlFooter
+            // 
+            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.pnlFooter.Controls.Add(this.btnRefresh);
+            this.pnlFooter.Controls.Add(this.flowStats);
+            this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlFooter.Location = new System.Drawing.Point(0, 718);
+            this.pnlFooter.Name = "pnlFooter";
+            this.pnlFooter.Padding = new System.Windows.Forms.Padding(12);
+            this.pnlFooter.Size = new System.Drawing.Size(1200, 50);
+            this.pnlFooter.TabIndex = 1;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.White;
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnRefresh.Location = new System.Drawing.Point(1088, 12);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(100, 26);
+            this.btnRefresh.TabIndex = 0;
+            this.btnRefresh.Text = "🔄 Làm mới";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            // 
+            // flowStats
+            // 
+            this.flowStats.AutoSize = true;
+            this.flowStats.Controls.Add(this.lblTotal);
+            this.flowStats.Controls.Add(this.lblSuccess);
+            this.flowStats.Controls.Add(this.lblError);
+            this.flowStats.Controls.Add(this.lblPending);
+            this.flowStats.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowStats.Location = new System.Drawing.Point(12, 12);
+            this.flowStats.Name = "flowStats";
+            this.flowStats.Size = new System.Drawing.Size(132, 26);
+            this.flowStats.TabIndex = 1;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblTotal.Location = new System.Drawing.Point(0, 12);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(0, 12, 12, 0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(120, 15);
+            this.lblTotal.TabIndex = 0;
+            this.lblTotal.Text = "📋 Tổng số bản ghi: 7";
+            // 
+            // lblSuccess
+            // 
+            this.lblSuccess.AutoSize = true;
+            this.lblSuccess.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblSuccess.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.lblSuccess.Location = new System.Drawing.Point(0, 39);
+            this.lblSuccess.Margin = new System.Windows.Forms.Padding(0, 12, 12, 0);
+            this.lblSuccess.Name = "lblSuccess";
+            this.lblSuccess.Size = new System.Drawing.Size(95, 15);
+            this.lblSuccess.TabIndex = 1;
+            this.lblSuccess.Text = "✓ Thành công: 5";
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.lblError.Location = new System.Drawing.Point(0, 66);
+            this.lblError.Margin = new System.Windows.Forms.Padding(0, 12, 12, 0);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(48, 15);
+            this.lblError.TabIndex = 2;
+            this.lblError.Text = "✕ Lỗi: 1";
+            // 
+            // lblPending
+            // 
+            this.lblPending.AutoSize = true;
+            this.lblPending.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblPending.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            this.lblPending.Location = new System.Drawing.Point(0, 93);
+            this.lblPending.Margin = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.lblPending.Name = "lblPending";
+            this.lblPending.Size = new System.Drawing.Size(89, 15);
+            this.lblPending.TabIndex = 3;
+            this.lblPending.Text = "⏳ Đang xử lý: 1";
+            // 
+            // DuaHangVaoKho
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1200, 768);
+            this.Controls.Add(this.pnlDataSection);
+            this.Controls.Add(this.pnlFooter);
+            this.Controls.Add(this.pnlContent);
+            this.Controls.Add(this.pnlHeader);
+            this.Name = "DuaHangVaoKho";
+            this.Text = "Nhập kho tự động";
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
+            this.pnlContent.ResumeLayout(false);
+            this.tableContent.ResumeLayout(false);
+            this.pnlFeature.ResumeLayout(false);
+            this.pnlFeature.PerformLayout();
+            this.pnlInfo.ResumeLayout(false);
+            this.pnlInfo.PerformLayout();
+            this.tableInfo.ResumeLayout(false);
+            this.pnlInfo1.ResumeLayout(false);
+            this.pnlInfo1.PerformLayout();
+            this.pnlInfo4.ResumeLayout(false);
+            this.pnlInfo4.PerformLayout();
+            this.pnlInfo2.ResumeLayout(false);
+            this.pnlInfo2.PerformLayout();
+            this.pnlInfo5.ResumeLayout(false);
+            this.pnlInfo5.PerformLayout();
+            this.pnlInfo3.ResumeLayout(false);
+            this.pnlInfo3.PerformLayout();
+            this.pnlInfo6.ResumeLayout(false);
+            this.pnlInfo6.PerformLayout();
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
+            this.tableSearch.ResumeLayout(false);
+            this.pnlSearch1.ResumeLayout(false);
+            this.pnlSearch1.PerformLayout();
+            this.pnlSearch2.ResumeLayout(false);
+            this.pnlSearch2.PerformLayout();
+            this.pnlSearch3.ResumeLayout(false);
+            this.pnlSearch3.PerformLayout();
+            this.pnlDataSection.ResumeLayout(false);
+            this.pnlDataSection.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.pnlFooter.ResumeLayout(false);
+            this.pnlFooter.PerformLayout();
+            this.flowStats.ResumeLayout(false);
+            this.flowStats.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.Panel pnlDataSection;
+        private System.Windows.Forms.Panel pnlFooter;
+        private System.Windows.Forms.PictureBox picIcon;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblSubtitle;
+        private System.Windows.Forms.TableLayoutPanel tableContent;
+        private System.Windows.Forms.Panel pnlFeature;
+        private System.Windows.Forms.Label lblFeatureTitle;
+        private System.Windows.Forms.Button btnCreateVoucher;
+        private System.Windows.Forms.Button btnExportData;
+        private System.Windows.Forms.Panel pnlInfo;
+        private System.Windows.Forms.Label lblInfoTitle;
+        private System.Windows.Forms.TableLayoutPanel tableInfo;
+        private System.Windows.Forms.Panel pnlInfo1;
+        private System.Windows.Forms.Label lblInfo1;
+        private System.Windows.Forms.Label lblInfo1Value;
+        private System.Windows.Forms.Panel pnlInfo2;
+        private System.Windows.Forms.Label lblInfo2;
+        private System.Windows.Forms.Label lblInfo2Value;
+        private System.Windows.Forms.Panel pnlInfo3;
+        private System.Windows.Forms.Label lblInfo3;
+        private System.Windows.Forms.Label lblInfo3Value;
+        private System.Windows.Forms.Panel pnlInfo4;
+        private System.Windows.Forms.Label lblInfo4;
+        private System.Windows.Forms.Label lblInfo4Value;
+        private System.Windows.Forms.Panel pnlInfo5;
+        private System.Windows.Forms.Label lblInfo5;
+        private System.Windows.Forms.Label lblInfo5Value;
+        private System.Windows.Forms.Panel pnlInfo6;
+        private System.Windows.Forms.Label lblInfo6;
+        private System.Windows.Forms.Label lblInfo6Value;
+        private System.Windows.Forms.Panel pnlSearch;
+        private System.Windows.Forms.Label lblSearchTitle;
+        private System.Windows.Forms.TableLayoutPanel tableSearch;
+        private System.Windows.Forms.Panel pnlSearch1;
+        private System.Windows.Forms.Label lblSearch1;
+        private System.Windows.Forms.TextBox txtSearch1;
+        private System.Windows.Forms.Panel pnlSearch2;
+        private System.Windows.Forms.Label lblSearch2;
+        private System.Windows.Forms.TextBox txtSearch2;
+        private System.Windows.Forms.Panel pnlSearch3;
+        private System.Windows.Forms.Label lblSearch3;
+        private System.Windows.Forms.TextBox txtSearch3;
+        private System.Windows.Forms.Label lblDataTitle;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSTT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colVoucherCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCreateDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colWarehouse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
+        private System.Windows.Forms.FlowLayoutPanel flowStats;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label lblSuccess;
+        private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblPending;
+        private System.Windows.Forms.Button btnRefresh;
+    }
+}

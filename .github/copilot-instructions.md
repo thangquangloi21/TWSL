@@ -1,0 +1,17 @@
+# Copilot Instructions
+
+## General Guidelines
+- Keep suggestions concise and actionable.
+- Use imperative mood and follow project-specific rules.
+
+## Project Guidelines
+- Project targets .NET Framework 4.7.2 — do not use TextBox.PlaceholderText (unsupported). Use EM_SETCUEBANNER via SendMessage or a custom watermark solution instead.
+
+## WinForms UI Guidelines
+- Use modern UI layouts with structured sections: Header, panels for features/info/search, and a footer with statistics.
+- Apply modern layout patterns consistently across WinForms redesigns.
+- Use DataGridView for lists with a status column implemented via an Image column or custom cell painting.
+  - Use consistent status icons: green checkmark for OK, red X for error, orange warning for warnings.
+  - Ensure icons scale on HiDPI and ship as resources; avoid fixed-size raster images.
+  - Provide tooltips or accessible text for status icons for screen readers.
+- Use Vietnamese labels for UI text; make text localization-ready by using resource files rather than hard-coded strings.

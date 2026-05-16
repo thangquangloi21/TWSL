@@ -1,0 +1,4 @@
+﻿# Copilot Instructions
+
+## Project Guidelines
+- Project targets .NET Framework 4.7.2 — do not use TextBox.PlaceholderText (unsupported). Use EM_SETCUEBANNER via SendMessage or a custom watermark solution instead.
