@@ -35,7 +35,16 @@ namespace TWSL.Forms.main.WH.TaoFileR200
 
         private void KiemTraSoPhieu()
         {
-            Console.WriteLine(INPSoPhieuTbx.Text);
+            var ThemDuLieu = new AddDuLieu();
+            this.Close();
+            ThemDuLieu.ShowDialog();
+            
+            //Console.WriteLine(soPhieu);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

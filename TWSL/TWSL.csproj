@@ -251,6 +251,12 @@
     <Compile Include="Forms\main\WH\LapPhieu\ChonMe.Designer.cs">
       <DependentUpon>ChonMe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\main\WH\TaoFileR200\AddDuLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\WH\TaoFileR200\AddDuLieu.Designer.cs">
+      <DependentUpon>AddDuLieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\main\WH\TaoFileR200\DuaHangVaoKho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -415,6 +421,9 @@
     <EmbeddedResource Include="Forms\main\WH\LapPhieu\ChonMe.resx">
       <DependentUpon>ChonMe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\WH\TaoFileR200\AddDuLieu.resx">
+      <DependentUpon>AddDuLieu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\TaoFileR200\DuaHangVaoKho.resx">
       <DependentUpon>DuaHangVaoKho.cs</DependentUpon>
     </EmbeddedResource>
@@ -556,6 +565,30 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Agent\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barcode-scan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clean.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clean %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scanner %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scanning %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" />
