@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace TWSL.Forms.main.WH.TaoFileR200
 {
-    public partial class AddPaleet : Form
+    public partial class ChonKhoTD : Form
     {
-        public AddPaleet()
+        public ChonKhoTD()
         {
             InitializeComponent();
-        }
-
-        private void btnCheckPallet_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TWSL.Common;
 
 namespace TWSL.Forms.main.WH.TaoFileR200
 {
@@ -35,7 +36,19 @@ namespace TWSL.Forms.main.WH.TaoFileR200
 
         private void KiemTraSoPhieu()
         {
-            var ThemDuLieu = new AddDuLieu();
+            if (string.IsNullOrEmpty(INPSoPhieuTbx.Text))
+            {
+                MessageBox.Show("Vui lòng nhập số phiếu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (NhapKho.CheckSoPhieu(INPSoPhieuTbx.Text) == false) {
+                MessageBox.Show("Phiếu đã nhập chưa được tạo hoặc không hợp lệ. ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            var ThemDuLieu = new AddDuLieu(INPSoPhieuTbx.Text);
             this.Close();
             ThemDuLieu.ShowDialog();
             

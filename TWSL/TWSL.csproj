@@ -147,6 +147,7 @@
     <Compile Include="Common\Config.cs" />
     <Compile Include="Common\GlobalState.cs" />
     <Compile Include="Common\ImportData.cs" />
+    <Compile Include="Common\NhapKho.cs" />
     <Compile Include="Common\TaoPhieu.cs" />
     <Compile Include="Common\UtilityFunctions.cs" />
     <Compile Include="Forms\history\his_data_tgtk.cs">
@@ -256,6 +257,12 @@
     </Compile>
     <Compile Include="Forms\main\WH\TaoFileR200\AddDuLieu.Designer.cs">
       <DependentUpon>AddDuLieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\main\WH\TaoFileR200\ChonKhoTD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\WH\TaoFileR200\ChonKhoTD.Designer.cs">
+      <DependentUpon>ChonKhoTD.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\main\WH\TaoFileR200\DuaHangVaoKho.cs">
       <SubType>Form</SubType>
@@ -423,6 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\TaoFileR200\AddDuLieu.resx">
       <DependentUpon>AddDuLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\WH\TaoFileR200\ChonKhoTD.resx">
+      <DependentUpon>ChonKhoTD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\TaoFileR200\DuaHangVaoKho.resx">
       <DependentUpon>DuaHangVaoKho.cs</DependentUpon>
