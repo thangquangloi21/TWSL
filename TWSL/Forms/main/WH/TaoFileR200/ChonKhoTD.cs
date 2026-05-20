@@ -12,9 +12,25 @@ namespace TWSL.Forms.main.WH.TaoFileR200
 {
     public partial class ChonKhoTD : Form
     {
-        public ChonKhoTD()
+        private string SoPhieu;
+        public ChonKhoTD(string Sophieu)
         {
             InitializeComponent();
+            SoPhieu = Sophieu;
+        }
+
+        private void KhoA_Click(object sender, EventArgs e)
+        {
+            var ThemDuLieu = new AddDuLieu(SoPhieu, "A");
+            this.Close();
+            ThemDuLieu.ShowDialog();
+        }
+
+        private void KhoB_Click(object sender, EventArgs e)
+        {
+            var ThemDuLieu = new AddDuLieu(SoPhieu, "B");
+            this.Close();
+            ThemDuLieu.ShowDialog();
         }
     }
 }

@@ -38,6 +38,45 @@ namespace TWSL.Common
         }
 
 
+        public static string CheckPhieu(string soPhieu)
+        {
+            try
+            {
+                var sql = "SELECT * FROM [TWSL].[dbo].[TaoPhieu] where SoPhieu = @SoPhieu";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@SoPhieu", soPhieu)
+                };
+                var dt = DatabaseHelper.ExecuteQuery(sql, parameters);
+
+                // nếu có kết quả thì đã tồn tại
+                if (dt.Rows.Count > 0)
+                {
+                    var row = dt.Rows[0];
+            
+                    // Kiểm tra xem cột Note có dữ liệu không
+                    bool hasNote = row["Note"] != DBNull.Value && !string.IsNullOrWhiteSpace(row["Note"].ToString());
+    
+                    // Kiểm tra thời gian thoát khí = 0
+                    bool exitTimeIsZero = Convert.ToInt32(row["ThoiGianThoatKhi"]) == 0;
+    
+                    // Nếu có Note Hoặc thời gian thoát khí = 0
+                    if (hasNote || exitTimeIsZero)
+                    {
+                        return "chuyenkhoc";
+                    }
+                }
+
+                return "pass";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi kiểm tra phiếu đã tạo: {ex.Message}");
+            }
+            return "loi";
+        }
+
+
     }
 
 

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.KhoA = new System.Windows.Forms.Button();
             this.KhoB = new System.Windows.Forms.Button();
+            this.KhoA = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,15 +48,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CHỌN KHO THOÁT KHÍ";
             // 
-            // KhoA
-            // 
-            this.KhoA.Location = new System.Drawing.Point(51, 83);
-            this.KhoA.Name = "KhoA";
-            this.KhoA.Size = new System.Drawing.Size(194, 117);
-            this.KhoA.TabIndex = 0;
-            this.KhoA.Text = "KHO A";
-            this.KhoA.UseVisualStyleBackColor = true;
-            // 
             // KhoB
             // 
             this.KhoB.Location = new System.Drawing.Point(323, 83);
@@ -65,6 +56,17 @@
             this.KhoB.TabIndex = 1;
             this.KhoB.Text = "KHO B";
             this.KhoB.UseVisualStyleBackColor = true;
+            this.KhoB.Click += new System.EventHandler(this.KhoB_Click);
+            // 
+            // KhoA
+            // 
+            this.KhoA.Location = new System.Drawing.Point(51, 83);
+            this.KhoA.Name = "KhoA";
+            this.KhoA.Size = new System.Drawing.Size(194, 117);
+            this.KhoA.TabIndex = 0;
+            this.KhoA.Text = "KHO A";
+            this.KhoA.UseVisualStyleBackColor = true;
+            this.KhoA.Click += new System.EventHandler(this.KhoA_Click);
             // 
             // ChonKhoTD
             // 
@@ -72,7 +74,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 263);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ChonKhoTD";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ChonKhoTD";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

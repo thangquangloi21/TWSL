@@ -36,21 +36,32 @@ namespace TWSL.Forms.main.WH.TaoFileR200
 
         private void KiemTraSoPhieu()
         {
+            // Kiểm tra nếu thời gian thoát khí = 0 thì yêu cầu chọn kho thoát khí
             if (string.IsNullOrEmpty(INPSoPhieuTbx.Text))
             {
                 MessageBox.Show("Vui lòng nhập số phiếu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                INPSoPhieuTbx.SelectAll();
                 return;
             }
 
             if (NhapKho.CheckSoPhieu(INPSoPhieuTbx.Text) == false) {
                 MessageBox.Show("Phiếu đã nhập chưa được tạo hoặc không hợp lệ. ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                INPSoPhieuTbx.SelectAll();
+                return;
+            }
+
+            if (NhapKho.CheckPhieu(INPSoPhieuTbx.Text) == "chuyenkhoc") 
+            {
+                var ThemDuLieu = new AddDuLieu(INPSoPhieuTbx.Text, "C");
+                this.Close();
+                ThemDuLieu.ShowDialog();
                 return;
             }
 
 
-            var ThemDuLieu = new AddDuLieu(INPSoPhieuTbx.Text);
+            var ChonKhoTD = new ChonKhoTD(INPSoPhieuTbx.Text);
             this.Close();
-            ThemDuLieu.ShowDialog();
+            ChonKhoTD.ShowDialog();
             
             //Console.WriteLine(soPhieu);
         }

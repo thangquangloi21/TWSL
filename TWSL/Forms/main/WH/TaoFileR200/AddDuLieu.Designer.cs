@@ -182,6 +182,7 @@
             this.DocPalletBTN.TabIndex = 2;
             this.DocPalletBTN.Text = "Đọc";
             this.DocPalletBTN.UseVisualStyleBackColor = true;
+            this.DocPalletBTN.Click += new System.EventHandler(this.DocPalletBTN_Click);
             // 
             // MaPalletTBX
             // 
