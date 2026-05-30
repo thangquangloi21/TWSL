@@ -17,6 +17,7 @@ namespace TWSL.Forms.main.WH
         public DocMaVach()
         {
             InitializeComponent();
+
         }
         //01589352212000521728013110250827TC
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -29,7 +30,7 @@ namespace TWSL.Forms.main.WH
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                string MaThungXX = textBox1.Text.Trim();
+                string MaThungXX = DocMaVachTbx.Text.Trim();
                 string prod_line = "";
                 string itemcode = "";
                 if (MaThungXX.Length > 26 && MaThungXX.Length < 35)
@@ -65,20 +66,35 @@ namespace TWSL.Forms.main.WH
                     }
 
                     //Console.WriteLine
-                    this.Close();
+                    //this.Close();
                     //var selectbath = new ChonMe(itemcode, get_lot);
                     //selectbath.ShowDialog();
                     //tao phieu 
                     var datalot = ImportData.GetDataTT(itemcode, get_lot);
-                    if (datalot.Rows.Count == 0) { 
+                    if (datalot.Rows.Count == 0)
+                    {
                         MessageBox.Show("Dữ liệu lô không tồn tại.", "Thông Báo");
                         return;
                     }
-
+                    // lấy trạng thái trả về
                     var dp = new XemChiTiet("TAOPHIEU", datalot);
                     dp.ShowDialog();
+                    if (dp.KetQua)
+                    {
+                        this.Close();
+                    }
+                    DocMaVachTbx.Text = "";
+                    DocMaVachTbx.Focus();
 
 
+
+                }
+                else
+                {
+                    MessageBox.Show("Mã vạch không hợp lệ, Vui lòng kiểm tra lại.", "Thông Báo");
+                    DocMaVachTbx.Text = "";
+                    DocMaVachTbx.Focus();
+                    return;
                 }
             }
         }
@@ -86,6 +102,12 @@ namespace TWSL.Forms.main.WH
         private void button1_Click(object sender, EventArgs e)
         {
            docmavach(sender, new KeyPressEventArgs((char)Keys.Enter));
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

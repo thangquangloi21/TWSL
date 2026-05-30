@@ -36,6 +36,9 @@ namespace TWSL.Forms.main.SL.SL12
 
 
 
+
+
+
             //MessageBox.Show($"Start: {start}, End: {end}");
             string sql_his_master = "SELECT DISTINCT BatchNo AS 'Số Mẻ', NameUser as 'Người tạo', CONVERT(DATE,DateTime) as 'Ngày tạo', FORMAT(DateTime,'HH:mm:ss') as 'Giờ tạo' , Status as 'Trạng Thái'  from InfoBatchNoF12 WHERE [DateTime] >= @start AND [DateTime] < @end ";
             if (!string.IsNullOrEmpty(batch_no))

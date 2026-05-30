@@ -30,32 +30,33 @@ namespace TWSL.Forms.main.WH
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             var create_from_awm = new DocMaVach();
             create_from_awm.ShowDialog();
+            updateData();
         }
 
 
          private void updateData()
         {
-            DataTable dt = TaoPhieu.LoadPhieu();
+
+            DataTable dt = TaoPhieu.LoadPhieu(IDtbx.Text, NgaytaodatePick.Value.ToString("yyyy-MM-dd"));
 
             DataTaoPhieu.AutoGenerateColumns = false;
             DataTaoPhieu.Columns.Clear();
 
             var columns = new (string dataField, string header, string format)[]
             {
-                ("SoPhieu",        "Số phiếu",   null),
-                ("SoMeTT",          "Số Mẻ Tiệt Trùng",         null),
-                ("MaSP",         "Mã Sản Phẩm",         null),
-                ("LotSP",     "Lot",             null),
-                ("SoLuong",         "Số Lượng",      null),
-                ("MayTT",  "Máy TT",           null),
-                 ("ThoiGianThoatKhi",  "Thời gian thoát khí",           null),
-                  ("MaxPallet",  "Max/Pallet",           null),
-                   ("username",  "Người tạo",           null),
-                ("ThoiGianLap", "Thời gian lập phiếu",      "dd/MM/yyyy HH:mm:ss"),
-                ("Note",      "Note",         null),
+                ("SoPhieu","Số phiếu",null),
+                ("SoMeTT","Số Mẻ Tiệt Trùng",null),
+                ("MaSP","Mã Sản Phẩm",null),
+                ("LotSP","Lot",null),
+                ("SoLuong","Số Lượng",null),
+                ("MayTT","Máy TT",null),
+                 ("ThoiGianThoatKhi","Thời gian thoát khí",null),
+                  ("MaxPallet","Max/Pallet",null),
+                   ("username","Người tạo",           null),
+                ("ThoiGianLap","Thời gian lập phiếu","dd/MM/yyyy HH:mm:ss"),
+                ("Note","Note",null),
             };
 
             foreach (var (dataField, header, format) in columns)
@@ -169,6 +170,11 @@ namespace TWSL.Forms.main.WH
                 //Console.WriteLine($"{bat}");
 
             }
+        }
+
+        private void TimKiemBTNFunc(object sender, EventArgs e)
+        {
+            updateData();
         }
     }
 }

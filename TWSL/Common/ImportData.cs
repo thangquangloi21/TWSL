@@ -1,8 +1,10 @@
-﻿using Org.BouncyCastle.Crypto.IO;
+﻿using OfficeOpenXml;
+using Org.BouncyCastle.Crypto.IO;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
@@ -318,11 +320,76 @@ namespace TWSL.Common
             
         }
 
-    public static DataTable GetData()
+    public static DataTable GetData(string SanPham, string Lot, string ngaybatdau, string ngayketthuc)
         {
-            string sql = "SELECT TOP (1000) [SoMeTT] ,[MaSP] ,[LotSP] ,[SoLuongSP] ,[MayTT] ,[ThoiGianPost] ,[NgayGioUpload] ,u.username  ,[TrangThai] FROM [TWSL].[dbo].[ImportData] dt  Left join [TWSL].[dbo].[users] u on dt.IdUser = u.id";
-            DataTable result = DatabaseHelper.ExecuteQuery(sql);
+
+            string sql = @"SELECT TOP (1000) [SoMeTT] ,[MaSP] ,[LotSP] ,[SoLuongSP] ,[MayTT] ,[ThoiGianPost] ,[NgayGioUpload] ,u.username  ,[TrangThai] 
+                            FROM [TWSL].[dbo].[ImportData] dt  
+                            Left join [TWSL].[dbo].[users] u 
+                            on dt.IdUser = u.id 
+                            WHERE CAST(NgayGioUpload AS date) BETWEEN @Ngaybatdau AND @Ngayketthuc ";
+            var parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@Ngaybatdau", ngaybatdau),
+                new SqlParameter("@Ngayketthuc", ngayketthuc)
+            };
+            if (!string.IsNullOrEmpty(SanPham))
+            {
+                sql += "AND MaSP = @SanPham ";
+                parameters.Add(new SqlParameter("@SanPham", SanPham));
+            }
+            if (!string.IsNullOrEmpty(Lot))
+            {
+                sql += "AND LotSP = @Lot";
+                parameters.Add(new SqlParameter("@Lot", Lot));
+            }
+            DataTable result = DatabaseHelper.ExecuteQuery(sql, parameters.ToArray());
             return result;
         }
+
+        public static void ExportToExcelEPPlus(DataGridView dataGridView, string filePath)
+        {
+            try
+            {
+                // Tạo file Excel mới
+                using (var package = new ExcelPackage(new FileInfo(filePath)))
+                {
+                    // Tạo một worksheet
+                    var worksheet = package.Workbook.Worksheets.Add("Data");
+
+                    // Xuất tiêu đề cột
+                    for (int i = 0; i < dataGridView.Columns.Count; i++)
+                    {
+                        worksheet.Cells[1, i + 1].Value = dataGridView.Columns[i].HeaderText;
+                        worksheet.Cells[1, i + 1].Style.Font.Bold = true; // In đậm tiêu đề
+                        worksheet.Cells[1, i + 1].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        worksheet.Cells[1, i + 1].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray); // Màu nền tiêu đề
+                    }
+
+                    // Xuất dữ liệu từ các dòng
+                    for (int i = 0; i < dataGridView.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridView.Columns.Count; j++)
+                        {
+                            worksheet.Cells[i + 2, j + 1].Value = dataGridView.Rows[i].Cells[j].Value?.ToString();
+                        }
+                    }
+
+                    // Tự động điều chỉnh kích thước cột
+                    worksheet.Cells.AutoFitColumns();
+
+                    // Lưu file Excel
+                    package.Save();
+                }
+
+                MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xuất file Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
+
+
 }

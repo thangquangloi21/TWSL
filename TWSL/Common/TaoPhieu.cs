@@ -141,16 +141,21 @@ namespace TWSL.Common
             return false;
         }
 
-        public static DataTable LoadPhieu()
+        public static DataTable LoadPhieu(string id , string ngaytao)
         {
             try
             {
-                var sql = "SELECT TOP (1000) [SoPhieu] ,[SoMeTT] ,[MaSP] ,[LotSP] ,[SoLuong] ,[MayTT] ,[ThoiGianThoatKhi] ,[MaxPallet] ,u.username ,[ThoiGianLap] ,[Note] FROM [TWSL].[dbo].[TaoPhieu] left join users u on IdNguoiLap = u.id ";
-                SqlParameter[] parameters = new SqlParameter[]
+                var sql = "SELECT TOP (1000) [SoPhieu] ,[SoMeTT] ,[MaSP] ,[LotSP] ,[SoLuong] ,[MayTT] ,[ThoiGianThoatKhi] ,[MaxPallet] ,u.username ,[ThoiGianLap] ,[Note] FROM [TWSL].[dbo].[TaoPhieu] left join users u on IdNguoiLap = u.id WHERE CAST(ThoiGianLap AS date) = @ngaytao  ";
+                var parameters = new List<SqlParameter>
                 {
-                    new SqlParameter("@soPhieu", "")
+                    new SqlParameter("@ngaytao", ngaytao)
                 };
-                var dt = DatabaseHelper.ExecuteQuery(sql, parameters);
+                if (!string.IsNullOrEmpty(id))
+                {
+                    sql += "AND IdNguoiLap = @id";
+                    parameters.Add(new SqlParameter("@id", id));
+                }
+                var dt = DatabaseHelper.ExecuteQuery(sql, parameters.ToArray());
                 return dt;
             }
             catch (Exception ex)

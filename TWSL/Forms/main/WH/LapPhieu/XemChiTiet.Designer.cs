@@ -35,6 +35,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.viewdata = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewdata)).BeginInit();
@@ -43,6 +44,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.SuaThongTinBTN);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.Exit);
@@ -55,7 +57,7 @@
             // SuaThongTinBTN
             // 
             this.SuaThongTinBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SuaThongTinBTN.Location = new System.Drawing.Point(594, 20);
+            this.SuaThongTinBTN.Location = new System.Drawing.Point(732, 20);
             this.SuaThongTinBTN.Name = "SuaThongTinBTN";
             this.SuaThongTinBTN.Size = new System.Drawing.Size(166, 40);
             this.SuaThongTinBTN.TabIndex = 2;
@@ -66,7 +68,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(804, 20);
+            this.button1.Location = new System.Drawing.Point(489, 20);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 40);
             this.button1.TabIndex = 1;
@@ -77,7 +79,7 @@
             // Exit
             // 
             this.Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Exit.Location = new System.Drawing.Point(370, 20);
+            this.Exit.Location = new System.Drawing.Point(985, 20);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(166, 40);
             this.Exit.TabIndex = 0;
@@ -119,6 +121,17 @@
             this.viewdata.Size = new System.Drawing.Size(1390, 430);
             this.viewdata.TabIndex = 0;
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(230, 20);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(166, 40);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Thoát và tạo lại";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.ThoatVaTaoLai);
+            // 
             // XemChiTiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,5 +160,6 @@
         private System.Windows.Forms.DataGridView viewdata;
         private System.Windows.Forms.Button SuaThongTinBTN;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

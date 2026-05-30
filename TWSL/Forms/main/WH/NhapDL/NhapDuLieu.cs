@@ -29,14 +29,15 @@ namespace TWSL.Forms.main.SL.SL1
             loading = new loading_wait();
             //Logger.Log("INFO", $"{User_id} Vào chức năng quản lý Master {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
             this.Controls.Add(loading);
-            TgKetThuc.Value = DateTime.Now.AddDays(1);
+            //TgKetThuc.Value = DateTime.Now.AddDays(1);
             //Barcode.ReadOnly = true;
         }
 
 
         private void updateData()
         {
-            DataTable dt = ImportData.GetData();
+
+            DataTable dt = ImportData.GetData(MaSanPhamTbx.Text.Trim(), MaLotTBX.Text.Trim(), ChonNgayBatDau.Value.ToString("yyyy-MM-dd"), ChonNgayKetThuc.Value.ToString("yyyy-MM-dd"));
 
             DataBatchNo.AutoGenerateColumns = false;
             DataBatchNo.Columns.Clear();
@@ -121,7 +122,7 @@ namespace TWSL.Forms.main.SL.SL1
         }
 
 
-        private void UpLoadFile(string filePath)
+        private string UpLoadFile(string filePath)
         {
             // Bạn cần cài đặt thư viện EPPlus để làm việc với file Excel
             using (var package = new OfficeOpenXml.ExcelPackage(new FileInfo(filePath)))
@@ -139,11 +140,13 @@ namespace TWSL.Forms.main.SL.SL1
                 // kiểm tra xem đúng định dạng file chưa
                 if (MASAP != "Material" || SOLO != "Batch" || SOME != "Document Header Text" || NGAYPOST != "Posting Date" || SOLUONG != "Quantity")
                 {
-                    MessageBox.Show("File chưa đúng định dạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+                    //MessageBox.Show("File chưa đúng định dạng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return "Error File";
                 }
 
-
+                int OK = 0;
+                int Trung = 0;
+                int NG = 0;
                 // Duyệt qua từng hàng và cột để lấy dữ liệu
                 //lấy thời gian ngày tháng hiện tại
                 DateTime time = DateTime.Now;
@@ -154,6 +157,7 @@ namespace TWSL.Forms.main.SL.SL1
                     if (string.IsNullOrEmpty(MeTT))
                     {
                         // Bỏ qua hàng nếu cột MeTT rỗng
+                        NG += 1;
                         continue;
                     }
                     string MaSap = worksheet.Cells[row, 1].Value?.ToString().Trim(); ;
@@ -165,6 +169,7 @@ namespace TWSL.Forms.main.SL.SL1
 
                     if (SoMe.Length > 10)   
                     {
+                        NG += 1;
                         continue;
                     }
                     string SoMay = ImportData.getmachine_no(SoMe);
@@ -173,10 +178,12 @@ namespace TWSL.Forms.main.SL.SL1
                     //kiểm tra dữ liệu đã tồn tại trong database chưa
                     if (ImportData.CheckMeTT(SoMe, MaSap, SoLo) == 1)
                     {
+                        Trung += 1;
                         continue;
                     }
 
                     if (MaSanPham == "Null") {
+                        NG += 1;
                         continue;
                     }
 
@@ -189,10 +196,11 @@ namespace TWSL.Forms.main.SL.SL1
                     // so me / ma mes / ma sap / lot / qty / may tt / postdate / tg upload / id nguoi upload / status
                     // Đẩy dữ liệu vào DB
                     ImportData.InsertSL(SoMe, MaSanPham, MaSap, SoLo, SoLuong, SoMay, NgayPost, UtilityFunctions.getdate_time1(), AppData.Instance.CurrentUserId, "Nhập Mới");
-
+                    OK +=1;
 
                     //MessageBox.Show($"Mẻ tiệt trùng: {MeTT}\n Mã sản phẩm: {MaSanPham}\n Lot sản phẩm: {LotSanPham}\n Số lượng: {SoLuong}\n Thời gian bắt đầu tiệt trùng: {TgBatDauTT}\n Thời gian kết thúc tiệt trùng: {TgKetThucTT}\n Ngày kết thúc tiệt trùng: {NgayKetThucTT}\n Máy tiệt trùng: {MayTT}", "Dữ liệu đọc từ file", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                return $"Upload thành công Trùng dữ liệu: {Trung} OK: {OK}, NG: {NG}";
             }
         }
 
@@ -267,6 +275,17 @@ namespace TWSL.Forms.main.SL.SL1
         //        }
         //    }
         //}
+        private void showIfo(string noti)
+        {
+            if (noti == "Error File")
+            {
+                MessageBox.Show("File chưa đúng định dạng. Vui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+             
+             MessageBox.Show($"{noti}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
         private void StatusBtn_Click(object sender, EventArgs e)
         {
             string filePath = LinkFile.Text;
@@ -275,12 +294,14 @@ namespace TWSL.Forms.main.SL.SL1
             {
                 MessageBox.Show("Vui lòng chọn file trước khi tải lên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }    
-
+            }
+            string result = "";
             loading.ShowLoading();
             Task.Run(() =>
             {
-                UpLoadFile(filePath);
+                result = UpLoadFile(filePath);
+                
+
                 //upload_master(filePath);
                 //MessageBox.Show("đang hoàn thành!");
 
@@ -288,19 +309,30 @@ namespace TWSL.Forms.main.SL.SL1
                 {
                     loading.HideLoading();
                     //MessageBox.Show("Hoàn thành!");
-
-                    //Update_data();
+                    showIfo(result);
+                    Console.WriteLine(result);
+                    updateData();
                 }));
             });
+
+           
+
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //SLFunc.CheckMeTT(LinkFile.Text);
+            
+            updateData();
         }
 
         private void InputSL12_Load(object sender, EventArgs e)
         {
+
+            ChonNgayBatDau.Value = DateTime.Now.AddDays(-1);
+            ChonNgayKetThuc.Value = DateTime.Now;
+
             loading.ShowLoading();
             Task.Run(() =>
             {
@@ -318,6 +350,36 @@ namespace TWSL.Forms.main.SL.SL1
                 }));
             });
           
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Console.WriteLine(ChonNgayBatDau.Text);
+            Console.WriteLine(ChonNgayKetThuc.Text);
+        }
+
+        private void ExportBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Files|*.xlsx";
+                    saveFileDialog.Title = "Lưu file Excel";
+                    saveFileDialog.DefaultExt = "xlsx";
+                    saveFileDialog.AddExtension = true;
+                    saveFileDialog.FileName = "Master" + DateTime.Now.ToString("yyMMddHHmmss");
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        ImportData.ExportToExcelEPPlus(DataBatchNo, saveFileDialog.FileName);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

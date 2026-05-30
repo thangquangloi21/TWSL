@@ -33,7 +33,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.SaveDataBtn = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.DocThungSXBTN = new System.Windows.Forms.Button();
             this.MaThungTBX = new System.Windows.Forms.TextBox();
@@ -50,7 +50,7 @@
             this.DocDuLieuLBL = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CHECKDATAVIEW = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -67,7 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHECKDATAVIEW)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -89,7 +89,7 @@
             // 
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Controls.Add(this.pictureBox1);
-            this.groupBox5.Controls.Add(this.button3);
+            this.groupBox5.Controls.Add(this.SaveDataBtn);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(965, 16);
             this.groupBox5.Name = "groupBox5";
@@ -117,18 +117,19 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // button3
+            // SaveDataBtn
             // 
-            this.button3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::TWSL.Properties.Resources.search;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(94, 86);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(165, 44);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Lưu ngay";
-            this.button3.UseVisualStyleBackColor = true;
+            this.SaveDataBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveDataBtn.Image = global::TWSL.Properties.Resources.search;
+            this.SaveDataBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SaveDataBtn.Location = new System.Drawing.Point(94, 86);
+            this.SaveDataBtn.Name = "SaveDataBtn";
+            this.SaveDataBtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.SaveDataBtn.Size = new System.Drawing.Size(165, 44);
+            this.SaveDataBtn.TabIndex = 0;
+            this.SaveDataBtn.Text = "Lưu ngay";
+            this.SaveDataBtn.UseVisualStyleBackColor = true;
+            this.SaveDataBtn.Click += new System.EventHandler(this.LuuDuLieuADD);
             // 
             // groupBox4
             // 
@@ -151,6 +152,7 @@
             this.DocThungSXBTN.TabIndex = 3;
             this.DocThungSXBTN.Text = "Đọc";
             this.DocThungSXBTN.UseVisualStyleBackColor = true;
+            this.DocThungSXBTN.Click += new System.EventHandler(this.DocThungSXBTN_Click);
             // 
             // MaThungTBX
             // 
@@ -216,6 +218,7 @@
             this.button4.TabIndex = 0;
             this.button4.Text = "Xoá hết";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.ClearData);
             // 
             // panel1
             // 
@@ -291,7 +294,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.CHECKDATAVIEW);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 37);
             this.groupBox2.Name = "groupBox2";
@@ -299,14 +302,19 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
-            // dataGridView1
+            // CHECKDATAVIEW
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1289, 341);
-            this.dataGridView1.TabIndex = 0;
+            this.CHECKDATAVIEW.AllowUserToAddRows = false;
+            this.CHECKDATAVIEW.AllowUserToDeleteRows = false;
+            this.CHECKDATAVIEW.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CHECKDATAVIEW.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.CHECKDATAVIEW.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CHECKDATAVIEW.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CHECKDATAVIEW.Location = new System.Drawing.Point(3, 16);
+            this.CHECKDATAVIEW.Name = "CHECKDATAVIEW";
+            this.CHECKDATAVIEW.ReadOnly = true;
+            this.CHECKDATAVIEW.Size = new System.Drawing.Size(1289, 341);
+            this.CHECKDATAVIEW.TabIndex = 0;
             // 
             // panel4
             // 
@@ -368,7 +376,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CHECKDATAVIEW)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -392,11 +400,11 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button SaveDataBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button DocThungSXBTN;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView CHECKDATAVIEW;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;

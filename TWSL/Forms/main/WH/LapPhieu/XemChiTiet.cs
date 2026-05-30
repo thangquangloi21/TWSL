@@ -15,6 +15,7 @@ namespace TWSL.Forms.main.WH
     public partial class XemChiTiet : Form
     {
         DataTable DataTable;
+        public bool KetQua { get; set; }
         //string TypeView = "";
         public XemChiTiet(string view,DataTable data)
         {
@@ -41,6 +42,7 @@ namespace TWSL.Forms.main.WH
 
         private void Exit_Click(object sender, EventArgs e)
         {
+            KetQua = true;
             this.Close();
         }
 
@@ -74,6 +76,16 @@ namespace TWSL.Forms.main.WH
             private void TaoPhieuBTN(object sender, EventArgs e)
             {
                 TaoPhieu.TaoVaLuuPhieu(DataTable);
+            this.Close();
             }
+
+        private void ThoatVaTaoLai(object sender, EventArgs e)
+        {
+
+            KetQua = false;
+            this.Close();
+            //var create_from_awm = new DocMaVach();
+            //create_from_awm.ShowDialog();
+        }
     }
 }

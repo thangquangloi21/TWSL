@@ -34,5 +34,10 @@ namespace TWSL.Forms.main.SL.SL12
 
             data_view_dp.DataSource = result;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
