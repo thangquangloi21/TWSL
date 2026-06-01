@@ -96,7 +96,7 @@ namespace TWSL.Forms.main.WH
             });
         }
 
-        private void InphieuBtn(object sender, EventArgs e)
+        private void InPhieuBTN(object sender, EventArgs e)
         {
             try
             {
@@ -176,5 +176,7 @@ namespace TWSL.Forms.main.WH
         {
             updateData();
         }
+
+       
     }
 }

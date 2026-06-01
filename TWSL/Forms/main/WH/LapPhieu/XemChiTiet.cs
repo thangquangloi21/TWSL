@@ -76,7 +76,8 @@ namespace TWSL.Forms.main.WH
             private void TaoPhieuBTN(object sender, EventArgs e)
             {
                 TaoPhieu.TaoVaLuuPhieu(DataTable);
-            this.Close();
+                KetQua = true;
+                this.Close();
             }
 
         private void ThoatVaTaoLai(object sender, EventArgs e)
@@ -86,6 +87,11 @@ namespace TWSL.Forms.main.WH
             this.Close();
             //var create_from_awm = new DocMaVach();
             //create_from_awm.ShowDialog();
+        }
+
+        private void ThoatAPP_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

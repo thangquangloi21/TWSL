@@ -43,21 +43,21 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.SoPhieuDP = new System.Windows.Forms.Label();
             this.TimKiemGrb = new System.Windows.Forms.GroupBox();
-            this.TimKiemBtn = new System.Windows.Forms.Button();
-            this.IDtbx = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.NgayTaoLBL = new System.Windows.Forms.Label();
             this.NgaytaodatePick = new System.Windows.Forms.DateTimePicker();
+            this.IDtbx = new System.Windows.Forms.TextBox();
+            this.TimKiemBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.InPhieu = new System.Windows.Forms.Button();
             this.XemChiTietBtn = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.InPhieuBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DataTaoPhieu = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.NgayTaoLBL = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -94,9 +94,9 @@
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(313, 0);
+            this.groupBox2.Location = new System.Drawing.Point(338, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(610, 162);
+            this.groupBox2.Size = new System.Drawing.Size(585, 162);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin";
@@ -237,6 +237,40 @@
             this.TimKiemGrb.TabStop = false;
             this.TimKiemGrb.Text = "Tìm Kiếm";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 16);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "ID:";
+            // 
+            // NgayTaoLBL
+            // 
+            this.NgayTaoLBL.AutoSize = true;
+            this.NgayTaoLBL.Location = new System.Drawing.Point(6, 39);
+            this.NgayTaoLBL.Name = "NgayTaoLBL";
+            this.NgayTaoLBL.Size = new System.Drawing.Size(67, 16);
+            this.NgayTaoLBL.TabIndex = 20;
+            this.NgayTaoLBL.Text = "Ngày tạo:";
+            // 
+            // NgaytaodatePick
+            // 
+            this.NgaytaodatePick.CustomFormat = "dd/MM/yyyy";
+            this.NgaytaodatePick.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.NgaytaodatePick.Location = new System.Drawing.Point(117, 39);
+            this.NgaytaodatePick.Name = "NgaytaodatePick";
+            this.NgaytaodatePick.Size = new System.Drawing.Size(172, 22);
+            this.NgaytaodatePick.TabIndex = 0;
+            // 
+            // IDtbx
+            // 
+            this.IDtbx.Location = new System.Drawing.Point(117, 80);
+            this.IDtbx.Name = "IDtbx";
+            this.IDtbx.Size = new System.Drawing.Size(172, 22);
+            this.IDtbx.TabIndex = 0;
+            // 
             // TimKiemBtn
             // 
             this.TimKiemBtn.Image = global::TWSL.Properties.Resources.search;
@@ -250,70 +284,68 @@
             this.TimKiemBtn.UseVisualStyleBackColor = true;
             this.TimKiemBtn.Click += new System.EventHandler(this.TimKiemBTNFunc);
             // 
-            // IDtbx
-            // 
-            this.IDtbx.Location = new System.Drawing.Point(117, 80);
-            this.IDtbx.Name = "IDtbx";
-            this.IDtbx.Size = new System.Drawing.Size(172, 22);
-            this.IDtbx.TabIndex = 0;
-            // 
-            // NgaytaodatePick
-            // 
-            this.NgaytaodatePick.CustomFormat = "dd/MM/yyyy";
-            this.NgaytaodatePick.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.NgaytaodatePick.Location = new System.Drawing.Point(117, 39);
-            this.NgaytaodatePick.Name = "NgaytaodatePick";
-            this.NgaytaodatePick.Size = new System.Drawing.Size(172, 22);
-            this.NgaytaodatePick.TabIndex = 0;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.InPhieu);
             this.groupBox1.Controls.Add(this.XemChiTietBtn);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.InPhieuBtn);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(313, 162);
+            this.groupBox1.Size = new System.Drawing.Size(338, 162);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chức Năng";
             // 
+            // InPhieu
+            // 
+            this.InPhieu.Image = global::TWSL.Properties.Resources.Print;
+            this.InPhieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InPhieu.Location = new System.Drawing.Point(185, 27);
+            this.InPhieu.Name = "InPhieu";
+            this.InPhieu.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
+            this.InPhieu.Size = new System.Drawing.Size(132, 50);
+            this.InPhieu.TabIndex = 4;
+            this.InPhieu.Text = "In Phiếu";
+            this.InPhieu.UseVisualStyleBackColor = true;
+            this.InPhieu.Click += new System.EventHandler(this.InPhieuBTN);
+            // 
             // XemChiTietBtn
             // 
-            this.XemChiTietBtn.Location = new System.Drawing.Point(171, 90);
+            this.XemChiTietBtn.Image = global::TWSL.Properties.Resources.XemChiitet;
+            this.XemChiTietBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.XemChiTietBtn.Location = new System.Drawing.Point(185, 90);
             this.XemChiTietBtn.Name = "XemChiTietBtn";
-            this.XemChiTietBtn.Size = new System.Drawing.Size(110, 50);
+            this.XemChiTietBtn.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
+            this.XemChiTietBtn.Size = new System.Drawing.Size(132, 50);
             this.XemChiTietBtn.TabIndex = 3;
             this.XemChiTietBtn.Text = "Xem Chi Tiết";
+            this.XemChiTietBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.XemChiTietBtn.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
+            this.button3.Image = global::TWSL.Properties.Resources.edit;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.Location = new System.Drawing.Point(26, 90);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 50);
+            this.button3.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.button3.Size = new System.Drawing.Size(132, 50);
             this.button3.TabIndex = 2;
             this.button3.Text = "Sửa phiếu";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // InPhieuBtn
-            // 
-            this.InPhieuBtn.Location = new System.Drawing.Point(171, 27);
-            this.InPhieuBtn.Name = "InPhieuBtn";
-            this.InPhieuBtn.Size = new System.Drawing.Size(110, 50);
-            this.InPhieuBtn.TabIndex = 1;
-            this.InPhieuBtn.Text = "In phiếu";
-            this.InPhieuBtn.UseVisualStyleBackColor = true;
-            this.InPhieuBtn.Click += new System.EventHandler(this.InphieuBtn);
             // 
             // button1
             // 
+            this.button1.Image = global::TWSL.Properties.Resources.add;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(26, 27);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 50);
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(132, 50);
             this.button1.TabIndex = 0;
             this.button1.Text = "Tạo phiếu";
             this.button1.UseVisualStyleBackColor = true;
@@ -361,24 +393,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "DANH SÁCH DỮ LIỆU";
             // 
-            // NgayTaoLBL
-            // 
-            this.NgayTaoLBL.AutoSize = true;
-            this.NgayTaoLBL.Location = new System.Drawing.Point(20, 39);
-            this.NgayTaoLBL.Name = "NgayTaoLBL";
-            this.NgayTaoLBL.Size = new System.Drawing.Size(67, 16);
-            this.NgayTaoLBL.TabIndex = 20;
-            this.NgayTaoLBL.Text = "Ngày tạo:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 16);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "ID:";
-            // 
             // TaoPhieuNhapKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -422,7 +436,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button InPhieuBtn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label SoLuongDP;
         private System.Windows.Forms.Label LotSPDP;
@@ -446,5 +459,6 @@
         private System.Windows.Forms.Button XemChiTietBtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label NgayTaoLBL;
+        private System.Windows.Forms.Button InPhieu;
     }
 }
