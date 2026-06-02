@@ -33,7 +33,7 @@ namespace TWSL.Forms.main.WH.TaoFileR200
             InitializeComponent();
             SoPhieu = Sophieu;
             KhoTD = KhoTd;
-            SaveDataBtn.Visible = false;
+            SaveDataBtn.Enabled = false;
         }
 
         private void AddDuLieu_Load(object sender, EventArgs e)

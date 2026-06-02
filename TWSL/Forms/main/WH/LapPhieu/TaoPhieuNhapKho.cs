@@ -1,24 +1,29 @@
 ﻿using Org.BouncyCastle.Crypto.Tls;
 using System;
-using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TWSL.Common;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using TWSL.Forms.main.WH.LapPhieu;
+
 
 namespace TWSL.Forms.main.WH
 {
     public partial class TaoPhieuNhapKho : Form
     {
         private loading_wait loading;
-        private string Maxpalet { get; set;}
+        private string Maxpalet { get; set; }
         public TaoPhieuNhapKho()
         {
             InitializeComponent();
@@ -36,7 +41,7 @@ namespace TWSL.Forms.main.WH
         }
 
 
-         private void updateData()
+        private void updateData()
         {
 
             DataTable dt = TaoPhieu.LoadPhieu(IDtbx.Text, NgaytaodatePick.Value.ToString("yyyy-MM-dd"));
@@ -57,16 +62,18 @@ namespace TWSL.Forms.main.WH
                    ("username","Người tạo",           null),
                 ("ThoiGianLap","Thời gian lập phiếu","dd/MM/yyyy HH:mm:ss"),
                 ("Note","Note",null),
+                ("SoLanIn","Số lần in",null),
+
             };
 
             foreach (var (dataField, header, format) in columns)
             {
                 var col = new DataGridViewTextBoxColumn
                 {
-                    Name             = dataField,
+                    Name = dataField,
                     DataPropertyName = dataField,
-                    HeaderText       = header,
-                    ReadOnly         = true
+                    HeaderText = header,
+                    ReadOnly = true
                 };
                 if (format != null)
                     col.DefaultCellStyle.Format = format;
@@ -100,70 +107,72 @@ namespace TWSL.Forms.main.WH
         {
             try
             {
-                // in phiếu đã chọn
                 if (SoPhieuDP.Text == "...")
                 {
-                    MessageBox.Show("Vui lòng chọn một phiếu để in!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Vui lòng chọn một phiếu để in!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                string templatePath = @"TEMP\JCQ50-ADM022-1-Rev6.xlsx";
-                string outputDir = @"TEMP\Output";
+                string outputDir = Path.Combine(
+                    Application.StartupPath,
+                    "TEMP/Output/",
+                    DateTime.Now.ToString("yyyyMMddHHmmss")
+                );
+
                 Directory.CreateDirectory(outputDir);
-                string outputPath = System.IO.Path.Combine(outputDir, $"{SoPhieuDP.Text}.xlsx");
 
-                // Copy từ template ra file mới, không chỉnh sửa file gốc
-                File.Copy(templatePath, outputPath, overwrite: true);
+                var selectedRowIndices = DataTaoPhieu.SelectedCells
+                    .Cast<DataGridViewCell>()
+                    .Select(cell => cell.RowIndex)
+                    .Distinct()
+                    .ToList();
 
-                //taomavach
-                string barcodeData = $"{SoPhieuDP.Text}%{MaSPDP.Text}%{LotSPDP.Text}"; // Dữ liệu mã vạch là số phiếu
-
-                // Insert mã vạch vào file mới
-                TaoPhieu.InsertBarcodeToExcel(outputPath, "JCQ50-ADM022", 2, 1, SoPhieuDP.Text);
-
-                // Đẩy dữ liệu vào sheet "data" bắt đầu từ A2
-                var dulieu = TaoPhieu.TaoDataPhieu(SoPhieuDP.Text);
-                TaoPhieu.WriteDataToExcel(outputPath, "data", dulieu);
-
-                // Hiện hộp thoại chọn máy in và in
-                using (var printDialog = new PrintDialog())
+                foreach (int rowIndex in selectedRowIndices)
                 {
-                    printDialog.UseEXDialog = true;
-                    if (printDialog.ShowDialog() == DialogResult.OK)
+                    string soPhieu = DataTaoPhieu.Rows[rowIndex]
+                        .Cells["SoPhieu"].Value?.ToString() ?? "";
+
+                    if (!string.IsNullOrWhiteSpace(soPhieu))
                     {
-                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = outputPath,
-                            Verb = "printto",
-                            Arguments = $"\"{printDialog.PrinterSettings.PrinterName}\"",
-                            UseShellExecute = true,
-                            WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden
-                        });
+                        TaoPhieu.TaoFileIN(soPhieu, outputDir);
+                        //cập nhật số lần in
+                        TaoPhieu.CongSoLanIN(soPhieu);
                     }
                 }
+
+                TaoPhieu.InPhieuNhapkho(outputDir);
+                //Load lại dữ liệu để cập nhật số lần in
+                updateData();
+
+
+
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("in loi roi ");
+                MessageBox.Show(ex.Message, "Lỗi");
             }
 
-          
+
+
+
 
         }
 
         private void DataTaoPhieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = DataTaoPhieu.Rows[e.RowIndex];
                 //string bat = row.Cells["time_register"].Value.ToString();
                 // Gán dữ liệu từ các cột vào label
 
-                SoPhieuDP.Text    = row.Cells["SoPhieu"].Value?.ToString();
-                SoMeTTDP.Text     = row.Cells["SoMeTT"].Value?.ToString();
-                MaSPDP.Text       = row.Cells["MaSP"].Value?.ToString();
-                LotSPDP.Text      = row.Cells["LotSP"].Value?.ToString();
-                SoLuongDP.Text    = row.Cells["SoLuong"].Value?.ToString();
+                SoPhieuDP.Text = row.Cells["SoPhieu"].Value?.ToString();
+                SoMeTTDP.Text = row.Cells["SoMeTT"].Value?.ToString();
+                MaSPDP.Text = row.Cells["MaSP"].Value?.ToString();
+                LotSPDP.Text = row.Cells["LotSP"].Value?.ToString();
+                SoLuongDP.Text = row.Cells["SoLuong"].Value?.ToString();
                 ThoiGianTKDP.Text = row.Cells["ThoiGianThoatKhi"].Value?.ToString();
                 Maxpalet = row.Cells["MaxPallet"].Value?.ToString();
 
@@ -177,6 +186,33 @@ namespace TWSL.Forms.main.WH
             updateData();
         }
 
-       
+        private void SuaPhieuBTN_Click(object sender, EventArgs e)
+        {
+            // in phiếu đã chọn
+            if (SoPhieuDP.Text == "...")
+            {
+                MessageBox.Show("Vui lòng chọn một phiếu để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            using (var sua_thong_tin = new SuaThongTin(SoLuongDP.Text.Trim(), Maxpalet, ThoiGianTKDP.Text.Trim()))
+            {
+                if (sua_thong_tin.ShowDialog() == DialogResult.OK)
+                {
+                    //Cập nhật lại thông tin sau khi sửa
+                    TaoPhieu.SuaThongTinPhieu(SoPhieuDP.Text, sua_thong_tin.ResultSoLuong, sua_thong_tin.ResultMaxPallet, sua_thong_tin.ResultThoiGianTK, sua_thong_tin.ResultNoiDung);
+                    updateData();
+                }
+            }
+
+        }
+
+
+
+        private void XemChiTietBtn_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        
     }
 }

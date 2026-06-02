@@ -1,4 +1,4 @@
-# Copilot Instructions
+﻿# Copilot Instructions
 
 ## General Guidelines
 - Keep suggestions concise and actionable.
@@ -6,7 +6,6 @@
 
 ## Project Guidelines
 - Project targets .NET Framework 4.7.2 — do not use TextBox.PlaceholderText (unsupported). Use EM_SETCUEBANNER via SendMessage or a custom watermark solution instead.
-- Prefer native Windows PrintDialog for selecting printer and options when printing (show printer properties, copies, and page range) and then print without preview.
 
 ## WinForms UI Guidelines
 - Use modern UI layouts with structured sections: Header, panels for features/info/search, and a footer with statistics.

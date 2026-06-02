@@ -51,11 +51,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.InPhieu = new System.Windows.Forms.Button();
             this.XemChiTietBtn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.SuaPhieuBTN = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DataTaoPhieu = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
@@ -71,6 +72,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataTaoPhieu)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -288,7 +290,7 @@
             // 
             this.groupBox1.Controls.Add(this.InPhieu);
             this.groupBox1.Controls.Add(this.XemChiTietBtn);
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.SuaPhieuBTN);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -324,19 +326,21 @@
             this.XemChiTietBtn.Text = "Xem Chi Tiết";
             this.XemChiTietBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.XemChiTietBtn.UseVisualStyleBackColor = true;
+            this.XemChiTietBtn.Click += new System.EventHandler(this.XemChiTietBtn_Click);
             // 
-            // button3
+            // SuaPhieuBTN
             // 
-            this.button3.Image = global::TWSL.Properties.Resources.edit;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(26, 90);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.button3.Size = new System.Drawing.Size(132, 50);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Sửa phiếu";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = true;
+            this.SuaPhieuBTN.Image = global::TWSL.Properties.Resources.edit;
+            this.SuaPhieuBTN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SuaPhieuBTN.Location = new System.Drawing.Point(26, 90);
+            this.SuaPhieuBTN.Name = "SuaPhieuBTN";
+            this.SuaPhieuBTN.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.SuaPhieuBTN.Size = new System.Drawing.Size(132, 50);
+            this.SuaPhieuBTN.TabIndex = 2;
+            this.SuaPhieuBTN.Text = "Sửa phiếu";
+            this.SuaPhieuBTN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SuaPhieuBTN.UseVisualStyleBackColor = true;
+            this.SuaPhieuBTN.Click += new System.EventHandler(this.SuaPhieuBTN_Click);
             // 
             // button1
             // 
@@ -364,24 +368,38 @@
             // DataTaoPhieu
             // 
             this.DataTaoPhieu.AllowDrop = true;
+            this.DataTaoPhieu.AllowUserToAddRows = false;
+            this.DataTaoPhieu.AllowUserToDeleteRows = false;
             this.DataTaoPhieu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataTaoPhieu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.DataTaoPhieu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataTaoPhieu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataTaoPhieu.Location = new System.Drawing.Point(0, 32);
             this.DataTaoPhieu.Name = "DataTaoPhieu";
+            this.DataTaoPhieu.ReadOnly = true;
             this.DataTaoPhieu.Size = new System.Drawing.Size(1224, 313);
             this.DataTaoPhieu.TabIndex = 0;
             this.DataTaoPhieu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataTaoPhieu_CellClick);
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1224, 32);
             this.panel3.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TWSL.Properties.Resources.list;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -424,6 +442,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataTaoPhieu)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -435,7 +454,7 @@
         private System.Windows.Forms.DataGridView DataTaoPhieu;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button SuaPhieuBTN;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label SoLuongDP;
         private System.Windows.Forms.Label LotSPDP;
@@ -460,5 +479,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label NgayTaoLBL;
         private System.Windows.Forms.Button InPhieu;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

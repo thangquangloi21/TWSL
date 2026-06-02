@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.NoiDungSua = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.MaxpaletTbx = new System.Windows.Forms.TextBox();
@@ -39,8 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.NoiDungSua = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -48,6 +48,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.NoiDungSua);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.button2);
@@ -63,6 +64,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(463, 357);
             this.panel1.TabIndex = 0;
+            // 
+            // NoiDungSua
+            // 
+            this.NoiDungSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NoiDungSua.Location = new System.Drawing.Point(195, 227);
+            this.NoiDungSua.Name = "NoiDungSua";
+            this.NoiDungSua.Size = new System.Drawing.Size(194, 26);
+            this.NoiDungSua.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(55, 227);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Nội Dung:";
             // 
             // button2
             // 
@@ -146,7 +165,6 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(463, 49);
@@ -162,33 +180,15 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Sửa thông tin";
             // 
-            // NoiDungSua
-            // 
-            this.NoiDungSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NoiDungSua.Location = new System.Drawing.Point(195, 227);
-            this.NoiDungSua.Name = "NoiDungSua";
-            this.NoiDungSua.Size = new System.Drawing.Size(194, 26);
-            this.NoiDungSua.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(55, 227);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Nội Dung:";
-            // 
             // SuaThongTin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 357);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SuaThongTin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sửa Thông Tin";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

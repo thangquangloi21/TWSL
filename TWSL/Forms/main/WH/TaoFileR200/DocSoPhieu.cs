@@ -36,15 +36,23 @@ namespace TWSL.Forms.main.WH.TaoFileR200
 
         private void KiemTraSoPhieu()
         {
+
+            // kiểm tra nếu số phiếu đã tồn tại rồi thì thông báo.
+            if (NhapKho.CheckDaTaoChua(INPSoPhieuTbx.Text.Trim()))
+            {
+                MessageBox.Show("Phiếu đã được nhập vui lòng kiểm tra lại. !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
             // Kiểm tra nếu thời gian thoát khí = 0 thì yêu cầu chọn kho thoát khí
-            if (string.IsNullOrEmpty(INPSoPhieuTbx.Text))
+            if (string.IsNullOrEmpty(INPSoPhieuTbx.Text.Trim()))
             {
                 MessageBox.Show("Vui lòng nhập số phiếu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 INPSoPhieuTbx.SelectAll();
                 return;
             }
 
-            if (NhapKho.CheckSoPhieu(INPSoPhieuTbx.Text) == false) {
+            if (NhapKho.CheckSoPhieu(INPSoPhieuTbx.Text.Trim()) == false) {
                 MessageBox.Show("Phiếu đã nhập chưa được tạo hoặc không hợp lệ. ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 INPSoPhieuTbx.SelectAll();
                 return;

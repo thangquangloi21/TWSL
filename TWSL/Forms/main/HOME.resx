@@ -123,4 +123,22 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>41</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAQAAAAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAgAIAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAgICAAMDAwAAAAP8AAP8AAAD//wD/AAAA/wD/AP//
+        AAD///8AAAAAAAAAAAAAAAAGZgAAAAAAAAAAAAAAAABmZmZkYAAAAAAAAAAAAAAGZmZmZ3cAR3d3d3d3
+        d3d3d2ZmZmZ3AAAoiGZnd3dzd3dmZ4h2dwAAKIhmZ3d3c3d3Zo//hndkACiIZmd3d3N3ZmaP//d3dAAo
+        iGZnd4dzd2Zmj//3d3QAKIhmZ3j4c3d3Znj/hndAACiIZmd3+HN3d2Zmd2Z3AAAoiGZmZnu7u7dmZmZm
+        dwAAKIhmZmZ7u7u3ZmZmZ3YAACiIZmZme7u7t2ZmZohwAAAoiGZmZnu7u7dmZmaIcAAAKIhmZmZ7v/u3
+        ZmZGiHAAACiIZmZme7/7t2ZmRohwAAAoiGZmZmd3d3ZmZkaIcAAAKIhmZmZmZmZmZmZGiHAAACiIRERE
+        RERERERERohwAAAoiEREREREREREREaIcAAAKIj/////////////iHAAACiI/////////////4hwAAAo
+        iIiIiIiIiIiIiIiIcAAACIiIiIiIiIiIiIiIiHAAAAB4iIiIiId4iIiIiIcAAAAAB4iIiIiGZ4iIiIcg
+        AAAAAAAHiIiIh3iIiIhwAAAAAAAAACiIiIZniIhwAAAAAAAAAAAAeIiIiIiHAAAAAAAAAAAAAAB4iIiH
+        AAAAAAAAAAAAAAAAAoiHYAAAAAAAAAAAAAAAAAAHcAAAAAAAAAD///9/////P///8AfgAAAH4AAB5+AA
+        ACPgAAAR4AAAEeAAASPgAADH4AAAA+AAAAfgAAAP4AAAD+AAAA/gAAAP4AAAD+AAAA/gAAAP4AAAD+AA
+        AA/gAAAP4AAAD/AAAA/4AAAf/gAAf/8AAP//wAP///AP///4H////n///////w==
+</value>
+  </data>
 </root>

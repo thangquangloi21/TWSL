@@ -3,15 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TWSL.Forms.main;
 using ZXing;
 using ZXing.Common;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+// ✅ PHẦN IN (KHÔNG dùng printto nữa)
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace TWSL.Common
 {
@@ -145,7 +150,7 @@ namespace TWSL.Common
         {
             try
             {
-                var sql = "SELECT TOP (1000) [SoPhieu] ,[SoMeTT] ,[MaSP] ,[LotSP] ,[SoLuong] ,[MayTT] ,[ThoiGianThoatKhi] ,[MaxPallet] ,u.username ,[ThoiGianLap] ,[Note] FROM [TWSL].[dbo].[TaoPhieu] left join users u on IdNguoiLap = u.id WHERE CAST(ThoiGianLap AS date) = @ngaytao  ";
+                var sql = "SELECT TOP (1000) [SoPhieu] ,[SoMeTT] ,[MaSP] ,[LotSP] ,[SoLuong] ,[MayTT] ,[ThoiGianThoatKhi] ,[MaxPallet] ,u.username ,[ThoiGianLap] ,[Note] ,[SoLanIn] FROM [TWSL].[dbo].[TaoPhieu] left join users u on IdNguoiLap = u.id WHERE CAST(ThoiGianLap AS date) = @ngaytao  ";
                 var parameters = new List<SqlParameter>
                 {
                     new SqlParameter("@ngaytao", ngaytao)
@@ -257,6 +262,172 @@ namespace TWSL.Common
             }
 
             package.Save();
+        }
+        public static void SuaThongTinPhieu(string Sophieu ,string SoLuong, string MaxPallet, string ThoiGianTK, string Note)
+        {
+            try
+            {
+                var sql = @" update [TWSL].[dbo].[TaoPhieu] 
+  set SoLuong = @SoLuong ,MaxPallet = @MaxPallet, ThoiGianThoatKhi = @ThoiGianTK, Note = @Note 
+  where SoPhieu = @Sophieu";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@Sophieu", Sophieu),
+                    new SqlParameter("@SoLuong", SoLuong),
+                    new SqlParameter("@MaxPallet", MaxPallet),
+                    new SqlParameter("@ThoiGianTK", ThoiGianTK),
+                    new SqlParameter("@Note", Note)
+                };
+                DatabaseHelper.ExecuteNonQuery(sql, parameters);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi cập nhật trạng thái mẻ: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public static void XoaPhieu(string Sophieu)
+        {
+            try
+            {
+                var sql = @" delete from [TWSL].[dbo].[TaoPhieu] where SoPhieu = @Sophieu";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@Sophieu", Sophieu)
+                };
+                DatabaseHelper.ExecuteNonQuery(sql, parameters);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show($"Lỗi khi xóa phiếu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message );
+            }
+        }
+
+        public static void CongSoLanIN(string Sophieu)
+        {
+            try
+            {
+                var sql = @"update [TaoPhieu] SET SoLanIn = ISNULL(SoLanIn, 0) + 1  Where SoPhieu = @Sophieu";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@Sophieu", Sophieu)
+                };
+                DatabaseHelper.ExecuteNonQuery(sql, parameters);
+            }
+            catch (Exception ex)
+            {   
+                //MessageBox.Show($"Lỗi khi cập nhật số lần in: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
+            }
+        }
+       
+
+
+        public static void TaoFileIN(string Sophieu, string outputDir)
+        {
+            string templatePath = @"TEMP\JCQ50-ADM022-1-Rev6.xlsx";
+            Directory.CreateDirectory(outputDir);
+            string outputPath = System.IO.Path.Combine(outputDir, $"{Sophieu}.xlsx");
+
+            // Copy từ template ra file mới, không chỉnh sửa file gốc
+            File.Copy(templatePath, outputPath, overwrite: true);
+
+            //taomavach
+            //string barcodeData = $"{SoPhieuDP.Text}"; // Dữ liệu mã vạch là số phiếu
+
+            // Insert mã vạch vào file mới
+            InsertBarcodeToExcel(outputPath, "JCQ50-ADM022", 2, 1, Sophieu);
+
+            // Đẩy dữ liệu vào sheet "data" bắt đầu từ A2
+            var dulieu = TaoDataPhieu(Sophieu);
+            WriteDataToExcel(outputPath, "data", dulieu);
+
+            //PrintPhieu(outputPath);
+        }
+
+
+
+
+
+        public static void InPhieuNhapkho(string folderPath)
+        {
+            string[] files = Directory
+                .GetFiles(folderPath, "*.xlsx")
+                .OrderBy(f => Path.GetFileName(f))
+                .ToArray();
+
+            Excel.Application excelApp = null;
+
+            try
+            {
+                excelApp = new Excel.Application();
+                excelApp.Visible = false;
+                excelApp.DisplayAlerts = false;
+
+                foreach (string file in files)
+                {
+                    Excel.Workbook wb = null;
+                    Excel.Worksheet ws = null;
+
+                    try
+                    {
+                        wb = excelApp.Workbooks.Open(
+                            Filename: file,
+                            ReadOnly: true
+                        );
+
+                        foreach (Excel.Worksheet sheet in wb.Worksheets)
+                        {
+                            if (sheet.Name.Trim().Equals(
+                                "JCQ50-ADM022",
+                                StringComparison.OrdinalIgnoreCase))
+                            {
+                                ws = sheet;
+                                break;
+                            }
+
+                            Marshal.ReleaseComObject(sheet);
+                        }
+
+                        if (ws != null)
+                        {
+                            // Chỉ in sheet JCQ50-ADM022
+                            ws.PrintOut(
+                                Copies: 1,
+                                Preview: false
+                            );
+
+                            Marshal.ReleaseComObject(ws);
+                        }
+
+                        wb.Close(false);
+                    }
+                    finally
+                    {
+                        if (wb != null)
+                            Marshal.ReleaseComObject(wb);
+                    }
+                }
+
+                MessageBox.Show($"Đã in xong {files.Length} file!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi");
+            }
+            finally
+            {
+                if (excelApp != null)
+                {
+                    excelApp.Quit();
+                    Marshal.ReleaseComObject(excelApp);
+                }
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
         }
     }
 }

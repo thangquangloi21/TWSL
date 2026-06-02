@@ -78,6 +78,32 @@ namespace TWSL.Common
             return "loi";
         }
 
+        public static bool CheckDaTaoChua(string Sophieu)
+        {
+            try
+            {
+                var sql = "SELECT [SoPhieu] FROM [TaoFileNhapKho] where SoPhieu = @SoPhieu";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@SoPhieu", Sophieu)
+                };
+                var dt = conn_db_gs1.ExecuteQuery(sql, parameters);
+
+                // nếu có kết quả thì đã tồn tại
+                if (dt.Rows.Count > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi kiểm tra phiếu đã tạo: {ex.Message}");
+                return false;
+            }   
+        }
+
         public static DataTable GetItemName(string Gs1Code) {
             try
             {
@@ -255,7 +281,11 @@ WHERE [SoPhieu] = @SoPhieu;";
             }
 
 
+
+
         }
+
+       
 
 
     }
