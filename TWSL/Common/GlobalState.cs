@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,11 @@ namespace TWSL.Common
          public string NewPassw { get; set; }
         public string CurrentRole { get; set; }
         public string CurrentEnv { get; set; }
+
+        public string NhomQuyen { get; set; }
+
+        public DataTable Permission { get; set; }
+
 
         //kết nối db
         public string ConnectionString { get; set; }

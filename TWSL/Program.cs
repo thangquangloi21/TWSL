@@ -25,17 +25,12 @@ namespace TWSL
             ImportData.InitSL();
             //Application.Run(new login());
 
-            //Khai báo thông tin người dùng hiện tại
-            //AppData.Instance.CurrentProdLine = "SL";
-            AppData.Instance.CurrentUserId = "1";
-            AppData.Instance.CurrentUserName = "Administrator";
-            AppData.Instance.CurrentProdLine = "WH";
-            AppData.Instance.CurrentRole = "admin";
-            AppData.Instance.CurrentPassw = "admin";
 
 
-            Application.Run(new HOME());
+            //Application.Run(new HOME());
             //Application.Run(new FromMasterWH());
+
+            Application.Run(new login());
 
 
 

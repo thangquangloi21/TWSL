@@ -49,7 +49,9 @@ namespace TWSL.Forms.main
       
         private void DataManagementBtn(object sender, EventArgs e)
         {
-            if (AppData.Instance.CurrentProdLine == "WH" || AppData.Instance.CurrentUserId == "admin")
+            bool hasDataEntry = AppData.Instance.Permission.AsEnumerable()
+          .Any(row => row["PermissionCode"].ToString() == "MASTER_MANAGE");
+            if (hasDataEntry)
             {
                 OpenchildFrom(new Fwh());
 
@@ -63,42 +65,35 @@ namespace TWSL.Forms.main
 
         }
 
-        private void Sl_btn(object sender, EventArgs e)
-        {
-
-            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "admin")
-            {
-
-                OpenchildFrom(new Fsl());
-            }
-           
-            else
-            {
-                MessageBox.Show("Bạn không có quyền truy cập", "Thông báo !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-            }
-            
-        }
+       
 
         private void HOME_Load(object sender, EventArgs e)
         {
+            //load quyền vào 1 data table 
+            AppData.Instance.Permission = UtilityFunctions.LoadUserPermissions(AppData.Instance.CurrentUserId);
+            // lấy thông tin nhóm quyền
+            AppData.Instance.NhomQuyen = UtilityFunctions.LayThonTinQuyen(AppData.Instance.CurrentRole).Rows[0]["RoleName"].ToString();
+
             UtilityFunctions.loadjson();
             UserID.Text = AppData.Instance.CurrentUserId;
             Fname.Text = AppData.Instance.CurrentUserName;
-            Role_wh.Text = AppData.Instance.CurrentRole;
-            ProdLine.Text = AppData.Instance. CurrentProdLine;
+            Role_wh.Text = AppData.Instance.NhomQuyen;
             Version.Text = "Version: " + AppData.Instance.AppVersion;
 
-            OpenchildFrom(new NhapDuLieu());
+            //OpenchildFrom(new NhapDuLieu());
 
-            //if (AppData.Instance.CurrentProdLine == "WH")
-            //{
-            //    OpenchildFrom(new Fwh());
-            //}
-            //else
-            //{
-            //    OpenchildFrom(new Fsl());
-            //}
+            if (AppData.Instance.NhomQuyen == "Nhom1")
+            {
+                OpenchildFrom(new NhapDuLieu());
+            }
+            else if (AppData.Instance.NhomQuyen == "Nhom2")
+            {
+                OpenchildFrom(new DuaHangVaoKho());
+            }
+            else
+            {
+                OpenchildFrom(new NhapDuLieu());
+            }
         }
 
         private void ChangePw(object sender, EventArgs e)
@@ -118,26 +113,7 @@ namespace TWSL.Forms.main
             OpenchildFrom(new HistoryFrame());
         }
 
-        //// hiển thị Usercontrol
-        //private void Info_click(object sender, EventArgs e)
-        //{
-        //    Console.WriteLine("Info clicked");
-
-        //    // ChagePW is a UserControl (not a Form). Add it to the main panel instead
-        //    // of calling OpenchildFrom which expects a Form.
-        //    if (curFromChild != null)
-        //    {
-        //        curFromChild.Close();
-        //        curFromChild = null;
-        //    }
-
-        //    mainview_wh.Controls.Clear();
-        //    var changePwControl = new ChagePW();
-        //    changePwControl.Dock = DockStyle.Fill;
-        //    mainview_wh.Controls.Add(changePwControl);
-        //    mainview_wh.Tag = changePwControl;
-        //    changePwControl.BringToFront();
-        //}
+      
 
 
         private void pictureBox3_MouseMove(object sender, MouseEventArgs e)
@@ -157,25 +133,12 @@ namespace TWSL.Forms.main
             toolTip1.Hide(pictureBox1);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "1")
-            {
-
-                OpenchildFrom(new Fsl());
-            }
-
-            else
-            {
-                MessageBox.Show("Bạn không có quyền truy cập", "Thông báo !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-        }
 
         private void AddData(object sender, EventArgs e)
         {
-            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "1")
+            bool hasDataEntry = AppData.Instance.Permission.AsEnumerable()
+                      .Any(row => row["PermissionCode"].ToString() == "DATA_ENTRY");
+            if (hasDataEntry)
             {
 
                 OpenchildFrom(new NhapDuLieu());
@@ -188,9 +151,11 @@ namespace TWSL.Forms.main
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void TaoPhieuBtn(object sender, EventArgs e)
         {
-            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "1")
+            bool hasDataEntry = AppData.Instance.Permission.AsEnumerable()
+                      .Any(row => row["PermissionCode"].ToString() == "CREATE_FORM");
+            if (hasDataEntry)
             {
 
                 OpenchildFrom(new TaoPhieuNhapKho());
@@ -203,11 +168,12 @@ namespace TWSL.Forms.main
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void DuaHangVaoKhoBtn(object sender, EventArgs e)
         {
-            if (AppData.Instance.CurrentProdLine == "SL" || AppData.Instance.CurrentUserId == "1")
+            bool hasDataEntry = AppData.Instance.Permission.AsEnumerable()
+          .Any(row => row["PermissionCode"].ToString() == "EXPORT_CSV");
+            if (hasDataEntry)
             {
-
                 OpenchildFrom(new DuaHangVaoKho());
             }
 

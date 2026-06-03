@@ -23,5 +23,10 @@ namespace TWSL
         {
 
         }
+
+        private void edit_user_from_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

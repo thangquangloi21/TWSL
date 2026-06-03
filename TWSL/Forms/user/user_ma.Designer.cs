@@ -66,9 +66,10 @@
             this.groupBox1.Controls.Add(this.username_textBox);
             this.groupBox1.Controls.Add(this.id_textBox);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(8, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(477, 120);
+            this.groupBox1.Size = new System.Drawing.Size(477, 162);
             this.groupBox1.TabIndex = 99;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
@@ -81,9 +82,9 @@
             this.status_cbb.Items.AddRange(new object[] {
             "Đang hoạt động",
             "Vô hiệu hóa"});
-            this.status_cbb.Location = new System.Drawing.Point(306, 69);
+            this.status_cbb.Location = new System.Drawing.Point(306, 87);
             this.status_cbb.Name = "status_cbb";
-            this.status_cbb.Size = new System.Drawing.Size(131, 21);
+            this.status_cbb.Size = new System.Drawing.Size(139, 24);
             this.status_cbb.TabIndex = 16;
             // 
             // role_cbb
@@ -91,64 +92,60 @@
             this.role_cbb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.role_cbb.Enabled = false;
             this.role_cbb.FormattingEnabled = true;
-            this.role_cbb.Items.AddRange(new object[] {
-            "Người dùng",
-            "Người phụ trách",
-            "Quản lý"});
-            this.role_cbb.Location = new System.Drawing.Point(63, 72);
+            this.role_cbb.Location = new System.Drawing.Point(63, 90);
             this.role_cbb.Name = "role_cbb";
-            this.role_cbb.Size = new System.Drawing.Size(102, 21);
+            this.role_cbb.Size = new System.Drawing.Size(133, 24);
             this.role_cbb.TabIndex = 15;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(218, 77);
+            this.label5.Location = new System.Drawing.Point(218, 95);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.Size = new System.Drawing.Size(75, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Trạng thái:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 75);
+            this.label4.Location = new System.Drawing.Point(12, 93);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.Size = new System.Drawing.Size(52, 16);
             this.label4.TabIndex = 1;
             this.label4.Text = "Quyền:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(218, 30);
+            this.label3.Location = new System.Drawing.Point(218, 38);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.Size = new System.Drawing.Size(71, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Họ và tên:";
             // 
             // username_textBox
             // 
-            this.username_textBox.Location = new System.Drawing.Point(306, 27);
+            this.username_textBox.Location = new System.Drawing.Point(306, 35);
             this.username_textBox.Name = "username_textBox";
             this.username_textBox.ReadOnly = true;
-            this.username_textBox.Size = new System.Drawing.Size(131, 20);
+            this.username_textBox.Size = new System.Drawing.Size(139, 22);
             this.username_textBox.TabIndex = 12;
             // 
             // id_textBox
             // 
-            this.id_textBox.Location = new System.Drawing.Point(63, 24);
+            this.id_textBox.Location = new System.Drawing.Point(63, 32);
             this.id_textBox.Name = "id_textBox";
             this.id_textBox.ReadOnly = true;
-            this.id_textBox.Size = new System.Drawing.Size(102, 20);
+            this.id_textBox.Size = new System.Drawing.Size(133, 22);
             this.id_textBox.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 27);
+            this.label1.Location = new System.Drawing.Point(16, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 13);
+            this.label1.Size = new System.Drawing.Size(24, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "ID:";
             // 
@@ -161,18 +158,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userdata_view.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.userdata_view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.userdata_view.Location = new System.Drawing.Point(13, 132);
+            this.userdata_view.Location = new System.Drawing.Point(13, 174);
             this.userdata_view.Name = "userdata_view";
             this.userdata_view.ReadOnly = true;
-            this.userdata_view.Size = new System.Drawing.Size(1159, 401);
+            this.userdata_view.Size = new System.Drawing.Size(1159, 359);
             this.userdata_view.TabIndex = 2;
             this.userdata_view.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Userdata_view_CellClick);
             // 
             // func_1
             // 
-            this.func_1.Location = new System.Drawing.Point(26, 22);
+            this.func_1.Location = new System.Drawing.Point(29, 21);
             this.func_1.Name = "func_1";
-            this.func_1.Size = new System.Drawing.Size(128, 23);
+            this.func_1.Size = new System.Drawing.Size(143, 40);
             this.func_1.TabIndex = 0;
             this.func_1.Text = "Thêm";
             this.func_1.UseVisualStyleBackColor = true;
@@ -186,9 +183,10 @@
             this.groupBox2.Controls.Add(this.id_search);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(708, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(464, 120);
+            this.groupBox2.Size = new System.Drawing.Size(464, 162);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm";
@@ -197,7 +195,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Image = global::TWSL.Properties.Resources.logout;
-            this.button1.Location = new System.Drawing.Point(384, 14);
+            this.button1.Location = new System.Drawing.Point(385, 38);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(64, 90);
             this.button1.TabIndex = 4;
@@ -208,9 +206,9 @@
             // 
             // name_search
             // 
-            this.name_search.Location = new System.Drawing.Point(57, 51);
+            this.name_search.Location = new System.Drawing.Point(71, 51);
             this.name_search.Name = "name_search";
-            this.name_search.Size = new System.Drawing.Size(179, 20);
+            this.name_search.Size = new System.Drawing.Size(179, 22);
             this.name_search.TabIndex = 3;
             // 
             // label6
@@ -218,15 +216,15 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(10, 55);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 13);
+            this.label6.Size = new System.Drawing.Size(52, 16);
             this.label6.TabIndex = 2;
             this.label6.Text = "Họ tên:";
             // 
             // id_search
             // 
-            this.id_search.Location = new System.Drawing.Point(57, 20);
+            this.id_search.Location = new System.Drawing.Point(71, 20);
             this.id_search.Name = "id_search";
-            this.id_search.Size = new System.Drawing.Size(179, 20);
+            this.id_search.Size = new System.Drawing.Size(179, 22);
             this.id_search.TabIndex = 0;
             // 
             // label2
@@ -234,7 +232,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(19, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 13);
+            this.label2.Size = new System.Drawing.Size(24, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "ID:";
             // 
@@ -242,9 +240,9 @@
             // 
             this.button2.Image = global::TWSL.Properties.Resources.search;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(107, 79);
+            this.button2.Location = new System.Drawing.Point(123, 92);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(81, 27);
+            this.button2.Size = new System.Drawing.Size(105, 49);
             this.button2.TabIndex = 0;
             this.button2.Text = "Tìm kiếm";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -256,18 +254,19 @@
             this.groupBox3.Controls.Add(this.func_3);
             this.groupBox3.Controls.Add(this.func_2);
             this.groupBox3.Controls.Add(this.func_1);
+            this.groupBox3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(492, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(197, 120);
+            this.groupBox3.Size = new System.Drawing.Size(197, 162);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chức năng";
             // 
             // func_3
             // 
-            this.func_3.Location = new System.Drawing.Point(26, 79);
+            this.func_3.Location = new System.Drawing.Point(29, 113);
             this.func_3.Name = "func_3";
-            this.func_3.Size = new System.Drawing.Size(128, 23);
+            this.func_3.Size = new System.Drawing.Size(143, 40);
             this.func_3.TabIndex = 2;
             this.func_3.Text = "Xuất dữ liệu";
             this.func_3.UseVisualStyleBackColor = true;
@@ -275,9 +274,9 @@
             // 
             // func_2
             // 
-            this.func_2.Location = new System.Drawing.Point(26, 51);
+            this.func_2.Location = new System.Drawing.Point(29, 67);
             this.func_2.Name = "func_2";
-            this.func_2.Size = new System.Drawing.Size(128, 22);
+            this.func_2.Size = new System.Drawing.Size(143, 40);
             this.func_2.TabIndex = 1;
             this.func_2.Text = "Sửa";
             this.func_2.UseVisualStyleBackColor = true;
@@ -298,6 +297,7 @@
             this.Name = "user_ma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Quản Lý Người dùng";
+            this.Load += new System.EventHandler(this.user_ma_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userdata_view)).EndInit();

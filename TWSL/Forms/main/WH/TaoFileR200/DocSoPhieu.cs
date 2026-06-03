@@ -41,6 +41,8 @@ namespace TWSL.Forms.main.WH.TaoFileR200
             if (NhapKho.CheckDaTaoChua(INPSoPhieuTbx.Text.Trim()))
             {
                 MessageBox.Show("Phiếu đã được nhập vui lòng kiểm tra lại. !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                INPSoPhieuTbx.SelectAll();
+                return;
             }
 
 
@@ -74,7 +76,7 @@ namespace TWSL.Forms.main.WH.TaoFileR200
             //Console.WriteLine(soPhieu);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ThoatBtn(object sender, EventArgs e)
         {
             this.Close();
         }

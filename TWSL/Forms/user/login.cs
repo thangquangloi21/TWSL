@@ -32,8 +32,8 @@ namespace TWSL
             this.MaximizeBox = false;
             loadingControl = new LoadingControl();
             this.Controls.Add(loadingControl); // thêm vào form
-            //username_texbox.Text = "1"; // Mặc định tên đăng nhập là admin
-            //password_texbox.Text = "1"; // Mặc định mật khẩu là 123456
+            username_texbox.Text = "1"; // Mặc định tên đăng nhập là admin
+            password_texbox.Text = "Tqlyb21@"; // Mặc định mật khẩu là 123456
 
         }
 
@@ -102,13 +102,6 @@ namespace TWSL
 
                     isPasswordCorrect = BCrypt.Net.BCrypt.Verify(password, storedHashedPassword);
              
-                //connection.Open();
-                //string query = "SELECT COUNT(*) FROM [users] WHERE id = @username AND password = @password";
-                //SqlCommand cmd = new SqlCommand(query, connection);
-                //cmd.Parameters.AddWithValue("@username", username);
-                //cmd.Parameters.AddWithValue("@password", password);
-                //int count = (int)cmd.ExecuteScalar();
-                ////MessageBox.Show($"dem {count}");
 
                 if (isPasswordCorrect)
                 {
@@ -130,11 +123,6 @@ namespace TWSL
                             {
                                 changePasswordForm.ShowDialog(); // Hiển thị form đổi mật khẩu
 
-                                //if (changePasswordForm.IsPasswordChanged)
-                                //{
-                                //    this.Close(); // Đóng MainForm nếu mật khẩu đã được đổi
-                                //}
-
                             }
                         }
                         else
@@ -152,9 +140,14 @@ namespace TWSL
                             AppData.Instance.CurrentPassw = password;
                             AppData.Instance.CurrentRole = role;
                             //MessageBox.Show($"Xin chào: {name} với quyền: {role} stt:{status} date {date}", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            main_from form1 = new main_from(); // Tạo instance của input_data
                             this.Hide(); // Ẩn Form đăng nhập
-                            form1.ShowDialog(); // Hiển thị input_data (không chặn login)
+
+                            HOME home = new HOME();
+                           
+                            home.ShowDialog();
+                            
+
+                           
                             Logger.Log("INFO", $"{username} Đăng xuất vào lúc {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
                             // chèn lưu thông tin đăng nhập:
                            
@@ -283,7 +276,6 @@ namespace TWSL
         private async void check_db(object sender, EventArgs e)
         {
             loadingControl.ShowLoading("🔄 Đang kiểm tra kết nối DB...");
-
             try
             {
                 // Chạy song song 2 kết nối để nhanh hơn
@@ -317,32 +309,7 @@ namespace TWSL
                 loadingControl.HideLoading();
                 MessageBox.Show($"❌ Lỗi: {ex.Message}", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //loadingControl.ShowLoading("🔄 Đang kiểm tra kết nối DB...");
-
-            //bool result = await Task.Run(() => DatabaseHelper.TestConnection());
-
-            //bool result1 = await Task.Run(() => conn_db_gs1.TestConnection());
-
-            //loadingControl.HideLoading();
-
-            //if (result && result1)
-            //{
-            //    login_Load();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("❌ Lỗi kết nối vui lòng kiểm tra internet và thử lại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}   
-            //// kiểm tra xem có kết nối đưọc db không
-            //if (DatabaseHelper.TestConnection())
-            //{
-            //    login_Load();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Không thể đăng nhập vui lòng kiểm tra internet và thử lại !", "Thông báo",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+         
         }
 
 

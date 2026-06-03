@@ -56,14 +56,20 @@ namespace TWSL.Common
                 {
                     var row = dt.Rows[0];
             
-                    // Kiểm tra xem cột Note có dữ liệu không
-                    bool hasNote = row["Note"] != DBNull.Value && !string.IsNullOrWhiteSpace(row["Note"].ToString());
+                   
     
                     // Kiểm tra thời gian thoát khí = 0
                     bool exitTimeIsZero = Convert.ToInt32(row["ThoiGianThoatKhi"]) == 0;
-    
-                    // Nếu có Note Hoặc thời gian thoát khí = 0
-                    if (hasNote || exitTimeIsZero)
+
+                    //// Kiểm tra xem cột Note có dữ liệu không
+                    //bool hasNote = row["Note"] != DBNull.Value && !string.IsNullOrWhiteSpace(row["Note"].ToString());
+                    //// Nếu có Note Hoặc thời gian thoát khí = 0
+                    //if (hasNote || exitTimeIsZero)
+                    //{
+                    //    return "chuyenkhoc";
+                    //}
+
+                    if (exitTimeIsZero)
                     {
                         return "chuyenkhoc";
                     }
@@ -82,7 +88,7 @@ namespace TWSL.Common
         {
             try
             {
-                var sql = "SELECT [SoPhieu] FROM [TaoFileNhapKho] where SoPhieu = @SoPhieu";
+                var sql = "SELECT [SoPhieu] FROM [TWSL].[dbo].[TaoFileNhapKho] where SoPhieu = @SoPhieu";
                 SqlParameter[] parameters = new SqlParameter[]
                 {
                     new SqlParameter("@SoPhieu", Sophieu)

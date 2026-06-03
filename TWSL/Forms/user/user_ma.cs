@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using Org.BouncyCastle.Crypto.IO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using TWSL.Common;
+using static System.Windows.Forms.LinkLabel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace TWSL
@@ -41,54 +44,48 @@ namespace TWSL
                 using (var register = new register_user(id_user, username_user))
                 {
                     register.ShowDialog(); // Hiển thị from đăng kí
+                    User_ma_Load(); // Load lại data grid view sau khi đóng from đăng kí
                 }
             }
         }
+
         // Lấy thông tin người dùng và đổ ra data grid view khi load from
         private void User_ma_Load()
         {
             try
-            {
-                // Cập nhật lại DataGridView sau khi thay đổi thông tin
-                string select_query = "SELECT TOP (1000) [id], [username], [role], [time_chage_pasword], [status], [pass_error], [registrant_id], [registrant_name], [register_date] FROM [users]";
-                DataTable result = DatabaseHelper.ExecuteQuery(select_query);
-                // Quy đổi ngược giá trị cột role từ tiếng Anh sang tiếng Việt
-                //DataTable result = DatabaseHelper.ExecuteQuery(check_user, checkuser);
-                // Quy đổi ngược giá trị cột role từ tiếng Anh sang tiếng Việt
-                foreach (DataRow row in result.Rows)
                 {
-                    string role = row["role"].ToString();
-                    string status = row["status"].ToString();
-                    if (role == "admin")
-                    {
-                        row["role"] = "Quản trị viên";
-                    }
-                    else if (role == "worker")
-                    {
-                        row["role"] = "Người dùng";
-                    }
-                    else if (role == "user")
-                    {
-                        row["role"] = "Người phụ trách";
-                    }
-                    else if (role == "manager")
-                    {
-                        row["role"] = "Quản lý";
-                    }
-                    if (status == "1")
-                    {
-                        row["status"] = "Đang Hoạt động";
-                    }
-                    if (status == "0")
-                    {
-                        row["status"] = "Vô hiệu hóa";
-                    }
-                    if (status == "2")
-                    {
-                        row["status"] = "Đăng nhập đầu";
-                    }
+                string select_query = @"
+SELECT TOP (1000) 
+    u.[id], 
+    u.[username], 
+    rl.RoleName AS role, 
+    u.[time_chage_pasword], 
+    tt.ThongTinTrangThai AS status, 
+    u.[pass_error], 
+    u.[registrant_id], 
+    u.[registrant_name], 
+    u.[register_date] 
+FROM [users] u
+LEFT JOIN Roles rl ON u.role = rl.RoleId 
+LEFT JOIN TrangThaiHoatDong tt ON u.status = tt.trangthai
+WHERE 1 = 1 ";
 
+                List<SqlParameter> parameters = new List<SqlParameter>();
+
+                if (!string.IsNullOrWhiteSpace(id_search.Text))
+                {
+                    select_query += " AND u.id = @UserID ";
+                    parameters.Add(new SqlParameter("@UserID", id_search.Text.Trim()));
                 }
+
+                if (!string.IsNullOrWhiteSpace(name_search.Text))
+                {
+                    select_query += " AND u.username LIKE @Username ";
+                    parameters.Add(new SqlParameter("@Username", "%" + name_search.Text.Trim() + "%"));
+                }
+
+                var result = DatabaseHelper.ExecuteQuery(select_query, parameters.ToArray());
+
                 // Gán DataTable làm nguồn dữ liệu cho DataGridView
                 userdata_view.DataSource = result;
 
@@ -130,23 +127,29 @@ namespace TWSL
                         return;
                     }
 
+
+                    
                     //quy đổi giá trị trước khi update
 
-                    if (role_update == "Người dùng")
+                    if (role_update == "Admin")
                     {
-                        role_update = "worker";
+                        role_update = "1";
                     }
-                    else if (role_update == "Người phụ trách")
+                    else if (role_update == "QuanLy")
                     {
-                        role_update = "user";
+                        role_update = "2";
                     }
-                    else if (role_update == "Quản lý")
+                    else if (role_update == "Nhom1")
                     {
-                        role_update = "manager";
+                        role_update = "3";
                     }
-                    else if (role_update == "Quản trị viên")
+                    else if (role_update == "Nhom2")
                     {
-                        role_update = "admin";
+                        role_update = "4";
+                    }
+                    else if (role_update == "Nhom3")
+                    {
+                        role_update = "5";
                     }
                     if (status_update == "Đang hoạt động")
                     {
@@ -191,10 +194,16 @@ namespace TWSL
         {
             // Cập nhật lại DataGridView sau khi thay đổi thông tin
             string select_query = "SELECT TOP (1000) [id], [username], [role], [time_chage_pasword], [status], [pass_error], [registrant_id], [registrant_name], [register_date] FROM [users]";
-            DataTable result = DatabaseHelper.ExecuteQuery(select_query);
+            var result = DatabaseHelper.ExecuteQuery(select_query);
             // Quy đổi ngược giá trị cột role từ tiếng Anh sang tiếng Việt
             //DataTable result = DatabaseHelper.ExecuteQuery(check_user, checkuser);
+
+            
+            
+
             // Quy đổi ngược giá trị cột role từ tiếng Anh sang tiếng Việt
+
+
             foreach (DataRow row in result.Rows)
             {
                 string role = row["role"].ToString();
@@ -247,86 +256,14 @@ namespace TWSL
         {
             try
             {
-                    string id_search_ = id_search.Text; // Loại bỏ khoảng trắng đầu và cuối
-                    string name_search_ = name_search.Text.Trim(); // Loại bỏ khoảng trắng đầu và cuối
-                // không cho click khi cả 2 ô trống
-                
-                if (string.IsNullOrEmpty(id_search_) && string.IsNullOrEmpty(name_search_))
-                {
-                    MessageBox.Show("Vui lòng nhập ID hoặc tên người dùng để tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                string check_user = "SELECT TOP (1000) [id], [username], [role], [time_chage_pasword], [status], [pass_error], [registrant_id], [registrant_name], [register_date] FROM [users] WHERE username like @Username ";
+                //// không cho click khi cả 2 ô trống
+                //if (string.IsNullOrEmpty(id_search.Text.Trim()) && string.IsNullOrEmpty(name_search.Text.Trim()))
+                //{
+                //    MessageBox.Show("Vui lòng nhập ID hoặc tên người dùng để tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
+                User_ma_Load();
 
-                    if (!string.IsNullOrEmpty(id_search_))
-                    {
-                        check_user += " and id = @UserID";
-                        // Thêm điều kiện tìm kiếm nếu có ID
-                        //  where username like N'%' and id like '%'
-
-                    }
-
-
-                    // kiểm tra chỉ cho nhập số
-                    if (!string.IsNullOrEmpty(id_search_) && !int.TryParse(id_search_, out _))
-                    {
-                        MessageBox.Show("ID phải là một số hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    SqlParameter[] checkuser = new SqlParameter[]
-                   {
-                    new SqlParameter("@UserID", id_search_),
-                    new SqlParameter("@Username", "%" + name_search_ + "%")
-                   };
-                    DataTable result = DatabaseHelper.ExecuteQuery(check_user, checkuser);
-                    // Quy đổi ngược giá trị cột role từ tiếng Anh sang tiếng Việt
-                    foreach (DataRow row in result.Rows)
-                    {
-                        string role = row["role"].ToString();
-                        string status = row["status"].ToString();
-                        if (role == "admin")
-                        {
-                            row["role"] = "Quản trị viên";
-                        }
-                        else if (role == "worker")
-                        {
-                            row["role"] = "Người dùng";
-                        }
-                        else if (role == "user")
-                        {
-                            row["role"] = "Người phụ trách";
-                        }
-                        else if (role == "manager")
-                        {
-                            row["role"] = "Quản lý";
-                        }
-                        if (status == "1")
-                        {
-                            row["status"] = "Đang Hoạt động";
-                        }
-                        if (status == "0")
-                        {
-                            row["status"] = "Vô hiệu hóa";
-                        }
-                        if (status == "2")
-                        {
-                            row["status"] = "Đăng nhập đầu";
-                        }
-                }
-                    // Gán DataTable làm nguồn dữ liệu cho DataGridView
-                    userdata_view.DataSource = result;
-
-                    // Gán tên hiển thị cho các cột
-                    userdata_view.Columns["id"].HeaderText = "ID";
-                    userdata_view.Columns["username"].HeaderText = "Tên người dùng";
-                    //userdata_view.Columns["password"].HeaderText = "Mật khẩu";
-                    userdata_view.Columns["role"].HeaderText = "Quyền";
-                    userdata_view.Columns["time_chage_pasword"].HeaderText = "Thời gian đổi mật khẩu";
-                    userdata_view.Columns["status"].HeaderText = "Trạng thái";
-                    userdata_view.Columns["pass_error"].HeaderText = "Số lần nhập sai mật khẩu";
-                    userdata_view.Columns["registrant_id"].HeaderText = "ID người đăng ký";
-                    userdata_view.Columns["registrant_name"].HeaderText = "Tên người đăng ký";
-                    userdata_view.Columns["register_date"].HeaderText = "Ngày đăng ký";
             }
             catch (Exception ex)
             {
@@ -452,6 +389,11 @@ namespace TWSL
             this.Close();
         }
 
-       
+        private void user_ma_Load(object sender, EventArgs e)
+        {
+            var dt = DatabaseHelper.ExecuteQuery("SELECT [RoleName] FROM [TWSL].[dbo].[Roles]");
+            role_cbb.DataSource = dt;
+            role_cbb.DisplayMember = "RoleName";
+        }
     }
 }

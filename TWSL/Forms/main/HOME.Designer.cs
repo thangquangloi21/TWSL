@@ -39,13 +39,11 @@
             this.GroupSL = new System.Windows.Forms.GroupBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.ProdLine = new System.Windows.Forms.Label();
             this.Role_wh = new System.Windows.Forms.Label();
             this.Fname = new System.Windows.Forms.Label();
             this.UserID = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -102,7 +100,7 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "Đưa hàng vào kho tự động";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.DuaHangVaoKhoBtn);
             // 
             // button4
             // 
@@ -113,7 +111,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "Lập phiếu kho tự động";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.TaoPhieuBtn);
             // 
             // button3
             // 
@@ -141,13 +139,11 @@
             // 
             this.GroupSL.Controls.Add(this.pictureBox4);
             this.GroupSL.Controls.Add(this.pictureBox3);
-            this.GroupSL.Controls.Add(this.ProdLine);
             this.GroupSL.Controls.Add(this.Role_wh);
             this.GroupSL.Controls.Add(this.Fname);
             this.GroupSL.Controls.Add(this.UserID);
             this.GroupSL.Controls.Add(this.label6);
             this.GroupSL.Controls.Add(this.label5);
-            this.GroupSL.Controls.Add(this.label4);
             this.GroupSL.Controls.Add(this.pictureBox2);
             this.GroupSL.Controls.Add(this.label2);
             this.GroupSL.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -185,21 +181,11 @@
             this.pictureBox3.MouseLeave += new System.EventHandler(this.pictureBox3_MouseLeave);
             this.pictureBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseMove);
             // 
-            // ProdLine
-            // 
-            this.ProdLine.AutoSize = true;
-            this.ProdLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProdLine.Location = new System.Drawing.Point(91, 176);
-            this.ProdLine.Name = "ProdLine";
-            this.ProdLine.Size = new System.Drawing.Size(19, 16);
-            this.ProdLine.TabIndex = 10;
-            this.ProdLine.Text = "...";
-            // 
             // Role_wh
             // 
             this.Role_wh.AutoSize = true;
             this.Role_wh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Role_wh.Location = new System.Drawing.Point(89, 145);
+            this.Role_wh.Location = new System.Drawing.Point(89, 150);
             this.Role_wh.Name = "Role_wh";
             this.Role_wh.Size = new System.Drawing.Size(19, 16);
             this.Role_wh.TabIndex = 9;
@@ -209,7 +195,7 @@
             // 
             this.Fname.AutoSize = true;
             this.Fname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Fname.Location = new System.Drawing.Point(65, 115);
+            this.Fname.Location = new System.Drawing.Point(65, 120);
             this.Fname.Name = "Fname";
             this.Fname.Size = new System.Drawing.Size(19, 16);
             this.Fname.TabIndex = 8;
@@ -219,7 +205,7 @@
             // 
             this.UserID.AutoSize = true;
             this.UserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserID.Location = new System.Drawing.Point(90, 85);
+            this.UserID.Location = new System.Drawing.Point(90, 90);
             this.UserID.Name = "UserID";
             this.UserID.Size = new System.Drawing.Size(19, 16);
             this.UserID.TabIndex = 7;
@@ -229,7 +215,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(5, 145);
+            this.label6.Location = new System.Drawing.Point(5, 150);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 16);
             this.label6.TabIndex = 6;
@@ -239,21 +225,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 115);
+            this.label5.Location = new System.Drawing.Point(6, 120);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Họ tên:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(5, 176);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 16);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Bộ phận:";
             // 
             // pictureBox2
             // 
@@ -270,7 +246,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 85);
+            this.label2.Location = new System.Drawing.Point(4, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 16);
             this.label2.TabIndex = 0;
@@ -373,8 +349,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label ProdLine;
         private System.Windows.Forms.Label Role_wh;
         private System.Windows.Forms.Label Fname;
         private System.Windows.Forms.Label UserID;

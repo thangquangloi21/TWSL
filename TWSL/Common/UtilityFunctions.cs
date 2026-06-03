@@ -21,6 +21,34 @@ namespace TWSL.Common
     {
         // Add common utility functions here in the future
 
+        //load dữ liệu quyền người dùng
+        public static DataTable LayThonTinQuyen(string Marole)
+        {
+            string query = @"SELECT [RoleName] FROM [TWSL].[dbo].[Roles] where RoleId = @Marole";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Marole", Marole)
+            };
+            return DatabaseHelper.ExecuteQuery(query, parameters);
+        }
+
+        public static DataTable LoadUserPermissions(string userId)
+        {
+            string query = @"SELECT
+p.PermissionCode
+FROM users u
+JOIN Roles r ON u.role = r.RoleId
+JOIN RolePermissions rp ON r.RoleId = rp.RoleId
+JOIN Permissions p ON rp.PermissionId = p.PermissionId
+WHERE u.id = @userId;";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@userId", userId)
+            };
+            return DatabaseHelper.ExecuteQuery(query, parameters);
+        }
+
+
         public static void trans_update_user(string reason, string id, string username, string role, string status, string performer_id, string performer_name, string performer_date, string note)
         {
             // add , edit, resetpassword

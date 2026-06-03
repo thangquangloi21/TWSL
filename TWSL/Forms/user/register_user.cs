@@ -24,7 +24,7 @@ namespace TWSL
             id_Registrant = id_; // Lưu ID người dùng đăng ký
             username_Registrant = username_; // Lưu tên người dùng đăng ký
             InitializeComponent();
-            role_register.SelectedIndex = 0;
+            
 
         }
 
@@ -38,21 +38,25 @@ namespace TWSL
             // Mã hóa mật khẩu sử dụng BCrypt
             pass = BCrypt.Net.BCrypt.HashPassword(pass);
             // Quy đổi quyền người dùng
-            if (role == "Quản trị viên")
+            if (role == "Admin")
             {
-                role = "admin";
+                role = "1";
             }
-            else if (role == "Người dùng")
+            else if (role == "QuanLy")
             {
-                role = "worker";
+                role = "2";
             }
-            else if (role == "Người phụ trách")
+            else if (role == "Nhom1")
             {
-                role = "user";
+                role = "3";
             }
-            else if (role == "Quản lý")
+            else if (role == "Nhom2")
             {
-                role = "manager";
+                role = "4";
+            }
+            else if (role == "Nhom3")
+            {
+                role = "5";
             }
 
             else
@@ -132,6 +136,14 @@ namespace TWSL
                     MessageBox.Show("Đăng ký không thành công. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void register_user_Load(object sender, EventArgs e)
+        {
+            DataTable dt = DatabaseHelper.ExecuteQuery("SELECT [RoleName] FROM [TWSL].[dbo].[Roles]");
+            role_register.DataSource = dt;
+            role_register.DisplayMember = "RoleName";
+            role_register.SelectedIndex = 0;
         }
     }
 }

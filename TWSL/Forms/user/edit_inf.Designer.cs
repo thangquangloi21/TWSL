@@ -163,6 +163,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "edit_user_from";
             this.Text = "Chỉnh sửa thông tin người dùng";
+            this.Load += new System.EventHandler(this.edit_user_from_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

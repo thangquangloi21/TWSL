@@ -18,8 +18,8 @@ namespace TWSL.Forms.main.WH.TaoFileR200
     public partial class AddDuLieu : Form
     {
         // Biến toàn class
-        private string SoPhieu;
-        private string KhoTD;
+        private readonly string SoPhieu;
+        private readonly string KhoTD;
         private string Mapallet;
         private string SoMeTT;
         private string MaSP;
@@ -207,11 +207,12 @@ namespace TWSL.Forms.main.WH.TaoFileR200
                 return;
             }
 
-            int SoLuongTudong = 0;
+             int SoLuongTudong ;
 
             if (SoLuong <= MaxPallet)
             {
-                SaveDataBtn.Visible = true;
+                SaveDataBtn.Enabled = true;
+               
                 SoLuongTudong = SoLuong;
                 SoLuong = 0;
             }
@@ -224,12 +225,24 @@ namespace TWSL.Forms.main.WH.TaoFileR200
             // ✅ Thêm dòng vào DataGridView
             AddRowToCheckDataView(Mapallet, SoMeTT, maSPTrenThung, boPhan, lot, SoLuongTudong, ThoiGianTK, KhoTD);
 
-            // Reset textbox để nhập tiếp
-            MaPalletTBX.Enabled = true;
-            MaPalletTBX.Clear();
-            MaThungTBX.Clear();
-            MaPalletTBX.Focus();
-            MaThungTBX.Enabled = false;
+            MaPalletTBX.Enabled = false;
+            if (SoLuong > 0) {
+                // Reset textbox để nhập tiếp
+                MaPalletTBX.Enabled = true;
+                MaPalletTBX.Clear();
+                MaThungTBX.Clear();
+                MaPalletTBX.Focus();
+                MaThungTBX.Enabled = false;
+            }
+            else
+            {
+                MaPalletTBX.Enabled = false;
+                MaThungTBX.Enabled = false;
+            }
+
+
+
+
         }
 
         // Hàm khởi tạo cột cho DataGridView
