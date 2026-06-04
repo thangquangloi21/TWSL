@@ -32,8 +32,8 @@ namespace TWSL
             this.MaximizeBox = false;
             loadingControl = new LoadingControl();
             this.Controls.Add(loadingControl); // thêm vào form
-            username_texbox.Text = "1"; // Mặc định tên đăng nhập là admin
-            password_texbox.Text = "Tqlyb21@"; // Mặc định mật khẩu là 123456
+            username_texbox.Text = "6"; // Mặc định tên đăng nhập là admin
+            password_texbox.Text = "Terumo123@"; // Mặc định mật khẩu là 123456
 
         }
 
