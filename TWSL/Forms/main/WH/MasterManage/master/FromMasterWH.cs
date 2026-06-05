@@ -1,5 +1,6 @@
 ﻿using OfficeOpenXml;
 using Org.BouncyCastle.Crypto.IO;
+using Org.BouncyCastle.Utilities.Zlib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace TWSL.Forms.master
     public partial class FromMasterWH : Form
     {
         string StatusFunc = "";
+
         private loading_wait loading;
         public FromMasterWH()
         {
@@ -49,7 +51,7 @@ namespace TWSL.Forms.master
             GrFunc.Text = "Master Pallet";
             StatusFunc = "Pallet";
             MachineTbx.Enabled = false;
-            statuscbb.Enabled = false;
+            //statuscbb.Enabled = false;
             Sttlb.Enabled = false;
             MachineLb.Enabled = false;
             MachineTbx.Text = "";
@@ -72,19 +74,25 @@ namespace TWSL.Forms.master
 
         }
 
-        private void Loaddatapallet(string Item, String Id)
+        private void Loaddatapallet(string Item, string Id, int Status)
         {
             //MessageBox.Show("Load Pallet");
             try
             {
 
                 // 1) Câu lệnh nền
-                var baseSql = @"
-SELECT 
-    [ItemCode] AS [Item Code],
-    [Qty]      AS [Số Lượng],
-    [IdUser]   AS [Người Đăng Kí]
-FROM [QtyStandPalet]";
+                var baseSql = @"SELECT id as 'ID',
+                [ItemCode] as 'Item Code'
+                ,[Qty] as 'Số lượng'
+                ,[IdUser] as 'Người đăng kí'
+                ,[time_of_registration] as 'Thời gian đăng kí'
+                ,[approver] as 'Người phê duyệt'
+                ,[time_of_approval] as 'Thời gian phê duyệt'
+                ,CASE WHEN [status_item] = 0 THEN N'Chưa phê duyệt' 
+                WHEN [status_item] = 1 THEN N'Đã phê duyệt' 
+                WHEN [status_item] = 2 THEN N'Vô hiệu hóa'  
+                END AS 'Trạng thái'
+                  FROM [TWSL].[dbo].[QtyStandPalet]";
 
                 // 2) Gom điều kiện & tham số
                 var conditions = new List<string>();
@@ -102,6 +110,15 @@ FROM [QtyStandPalet]";
                     parameters.Add(new SqlParameter("@IdUser", Id));
                 }
 
+                if (Status != 0)
+                {
+                    Status -= 1;
+                    conditions.Add("status_item = @status");
+                    parameters.Add(new SqlParameter("@status", Status));
+                }
+
+
+
                 // 3) Lắp WHERE nếu có
                 string sql = baseSql;
                 if (conditions.Count > 0)
@@ -118,17 +135,7 @@ FROM [QtyStandPalet]";
                 // 4) Thực thi query: DÙNG parameters.ToArray() thay vì 'checkuser'
                 DataTable result = DatabaseHelper.ExecuteQuery(sql, parameters.ToArray());
 
-                // 5) (Tuỳ chọn) Map trạng thái hiển thị nếu có cột status_item
-                // foreach (DataRow row in result.Rows)
-                // {
-                //     switch (row["status_item"]?.ToString())
-                //     {
-                //         case "1": row["status_item"] = "Đã phê duyệt"; break;
-                //         case "0": row["status_item"] = "Chưa phê duyệt"; break;
-                //         case "2": row["status_item"] = "Vô Hiệu hóa"; break;
-                //     }
-                // }
-
+                
                 // 6) Gán vào DataGridView (đảm bảo đúng tên control)
                 DataView.DataSource = result; // VD: dataGridView1.DataSource = result;
 
@@ -145,31 +152,45 @@ FROM [QtyStandPalet]";
             try
             {
 
-                string check_user = "  SELECT [itemcode],[generic], [machine], [lot] ,[Degassing_time] ,[registrant] ,[time_of_registration] ,[approver] ,[time_of_approval] ," +
-                    "CASE WHEN [status_item] = 0 THEN N'Chưa phê duyệt' WHEN [status_item] = 1 THEN N'Đã phê duyệt' WHEN [status_item] = 2 THEN N'Vô hiệu hóa'   END AS [status_item1] " +
-                    "FROM [MASTERF12] where status_item in ('0','1','2')";
-                //string name_search_ = id_reg.Text.Trim(); // Loại bỏ khoảng trắng đầu và cuối
-                //string status_ = statuscbb.Text.Trim();
-                //if (status_ == "Chưa phê duyệt")
-                //{
-                //    status_ = "0";
-                //}
-                //else if (status_ == "Đã phê duyệt")
-                //{
-                //    status_ = "1";
-                //}
-                //else if (status_ == "Vô Hiệu hóa")
-                //{
-                //    status_ = "2";
-                //}
+                string check_user = @" SELECT id as 'ID'
+                  ,[itemcode] as 'Mã sản phẩm'
+                  ,[generic] as 'Chủng loại'
+                  , [machine] as 'Máy'
+                  , [lot] as 'Lot'
+                  ,[Degassing_time]  as 'Thời gian thoát khí(Giờ)'
+                  ,[registrant]  as 'Người đăng kí'
+                  ,[time_of_registration]  as 'Thời gian đăng kí'
+                  ,[approver]  as 'Người phê duyệt'
+                  ,[time_of_approval]  as 'Thời gian phê duyệt'
+                  ,CASE WHEN [status_item] = 0 
+                  THEN N'Chưa phê duyệt' 
+                  WHEN [status_item] = 1 THEN N'Đã phê duyệt' 
+                  WHEN [status_item] = 2 THEN N'Vô hiệu hóa'  
+                  END AS 'Trạng thái'
+                  FROM [MASTERF12] where status_item in ('0','1','2')";
+               
 
                 if (Status != 0)
                 {
                     Status -=  1;
                    
-                    check_user = "SELECT [itemcode],[generic], [machine], [lot] ,[Degassing_time] ,[registrant] ,[time_of_registration] ,[approver] ,[time_of_approval] ," +
-                        "CASE WHEN [status_item] = 0 THEN N'Chưa phê duyệt' WHEN [status_item] = 1 THEN N'Đã phê duyệt' WHEN [status_item] = 2 THEN N'Vô hiệu hóa'  END AS [status_item1] " +
-                        "FROM [MASTERF12] where status_item = @status ";
+                    check_user = @"
+                  SELECT id as 'ID' 
+                  ,[itemcode] as 'Mã sản phẩm'
+                  ,[generic] as 'Chủng loại'
+                  , [machine] as 'Máy'
+                  , [lot] as 'Lot'
+                  ,[Degassing_time]  as 'Thời gian thoát khí(Giờ)'
+                  ,[registrant]  as 'Người đăng kí'
+                  ,[time_of_registration]  as 'Thời gian đăng kí'
+                  ,[approver]  as 'Người phê duyệt'
+                  ,[time_of_approval]  as 'Thời gian phê duyệt'
+                  ,CASE WHEN [status_item] = 0 
+                  THEN N'Chưa phê duyệt' 
+                  WHEN [status_item] = 1 THEN N'Đã phê duyệt' 
+                  WHEN [status_item] = 2 THEN N'Vô hiệu hóa'  
+                  END AS 'Trạng thái'
+                  FROM [MASTERF12] where status_item = @status";
                 }
 
                 if (!string.IsNullOrEmpty(Item))
@@ -196,40 +217,9 @@ FROM [QtyStandPalet]";
                     //new SqlParameter("@Username", "%" + name_search_ + "%")
                };
                 DataTable result = DatabaseHelper.ExecuteQuery(check_user, checkuser);
-                // Đổi giá trị để hiển tn trong DataGridView
-                //foreach (DataRow row in result.Rows)
-                //{
-                //    string status = row["status_item"].ToString();
-                //    if (status == "1")
-                //    {
-                //        row["status_item"] = "Đã phê duyệt";
-                //    }
-                //    else if (status == "0")
-                //    {
-                //        row["status_item"] = "Chưa phê duyệt";
-                //    }
-                //    else if (status == "2")
-                //    {
-                //        row["status_item"] = "Vô Hiệu hóa";
-                //    }
-
-                //}
-                // Gán DataTable làm nguồn dữ liệu cho DataGridView
+              
                 DataView.DataSource = result;
 
-
-                // Gán tên hiển thị cho các cột
-                DataView.Columns["itemcode"].HeaderText = "Mã sản phẩm";
-                DataView.Columns["generic"].HeaderText = "Chủng loại";
-                DataView.Columns["machine"].HeaderText = "Máy";
-                DataView.Columns["lot"].HeaderText = "Lot";
-                //userdata_view.Columns["password"].HeaderText = "Mật khẩu";
-                DataView.Columns["Degassing_time"].HeaderText = "Thời gian thoát khí(Giờ)";
-                DataView.Columns["registrant"].HeaderText = "Người đăng kí";
-                DataView.Columns["time_of_registration"].HeaderText = "Thời gian đăng kí";
-                DataView.Columns["approver"].HeaderText = "Người phê duyệt";
-                DataView.Columns["time_of_approval"].HeaderText = "Thời gian phê duyệt";
-                DataView.Columns["status_item1"].HeaderText = "Trạng thái";
             }
             catch (Exception ex)
             {
@@ -250,13 +240,18 @@ FROM [QtyStandPalet]";
                 {
                     Status += 1;
                 }
-                //Console.WriteLine(Status);
+                Console.WriteLine(Status);
                 //String Item, String Id, String Machine, int Status
                 Loaddatatk(Item, Id, Machine, Status);
             }
             else if (StatusFunc == "Pallet")
             {
-                Loaddatapallet(Item, Id);
+                if (Status == -1)
+                {
+                    Status += 1;
+                }
+                Console.WriteLine(Status);
+                Loaddatapallet(Item, Id, Status);
 
             }
         }
@@ -539,7 +534,7 @@ FROM [QtyStandPalet]";
                             loading.HideLoading();
                             //MessageBox.Show("Hoàn thành!");
 
-                            //Update_data();
+                            ////Update_data();
                         }));
                     });
                 }
@@ -565,6 +560,254 @@ FROM [QtyStandPalet]";
         private void FromMasterWH_Load(object sender, EventArgs e)
         {
             Stttk();
+            Loaddata();
+        }
+
+        // phê duyệt
+        private void Appro(object sender, EventArgs e)
+        {
+
+            using (var authenfrom = new authentication_from())
+            {
+                //authenfrom.ShowDialog();
+
+                if (authenfrom.ShowDialog() == DialogResult.OK)
+                {
+                    loading.ShowLoading();
+
+                    Task.Run(() =>
+                    {
+                        // Giả lập xử lý lâu
+                        //System.Threading.Thread.Sleep(3000);
+                        Update_status("1", AppData.Instance.CurrentUserName, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                       
+                        this.Invoke(new Action(() =>
+                        {
+                            loading.HideLoading();
+                            //MessageBox.Show("Hoàn thành!");
+                            //Update_data();
+                            Loaddata();
+                        }));
+                    });
+
+                }
+
+
+            }
+
+
+        }
+
+        private void Update_status(string status, string approver, string time_of_approval)
+        {
+            try
+            {
+
+                if (DataView.SelectedCells.Count > 0)
+                {
+                    // Lấy danh sách các row index duy nhất từ các cells được chọn
+                    var selectedRowIndices = DataView.SelectedCells
+                        .Cast<DataGridViewCell>()
+                        .Select(cell => cell.RowIndex)
+                        .Distinct()
+                        .ToList();
+
+                    foreach (int rowIndex in selectedRowIndices)
+                    {
+                        // Lấy dữ liệu từ gridview để xóa
+                        string id = DataView.Rows[rowIndex].Cells["ID"].Value?.ToString() ?? "";
+                        // Cập nhật trạng thái phê duyệt vào database
+                        if (StatusFunc == "TK")
+                        {
+                            DatabaseHelper.ExecuteNonQuery("update [TWSL].[dbo].[MASTERF12] set status_item = @status, approver = @approver, time_of_approval = @time_of_approval where id = @id", new[] { new SqlParameter("@status", status), new SqlParameter("@approver", approver), new SqlParameter("@time_of_approval", time_of_approval), new SqlParameter("@id", id) });
+                        }
+                        else
+                        {
+                            DatabaseHelper.ExecuteNonQuery("update [TWSL].[dbo].[QtyStandPalet] set status_item = @status, approver = @approver, time_of_approval = @time_of_approval where id = @id", new[] { new SqlParameter("@status", status), new SqlParameter("@approver", approver), new SqlParameter("@time_of_approval", time_of_approval), new SqlParameter("@id", id) });
+                            //cập nhật vào log xóa dữ liệu 
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi Xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //xóa
+        private void Delete(object sender, EventArgs e)
+        {
+            using (var authenfrom = new authentication_from())
+            {
+                //authenfrom.ShowDialog();
+                if (authenfrom.ShowDialog() == DialogResult.OK)
+                {
+                    loading.ShowLoading();
+
+                    Task.Run(() =>
+                    {
+
+                        Delete_data();
+
+                        this.Invoke(new Action(() =>
+                        {
+                            loading.HideLoading();
+                            //MessageBox.Show("Hoàn thành!");
+                            //Update_data();
+                            Loaddata();
+                        }));
+                    });
+
+
+                }
+            }
+        }
+      
+
+        private void Delete_data()
+        {
+            try
+            {
+
+                if (DataView.SelectedCells.Count > 0)
+                {
+                    // Lấy danh sách các row index duy nhất từ các cells được chọn
+                    var selectedRowIndices = DataView.SelectedCells
+                        .Cast<DataGridViewCell>()
+                        .Select(cell => cell.RowIndex)
+                        .Distinct()
+                        .ToList();
+
+                    foreach (int rowIndex in selectedRowIndices)
+                    {
+                        // Lấy dữ liệu từ gridview để xóa
+                        string id = DataView.Rows[rowIndex].Cells["ID"].Value?.ToString() ?? "";
+                        // xóa dữ liệu 
+                        if (StatusFunc == "TK")
+                        {
+                            DatabaseHelper.ExecuteNonQuery("DELETE FROM MASTERF12 WHERE id = @id", new[] { new SqlParameter("@id", id) });
+                            
+                        }
+                        else
+                        {
+                            DatabaseHelper.ExecuteNonQuery("DELETE FROM QtyStandPalet WHERE id = @id", new[] { new SqlParameter("@id", id) });
+                            //cập nhật vào log xóa dữ liệu 
+                        }
+
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi Xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        // vô hiệu hóa
+        private void Disable(object sender, EventArgs e)
+        {
+            using (var authenfrom = new authentication_from())
+            {
+                //authenfrom.ShowDialog();
+                if (authenfrom.ShowDialog() == DialogResult.OK)
+                {
+                    loading.ShowLoading();
+
+                    Task.Run(() =>
+                    {
+                        // Giả lập xử lý lâu
+                        Update_status("0", "", "");
+                        this.Invoke(new Action(() =>
+                        {
+                            loading.HideLoading();
+                            //MessageBox.Show("Hoàn thành!");
+                            //Update_data();
+                            Loaddata();
+                        }));
+                    });
+                }
+            }
+
+        }
+
+        private void ShowContextMenu(Point location)
+        {
+            // Context menu của bạn
+            ContextMenuStrip contextMenu = new ContextMenuStrip();
+
+            // Tạo các nút riêng biệt để dễ dàng truy cập và kiểm soát
+            ToolStripMenuItem appro_master = new ToolStripMenuItem("Phê Duyệt", null, Appro);
+            ToolStripMenuItem disable = new ToolStripMenuItem("Vô hiệu hóa", null, Disable);
+            ToolStripMenuItem delete = new ToolStripMenuItem("Xóa", null, Delete);
+
+            // Thêm các nút vào menu
+            contextMenu.Items.Add(appro_master);
+            contextMenu.Items.Add(disable);
+            contextMenu.Items.Add(delete);
+
+            // Lấy trạng thái từ dòng được chọn
+            // Giả sử cột thứ 2 (index 1) là cột trạng thái, và giá trị "1" nghĩa là đã phê duyệt
+            string status = "";
+            if (DataView.SelectedCells.Count > 0)
+            {
+                int rowIndex = DataView.SelectedCells[0].RowIndex;
+                if (rowIndex >= 0)
+                {
+                    status = DataView.Rows[rowIndex].Cells["Trạng thái"].Value?.ToString() ?? "";
+                }
+            }
+
+            Console.WriteLine(status);
+            // Kiểm tra điều kiện và ẩn/hiện các nút
+            // Nếu trạng thái là "1" (đã phê duyệt), ẩn các nút "Chỉnh sửa" và "Xóa"
+            if (status == "Đã phê duyệt")
+            {
+                delete.Enabled = false;
+                appro_master.Enabled = false;
+               
+            }
+
+            if (status == "Chưa phê duyệt")
+            {
+                disable.Enabled = false;
+                //if (user_role == "user")
+                //{
+                //    delete.Enabled = false;
+                //    appro_master.Enabled = false;
+                //    disable.Enabled = false;
+                //}
+            }
+
+
+            contextMenu.Show(DataView, location);
+        }
+
+        private void DataView_MouseClick(object sender, MouseEventArgs e)
+        {
+              if (e.Button == MouseButtons.Right)
+            {
+                DataGridView.HitTestInfo hit = DataView.HitTest(e.X, e.Y);
+
+                if (hit.RowIndex >= 0 && hit.ColumnIndex >= 0)
+                {
+                    // Kiểm tra xem có phải đang click vào vùng đã chọn không
+                    DataGridViewCell clickedCell = DataView[hit.ColumnIndex, hit.RowIndex];
+
+                    if (!clickedCell.Selected)
+                    {
+                        // Nếu click vào cell chưa được chọn, thì chọn cell đó
+                        DataView.ClearSelection();
+                        clickedCell.Selected = true;
+                    }
+                    // Nếu click vào cell đã được chọn, giữ nguyên selection
+
+                    // Hiển thị context menu tại vị trí click
+                    ShowContextMenu(e.Location);
+                }
+            }
         }
     }
 }

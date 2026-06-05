@@ -1,6 +1,6 @@
 ﻿namespace TWSL.Forms.main
 {
-    partial class Fwh
+    partial class MasterManage
     {
         /// <summary>
         /// Required designer variable.
@@ -62,6 +62,7 @@
             this.button5.TabIndex = 6;
             this.button5.Text = "Tra cứu lịch sử";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.TraCuuLichSuBtn);
             // 
             // button2
             // 
@@ -73,7 +74,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Quản lý Master";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.MasterWHBtn);
             // 
             // button1
             // 
@@ -85,7 +86,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Quản lý tài khoản";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.CreateAWH);
+            this.button1.Click += new System.EventHandler(this.QuanLyTaiKhoanBtn);
             // 
             // label1
             // 
@@ -107,13 +108,13 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Fwh
+            // MasterManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
-            this.Name = "Fwh";
+            this.Name = "MasterManage";
             this.Text = "Fwh";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

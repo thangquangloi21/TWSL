@@ -49,11 +49,16 @@ namespace TWSL.Forms.main
       
         private void DataManagementBtn(object sender, EventArgs e)
         {
+            HashSet<string> allowedPermissions = new HashSet<string>
+            {
+            "MASTER_MANAGE",
+            "FULL_ACCESS"
+            };
             bool hasDataEntry = AppData.Instance.Permission.AsEnumerable()
-          .Any(row => row["PermissionCode"].ToString() == "MASTER_MANAGE");
+                .Any(row => allowedPermissions.Contains(row["PermissionCode"].ToString()));
             if (hasDataEntry)
             {
-                OpenchildFrom(new Fwh());
+                OpenchildFrom(new MasterManage());
 
             }
             else
@@ -69,10 +74,23 @@ namespace TWSL.Forms.main
 
         private void HOME_Load(object sender, EventArgs e)
         {
-            //load quyền vào 1 data table 
-            AppData.Instance.Permission = UtilityFunctions.LoadUserPermissions(AppData.Instance.CurrentUserId);
-            // lấy thông tin nhóm quyền
-            AppData.Instance.NhomQuyen = UtilityFunctions.LayThonTinQuyen(AppData.Instance.CurrentRole).Rows[0]["RoleName"].ToString();
+            if (AppData.Instance.CurrentUserId != "admin")
+            {
+                //load quyền vào 1 data table 
+                AppData.Instance.Permission = UtilityFunctions.LoadUserPermissions(AppData.Instance.CurrentUserId);
+                // lấy thông tin nhóm quyền
+                AppData.Instance.NhomQuyen = UtilityFunctions.LayThonTinQuyen(AppData.Instance.CurrentRole).Rows[0]["RoleName"].ToString();
+            }
+            else
+            {
+                // Nếu là admin, cấp quyền FULL_ACCESS
+                DataTable adminPermissions = new DataTable();
+                adminPermissions.Columns.Add("PermissionCode", typeof(string));
+                adminPermissions.Rows.Add("FULL_ACCESS");
+                AppData.Instance.Permission = adminPermissions;
+                AppData.Instance.NhomQuyen = "Admin";
+            }
+           
 
             UtilityFunctions.loadjson();
             UserID.Text = AppData.Instance.CurrentUserId;
@@ -107,6 +125,11 @@ namespace TWSL.Forms.main
         private void Info_click(object sender, EventArgs e)
         {
             Console.WriteLine("Info clicked");
+            foreach (DataRow row in AppData.Instance.Permission.Rows)
+            {
+                Console.WriteLine(string.Join(" | ", row.ItemArray));
+            }
+
         }
         public void histrory_user()
         {
@@ -136,8 +159,13 @@ namespace TWSL.Forms.main
 
         private void AddData(object sender, EventArgs e)
         {
+            HashSet<string> allowedPermissions = new HashSet<string>
+            {
+            "DATA_ENTRY",
+            "FULL_ACCESS"
+            };
             bool hasDataEntry = AppData.Instance.Permission.AsEnumerable()
-                      .Any(row => row["PermissionCode"].ToString() == "DATA_ENTRY");
+                .Any(row => allowedPermissions.Contains(row["PermissionCode"].ToString()));
             if (hasDataEntry)
             {
 
@@ -153,8 +181,13 @@ namespace TWSL.Forms.main
 
         private void TaoPhieuBtn(object sender, EventArgs e)
         {
+            HashSet<string> allowedPermissions = new HashSet<string>
+            {
+            "CREATE_FORM",
+            "FULL_ACCESS"
+            };
             bool hasDataEntry = AppData.Instance.Permission.AsEnumerable()
-                      .Any(row => row["PermissionCode"].ToString() == "CREATE_FORM");
+                .Any(row => allowedPermissions.Contains(row["PermissionCode"].ToString()));
             if (hasDataEntry)
             {
 
@@ -170,8 +203,13 @@ namespace TWSL.Forms.main
 
         private void DuaHangVaoKhoBtn(object sender, EventArgs e)
         {
+            HashSet<string> allowedPermissions = new HashSet<string>
+            {
+            "EXPORT_CSV",
+            "FULL_ACCESS"
+            };
             bool hasDataEntry = AppData.Instance.Permission.AsEnumerable()
-          .Any(row => row["PermissionCode"].ToString() == "EXPORT_CSV");
+                .Any(row => allowedPermissions.Contains(row["PermissionCode"].ToString()));
             if (hasDataEntry)
             {
                 OpenchildFrom(new DuaHangVaoKho());

@@ -208,6 +208,12 @@
     <Compile Include="Forms\main\WH\LapPhieu\SuaThongTin.Designer.cs">
       <DependentUpon>SuaThongTin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\main\WH\MasterManage\history\CheckHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\main\WH\MasterManage\history\CheckHistory.Designer.cs">
+      <DependentUpon>CheckHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\main\WH\NhapDL\DpBatch12.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,10 +268,10 @@
     <Compile Include="Forms\main\WH\LapPhieu\XemChiTiet.Designer.cs">
       <DependentUpon>XemChiTiet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\main\WH\Fwh.cs">
+    <Compile Include="Forms\main\WH\MasterManage\Fwh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\main\WH\Fwh.Designer.cs">
+    <Compile Include="Forms\main\WH\MasterManage\Fwh.Designer.cs">
       <DependentUpon>Fwh.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\main\HOME.cs">
@@ -298,10 +304,10 @@
     <Compile Include="Forms\main\WH\TaoFileR200\DocSoPhieu.Designer.cs">
       <DependentUpon>DocSoPhieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\master\authentication_from.cs">
+    <Compile Include="Forms\main\WH\MasterManage\master\authentication_from.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\master\authentication_from.Designer.cs">
+    <Compile Include="Forms\main\WH\MasterManage\master\authentication_from.Designer.cs">
       <DependentUpon>authentication_from.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\main\SL\SL3\dp_batchno.cs">
@@ -316,10 +322,10 @@
     <Compile Include="Forms\loading\loading_wait.Designer.cs">
       <DependentUpon>loading_wait.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\master\FromMasterWH.cs">
+    <Compile Include="Forms\main\WH\MasterManage\master\FromMasterWH.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\master\FromMasterWH.Designer.cs">
+    <Compile Include="Forms\main\WH\MasterManage\master\FromMasterWH.Designer.cs">
       <DependentUpon>FromMasterWH.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -328,16 +334,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\cnn_db_gs1.cs" />
-    <Compile Include="Forms\user\edit_inf.cs">
+    <Compile Include="Forms\main\WH\MasterManage\user\edit_inf.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\user\edit_inf.Designer.cs">
+    <Compile Include="Forms\main\WH\MasterManage\user\edit_inf.Designer.cs">
       <DependentUpon>edit_inf.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\master\from_master.cs">
+    <Compile Include="Forms\main\WH\MasterManage\master\from_master.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\master\from_master.Designer.cs">
+    <Compile Include="Forms\main\WH\MasterManage\master\from_master.Designer.cs">
       <DependentUpon>from_master.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\loading\LoadingControl.cs">
@@ -355,16 +361,16 @@
     <Compile Include="Forms\main\SL\SL3\main_from.Designer.cs">
       <DependentUpon>main_from.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\user\from_chage_password.cs">
+    <Compile Include="Forms\main\WH\MasterManage\user\from_chage_password.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\user\from_chage_password.Designer.cs">
+    <Compile Include="Forms\main\WH\MasterManage\user\from_chage_password.Designer.cs">
       <DependentUpon>from_chage_password.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\user\register_user.cs">
+    <Compile Include="Forms\main\WH\MasterManage\user\register_user.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\user\register_user.Designer.cs">
+    <Compile Include="Forms\main\WH\MasterManage\user\register_user.Designer.cs">
       <DependentUpon>register_user.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\history\tra_cuu_log.cs">
@@ -373,10 +379,10 @@
     <Compile Include="Forms\history\tra_cuu_log.Designer.cs">
       <DependentUpon>tra_cuu_log.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\user\user_ma.cs">
+    <Compile Include="Forms\main\WH\MasterManage\user\user_ma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\user\user_ma.Designer.cs">
+    <Compile Include="Forms\main\WH\MasterManage\user\user_ma.Designer.cs">
       <DependentUpon>user_ma.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\main\SL\input.cs">
@@ -385,10 +391,10 @@
     <Compile Include="Forms\main\SL\input.Designer.cs">
       <DependentUpon>input.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\user\login.cs">
+    <Compile Include="Forms\main\WH\MasterManage\user\login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\user\login.Designer.cs">
+    <Compile Include="Forms\main\WH\MasterManage\user\login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -413,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\LapPhieu\SuaThongTin.resx">
       <DependentUpon>SuaThongTin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\main\WH\MasterManage\history\CheckHistory.resx">
+      <DependentUpon>CheckHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\NhapDL\DpBatch12.resx">
       <DependentUpon>DpBatch12.cs</DependentUpon>
@@ -441,7 +450,7 @@
     <EmbeddedResource Include="Forms\main\WH\LapPhieu\XemChiTiet.resx">
       <DependentUpon>XemChiTiet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\WH\Fwh.resx">
+    <EmbeddedResource Include="Forms\main\WH\MasterManage\Fwh.resx">
       <DependentUpon>Fwh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\HOME.resx">
@@ -459,19 +468,19 @@
     <EmbeddedResource Include="Forms\main\WH\TaoFileR200\DocSoPhieu.resx">
       <DependentUpon>DocSoPhieu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\master\authentication_from.resx">
+    <EmbeddedResource Include="Forms\main\WH\MasterManage\master\authentication_from.resx">
       <DependentUpon>authentication_from.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\SL\SL3\dp_batchno.resx">
       <DependentUpon>dp_batchno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\master\FromMasterWH.resx">
+    <EmbeddedResource Include="Forms\main\WH\MasterManage\master\FromMasterWH.resx">
       <DependentUpon>FromMasterWH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\user\edit_inf.resx">
+    <EmbeddedResource Include="Forms\main\WH\MasterManage\user\edit_inf.resx">
       <DependentUpon>edit_inf.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\master\from_master.resx">
+    <EmbeddedResource Include="Forms\main\WH\MasterManage\master\from_master.resx">
       <DependentUpon>from_master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\loading\LoadingControl.resx">
@@ -483,22 +492,22 @@
     <EmbeddedResource Include="Forms\main\SL\SL3\main_from.resx">
       <DependentUpon>main_from.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\user\from_chage_password.resx">
+    <EmbeddedResource Include="Forms\main\WH\MasterManage\user\from_chage_password.resx">
       <DependentUpon>from_chage_password.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\user\register_user.resx">
+    <EmbeddedResource Include="Forms\main\WH\MasterManage\user\register_user.resx">
       <DependentUpon>register_user.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\history\tra_cuu_log.resx">
       <DependentUpon>tra_cuu_log.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\user\user_ma.resx">
+    <EmbeddedResource Include="Forms\main\WH\MasterManage\user\user_ma.resx">
       <DependentUpon>user_ma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\SL\input.resx">
       <DependentUpon>input.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\user\login.resx">
+    <EmbeddedResource Include="Forms\main\WH\MasterManage\user\login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -672,6 +681,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="inventory-management.ico" />
+    <None Include="Resources\clock %281%29.png" />
+    <None Include="Resources\log.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" />

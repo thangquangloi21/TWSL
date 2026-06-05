@@ -7,18 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TWSL.Forms.main.WH.MasterManage.history;
 using TWSL.Forms.master;
 
 namespace TWSL.Forms.main
 {
-    public partial class Fwh : Form
+    public partial class MasterManage : Form
     {
-        public Fwh()
+        public MasterManage()
         {
             InitializeComponent();
         }
 
-        private void CreateAWH(object sender, EventArgs e)
+        private void QuanLyTaiKhoanBtn(object sender, EventArgs e)
         {
             //var create_from_awh = new WH.CreateFromAWH();
             //create_from_awh.ShowDialog();
@@ -26,16 +27,22 @@ namespace TWSL.Forms.main
             Uma.ShowDialog();
         }
 
-        private void Master_btn(object sender, EventArgs e)
+        //private void Master_btn(object sender, EventArgs e)
+        //{
+        //    var From_master_wh = new FromMasterWH();
+        //    From_master_wh.ShowDialog();
+        //}
+
+        private void MasterWHBtn(object sender, EventArgs e)
         {
             var From_master_wh = new FromMasterWH();
             From_master_wh.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void TraCuuLichSuBtn(object sender, EventArgs e)
         {
-            var From_master_wh = new FromMasterWH();
-            From_master_wh.ShowDialog();
+            var CheckHistory = new CheckHistory();
+            CheckHistory.ShowDialog();
         }
     }
 }

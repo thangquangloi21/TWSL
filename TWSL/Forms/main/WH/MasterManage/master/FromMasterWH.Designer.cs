@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FromMasterWH));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -124,14 +125,18 @@
             // 
             // DataView
             // 
+            this.DataView.AllowUserToAddRows = false;
+            this.DataView.AllowUserToDeleteRows = false;
             this.DataView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.DataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataView.Location = new System.Drawing.Point(0, 0);
             this.DataView.Name = "DataView";
+            this.DataView.ReadOnly = true;
             this.DataView.Size = new System.Drawing.Size(1014, 446);
             this.DataView.TabIndex = 0;
+            this.DataView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataView_MouseClick);
             // 
             // panel3
             // 
@@ -203,8 +208,7 @@
             this.statuscbb.Items.AddRange(new object[] {
             "",
             "Chưa phê duyệt",
-            "Đã phê duyệt",
-            "Vô Hiệu hóa"});
+            "Đã phê duyệt"});
             this.statuscbb.Location = new System.Drawing.Point(313, 54);
             this.statuscbb.Name = "statuscbb";
             this.statuscbb.Size = new System.Drawing.Size(174, 28);
@@ -286,8 +290,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FromMasterWH";
-            this.Text = "FromMasterWH";
+            this.Text = "Quản Lý Master";
             this.Load += new System.EventHandler(this.FromMasterWH_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

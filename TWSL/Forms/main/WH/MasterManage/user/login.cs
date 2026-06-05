@@ -241,6 +241,9 @@ namespace TWSL
                 AppData.Instance.CurrentUserId = "admin";
                 AppData.Instance.CurrentUserName = "Administrator";
                 AppData.Instance.CurrentRole = "admin";
+                AppData.Instance.Permission = new DataTable();
+                
+
                 HOME home = new HOME();
                 home.Show();
 

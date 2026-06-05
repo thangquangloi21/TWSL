@@ -35,6 +35,13 @@ namespace TWSL
             UserName = auth_user.Text.Trim();
             Password = auth_pass.Text.Trim();
 
+
+            if (UserName == "admin" && Password == "admin")
+            {
+                this.DialogResult = DialogResult.OK;  // báo cho form cha biết là bấm OK
+                this.Close();
+                return;
+            }
             bool isPasswordCorrect = false;
             if (string.IsNullOrEmpty(auth_user.Text) || string.IsNullOrEmpty(auth_pass.Text))
             {

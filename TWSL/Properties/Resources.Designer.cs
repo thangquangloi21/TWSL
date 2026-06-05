@@ -113,6 +113,16 @@ namespace TWSL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clock__1_ {
+            get {
+                object obj = ResourceManager.GetObject("clock (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap commercial {
             get {
                 object obj = ResourceManager.GetObject("commercial", resourceCulture);
@@ -256,6 +266,16 @@ namespace TWSL.Properties {
         internal static System.Drawing.Bitmap loadingg {
             get {
                 object obj = ResourceManager.GetObject("loadingg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap log {
+            get {
+                object obj = ResourceManager.GetObject("log", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

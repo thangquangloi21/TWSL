@@ -23,15 +23,15 @@ namespace TWSL.Common
         //public string DBSL = "Server=10.239.1.162;Database=TWSL;User Id=loi_tq;Password=249533;";
         //public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
 
-        //test
-        public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
-        public string DBSL = "Server=10.239.1.54;Database=TWSL;User Id=sa;Password=123456;";
-        public string SAPDWH = "Server=10.239.1.54;Database=DB_SAP_DWH;User Id=sa;Password=123456; ";
+        ////test
+        //public string DBGS1 = "Server=10.239.1.162;Database=DB_GS1_GenIII;User Id=loi_tq;Password=249533;";
+        //public string DBSL = "Server=10.239.1.54;Database=TWSL;User Id=sa;Password=123456;";
+        //public string SAPDWH = "Server=10.239.1.54;Database=DB_SAP_DWH;User Id=sa;Password=123456; ";
 
         //HOME
-        //public string DBGS1 = "Server=10.239.2.58;Database=DB_GS1_GenIII;User Id=loitq;Password=249533;";
-        //public string DBSL = "Server=10.239.2.58;Database=TWSL;User Id=loitq;Password=249533;";
-        //public string SAPDWH = "Server=10.239.2.58;Database=DB_SAP_DWH;User Id=loitq;Password=249533;";
+        public string DBGS1 = "Server=10.239.2.58;Database=DB_GS1_GenIII;User Id=loitq;Password=249533;";
+        public string DBSL = "Server=10.239.2.58;Database=TWSL;User Id=loitq;Password=249533;";
+        public string SAPDWH = "Server=10.239.2.58;Database=DB_SAP_DWH;User Id=loitq;Password=249533;";
 
 
 
@@ -46,7 +46,7 @@ namespace TWSL.Common
 
         public string NhomQuyen { get; set; }
 
-        public DataTable Permission { get; set; }
+        public DataTable Permission { get; set; } = new DataTable();
 
 
         //kết nối db
