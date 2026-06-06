@@ -125,12 +125,7 @@ namespace TWSL.Forms.master
                 {
                     sql += " WHERE " + string.Join(" AND ", conditions);
                 }
-                else
-                {
-                    // TÙY CHỌN: Chặn không cho trả toàn bộ dữ liệu (nếu muốn)
-                    // MessageBox.Show("Vui lòng nhập ít nhất một điều kiện tìm kiếm.");
-                    // return;
-                }
+               
 
                 // 4) Thực thi query: DÙNG parameters.ToArray() thay vì 'checkuser'
                 DataTable result = DatabaseHelper.ExecuteQuery(sql, parameters.ToArray());

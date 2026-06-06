@@ -29,6 +29,7 @@ namespace TWSL.Forms.main.WH
             InitializeComponent();
             loading = new loading_wait();
             //Logger.Log("INFO", $"{User_id} Vào chức năng quản lý Master {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+            Logger.Log("INFO", $"{AppData.Instance.CurrentUserName} Vào chức năng lập phiếu nhập kho {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
             this.Controls.Add(loading);
 
         }
@@ -135,12 +136,13 @@ namespace TWSL.Forms.main.WH
 
                     if (!string.IsNullOrWhiteSpace(soPhieu))
                     {
+                        Logger.Log("INFO", $"{AppData.Instance.CurrentUserName} In phiếu nhập kho soPhieu {soPhieu} {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
                         TaoPhieu.TaoFileIN(soPhieu, outputDir);
                         //cập nhật số lần in
                         TaoPhieu.CongSoLanIN(soPhieu);
                     }
                 }
-
+                
                 TaoPhieu.InPhieuNhapkho(outputDir);
                 //Load lại dữ liệu để cập nhật số lần in
                 updateData();
@@ -194,8 +196,9 @@ namespace TWSL.Forms.main.WH
                 MessageBox.Show("Vui lòng chọn một phiếu để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            using (var sua_thong_tin = new SuaThongTin(SoLuongDP.Text.Trim(), Maxpalet, ThoiGianTKDP.Text.Trim()))
+            using (var sua_thong_tin = new SuaThongTin(MaSPDP.Text.Trim(),LotSPDP.Text.Trim(),SoMeTTDP.Text.Trim(),SoLuongDP.Text.Trim(), Maxpalet, ThoiGianTKDP.Text.Trim()))
             {
+                Logger.Log("INFO", $"{AppData.Instance.CurrentUserName} Vào chức sửa thông tin của phiếu {SoPhieuDP.Text} {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
                 if (sua_thong_tin.ShowDialog() == DialogResult.OK)
                 {
                     //Cập nhật lại thông tin sau khi sửa

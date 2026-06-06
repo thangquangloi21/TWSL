@@ -12,7 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TWSL.Common;
-using TWSL.Forms.main.SL.SL12;
+//using TWSL.Forms.main.SL.SL12;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace TWSL.Forms.main.SL.SL1
@@ -27,7 +28,8 @@ namespace TWSL.Forms.main.SL.SL1
             InitializeComponent();
             ExcelPackage.License.SetNonCommercialPersonal("Your Name");
             loading = new loading_wait();
-            //Logger.Log("INFO", $"{User_id} Vào chức năng quản lý Master {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+            Logger.Log("INFO", $"{AppData.Instance.CurrentUserName} Vào chức năng Nhập dữ liệu {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+
             this.Controls.Add(loading);
             //TgKetThuc.Value = DateTime.Now.AddDays(1);
             //Barcode.ReadOnly = true;
@@ -71,35 +73,7 @@ namespace TWSL.Forms.main.SL.SL1
             DataBatchNo.DataSource = dt;
         }
 
-        // đẩy dữ liệu vào db
-        private void insert_data_desg_time()
-        {
-            string time = UtilityFunctions.getdate_time1();
-            foreach (DataGridViewRow row in DataBatchNo.Rows)
-            {
-                if (row.IsNewRow) continue; // Bỏ qua hàng mới
-                string batchNo = row.Cells[0].Value?.ToString() ?? "";
-                string productCode = row.Cells[1].Value?.ToString() ?? "";
-                string line = row.Cells[2].Value?.ToString() ?? "";
-                string lot = row.Cells[3].Value?.ToString() ?? "";
-                string quantity = row.Cells[4].Value?.ToString() ?? "";
-                string machine = row.Cells[5].Value?.ToString() ?? "";
-                string id_user = TWSL.Common.AppData.Instance.CurrentUserId;
-                string name = TWSL.Common.AppData.Instance.CurrentUserName;
-                ImportData.InsertDataBatchNo(batchNo, productCode, line, lot, quantity, machine, id_user, name, "add", time);
-                Console.WriteLine("batchNo, productCode, line, lot, quantity, machine, id_user, name");
-            }
-            Logger.Log("INFO", $"{AppData.Instance.CurrentUserId} lưu mẻ {AppData.Instance.Batch} lúc: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
-            MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
-        private void InfoInp(object sender, EventArgs e)
-        {
-            var InfoForm = new InfoBathWh12();
-            this.Hide();
-            InfoForm.ShowDialog();
-            this.Show();
-        }
 
         private void ChonFile(object sender, EventArgs e)
         {
@@ -124,6 +98,7 @@ namespace TWSL.Forms.main.SL.SL1
 
         private string UpLoadFile(string filePath)
         {
+            Logger.Log("INFO", $"Upload {filePath} vào lúc {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
             // Bạn cần cài đặt thư viện EPPlus để làm việc với file Excel
             using (var package = new OfficeOpenXml.ExcelPackage(new FileInfo(filePath)))
             {
@@ -166,23 +141,27 @@ namespace TWSL.Forms.main.SL.SL1
                     string NgayPost = worksheet.Cells[row, 4].Value?.ToString().Trim();
                     string SoLuong = worksheet.Cells[row, 5].Value?.ToString().Trim();
                     string MaSanPham = ImportData.getproductcode(MaSap);
-
+                    string SoMay = ImportData.getmachine_no(SoMe);
                     if (SoMe.Length > 10)   
                     {
+                        Logger.Log("INFO", $"Upload mã {SOME}-{MaSanPham}-{SoLo}-{SoLuong}-{SoMay} Số mẻ không hợp lệ {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
                         NG += 1;
                         continue;
+                        
                     }
-                    string SoMay = ImportData.getmachine_no(SoMe);
+                    
 
 
                     //kiểm tra dữ liệu đã tồn tại trong database chưa
                     if (ImportData.CheckMeTT(SoMe, MaSap, SoLo) == 1)
                     {
+                        Logger.Log("INFO", $"Upload mã {SOME}-{MaSanPham}-{SoLo}-{SoLuong}-{SoMay} Đã tồn lại {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
                         Trung += 1;
                         continue;
                     }
 
                     if (MaSanPham == "Null") {
+                        Logger.Log("INFO", $"Upload mã {SOME}-{MaSanPham}-{SoLo}-{SoLuong}-{SoMay} Không thành công do không có mã sản phẩm vào lúc {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
                         NG += 1;
                         continue;
                     }
@@ -195,12 +174,13 @@ namespace TWSL.Forms.main.SL.SL1
 
                     // so me / ma mes / ma sap / lot / qty / may tt / postdate / tg upload / id nguoi upload / status
                     // Đẩy dữ liệu vào DB
-                    ImportData.InsertSL(SoMe, MaSanPham, MaSap, SoLo, SoLuong, SoMay, NgayPost, UtilityFunctions.getdate_time1(), AppData.Instance.CurrentUserId, "Nhập Mới");
+                    ImportData.InsertData(SoMe, MaSanPham, MaSap, SoLo, SoLuong, SoMay, NgayPost, UtilityFunctions.getdate_time1(), AppData.Instance.CurrentUserId, "Nhập Mới");
+
                     OK +=1;
 
                     //MessageBox.Show($"Mẻ tiệt trùng: {MeTT}\n Mã sản phẩm: {MaSanPham}\n Lot sản phẩm: {LotSanPham}\n Số lượng: {SoLuong}\n Thời gian bắt đầu tiệt trùng: {TgBatDauTT}\n Thời gian kết thúc tiệt trùng: {TgKetThucTT}\n Ngày kết thúc tiệt trùng: {NgayKetThucTT}\n Máy tiệt trùng: {MayTT}", "Dữ liệu đọc từ file", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                return $"Upload thành công Trùng dữ liệu: {Trung} OK: {OK}, NG: {NG}";
+                return $"Upload thành công OK: {OK}, Đã tồn lại: {Trung}, NG: {NG}";
             }
         }
 

@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TWSL.Common;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TWSL
@@ -21,7 +22,8 @@ namespace TWSL
 
         public chage_pasword(string user_id, string user_password)
         {
-            Logger.Log("INFO", $"{id} Truy cập chức năng đổi mật khẩu");
+            Logger.Log("INFO", $"{AppData.Instance.CurrentUserName} Truy cập chức năng đổi mật khẩu");
+            //Logger.Log("INFO", $" Vào chức năng Nhập dữ liệu {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
             InitializeComponent();
             id = user_id;
             password = user_password;
@@ -75,6 +77,7 @@ namespace TWSL
                 // Ví dụ: Gọi hàm để cập nhật mật khẩu trong cơ sở dữ liệu hoặc hệ thống
                 
                 password = Passwordnew2;
+                Logger.Log("INFO", $"{AppData.Instance.CurrentUserName} Đổi mật khẩu thành công {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
                 MessageBox.Show("Đổi mật khẩu thành công! \n Vui Lòng Đăng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 IsPasswordChanged = true; // Đánh dấu đã đổi mật khẩu
                 this.Close(); // Đóng form sau khi đổi mật khẩu thành công

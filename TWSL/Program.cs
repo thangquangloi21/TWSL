@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using TWSL.Common;
 using TWSL.Forms.history;
 using TWSL.Forms.main;
+using TWSL.Forms.main.WH.MasterManage.history;
 using TWSL.Forms.master;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -23,7 +24,8 @@ namespace TWSL
             Application.SetCompatibleTextRenderingDefault(false);
             // init SL
             ImportData.InitSL();
-            //Application.Run(new FromMasterWH());
+            //Application.Run(new CheckHistory());
+
 
             //AppData.Instance.CurrentUserName = "Admin";
 

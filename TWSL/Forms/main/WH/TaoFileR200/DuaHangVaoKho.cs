@@ -18,6 +18,7 @@ namespace TWSL.Forms.main.WH.TaoFileR200
         public DuaHangVaoKho()
         {
             InitializeComponent();
+            Logger.Log("INFO", $"{AppData.Instance.CurrentUserName} Vào chức năng nhập kho tự động {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
         }
 
         private void button1_Click(object sender, EventArgs e)

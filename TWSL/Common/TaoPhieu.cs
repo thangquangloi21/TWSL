@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
@@ -74,22 +75,25 @@ namespace TWSL.Common
                     SqlParameter[] parameters = new SqlParameter[]
                     {
                     new SqlParameter("@SoPhieu",          soPhieu),
-                    new SqlParameter("@SoMeTT",           row["Số Mẻ"]?.ToString()               ?? ""),
-                    new SqlParameter("@MaSP",             row["Tên Sản Phẩm"]?.ToString()        ?? ""),
-                    new SqlParameter("@LotSP",            row["Lot"]?.ToString()                  ?? ""),
-                    new SqlParameter("@SoLuong",          row["Số Lượng"]?.ToString()            ?? ""),
-                    new SqlParameter("@MayTT",            row["Máy"]?.ToString()                  ?? ""),
-                    new SqlParameter("@ThoiGianThoatKhi", row["Thời gian thoát khí"]?.ToString() ?? ""),
-                    new SqlParameter("@MaxPallet",        row["Max/Pallet"]?.ToString()           ?? ""),
+                    new SqlParameter("@SoMeTT",           row["Số Mẻ"]?.ToString()?? ""),
+                    new SqlParameter("@MaSP",             row["Tên Sản Phẩm"]?.ToString()?? ""),
+                    new SqlParameter("@LotSP",            row["Lot"]?.ToString()?? ""),
+                    new SqlParameter("@SoLuong",          row["Số Lượng"]?.ToString()?? ""),
+                    new SqlParameter("@MayTT",            row["Máy"]?.ToString()?? ""),
+                    new SqlParameter("@ThoiGianThoatKhi", row["Thời gian thoát khí"]?.ToString()?? ""),
+                    new SqlParameter("@MaxPallet",        row["Max/Pallet"]?.ToString()?? ""),
                     new SqlParameter("@IdNguoiLap",       idNguoiLap),
                     new SqlParameter("@ThoiGianLap",      thoiGianLap),
-                    new SqlParameter("@Note",             row["Nội Dung"]?.ToString() ?? ""),
+                    new SqlParameter("@Note",             row["Nội Dung"]?.ToString()?? ""),
                     };
                     DatabaseHelper.ExecuteNonQuery(sql, parameters);
                     CapNhatTrangThaiMe(row["Số Mẻ"]?.ToString() ?? "", "Tạo Phiếu");
+                    ImportData.InsertHistory(row["Tên Sản Phẩm"]?.ToString() ?? "", row["Lot"]?.ToString() ?? "", row["Số Mẻ"]?.ToString() ?? "", soPhieu, row["Số Lượng"]?.ToString() ?? "", AppData.Instance.CurrentUserId, "Tạo Phiếu");
                 }
                 //cập nhật trạng thái của các mẻ đã chọn
+                
                 CapNhatTrangThaiMe(data.Rows[0]["Số Mẻ"]?.ToString(), "Tạo Phiếu");
+                Logger.Log("INFO", $"{AppData.Instance.CurrentUserName} Tạo phiếu {soPhieu} {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
                 MessageBox.Show($"Tạo phiếu {soPhieu} thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)

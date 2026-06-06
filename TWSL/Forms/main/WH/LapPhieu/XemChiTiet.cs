@@ -54,15 +54,18 @@ namespace TWSL.Forms.main.WH
                 MessageBox.Show("Vui lòng chọn một phiếu để sửa thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            string MaSP = selectedRow.Cells["Tên Sản Phẩm"].Value?.ToString() ?? "";
+            string LotSP = selectedRow.Cells["Lot"].Value?.ToString() ?? "";
+            string SoMeTT = selectedRow.Cells["Số Mẻ"].Value?.ToString() ?? "";
+            string soLuong    = selectedRow.Cells["Số Lượng"].Value?.ToString()??"";
+            string maxPallet  = selectedRow.Cells["Max/Pallet"].Value?.ToString()??"";
+            string thoiGianTK = selectedRow.Cells["Thời gian thoát khí"].Value?.ToString()??"";
 
-            string soLuong    = selectedRow.Cells["Số Lượng"].Value?.ToString()            ?? "";
-            string maxPallet  = selectedRow.Cells["Max/Pallet"].Value?.ToString()           ?? "";
-            string thoiGianTK = selectedRow.Cells["Thời gian thoát khí"].Value?.ToString() ?? "";
-
-            using (var sua_thong_tin = new SuaThongTin(soLuong, maxPallet, thoiGianTK))
+            using (var sua_thong_tin = new SuaThongTin(MaSP, LotSP, SoMeTT, soLuong, maxPallet, thoiGianTK))
             {
                 if (sua_thong_tin.ShowDialog() == DialogResult.OK)
                 {
+                    Logger.Log("INFO", $"{AppData.Instance.CurrentUserName} sửa thông tin: {MaSP}-{LotSP} {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
                     // Cập nhật lại DataTable (hiển thị ngay không cần query lại DB)
                     int rowIndex = selectedRow.Index;
                     DataTable.Rows[rowIndex]["Số Lượng"]            = sua_thong_tin.ResultSoLuong;
@@ -75,6 +78,7 @@ namespace TWSL.Forms.main.WH
 
             private void TaoPhieuBTN(object sender, EventArgs e)
             {
+                
                 TaoPhieu.TaoVaLuuPhieu(DataTable);
                 KetQua = true;
                 this.Close();

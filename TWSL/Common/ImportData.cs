@@ -251,7 +251,7 @@ namespace TWSL.Common
             throw new FormatException($"Không thể parse ngày giờ: '{input}'");
         }
 
-        public static void InsertSL(string soMe, string maSP, string MaSAP, string LotSP, string SoLuong,string MayTT, string NgayPost,string NgayGioUpLoad, string IdUser, string Status)
+        public static void InsertData(string soMe, string maSP, string MaSAP, string LotSP, string SoLuong,string MayTT, string NgayPost,string NgayGioUpLoad, string IdUser, string Status)
         {
             //data: soMe, maSP, MaSAP, LotSP, SoLuong, MayTT, NgayPost, NgayGioUpLoad, IdUser, Status
             string insertQuery = "insert [ImportData] ([SoMeTT],[MaSP] ,[MaSAP] ,[LotSP] ,[SoLuongSP] ,[MayTT] ,[ThoiGianPost] ,[NgayGioUpload] ,[IdUser] ,[TrangThai]) " +
@@ -276,30 +276,47 @@ namespace TWSL.Common
 
             };
 
-            //SqlParameter[] parameters1 = new SqlParameter[]
-            //{
-            //        new SqlParameter("@batch_no", batchNo),
-            //        new SqlParameter("@item_code", productCode),
-            //        new SqlParameter("@product_line", line),
-            //        new SqlParameter("@lot", lot),
-            //        new SqlParameter("@quantity", quantity),
-            //        new SqlParameter("@machine_no", machine),
-            //        new SqlParameter("@inp_time", time),
-            //        new SqlParameter("@id_user", id_user),
-            //        new SqlParameter("@name", name),
-            //        new SqlParameter("@note", note)
+            //data
+            InsertHistory(maSP, LotSP, soMe, "", SoLuong, IdUser, "ADD");
+            DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
+            
 
-            //};
+
+        }
+
+
+        public static void InsertHistory(string MaSp, string Lot, string SoMe, string SoPhieu, string SoLuong, string NguoiThucHien, string NoiDung)
+        {
+            //data: soMe, maSP, MaSAP, LotSP, SoLuong, MayTT, NgayPost, NgayGioUpLoad, IdUser, Status
+            string insertQuery = @"insert LichSuGiaoDich (MaSP,LotSP, SoMeTT, SoPhieuDaTao, SoLuong, NguoiThucHien, NoiDung)
+                                values (@MaSP,@LotSP,@SoMeTT,@SoPhieuDaTao,@SoLuong,@NguoiThucHien,@NoiDung) ";
+
+            //transection
+            //string insertQuery2 = "insert [Tr_ImportData] ([BatchNo] ,[ItemCode] ,[ProdLine] ,[ProdLot] ,[Quantity] ,[Machine],[DateTime], [IdUser], [NameUser]  ,[note]) " +
+            //    "values (@batch_no, @item_code, @product_line, @lot, @quantity, @machine_no, @inp_time, @id_user, @name, @note)";
+            // Tạo mảng SqlParameter để tránh SQL Injection
+            SqlParameter[] parameters = new SqlParameter[]
+            {  
+                    
+                    new SqlParameter("@MaSP", MaSp),
+                    new SqlParameter("@LotSP", Lot),
+                    new SqlParameter("@SoMeTT", SoMe),
+                    new SqlParameter("@SoLuong", SoLuong),
+                    new SqlParameter("@SoPhieuDaTao", SoPhieu),
+                    new SqlParameter("@NguoiThucHien", NguoiThucHien),
+                    new SqlParameter("@NoiDung", NoiDung)
+            };
 
             //data
             DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
-            //transection
-            //DatabaseHelper.ExecuteNonQuery(insertQuery2, parameters1);
+
         }
 
 
 
-    public static int CheckMeTT(string MeTT, string ItemCode , string Lot)
+
+
+        public static int CheckMeTT(string MeTT, string ItemCode , string Lot)
         {
             string insertQuery = @"select SoMeTT from [ImportData] where SoMeTT = @BatchNo and  MaSAP = @ItemCode and LotSP = @ProdLot";
             var parameters = new List<SqlParameter>

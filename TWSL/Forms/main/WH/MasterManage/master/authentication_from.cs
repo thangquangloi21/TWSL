@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TWSL.Common;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TWSL
@@ -32,74 +33,67 @@ namespace TWSL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserName = auth_user.Text.Trim();
-            Password = auth_pass.Text.Trim();
+            string userName = auth_user.Text.Trim();
+            string password = auth_pass.Text.Trim();
 
-
-            if (UserName == "admin" && Password == "admin")
+            if (userName != AppData.Instance.CurrentUserId)
             {
-                this.DialogResult = DialogResult.OK;  // báo cho form cha biết là bấm OK
+                MessageBox.Show("Vui Lòng nhập tài khoản hợp lệ!", "Thông Báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Không được để trống các trường!", "Thông Báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (userName == "admin" && password == "admin")
+            {
+                this.DialogResult = DialogResult.OK;
                 this.Close();
                 return;
             }
-            bool isPasswordCorrect = false;
-            if (string.IsNullOrEmpty(auth_user.Text) || string.IsNullOrEmpty(auth_pass.Text))
-            {
-                MessageBox.Show("Không được để trống các trường !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if (!int.TryParse(UserName, out int number) || number <= 0)
-            {
-                MessageBox.Show("Thông tin tài khoản hoặc mật khẩu chưa chính xác. ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
 
-            // lấy mật khẩu từ database để so sánh
-            string get_time = $"SELECT password FROM [users] WHERE id = @username";
-            SqlParameter[] id_passw = {
-                                new SqlParameter("@username", UserName)
-                            };
-            DataTable result = DatabaseHelper.ExecuteQuery(get_time, id_passw);
-            string storedHashedPassword = result.Rows[0]["password"].ToString();
+            string sql = "SELECT password FROM [users] WHERE id = @id";
 
-            if (storedHashedPassword == null)
+            SqlParameter[] parameters =
             {
-                MessageBox.Show("Tài khoản không tồn tại. ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            new SqlParameter("@id", auth_user.Text.Trim())};
 
+            DataTable dt = DatabaseHelper.ExecuteQuery(sql, parameters);
+
+            // Kiểm tra tài khoản có tồn tại không
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!");
                 return;
             }
 
-            isPasswordCorrect = BCrypt.Net.BCrypt.Verify(Password, storedHashedPassword);
+            // Lấy mật khẩu đã mã hóa
+            string hashedPassword = dt.Rows[0]["password"].ToString();
 
-            if (isPasswordCorrect)
+            // Kiểm tra mật khẩu
+            bool isCorrect = BCrypt.Net.BCrypt.Verify(
+                auth_pass.Text.Trim(),
+                hashedPassword);
+
+            if (isCorrect)
             {
-                // kiểm tra xem user có quyền không
-                string user_role = "select * from [users] where id = @username";
-                SqlParameter[] userrole = {
-                   new SqlParameter("@username", UserName)
-                 };
-                DataTable role = DatabaseHelper.ExecuteQuery(user_role, userrole);
 
-                string roles = role.Rows[0]["role"].ToString();
-
-                if (roles == "manager" || roles == "user" || roles == "admin")
-                {
-                    this.DialogResult = DialogResult.OK;  // báo cho form cha biết là bấm OK
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Bạn Không có quyền thực hiện hành động này! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-               
+                //MessageBox.Show("Đăng nhập thành công!");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Thông tin tài khoản hoặc mật khẩu chưa chính xác. ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-
+                MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!");
             }
+
+
         }
-        
+
     }
 }

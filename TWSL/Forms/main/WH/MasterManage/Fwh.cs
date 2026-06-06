@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TWSL.Common;
 using TWSL.Forms.main.WH.MasterManage.history;
 using TWSL.Forms.master;
 
@@ -17,6 +18,7 @@ namespace TWSL.Forms.main
         public MasterManage()
         {
             InitializeComponent();
+            Logger.Log("INFO", $"{AppData.Instance.CurrentUserName} Vào chức năng quản lý master {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
         }
 
         private void QuanLyTaiKhoanBtn(object sender, EventArgs e)

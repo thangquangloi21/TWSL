@@ -214,18 +214,6 @@
     <Compile Include="Forms\main\WH\MasterManage\history\CheckHistory.Designer.cs">
       <DependentUpon>CheckHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\main\WH\NhapDL\DpBatch12.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\main\WH\NhapDL\DpBatch12.Designer.cs">
-      <DependentUpon>DpBatch12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\main\WH\NhapDL\InfoBathWh12.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\main\WH\NhapDL\InfoBathWh12.Designer.cs">
-      <DependentUpon>InfoBathWh12.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\main\WH\NhapDL\NhapDuLieu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -422,12 +410,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\MasterManage\history\CheckHistory.resx">
       <DependentUpon>CheckHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\WH\NhapDL\DpBatch12.resx">
-      <DependentUpon>DpBatch12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\main\WH\NhapDL\InfoBathWh12.resx">
-      <DependentUpon>InfoBathWh12.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\main\WH\NhapDL\NhapDuLieu.resx">
       <DependentUpon>NhapDuLieu.cs</DependentUpon>
