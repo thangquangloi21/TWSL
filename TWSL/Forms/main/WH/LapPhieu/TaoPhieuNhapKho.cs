@@ -45,7 +45,7 @@ namespace TWSL.Forms.main.WH
         private void updateData()
         {
 
-            DataTable dt = TaoPhieu.LoadPhieu(IDtbx.Text, NgaytaodatePick.Value.ToString("yyyy-MM-dd"));
+            DataTable dt = TaoPhieu.LoadPhieu(MaSPTbx.Text.Trim(), LotTbx.Text.Trim(), NgaytaodateFromPick.Value.ToString("yyyy-MM-dd"), NgaytaodateToPick.Value.ToString("yyyy-MM-dd"));
 
             DataTaoPhieu.AutoGenerateColumns = false;
             DataTaoPhieu.Columns.Clear();

@@ -217,7 +217,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(5, 150);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 16);
+            this.label6.Size = new System.Drawing.Size(57, 16);
             this.label6.TabIndex = 6;
             this.label6.Text = "Quyền:";
             // 
@@ -227,7 +227,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(6, 120);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 16);
+            this.label5.Size = new System.Drawing.Size(58, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Họ tên:";
             // 
@@ -248,7 +248,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(4, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 16);
+            this.label2.Size = new System.Drawing.Size(82, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "Tài khoản:";
             // 
@@ -320,7 +320,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "HOME";
-            this.Text = "Terumo Warehouse Sterilization(TWSL)";
+            this.Text = "NKTD ver 1.0";
             this.Load += new System.EventHandler(this.HOME_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +17,7 @@ namespace TWSL.Forms.main.WH.TaoFileR200
 {
     public partial class DuaHangVaoKho : Form
     {
+        private string TongSoLuong;
         public DuaHangVaoKho()
         {
             InitializeComponent();
@@ -35,7 +38,7 @@ namespace TWSL.Forms.main.WH.TaoFileR200
 
         private void LoadData() {
 
-            DataTable dt = NhapKho.LoadDataDatao(SoPhieuTbx.Text.Trim(), IDNguoitaoTbx.Text.Trim(), Ngaytaopick.Value.ToString("yyyy-MM-dd"));
+            DataTable dt = NhapKho.LoadDataDatao(MaSPTbx.Text.Trim(), LotTbx.Text.Trim(), NgaytaoFrompick.Value.ToString("yyyy-MM-dd"), NgaytaoToPick.Value.ToString("yyyy-MM-dd"));
 
             // Kiểm tra null trước khi gán
             if (dt != null && dt.Rows.Count > 0)
@@ -77,7 +80,7 @@ namespace TWSL.Forms.main.WH.TaoFileR200
                 SoMeTTLBL.Text = row.Cells["Số Mẻ Tiệt Trùng"].Value?.ToString();
                 MaSPLBL.Text = row.Cells["Mã Sản Phẩm"].Value?.ToString();
                 LotSPLBL.Text = row.Cells["Lot"].Value?.ToString();
-
+                TongSoLuong = row.Cells["Số Lượng"].Value?.ToString();
                 //Console.WriteLine($"{bat}");
 
             }
@@ -129,7 +132,7 @@ namespace TWSL.Forms.main.WH.TaoFileR200
                 }
                
             }
-
+            ImportData.InsertHistory(MaSPLBL.Text.Trim(), LotSPLBL.Text.Trim(), SoMeTTLBL.Text.Trim(), SoPhieuLBL.Text.Trim(), TongSoLuong.Trim(), AppData.Instance.CurrentUserId, "Xuất CSV");
             MessageBox.Show("Xuất CSV thành công");
 
 

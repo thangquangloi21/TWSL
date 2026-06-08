@@ -25,6 +25,7 @@ namespace TWSL.Forms.main.WH.TaoFileR200
         private string MaSP;
         private string LotSP;
         private int SoLuong;
+        private int SoLuongTong;
         private int ThoiGianTK;
         private int MaxPallet;
 
@@ -70,6 +71,8 @@ namespace TWSL.Forms.main.WH.TaoFileR200
                     MaSP = row["MaSP"].ToString();
                     LotSP = row["LotSP"].ToString();
                     SoLuong = Convert.ToInt32(row["SoLuong"]);
+                    SoLuongTong = Convert.ToInt32(row["SoLuong"]);
+
                     ThoiGianTK = Convert.ToInt32(row["ThoiGianThoatKhi"]);
                     MaxPallet = Convert.ToInt32(row["MaxPallet"]);
                 }
@@ -340,6 +343,8 @@ namespace TWSL.Forms.main.WH.TaoFileR200
                 var thoiGianThoatKhi = row.Cells[7].Value?.ToString() ?? string.Empty;
                 var khoThoatKhi = row.Cells[8].Value?.ToString() ?? string.Empty;
 
+
+                
                 NhapKho.InsertdataNhapKho(
                     stt,
                     SoPhieu,
@@ -355,7 +360,9 @@ namespace TWSL.Forms.main.WH.TaoFileR200
                 );
             }
             MessageBox.Show("Dữ liệu đã được lưu thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ImportData.InsertHistory(MaSP, LotSP, SoMeTT, SoPhieu, SoLuongTong.ToString(), AppData.Instance.CurrentUserId, "Tạo File");
             this.Close();
-        }
+       
+    }
     }
 }

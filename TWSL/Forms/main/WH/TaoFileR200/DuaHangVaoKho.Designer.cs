@@ -35,12 +35,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.TimKiemBtn = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.Ngaytaopick = new System.Windows.Forms.DateTimePicker();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.IDNguoitaoTbx = new System.Windows.Forms.TextBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.SoPhieuTbx = new System.Windows.Forms.TextBox();
+            this.NgaytaoFrompick = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.LotSPLBL = new System.Windows.Forms.Label();
@@ -56,11 +51,15 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.NgaytaoToPick = new System.Windows.Forms.DateTimePicker();
+            this.LotTbx = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MaSPTbx = new System.Windows.Forms.TextBox();
+            this.NgayTaoLBL = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -127,18 +126,23 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.NgayTaoLBL);
+            this.groupBox2.Controls.Add(this.LotTbx);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.MaSPTbx);
+            this.groupBox2.Controls.Add(this.NgaytaoToPick);
+            this.groupBox2.Controls.Add(this.NgaytaoFrompick);
             this.groupBox2.Controls.Add(this.TimKiemBtn);
-            this.groupBox2.Controls.Add(this.groupBox9);
-            this.groupBox2.Controls.Add(this.groupBox10);
-            this.groupBox2.Controls.Add(this.groupBox8);
             this.groupBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(749, 0);
+            this.groupBox2.Location = new System.Drawing.Point(788, 0);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(443, 218);
+            this.groupBox2.Size = new System.Drawing.Size(404, 218);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm Kiếm";
@@ -146,79 +150,24 @@
             // TimKiemBtn
             // 
             this.TimKiemBtn.Image = global::TWSL.Properties.Resources.search;
-            this.TimKiemBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.TimKiemBtn.Location = new System.Drawing.Point(333, 71);
+            this.TimKiemBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TimKiemBtn.Location = new System.Drawing.Point(143, 151);
             this.TimKiemBtn.Name = "TimKiemBtn";
-            this.TimKiemBtn.Padding = new System.Windows.Forms.Padding(0, 15, 0, 10);
-            this.TimKiemBtn.Size = new System.Drawing.Size(98, 76);
+            this.TimKiemBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.TimKiemBtn.Size = new System.Drawing.Size(132, 43);
             this.TimKiemBtn.TabIndex = 11;
             this.TimKiemBtn.Text = "Tìm Kiếm";
-            this.TimKiemBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.TimKiemBtn.UseVisualStyleBackColor = true;
             this.TimKiemBtn.Click += new System.EventHandler(this.TimKiemBtnFunc);
             // 
-            // groupBox9
+            // NgaytaoFrompick
             // 
-            this.groupBox9.Controls.Add(this.Ngaytaopick);
-            this.groupBox9.Location = new System.Drawing.Point(27, 154);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox9.Size = new System.Drawing.Size(276, 52);
-            this.groupBox9.TabIndex = 10;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Ngày tạo";
-            // 
-            // Ngaytaopick
-            // 
-            this.Ngaytaopick.CustomFormat = "dd/MM/yyyy";
-            this.Ngaytaopick.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.Ngaytaopick.Location = new System.Drawing.Point(84, 23);
-            this.Ngaytaopick.Name = "Ngaytaopick";
-            this.Ngaytaopick.Size = new System.Drawing.Size(169, 22);
-            this.Ngaytaopick.TabIndex = 0;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.IDNguoitaoTbx);
-            this.groupBox10.Location = new System.Drawing.Point(27, 86);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox10.Size = new System.Drawing.Size(276, 52);
-            this.groupBox10.TabIndex = 10;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "ID Người Tạo";
-            // 
-            // IDNguoitaoTbx
-            // 
-            this.IDNguoitaoTbx.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.IDNguoitaoTbx.Location = new System.Drawing.Point(84, 18);
-            this.IDNguoitaoTbx.Margin = new System.Windows.Forms.Padding(4);
-            this.IDNguoitaoTbx.Name = "IDNguoitaoTbx";
-            this.IDNguoitaoTbx.Size = new System.Drawing.Size(169, 22);
-            this.IDNguoitaoTbx.TabIndex = 9;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.SoPhieuTbx);
-            this.groupBox8.Location = new System.Drawing.Point(27, 25);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox8.Size = new System.Drawing.Size(276, 52);
-            this.groupBox8.TabIndex = 9;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Số Phiếu";
-            // 
-            // SoPhieuTbx
-            // 
-            this.SoPhieuTbx.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SoPhieuTbx.Location = new System.Drawing.Point(84, 18);
-            this.SoPhieuTbx.Margin = new System.Windows.Forms.Padding(4);
-            this.SoPhieuTbx.Name = "SoPhieuTbx";
-            this.SoPhieuTbx.Size = new System.Drawing.Size(169, 22);
-            this.SoPhieuTbx.TabIndex = 9;
+            this.NgaytaoFrompick.CustomFormat = "dd/MM/yyyy";
+            this.NgaytaoFrompick.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.NgaytaoFrompick.Location = new System.Drawing.Point(113, 31);
+            this.NgaytaoFrompick.Name = "NgaytaoFrompick";
+            this.NgaytaoFrompick.Size = new System.Drawing.Size(104, 22);
+            this.NgaytaoFrompick.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -233,7 +182,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(478, 218);
+            this.groupBox3.Size = new System.Drawing.Size(517, 218);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin";
@@ -406,6 +355,65 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "DANH SÁCH DỮ LIỆU";
             // 
+            // NgaytaoToPick
+            // 
+            this.NgaytaoToPick.CustomFormat = "dd/MM/yyyy";
+            this.NgaytaoToPick.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.NgaytaoToPick.Location = new System.Drawing.Point(278, 31);
+            this.NgaytaoToPick.Name = "NgaytaoToPick";
+            this.NgaytaoToPick.Size = new System.Drawing.Size(104, 22);
+            this.NgaytaoToPick.TabIndex = 12;
+            // 
+            // LotTbx
+            // 
+            this.LotTbx.Location = new System.Drawing.Point(113, 94);
+            this.LotTbx.Name = "LotTbx";
+            this.LotTbx.Size = new System.Drawing.Size(216, 22);
+            this.LotTbx.TabIndex = 29;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(76, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 16);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Lot:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(55, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 16);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Mã SP:";
+            // 
+            // MaSPTbx
+            // 
+            this.MaSPTbx.Location = new System.Drawing.Point(113, 66);
+            this.MaSPTbx.Name = "MaSPTbx";
+            this.MaSPTbx.Size = new System.Drawing.Size(216, 22);
+            this.MaSPTbx.TabIndex = 26;
+            // 
+            // NgayTaoLBL
+            // 
+            this.NgayTaoLBL.AutoSize = true;
+            this.NgayTaoLBL.Location = new System.Drawing.Point(40, 31);
+            this.NgayTaoLBL.Name = "NgayTaoLBL";
+            this.NgayTaoLBL.Size = new System.Drawing.Size(67, 16);
+            this.NgayTaoLBL.TabIndex = 30;
+            this.NgayTaoLBL.Text = "Ngày tạo:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(236, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 16);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "~";
+            // 
             // DuaHangVaoKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -422,11 +430,7 @@
             this.Load += new System.EventHandler(this.DuaHangVaoKho_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -453,7 +457,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label SoPhieuLBL;
-        private System.Windows.Forms.TextBox SoPhieuTbx;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label LotSPLBL;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -461,10 +464,6 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label SoMeTTLBL;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.TextBox IDNguoitaoTbx;
-        private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -472,6 +471,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button TimKiemBtn;
         private System.Windows.Forms.DataGridView NhapKhoTuDongView;
-        private System.Windows.Forms.DateTimePicker Ngaytaopick;
+        private System.Windows.Forms.DateTimePicker NgaytaoFrompick;
+        private System.Windows.Forms.DateTimePicker NgaytaoToPick;
+        private System.Windows.Forms.TextBox LotTbx;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox MaSPTbx;
+        private System.Windows.Forms.Label NgayTaoLBL;
+        private System.Windows.Forms.Label label2;
     }
 }

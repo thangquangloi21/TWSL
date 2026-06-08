@@ -198,58 +198,60 @@ namespace TWSL.Common
         }
 
 
-        public static DataTable LoadDataDatao(string sophieu, string idnguoitao, string ngayTao)
+       
+
+        public static DataTable LoadDataDatao(string MaSP, string LotSP, string ngayTaoFrom, string ngayTaoTo)
         {
             try
             {
-                var sql = @"SELECT
-    f.SoPhieu AS 'Số Phiếu',
-    MAX(f.SoMeTietTrung) AS 'Số Mẻ Tiệt Trùng',
-    MAX(f.MaSanPham) AS 'Mã Sản Phẩm',
-    MAX(f.BoPhan) AS 'Bộ Phận',
-    MAX(f.LotSanPham) AS 'Lot',
-    SUM(f.SoLuong) AS 'Số Lượng',
-    MAX(f.ThoiGianThoatKhi) AS 'Thời Gian Thoát Khí',
-    MAX(f.KhoThoatKhi) AS 'Kho Thoát Khí',
-    MAX(usr.username) AS 'Người Tạo',
-    MAX(f.ThoiGianTao) AS 'Thời Gian Tạo'
-FROM TaoFileNhapKho f
-LEFT JOIN users usr
-    ON f.NguoiTao = usr.ID
-WHERE CAST(f.ThoiGianTao AS date) = @NgayTao ";
+                var sql = @"
+            SELECT
+                f.SoPhieu AS 'Số Phiếu',
+                MAX(f.SoMeTietTrung) AS 'Số Mẻ Tiệt Trùng',
+                MAX(f.MaSanPham) AS 'Mã Sản Phẩm',
+                MAX(f.BoPhan) AS 'Bộ Phận',
+                MAX(f.LotSanPham) AS 'Lot',
+                SUM(f.SoLuong) AS 'Số Lượng',
+                MAX(f.ThoiGianThoatKhi) AS 'Thời Gian Thoát Khí',
+                MAX(f.KhoThoatKhi) AS 'Kho Thoát Khí',
+                MAX(usr.username) AS 'Người Tạo',
+                MAX(f.ThoiGianTao) AS 'Thời Gian Tạo'
+            FROM TaoFileNhapKho f
+            LEFT JOIN users usr ON f.NguoiTao = usr.ID
+            WHERE f.ThoiGianTao >= @TuNgay
+              AND f.ThoiGianTao < DATEADD(DAY, 1, @DenNgay)
+        ";
+
                 var parameters = new List<SqlParameter>
+        {
+            new SqlParameter("@TuNgay", ngayTaoFrom),
+            new SqlParameter("@DenNgay", ngayTaoTo)
+        };
+
+                if (!string.IsNullOrWhiteSpace(MaSP))
                 {
-                    new SqlParameter("@NgayTao", ngayTao)
-                };
-                if (!string.IsNullOrEmpty(sophieu))
-                {
-                    sql += "AND f.SoPhieu = @sophieu";
-                    parameters.Add(new SqlParameter("@sophieu", sophieu));
-                }
-                if (!string.IsNullOrEmpty(idnguoitao))
-                {
-                    sql += "AND f.NguoiTao = @idnguoitao";
-                    parameters.Add(new SqlParameter("@idnguoitao", idnguoitao));
+                    sql += " AND f.MaSanPham LIKE @MaSP";
+                    parameters.Add(new SqlParameter("@MaSP", "%" + MaSP.Trim() + "%"));
                 }
 
-
-                sql += "GROUP BY f.SoPhieu ORDER BY MAX(f.ThoiGianTao) DESC ";
-                var dt = DatabaseHelper.ExecuteQuery(sql, parameters.ToArray());
-
-                // nếu có kết quả tồn tại
-                if (dt.Rows.Count > 0)
+                if (!string.IsNullOrWhiteSpace(LotSP))
                 {
-                    return dt;
+                    sql += " AND f.LotSanPham LIKE @LotSP";
+                    parameters.Add(new SqlParameter("@LotSP", "%" + LotSP.Trim() + "%"));
                 }
 
-                return null;
+                sql += @"
+            GROUP BY f.SoPhieu
+            ORDER BY MAX(f.ThoiGianTao) DESC
+        ";
+
+                return DatabaseHelper.ExecuteQuery(sql, parameters.ToArray());
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi load dữ liệu đã tạo: {ex.Message}");
-                return null;
+                return new DataTable();
             }
-
         }
         public static DataTable TaoFileCSV(string soPhieu) {
             try

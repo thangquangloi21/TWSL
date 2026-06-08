@@ -142,7 +142,7 @@ namespace TWSL.Forms.master
             }
         }
 
-        private void Loaddatatk(String Item, String Id, String Machine, int Status)
+        private void Loaddatatk(string Item, string Id, string Machine, int Status)
         {
             try
             {
@@ -224,10 +224,10 @@ namespace TWSL.Forms.master
 
         private void Loaddata()
         {
-            String Item = ItemTbx.Text.Trim();
-            String Machine = MachineTbx.Text.Trim();
+            string Item = ItemTbx.Text.Trim();
+            string Machine = MachineTbx.Text.Trim();
             int Status = statuscbb.SelectedIndex;
-            String Id = IdTbx.Text.Trim();
+            string Id = IdTbx.Text.Trim();
 
             if (StatusFunc == "TK")
             {
@@ -802,6 +802,38 @@ namespace TWSL.Forms.master
                     // Hiển thị context menu tại vị trí click
                     ShowContextMenu(e.Location);
                 }
+            }
+        }
+
+        private void XuatDataToExcel(object sender, EventArgs e)
+        {
+            //Xuất dữ liệu ra excel
+            try
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Files|*.xlsx";
+                    saveFileDialog.Title = "Lưu file Excel";
+                    saveFileDialog.DefaultExt = "xlsx";
+                    saveFileDialog.AddExtension = true;
+                    if (StatusFunc == "TK")
+                    {
+                        saveFileDialog.FileName = "Master_TK" + DateTime.Now.ToString("yyMMddHHmmss");
+                    }
+                    else if (StatusFunc == "Pallet")
+                    {
+                        saveFileDialog.FileName = "Master_Pallet" + DateTime.Now.ToString("yyMMddHHmmss");
+                    }
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        ImportData.ExportToExcelEPPlus(DataView, saveFileDialog.FileName);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

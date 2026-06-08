@@ -43,10 +43,13 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.SoPhieuDP = new System.Windows.Forms.Label();
             this.TimKiemGrb = new System.Windows.Forms.GroupBox();
+            this.LotTbx = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.NgaytaodateToPick = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.NgayTaoLBL = new System.Windows.Forms.Label();
-            this.NgaytaodatePick = new System.Windows.Forms.DateTimePicker();
-            this.IDtbx = new System.Windows.Forms.TextBox();
+            this.NgaytaodateFromPick = new System.Windows.Forms.DateTimePicker();
+            this.MaSPTbx = new System.Windows.Forms.TextBox();
             this.TimKiemBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.InPhieu = new System.Windows.Forms.Button();
@@ -59,6 +62,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -98,7 +102,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(338, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(585, 162);
+            this.groupBox2.Size = new System.Drawing.Size(507, 162);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin";
@@ -106,9 +110,9 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.SoLuongDP);
-            this.groupBox7.Location = new System.Drawing.Point(389, 27);
+            this.groupBox7.Location = new System.Drawing.Point(343, 27);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(161, 40);
+            this.groupBox7.Size = new System.Drawing.Size(145, 40);
             this.groupBox7.TabIndex = 16;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Số Lượng";
@@ -126,9 +130,9 @@
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.LotSPDP);
-            this.groupBox8.Location = new System.Drawing.Point(201, 93);
+            this.groupBox8.Location = new System.Drawing.Point(185, 93);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(161, 40);
+            this.groupBox8.Size = new System.Drawing.Size(136, 40);
             this.groupBox8.TabIndex = 16;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lot";
@@ -137,7 +141,7 @@
             // 
             this.LotSPDP.AutoSize = true;
             this.LotSPDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LotSPDP.Location = new System.Drawing.Point(43, 20);
+            this.LotSPDP.Location = new System.Drawing.Point(21, 20);
             this.LotSPDP.Name = "LotSPDP";
             this.LotSPDP.Size = new System.Drawing.Size(16, 13);
             this.LotSPDP.TabIndex = 10;
@@ -146,9 +150,9 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.MaSPDP);
-            this.groupBox6.Location = new System.Drawing.Point(201, 27);
+            this.groupBox6.Location = new System.Drawing.Point(185, 27);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(161, 40);
+            this.groupBox6.Size = new System.Drawing.Size(136, 40);
             this.groupBox6.TabIndex = 15;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Mã Sản Phẩm";
@@ -157,7 +161,7 @@
             // 
             this.MaSPDP.AutoSize = true;
             this.MaSPDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaSPDP.Location = new System.Drawing.Point(43, 19);
+            this.MaSPDP.Location = new System.Drawing.Point(21, 19);
             this.MaSPDP.Name = "MaSPDP";
             this.MaSPDP.Size = new System.Drawing.Size(16, 13);
             this.MaSPDP.TabIndex = 9;
@@ -166,9 +170,9 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.ThoiGianTKDP);
-            this.groupBox5.Location = new System.Drawing.Point(389, 93);
+            this.groupBox5.Location = new System.Drawing.Point(343, 93);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(161, 40);
+            this.groupBox5.Size = new System.Drawing.Size(145, 40);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Thời gian thoát khí";
@@ -188,7 +192,7 @@
             this.groupBox4.Controls.Add(this.SoMeTTDP);
             this.groupBox4.Location = new System.Drawing.Point(19, 93);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(161, 40);
+            this.groupBox4.Size = new System.Drawing.Size(143, 40);
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Số Mẻ Tiệt Trùng";
@@ -197,7 +201,7 @@
             // 
             this.SoMeTTDP.AutoSize = true;
             this.SoMeTTDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoMeTTDP.Location = new System.Drawing.Point(40, 20);
+            this.SoMeTTDP.Location = new System.Drawing.Point(15, 20);
             this.SoMeTTDP.Name = "SoMeTTDP";
             this.SoMeTTDP.Size = new System.Drawing.Size(16, 13);
             this.SoMeTTDP.TabIndex = 7;
@@ -208,7 +212,7 @@
             this.groupBox3.Controls.Add(this.SoPhieuDP);
             this.groupBox3.Location = new System.Drawing.Point(19, 27);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(161, 40);
+            this.groupBox3.Size = new System.Drawing.Size(143, 40);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Số Phiếu:";
@@ -217,7 +221,7 @@
             // 
             this.SoPhieuDP.AutoSize = true;
             this.SoPhieuDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoPhieuDP.Location = new System.Drawing.Point(40, 19);
+            this.SoPhieuDP.Location = new System.Drawing.Point(15, 19);
             this.SoPhieuDP.Name = "SoPhieuDP";
             this.SoPhieuDP.Size = new System.Drawing.Size(16, 13);
             this.SoPhieuDP.TabIndex = 6;
@@ -225,62 +229,91 @@
             // 
             // TimKiemGrb
             // 
+            this.TimKiemGrb.Controls.Add(this.LotTbx);
+            this.TimKiemGrb.Controls.Add(this.label4);
+            this.TimKiemGrb.Controls.Add(this.label2);
+            this.TimKiemGrb.Controls.Add(this.NgaytaodateToPick);
             this.TimKiemGrb.Controls.Add(this.label3);
             this.TimKiemGrb.Controls.Add(this.NgayTaoLBL);
-            this.TimKiemGrb.Controls.Add(this.NgaytaodatePick);
-            this.TimKiemGrb.Controls.Add(this.IDtbx);
+            this.TimKiemGrb.Controls.Add(this.NgaytaodateFromPick);
+            this.TimKiemGrb.Controls.Add(this.MaSPTbx);
             this.TimKiemGrb.Controls.Add(this.TimKiemBtn);
             this.TimKiemGrb.Dock = System.Windows.Forms.DockStyle.Right;
             this.TimKiemGrb.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimKiemGrb.Location = new System.Drawing.Point(923, 0);
+            this.TimKiemGrb.Location = new System.Drawing.Point(845, 0);
             this.TimKiemGrb.Name = "TimKiemGrb";
-            this.TimKiemGrb.Size = new System.Drawing.Size(301, 162);
+            this.TimKiemGrb.Size = new System.Drawing.Size(379, 162);
             this.TimKiemGrb.TabIndex = 2;
             this.TimKiemGrb.TabStop = false;
             this.TimKiemGrb.Text = "Tìm Kiếm";
             // 
+            // LotTbx
+            // 
+            this.LotTbx.Location = new System.Drawing.Point(91, 86);
+            this.LotTbx.Name = "LotTbx";
+            this.LotTbx.Size = new System.Drawing.Size(216, 22);
+            this.LotTbx.TabIndex = 25;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(54, 89);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 16);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Lot:";
+            // 
+            // NgaytaodateToPick
+            // 
+            this.NgaytaodateToPick.CustomFormat = "dd/MM/yyyy";
+            this.NgaytaodateToPick.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.NgaytaodateToPick.Location = new System.Drawing.Point(245, 27);
+            this.NgaytaodateToPick.Name = "NgaytaodateToPick";
+            this.NgaytaodateToPick.Size = new System.Drawing.Size(106, 22);
+            this.NgaytaodateToPick.TabIndex = 22;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 80);
+            this.label3.Location = new System.Drawing.Point(33, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 16);
+            this.label3.Size = new System.Drawing.Size(52, 16);
             this.label3.TabIndex = 21;
-            this.label3.Text = "ID:";
+            this.label3.Text = "Mã SP:";
             // 
             // NgayTaoLBL
             // 
             this.NgayTaoLBL.AutoSize = true;
-            this.NgayTaoLBL.Location = new System.Drawing.Point(6, 39);
+            this.NgayTaoLBL.Location = new System.Drawing.Point(18, 27);
             this.NgayTaoLBL.Name = "NgayTaoLBL";
             this.NgayTaoLBL.Size = new System.Drawing.Size(67, 16);
             this.NgayTaoLBL.TabIndex = 20;
             this.NgayTaoLBL.Text = "Ngày tạo:";
             // 
-            // NgaytaodatePick
+            // NgaytaodateFromPick
             // 
-            this.NgaytaodatePick.CustomFormat = "dd/MM/yyyy";
-            this.NgaytaodatePick.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.NgaytaodatePick.Location = new System.Drawing.Point(117, 39);
-            this.NgaytaodatePick.Name = "NgaytaodatePick";
-            this.NgaytaodatePick.Size = new System.Drawing.Size(172, 22);
-            this.NgaytaodatePick.TabIndex = 0;
+            this.NgaytaodateFromPick.CustomFormat = "dd/MM/yyyy";
+            this.NgaytaodateFromPick.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.NgaytaodateFromPick.Location = new System.Drawing.Point(91, 27);
+            this.NgaytaodateFromPick.Name = "NgaytaodateFromPick";
+            this.NgaytaodateFromPick.Size = new System.Drawing.Size(106, 22);
+            this.NgaytaodateFromPick.TabIndex = 0;
             // 
-            // IDtbx
+            // MaSPTbx
             // 
-            this.IDtbx.Location = new System.Drawing.Point(117, 80);
-            this.IDtbx.Name = "IDtbx";
-            this.IDtbx.Size = new System.Drawing.Size(172, 22);
-            this.IDtbx.TabIndex = 0;
+            this.MaSPTbx.Location = new System.Drawing.Point(91, 58);
+            this.MaSPTbx.Name = "MaSPTbx";
+            this.MaSPTbx.Size = new System.Drawing.Size(216, 22);
+            this.MaSPTbx.TabIndex = 0;
             // 
             // TimKiemBtn
             // 
             this.TimKiemBtn.Image = global::TWSL.Properties.Resources.search;
             this.TimKiemBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TimKiemBtn.Location = new System.Drawing.Point(69, 117);
+            this.TimKiemBtn.Location = new System.Drawing.Point(129, 118);
             this.TimKiemBtn.Name = "TimKiemBtn";
             this.TimKiemBtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.TimKiemBtn.Size = new System.Drawing.Size(172, 37);
+            this.TimKiemBtn.Size = new System.Drawing.Size(139, 34);
             this.TimKiemBtn.TabIndex = 19;
             this.TimKiemBtn.Text = "Tìm Kiếm";
             this.TimKiemBtn.UseVisualStyleBackColor = true;
@@ -411,6 +444,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "DANH SÁCH DỮ LIỆU";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(215, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 16);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "~";
+            // 
             // TaoPhieuNhapKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,12 +515,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox TimKiemGrb;
         private System.Windows.Forms.Button TimKiemBtn;
-        private System.Windows.Forms.TextBox IDtbx;
-        private System.Windows.Forms.DateTimePicker NgaytaodatePick;
+        private System.Windows.Forms.TextBox MaSPTbx;
+        private System.Windows.Forms.DateTimePicker NgaytaodateFromPick;
         private System.Windows.Forms.Button XemChiTietBtn;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label NgayTaoLBL;
         private System.Windows.Forms.Button InPhieu;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DateTimePicker NgaytaodateToPick;
+        private System.Windows.Forms.Label NgayTaoLBL;
+        private System.Windows.Forms.TextBox LotTbx;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
     }
 }

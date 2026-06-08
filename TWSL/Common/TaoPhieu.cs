@@ -150,30 +150,60 @@ namespace TWSL.Common
             return false;
         }
 
-        public static DataTable LoadPhieu(string id , string ngaytao)
+       
+
+        public static DataTable LoadPhieu(string item, string lot, string ngaytaoFrom, string ngaytaoTo)
         {
             try
             {
-                var sql = "SELECT TOP (1000) [SoPhieu] ,[SoMeTT] ,[MaSP] ,[LotSP] ,[SoLuong] ,[MayTT] ,[ThoiGianThoatKhi] ,[MaxPallet] ,u.username ,[ThoiGianLap] ,[Note] ,[SoLanIn] FROM [TWSL].[dbo].[TaoPhieu] left join users u on IdNguoiLap = u.id WHERE CAST(ThoiGianLap AS date) = @ngaytao  ";
+                var sql = @"
+            SELECT TOP (1000)
+                p.[SoPhieu],
+                p.[SoMeTT],
+                p.[MaSP],
+                p.[LotSP],
+                p.[SoLuong],
+                p.[MayTT],
+                p.[ThoiGianThoatKhi],
+                p.[MaxPallet],
+                u.username AS NguoiLap,
+                p.[ThoiGianLap],
+                p.[Note],
+                p.[SoLanIn]
+            FROM [TWSL].[dbo].[TaoPhieu] p
+            LEFT JOIN [users] u ON p.IdNguoiLap = u.id
+            WHERE p.ThoiGianLap >= @TuNgay
+              AND p.ThoiGianLap < DATEADD(DAY, 1, @DenNgay)
+        ";
+
                 var parameters = new List<SqlParameter>
+        {
+            new SqlParameter("@TuNgay", ngaytaoFrom),
+            new SqlParameter("@DenNgay", ngaytaoTo)
+        };
+
+                if (!string.IsNullOrWhiteSpace(item))
                 {
-                    new SqlParameter("@ngaytao", ngaytao)
-                };
-                if (!string.IsNullOrEmpty(id))
-                {
-                    sql += "AND IdNguoiLap = @id";
-                    parameters.Add(new SqlParameter("@id", id));
+                    sql += " AND p.MaSP LIKE @Item";
+                    parameters.Add(new SqlParameter("@Item", "%" + item.Trim() + "%"));
                 }
-                var dt = DatabaseHelper.ExecuteQuery(sql, parameters.ToArray());
-                return dt;
+
+                if (!string.IsNullOrWhiteSpace(lot))
+                {
+                    sql += " AND p.LotSP LIKE @Lot";
+                    parameters.Add(new SqlParameter("@Lot", "%" + lot.Trim() + "%"));
+                }
+
+                sql += " ORDER BY p.ThoiGianLap DESC";
+
+                return DatabaseHelper.ExecuteQuery(sql, parameters.ToArray());
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi load phiếu: {ex.Message}");
+                return new DataTable();
             }
-            return null;
         }
-
 
         public static DataTable TaoDataPhieu(string SoPhieu)
         {
