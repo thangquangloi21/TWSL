@@ -128,28 +128,20 @@ WHERE 1 = 1 ";
                     }
 
 
-                    
+
                     //quy đổi giá trị trước khi update
 
-                    if (role_update == "Admin")
+                    if (role_update == "Nhom1")
                     {
                         role_update = "1";
                     }
-                    else if (role_update == "QuanLy")
+                    else if (role_update == "Nhom2")
                     {
                         role_update = "2";
                     }
-                    else if (role_update == "Nhom1")
-                    {
-                        role_update = "3";
-                    }
-                    else if (role_update == "Nhom2")
-                    {
-                        role_update = "4";
-                    }
                     else if (role_update == "Nhom3")
                     {
-                        role_update = "5";
+                        role_update = "3";
                     }
                     if (status_update == "Đang hoạt động")
                     {

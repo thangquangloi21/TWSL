@@ -55,7 +55,7 @@ namespace TWSL.Forms.main
             "FULL_ACCESS"
             };
             bool hasDataEntry = AppData.Instance.Permission.AsEnumerable()
-                .Any(row => allowedPermissions.Contains(row["PermissionCode"].ToString()));
+                .Any(row => allowedPermissions.Contains(row["PermissionCode"].ToString().Trim()));
             if (hasDataEntry)
             {
                 OpenchildFrom(new MasterManage());
@@ -100,11 +100,11 @@ namespace TWSL.Forms.main
 
             //OpenchildFrom(new NhapDuLieu());
 
-            if (AppData.Instance.NhomQuyen == "Nhom1")
+            if (AppData.Instance.NhomQuyen == "Nhom2")
             {
                 OpenchildFrom(new NhapDuLieu());
             }
-            else if (AppData.Instance.NhomQuyen == "Nhom2")
+            else if (AppData.Instance.NhomQuyen == "Nhom1")
             {
                 OpenchildFrom(new DuaHangVaoKho());
             }
@@ -124,10 +124,9 @@ namespace TWSL.Forms.main
 
         private void Info_click(object sender, EventArgs e)
         {
-            Console.WriteLine("Info clicked");
             foreach (DataRow row in AppData.Instance.Permission.Rows)
             {
-                Console.WriteLine(string.Join(" | ", row.ItemArray));
+                Console.WriteLine(row["PermissionCode"]);
             }
 
         }

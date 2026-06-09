@@ -63,7 +63,7 @@ namespace TWSL.Forms.main.WH.TaoFileR200
             {
                 // Xóa dữ liệu cũ hoặc hiển thị thông báo
                 NhapKhoTuDongView.DataSource = null;
-                MessageBox.Show("Không có dữ liệu để hiển thị", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Không có dữ liệu để hiển thị", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }

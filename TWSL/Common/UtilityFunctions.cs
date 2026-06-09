@@ -35,12 +35,12 @@ namespace TWSL.Common
         public static DataTable LoadUserPermissions(string userId)
         {
             string query = @"SELECT
-p.PermissionCode
-FROM users u
-JOIN Roles r ON u.role = r.RoleId
-JOIN RolePermissions rp ON r.RoleId = rp.RoleId
-JOIN Permissions p ON rp.PermissionId = p.PermissionId
-WHERE u.id = @userId;";
+                                p.PermissionCode
+                                FROM users u
+                                JOIN Roles r ON u.role = r.RoleId
+                                JOIN RolePermissions rp ON r.RoleId = rp.RoleId
+                                JOIN Permissions p ON rp.PermissionId = p.PermissionId
+                                WHERE u.id = @userId;";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@userId", userId)
