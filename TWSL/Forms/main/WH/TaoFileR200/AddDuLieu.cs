@@ -119,6 +119,12 @@ namespace TWSL.Forms.main.WH.TaoFileR200
                     MaPalletTBX.SelectAll();
                     return;
                 }
+                if (string.IsNullOrWhiteSpace(mapallet) || mapallet.Length < 5) 
+                {  
+                    MessageBox.Show("Mã pallet phải có ít nhất 5 ký tự");  
+                    return; 
+                }
+
                 if (IsPalletExists(mapallet.Substring(0, 5)))
                 {
                     Console.WriteLine("Mã pallet đã tồn tại trong danh sách");

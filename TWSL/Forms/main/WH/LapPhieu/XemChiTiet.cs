@@ -25,10 +25,13 @@ namespace TWSL.Forms.main.WH
             if (view == "DP")
             {
                 panel2.Visible = false;
+                ThoatDP.Enabled = true;
+
             }
             else
             {
                 panel2.Visible = true;
+                ThoatDP.Enabled = false;
             }
            
 
@@ -96,6 +99,11 @@ namespace TWSL.Forms.main.WH
         private void ThoatAPP_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ThoatDP_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

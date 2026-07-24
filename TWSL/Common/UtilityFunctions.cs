@@ -49,6 +49,26 @@ namespace TWSL.Common
         }
 
 
+        public static void loadlinkfrom()
+        {
+            string iniPath = @"config.ini";
+
+            if (File.Exists(iniPath))
+            {
+                string[] lines = File.ReadAllLines(iniPath);
+
+                foreach (string line in lines)
+                {
+                    if (line.StartsWith("FilePath="))
+                    {
+                        AppData.Instance.LinkTemp = line.Substring("FilePath=".Length);
+                        break;
+                    }
+                }
+            }
+        }
+
+
         public static void trans_update_user(string reason, string id, string username, string role, string status, string performer_id, string performer_name, string performer_date, string note)
         {
             // add , edit, resetpassword

@@ -213,7 +213,20 @@ namespace TWSL.Forms.main.WH
 
         private void XemChiTietBtn_Click(object sender, EventArgs e)
         {
-           
+
+
+            // lấy dữ liệu để đổ ra xem
+            var Xemchitiet  = TaoPhieu.TaoDataPhieu(SoPhieuDP.Text);
+            Xemchitiet.Columns["STT_Pallet"].ColumnName = "STT";
+            Xemchitiet.Columns["MaSP"].ColumnName = "Mã SP";
+            Xemchitiet.Columns["LotSp"].ColumnName = "Lot SP";
+            Xemchitiet.Columns["SoMeTT"].ColumnName = "Số Mẻ";
+            Xemchitiet.Columns["ThoiGianThoatKhi"].ColumnName = "Thời gian thoát Khí";
+            Xemchitiet.Columns["SoLuong"].ColumnName = "Số Lượng";
+            Xemchitiet.Columns["SoPhieu"].ColumnName = "Số Phiếu";
+
+            var dp = new XemChiTiet("DP", Xemchitiet);
+            dp.ShowDialog();
         }
 
         

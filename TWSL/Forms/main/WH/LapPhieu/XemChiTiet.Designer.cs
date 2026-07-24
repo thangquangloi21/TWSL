@@ -37,6 +37,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
+            this.ThoatDP = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewdata)).BeginInit();
@@ -46,18 +47,19 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel3.Controls.Add(this.ThoatDP);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1390, 42);
+            this.panel3.Size = new System.Drawing.Size(1390, 62);
             this.panel3.TabIndex = 1;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::TWSL.Properties.Resources.list;
-            this.pictureBox1.Location = new System.Drawing.Point(17, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -68,7 +70,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(58, 9);
+            this.label1.Location = new System.Drawing.Point(56, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(212, 24);
             this.label1.TabIndex = 0;
@@ -82,10 +84,10 @@
             this.viewdata.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.viewdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.viewdata.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewdata.Location = new System.Drawing.Point(0, 42);
+            this.viewdata.Location = new System.Drawing.Point(0, 62);
             this.viewdata.Name = "viewdata";
             this.viewdata.ReadOnly = true;
-            this.viewdata.Size = new System.Drawing.Size(1390, 430);
+            this.viewdata.Size = new System.Drawing.Size(1390, 410);
             this.viewdata.TabIndex = 0;
             // 
             // Exit
@@ -157,6 +159,20 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.SuaThongTinBtn);
             // 
+            // ThoatDP
+            // 
+            this.ThoatDP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ThoatDP.Image = global::TWSL.Properties.Resources.logout;
+            this.ThoatDP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ThoatDP.Location = new System.Drawing.Point(1230, 8);
+            this.ThoatDP.Name = "ThoatDP";
+            this.ThoatDP.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.ThoatDP.Size = new System.Drawing.Size(148, 47);
+            this.ThoatDP.TabIndex = 2;
+            this.ThoatDP.Text = "Thoát";
+            this.ThoatDP.UseVisualStyleBackColor = true;
+            this.ThoatDP.Click += new System.EventHandler(this.ThoatDP_Click);
+            // 
             // XemChiTiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,5 +205,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ThoatDP;
     }
 }

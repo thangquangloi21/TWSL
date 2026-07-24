@@ -361,7 +361,7 @@ namespace TWSL.Common
 
         public static void TaoFileIN(string Sophieu, string outputDir)
         {
-            string templatePath = @"TEMP\JCQ50-ADM022-1-Rev6.xlsx";
+            string templatePath = AppData.Instance.LinkTemp;
             Directory.CreateDirectory(outputDir);
             string outputPath = System.IO.Path.Combine(outputDir, $"{Sophieu}.xlsx");
 

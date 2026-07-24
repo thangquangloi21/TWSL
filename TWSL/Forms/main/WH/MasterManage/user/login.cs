@@ -242,10 +242,11 @@ namespace TWSL
                 AppData.Instance.CurrentUserName = "Administrator";
                 AppData.Instance.CurrentRole = "admin";
                 AppData.Instance.Permission = new DataTable();
-                
 
+                //this.Hide(); // Ẩn Form đăng nhập
                 HOME home = new HOME();
-                home.Show();
+                home.ShowDialog();
+                
 
             }
             else
@@ -324,12 +325,15 @@ namespace TWSL
                 if (username_texbox.Text.Trim() == "admin" && password_texbox.Text.Trim() == "admin")
                 {
                     HOME home = new HOME();
-                    AppData.Instance.CurrentProdLine = "SL";
+                    //AppData.Instance.CurrentProdLine = "SL";
                     AppData.Instance.CurrentUserId = "admin";
                     AppData.Instance.CurrentUserName = "Administrator";
                     AppData.Instance.CurrentProdLine = "IT";
                     AppData.Instance.CurrentRole = "admin";
-                    home.Show();
+                    //this.Hide();
+                    home.ShowDialog();
+                   
+
 
                 }
                 else

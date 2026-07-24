@@ -74,6 +74,7 @@ namespace TWSL.Forms.main
 
         private void HOME_Load(object sender, EventArgs e)
         {
+            UtilityFunctions.loadlinkfrom();
             if (AppData.Instance.CurrentUserId != "admin")
             {
                 //load quyền vào 1 data table 
@@ -130,10 +131,7 @@ namespace TWSL.Forms.main
             }
 
         }
-        public void histrory_user()
-        {
-            OpenchildFrom(new HistoryFrame());
-        }
+      
 
       
 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TWSL.Common;
 using TWSL.Forms.main.WH.MasterManage.history;
+using TWSL.Forms.main.WH.MasterManage.master;
 using TWSL.Forms.master;
 
 namespace TWSL.Forms.main
@@ -45,6 +46,12 @@ namespace TWSL.Forms.main
         {
             var CheckHistory = new CheckHistory();
             CheckHistory.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var SetTemp = new FromTempMaster();
+            SetTemp.ShowDialog();
         }
     }
 }

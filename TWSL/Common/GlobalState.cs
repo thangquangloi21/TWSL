@@ -29,9 +29,9 @@ namespace TWSL.Common
         //public string SAPDWH = "Server=10.239.1.54;Database=DB_SAP_DWH;User Id=sa;Password=123456; ";
 
         //HOME
-        public string DBGS1 = "Server=10.239.2.58;Database=DB_GS1_GenIII;User Id=loitq;Password=249533;";
-        public string DBSL = "Server=10.239.2.58;Database=TWSL;User Id=loitq;Password=249533;";
-        public string SAPDWH = "Server=10.239.2.58;Database=DB_SAP_DWH;User Id=loitq;Password=249533;";
+        public string DBGS1 = "Server=localhost;Database=DB_GS1_GenIII;User Id=loitq;Password=249533;";
+        public string DBSL = "Server=localhost;Database=TWSL;User Id=loitq;Password=249533;";
+        public string SAPDWH = "Server=localhost;Database=DB_SAP_DWH;User Id=loitq;Password=249533";
 
 
 
@@ -54,12 +54,16 @@ namespace TWSL.Common
 
         // version app
         public string AppVersion { get; set; }
-        
-       
+
+
+        public string LinkTemp { get; set; }
+
         //SL
         public string GenYearBatch { get; set; }
         public string Batch { get; set; }
         public string MachineNo { get; set; }
+
+
 
         private AppData() { } // Ngăn tạo đối tượng bên ngoài
     }

@@ -52,7 +52,7 @@ namespace TWSL.Forms.master
             StatusFunc = "Pallet";
             MachineTbx.Enabled = false;
             //statuscbb.Enabled = false;
-            Sttlb.Enabled = false;
+            //Sttlb.Enabled = false;
             MachineLb.Enabled = false;
             MachineTbx.Text = "";
             statuscbb.SelectedIndex = 0;
@@ -281,11 +281,14 @@ namespace TWSL.Forms.master
                     DateTime time = DateTime.Now;
                     for (int row = 2; row <= rowCount; row++) // Bỏ qua hàng tiêu đề
                     {
+                        string STT = worksheet.Cells[row, 1].Text.Trim(); // Cột A
                         string itemcode = worksheet.Cells[row, 2].Text.Trim(); // Cột B
-                                                                               // *** KIỂM TRA HÀNG CÓ DỮ LIỆU ***
-                        if (string.IsNullOrEmpty(itemcode))
+                        string cgeneric = worksheet.Cells[row, 3].Text.Trim(); // Cột C
+                        string ctime = worksheet.Cells[row, 6].Text.Trim(); // Cột D
+                        // *** KIỂM TRA HÀNG CÓ DỮ LIỆU ***
+                        if (string.IsNullOrEmpty(STT) || string.IsNullOrEmpty(itemcode) || string.IsNullOrEmpty(cgeneric) || string.IsNullOrEmpty(ctime))
                         {
-                            // Bỏ qua hàng nếu cột B (itemcode) rỗng
+                            // Bỏ qua hàng nếu STT, itemcode, generic hoặc time rỗng
                             continue;
                         }
                         string generic = worksheet.Cells[row, 3].Text.Trim(); // Cột C
@@ -416,11 +419,15 @@ namespace TWSL.Forms.master
                     DateTime time = DateTime.Now;
                     for (int row = 2; row <= rowCount; row++) // Bỏ qua hàng tiêu đề
                     {
+                        string Stt = worksheet.Cells[row, 1].Text.Trim(); // Cột A
                         string itemcode = worksheet.Cells[row, 2].Text.Trim(); // Cột B
-                                                                               // *** KIỂM TRA HÀNG CÓ DỮ LIỆU ***
-                        if (string.IsNullOrEmpty(itemcode))
+                        string Qtyc = worksheet.Cells[row, 3].Text.Trim(); // Cột C
+                   
+
+                        // *** KIỂM TRA HÀNG CÓ DỮ LIỆU ***
+                        if (string.IsNullOrEmpty(Stt) || string.IsNullOrEmpty(itemcode) || string.IsNullOrEmpty(Qty))
                         {
-                            // Bỏ qua hàng nếu cột B (itemcode) rỗng
+                            // Bỏ qua hàng nếu bất kỳ cột nào rỗng
                             continue;
                         }
                         string qty = worksheet.Cells[row, 3].Text.Trim(); // Cột C
@@ -450,13 +457,14 @@ namespace TWSL.Forms.master
                         if (listdata1 == "")
                         {
                             // Nếu chưa tồn tại, thực hiện thêm mới vào database
-                            string insertQuery = "INSERT INTO QtyStandPalet (ItemCode, Qty, IdUser) " +
-                              "VALUES (@ItemCode, @Qty , @IdUser)";
+                            string insertQuery = "INSERT INTO QtyStandPalet (ItemCode, Qty, IdUser, time_of_registration) " +
+                              "VALUES (@ItemCode, @Qty , @IdUser, @TimeOfRegistration)";
                             SqlParameter[] parameters = new SqlParameter[]
                                 {
                                         new SqlParameter("@ItemCode", itemcode),
                                         new SqlParameter("@Qty", qty),
-                                        new SqlParameter("@IdUser", AppData.Instance.CurrentUserId)
+                                        new SqlParameter("@IdUser", AppData.Instance.CurrentUserId),
+                                        new SqlParameter("@TimeOfRegistration", UtilityFunctions.getdate_time1())
 
                                  };
                             DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
@@ -474,13 +482,16 @@ namespace TWSL.Forms.master
                         }
                         else if (listdata1 != inp_listdata)
                         {
-                            string insertQuery = "Update QtyStandPalet Set Qty = @Qty, IdUser= @IdUser  Where Id = @ID";
+                            string insertQuery = "Update QtyStandPalet Set Qty = @Qty, IdUser= @IdUser, time_of_registration = @TimeOfRegistration,approver = '', time_of_approval = NULL , status_item = @status_item  Where Id = @ID";
                             SqlParameter[] parameters = new SqlParameter[]
                                 {
                                         new SqlParameter("@ItemCode", itemcode),
                                         new SqlParameter("@Qty", qty),
                                         new SqlParameter("@ID", id),
-                                        new SqlParameter("@IdUser", AppData.Instance.CurrentUserId)
+                                        new SqlParameter("@IdUser", AppData.Instance.CurrentUserId),
+                                        new SqlParameter("@TimeOfRegistration", UtilityFunctions.getdate_time1()),
+                                        //new SqlParameter("@time_of_approval", ""),
+                                        new SqlParameter("@status_item", "0")
 
                                  };
                             DatabaseHelper.ExecuteNonQuery(insertQuery, parameters);
@@ -714,7 +725,7 @@ namespace TWSL.Forms.master
                     Task.Run(() =>
                     {
                         // Giả lập xử lý lâu
-                        Update_status("0", "", "");
+                        Update_status("0", "", "NULL");
                         this.Invoke(new Action(() =>
                         {
                             loading.HideLoading();
